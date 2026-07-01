@@ -125,7 +125,7 @@ Secrets must come from environment variables or local wallet storage, never sour
 - `KASPA_WALLET_FILENAME`
 - `KASPA_WALLET_SECRET`
 - `KASPA_RECIPIENT_ADDRESS`
-- optional `KASPA_RPC_URL`
+- reserved `KASPA_RPC_URL` is present in `.env.example` but is not used by the current Wallet API scripts
 
 For this demo, a testnet-10 wallet was created locally, funded through the official TN-10 faucet, and used to broadcast the prepared payload after the explicit `--human-approved` gate. The testnet wallet secret and mnemonic are stored only in local `.env`, which is ignored by git.
 

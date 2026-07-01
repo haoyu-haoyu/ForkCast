@@ -37,7 +37,7 @@ Current blind-backtest result:
 - Mock simulation events are used to make an agent interaction feed visible and replayable. They are not used as historical prediction evidence.
 - Dashboard impact scores and any monetary framing are illustrative/demo estimates only.
 - The "Run live sample" path is secondary; the main demo uses cached replay artifacts for reliability.
-- OASIS live execution is a stretch item, not part of the mainline MVP.
+- OASIS live execution is an optional, non-integrated stretch experiment, not part of the mainline MVP.
 
 ## Honest Limits
 
@@ -68,7 +68,7 @@ Because the blind prediction identified outer-London opposition but did not clea
 
 ### Did OASIS run live?
 
-Not in the mainline MVP. OASIS was treated as a single-point risk, so the project switched to mock simulation mode for the end-to-end demo. Real LLM calls for extraction, agent profiles, reports and blind prediction use DeepSeek.
+Not in the mainline MVP. OASIS was treated as a single-point risk and remains an optional, non-integrated probe, so the project switched to mock simulation mode for the end-to-end demo. Real LLM calls for extraction, agent profiles, reports and blind prediction use DeepSeek.
 
 ### Where do the money/score numbers come from?
 

@@ -11,7 +11,7 @@ After: the same policy decision is reviewed through visible approval checkpoints
 Current implementation status:
 
 - Mainline MVP is Conduct control layer + ULEZ blind backtest + Kaspa TN-10 audit anchoring.
-- OASIS is treated as a runtime dependency probe, not a hard blocker.
+- OASIS is an optional, non-integrated runtime probe only, not part of the main demo pipeline and not a hard blocker.
 - The demo uses deterministic mock simulation events with the same downstream contract.
 - Project LLM calls use a DeepSeek/OpenAI-compatible client.
 - Kaspa Phase 4 has a real TN-10 transaction: `f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`.
@@ -130,7 +130,7 @@ Future broadcasts must use a local testnet wallet from environment variables and
 uv run --with kaspa python scripts/kaspa_broadcast_anchor.py --human-approved --amount-kas 1
 ```
 
-To explicitly run the paid/live OASIS Reddit-like probe, set `OPENAI_API_KEY` and opt in:
+To explicitly run the paid/live OASIS Reddit-like probe, set `OPENAI_API_KEY` and opt in. This is an optional, non-integrated experiment; the submitted MVP uses mock replay for the simulation layer.
 
 ```bash
 OASIS_RUN_LIVE=1 uv run --extra oasis python scripts/probe_oasis.py
