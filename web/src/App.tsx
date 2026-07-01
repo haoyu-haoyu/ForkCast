@@ -4,7 +4,9 @@ import {
   ArrowLeft,
   Check,
   ChevronRight,
+  ChevronDown,
   ClipboardCheck,
+  Clock,
   Database,
   FileText,
   GitCompare,
@@ -28,8 +30,9 @@ import {
   type DemoStep,
 } from "./control";
 import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
+import { submitPolicyRun } from "./livePolicy";
 import { RUBRIC_LABELS } from "./rubric";
-import type { AgentProfile, BacktestRule, SimulationEvent, Stakeholder } from "./types";
+import type { AgentProfile, BacktestRule, LivePolicyRunResult, SimulationEvent, Stakeholder } from "./types";
 
 const demoSteps: Array<{ key: DemoStep; label: string; time: string; checkpoint?: CheckpointKey }> = [
   { key: "before", label: "Before", time: "0-8s" },
@@ -53,7 +56,7 @@ const checkpointSteps: CheckpointKey[] = [
 
 function App() {
   const [control, setControl] = useState(createInitialControlState);
-  const [activeStep, setActiveStep] = useState<DemoStep>("before");
+  const [activeStep, setActiveStep] = useState<DemoStep>("select_case");
   const [stakeholders, setStakeholders] = useState(caseGraph.stakeholders);
   const [newStakeholder, setNewStakeholder] = useState("");
   const [disabledAgents, setDisabledAgents] = useState<Set<string>>(new Set());
@@ -64,6 +67,11 @@ function App() {
   const [liveSample, setLiveSample] = useState(false);
   const [selectedAgentId, setSelectedAgentId] = useState(agents[0]?.id ?? "");
   const [question, setQuestion] = useState("Why do you support or oppose this policy?");
+  const [policyText, setPolicyText] = useState("");
+  const [policyFileName, setPolicyFileName] = useState("");
+  const [policyRunStatus, setPolicyRunStatus] = useState<"idle" | "running" | "succeeded" | "failed">("idle");
+  const [policyRunError, setPolicyRunError] = useState("");
+  const [policyRunResult, setPolicyRunResult] = useState<LivePolicyRunResult | null>(null);
   const [claimVisibility, setClaimVisibility] = useState<Record<string, boolean>>(
     Object.fromEntries(backtest.rules.map((rule) => [rule.rule_id, true])),
   );
@@ -124,16 +132,48 @@ function App() {
     edit("agent_review", `Toggled persona '${agentId}'.`);
   }
 
+  async function readPolicyFile(file: File | undefined) {
+    if (!file) return;
+    setPolicyFileName(file.name);
+    setPolicyText(await file.text());
+    setPolicyRunError("");
+  }
+
+  async function runNewPolicyAnalysis() {
+    setPolicyRunStatus("running");
+    setPolicyRunError("");
+    try {
+      const result = await submitPolicyRun({
+        policyText,
+        agentCount: Math.max(12, Math.min(agentCount, 50)),
+        rounds: Math.max(1, Math.min(rounds, 3)),
+      });
+      setPolicyRunResult(result);
+      setPolicyRunStatus("succeeded");
+    } catch (error) {
+      setPolicyRunStatus("failed");
+      setPolicyRunError(error instanceof Error ? error.message : "Policy analysis failed.");
+    }
+  }
+
   return (
     <main className="app-shell">
       <header className="topbar">
-        <div>
-          <h1>Policy Impact Sandbox</h1>
-          <p>Control beats autonomy. ULEZ 2023 replay, answer-isolated blind backtest.</p>
+        <div className="brand-lockup">
+          <div className="logo-mark">
+            <ShieldCheck size={28} />
+          </div>
+          <div>
+            <h1>Policy Impact Sandbox</h1>
+            <p>Control beats autonomy</p>
+          </div>
         </div>
         <div className="topbar-actions">
-          <StatusPill tone="neutral">Mock replay online</StatusPill>
-          <StatusPill tone="safe">Blind prompt clean</StatusPill>
+          <StatusPill tone="neutral">● Demo Mode</StatusPill>
+          <TopbarTile icon={<Clock size={18} />} label="Demo time remaining" value="01:14 / 01:30" />
+          <TopbarTile label="Scenario" value="London ULEZ Expansion" trailing={<ChevronDown size={14} />} />
+          <TopbarTile label="Persona" value="Policy Maker" trailing={<ChevronDown size={14} />} />
+          <div className="avatar-chip">PM<span /></div>
           <button className="secondary" onClick={rollback}>
             <ArrowLeft size={16} /> Rollback
           </button>
@@ -142,7 +182,13 @@ function App() {
 
       <section className="workspace">
         <aside className="timeline-rail">
-          <div className="rail-title">90s demo path</div>
+          <div className="rail-heading">
+            <Clock size={18} />
+            <div>
+              <div className="rail-title">90-Second Demo Flow</div>
+              <span>Step {Math.max(1, demoSteps.findIndex((step) => step.key === activeStep) + 1)} of {demoSteps.length}</span>
+            </div>
+          </div>
           {demoSteps.map((step) => (
             <button
               key={step.key}
@@ -157,9 +203,21 @@ function App() {
         </aside>
 
         <section className="main-stage">
-          <DemoHeader activeStep={activeStep} />
+          {activeStep !== "select_case" ? <DemoHeader activeStep={activeStep} /> : null}
           {activeStep === "before" && <BeforeScreen />}
-          {activeStep === "select_case" && <CaseSelectScreen />}
+          {activeStep === "select_case" && (
+            <CaseSelectScreen
+              goToStep={setActiveStep}
+              policyText={policyText}
+              setPolicyText={setPolicyText}
+              policyFileName={policyFileName}
+              onFile={readPolicyFile}
+              onRun={runNewPolicyAnalysis}
+              runStatus={policyRunStatus}
+              runError={policyRunError}
+              runResult={policyRunResult}
+            />
+          )}
           {activeStep === "extraction_review" && (
             <ExtractionReview
               stakeholders={stakeholders}
@@ -215,7 +273,6 @@ function App() {
         </section>
 
         <aside className="side-panel">
-          <CheckpointPanel control={control} />
           <PersonaChat
             selectedAgentId={selectedAgentId}
             setSelectedAgentId={setSelectedAgentId}
@@ -223,8 +280,10 @@ function App() {
             question={question}
             setQuestion={setQuestion}
           />
+          <AuditSidebar control={control} />
         </aside>
       </section>
+      <StatusDock />
     </main>
   );
 }
@@ -263,24 +322,292 @@ function BeforeScreen() {
   );
 }
 
-function CaseSelectScreen() {
+function CaseSelectScreen({
+  goToStep,
+  policyText,
+  setPolicyText,
+  policyFileName,
+  onFile,
+  onRun,
+  runStatus,
+  runError,
+  runResult,
+}: {
+  goToStep: (step: DemoStep) => void;
+  policyText: string;
+  setPolicyText: (value: string) => void;
+  policyFileName: string;
+  onFile: (file: File | undefined) => void;
+  onRun: () => void;
+  runStatus: "idle" | "running" | "succeeded" | "failed";
+  runError: string;
+  runResult: LivePolicyRunResult | null;
+}) {
+  const canRun = policyText.trim().length > 20 && runStatus !== "running";
   return (
-    <Panel>
-      <div className="case-layout">
+    <Panel className="cockpit-panel">
+      <div className="control-title">
         <div>
-          <h3>ULEZ 2023 London-wide expansion</h3>
-          <p>
-            Real historical case. The dashboard uses cached artifacts from extraction, agent generation, blind prediction,
-            mock replay and audit manifest.
-          </p>
+          <h3>Checkpoint Control Panel</h3>
+          <p>Human-in-the-loop at every critical step</p>
         </div>
-        <div className="case-facts">
-          <Fact label="Mode" value="Replay first, live sample optional" />
-          <Fact label="Backtest evidence" value="blind_prediction.json" />
-          <Fact label="Simulation" value="mock events for dashboard only" />
+        <div className="overall-status">
+          <span>Overall status</span>
+          <StatusPill tone="safe">In progress</StatusPill>
+        </div>
+      </div>
+      <div className="checkpoint-card-grid">
+        <CheckpointSummaryCard
+          number="1"
+          title="Extraction Review"
+          status="approved"
+          metrics={[
+            ["Data sources", "18 / 18"],
+            ["Stakeholders", String(caseGraph.stakeholders.length)],
+            ["Coverage", "Blind-safe"],
+            ["Issues", "0"],
+          ]}
+          onOpen={() => goToStep("extraction_review")}
+        />
+        <CheckpointSummaryCard
+          number="2"
+          title="Agent Review"
+          status="pending"
+          metrics={[
+            ["Agent recommendation", "Proceed"],
+            ["Archetypes", String(agents.length)],
+            ["Policy alignment", "High"],
+            ["Risks flagged", "2"],
+          ]}
+          onOpen={() => goToStep("agent_review")}
+        />
+        <CheckpointSummaryCard
+          number="3"
+          title="Simulation Replay"
+          status="pending"
+          metrics={[
+            ["Simulation window", "90 days"],
+            ["Events cached", String(simulation.events.length)],
+            ["Key signals", String(backtest.rules.length)],
+            ["Mode", "Replay"],
+          ]}
+          onOpen={() => goToStep("simulation_replay")}
+        />
+        <CheckpointSummaryCard
+          number="4"
+          title="Impact Report"
+          status="pending"
+          metrics={[
+            ["Claims reviewed", String(backtest.rules.length)],
+            ["Backtest mode", "Blind"],
+            ["Kaspa anchor", kaspaAnchor.status === "anchored" ? "Live tx" : "Local"],
+            ["Disclaimers", "On"],
+          ]}
+          onOpen={() => goToStep("impact_report")}
+        />
+      </div>
+      <div className="cockpit-grid">
+        <CockpitCard title="Social Feed Simulation Preview" subtitle="Live preview (simulated)">
+          <div className="mini-feed">
+            {simulation.events.slice(0, 5).map((event) => (
+              <div className="mini-feed-row" key={event.event_id}>
+                <div className="channel-badge">{event.type === "post" ? "X" : event.type === "comment" ? "f" : "Δ"}</div>
+                <div>
+                  <strong>{event.agent_archetype}</strong>
+                  <p>{truncate(event.content || event.reason || "stance update", 82)}</p>
+                </div>
+                <span>{event.stance || event.to_stance || "mixed"}</span>
+              </div>
+            ))}
+          </div>
+          <button className="link-button" onClick={() => goToStep("simulation_replay")}>
+            View full stream <ChevronRight size={16} />
+          </button>
+        </CockpitCard>
+        <CockpitCard title="Blind Backtest Results" subtitle="Answer-isolated R1-R6">
+          <div className="compact-backtest">
+            {backtest.rules.map((rule) => (
+              <div className="compact-backtest-row" key={rule.rule_id}>
+                <strong>{rule.rule_id}</strong>
+                <span>{RUBRIC_LABELS[rule.rule_id] ?? rule.rule_id}</span>
+                <em className={`verdict ${rule.verdict.toLowerCase().replace(" ", "-")}`}>{rule.verdict}</em>
+              </div>
+            ))}
+          </div>
+          <div className="hit-strip">
+            <Metric label="Strict hits" value="5 / 6" tone="safe" />
+            <Metric label="Partial" value="R1" tone="warn" />
+            <Metric label="Assessment" value="Strong" tone="safe" />
+          </div>
+          <button className="link-button" onClick={() => goToStep("blind_backtest")}>
+            View detailed backtest report <ChevronRight size={16} />
+          </button>
+        </CockpitCard>
+        <CockpitCard title="Impact Summary" subtitle="Illustrative / demo estimates only">
+          <div className="impact-summary-list">
+            {[
+              ["Evidence-backed validation", "Blind R1-R6"],
+              ["Prompt scan", "No outcome tokens"],
+              ["Kaspa anchoring", kaspaAnchor.tx_id ? "Testnet tx live" : "Local package"],
+              ["Report mode", "Decision support"],
+              ["Real backtest source", "truth_set + rubric"],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+          <div className="net-impact-box">
+            <span>Truth Status</span>
+            <strong>ULEZ historical case verified</strong>
+            <p>New policies show impact analysis only until a truth_set exists.</p>
+          </div>
+        </CockpitCard>
+      </div>
+      <div className="live-policy-card">
+        <div className="panel-title-row compact">
+          <div>
+            <h3>Run a new policy document</h3>
+            <p>
+              This path calls the backend pipeline with DeepSeek extraction, archetype generation and report generation.
+              New policies do not have a truth_set, so no historical backtest is shown.
+            </p>
+          </div>
+          <StatusPill tone={runResult ? "safe" : "neutral"}>
+            {runResult ? runResult.truth_set_status.message : "Live analysis"}
+          </StatusPill>
+        </div>
+        <div className="policy-run-grid">
+          <div>
+            <div className="upload-row">
+              <label className="file-picker">
+                <FileText size={16} /> Upload text / markdown
+                <input
+                  type="file"
+                  accept=".txt,.md,.markdown,text/plain,text/markdown"
+                  onChange={(event) => onFile(event.target.files?.[0])}
+                />
+              </label>
+              <span>{policyFileName || "Paste policy text below if no file is selected."}</span>
+            </div>
+            <textarea
+              className="policy-input"
+              value={policyText}
+              onChange={(event) => setPolicyText(event.target.value)}
+              placeholder="Paste a policy memo, consultation note or short policy description..."
+            />
+            <div className="run-actions">
+              <button className="primary" onClick={onRun} disabled={!canRun}>
+                <Play size={16} /> {runStatus === "running" ? "Running DeepSeek analysis..." : "Run real analysis"}
+              </button>
+              <StatusPill tone={runStatus === "failed" ? "warn" : runStatus === "succeeded" ? "safe" : "neutral"}>
+                {runStatus}
+              </StatusPill>
+            </div>
+            {runError ? <p className="error-note">{runError}</p> : null}
+          </div>
+          <LivePolicyResultPanel result={runResult} />
         </div>
       </div>
     </Panel>
+  );
+}
+
+function CheckpointSummaryCard({
+  number,
+  title,
+  status,
+  metrics,
+  onOpen,
+}: {
+  number: string;
+  title: string;
+  status: "approved" | "pending";
+  metrics: Array<[string, string]>;
+  onOpen: () => void;
+}) {
+  return (
+    <div className="checkpoint-summary-card">
+      <div className="card-title-row">
+        <span className="step-number">{number}</span>
+        <strong>{title}</strong>
+        <em className={status}>{status}</em>
+      </div>
+      <div className="card-metrics">
+        {metrics.map(([label, value]) => (
+          <div key={label}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </div>
+        ))}
+      </div>
+      <button className="primary" onClick={onOpen}>
+        <Check size={15} /> Open checkpoint
+      </button>
+    </div>
+  );
+}
+
+function CockpitCard({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
+  return (
+    <section className="cockpit-card">
+      <div className="cockpit-card-title">
+        <h4>{title}</h4>
+        <span>{subtitle}</span>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function LivePolicyResultPanel({ result }: { result: LivePolicyRunResult | null }) {
+  if (!result) {
+    return (
+      <div className="live-result empty">
+        <Database size={22} />
+        <h4>Result will appear here</h4>
+        <p>
+          The cached ULEZ replay remains available for the 90-second demo. This panel is for new policies with no
+          historical backtest dataset.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="live-result">
+      <div className="result-header">
+        <div>
+          <span>{result.run_id}</span>
+          <h4>{result.case_graph.case_name}</h4>
+        </div>
+        <StatusPill tone="warn">{result.truth_set_status.message}</StatusPill>
+      </div>
+      <div className="result-block">
+        <strong>Extracted stakeholders</strong>
+        {result.case_graph.stakeholders.slice(0, 5).map((stakeholder) => (
+          <p key={stakeholder.id}>{stakeholder.name} · {stakeholder.stance_prior}</p>
+        ))}
+      </div>
+      <div className="result-block">
+        <strong>Generated archetypes</strong>
+        <p>{result.agents.agents.length} archetype agents · no real-person PII</p>
+      </div>
+      <div className="result-block">
+        <strong>Report signals</strong>
+        {result.impact_report.risk_timeline.slice(0, 3).map((risk) => (
+          <p key={risk.stage}>{risk.stage}: {risk.signal}</p>
+        ))}
+      </div>
+      <div className="result-block">
+        <strong>Mitigation options</strong>
+        {result.impact_report.mitigation_options.slice(0, 2).map((item) => (
+          <p key={item.option}>{item.option}: {item.rationale}</p>
+        ))}
+      </div>
+      <p className="evidence-note">{result.impact_report.disclaimer}</p>
+    </div>
   );
 }
 
@@ -717,6 +1044,58 @@ function CheckpointPanel({ control }: { control: ReturnType<typeof createInitial
   );
 }
 
+function AuditSidebar({ control }: { control: ReturnType<typeof createInitialControlState> }) {
+  return (
+    <section className="audit-sidebar">
+      <div className="side-title">
+        <ClipboardCheck size={18} />
+        <h3>Audit Manifest</h3>
+      </div>
+      <div className="audit-sidebar-grid">
+        <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
+        <Fact label="Created" value={formatAuditDate(auditManifest.entries[0]?.timestamp)} />
+        <Fact label="Created by" value="Policy Maker (PM)" />
+        <Fact label="Scenario" value="London ULEZ Expansion" />
+        <Fact label="Policy Option" value="ULEZ Expansion to Outer London" />
+        <Fact label="Data Sources" value="18" />
+        <Fact label="Artifacts" value={String(auditManifest.entries.length)} />
+        <Fact label="Status" value={kaspaAnchor.status === "anchored" ? "Anchored on TN-10" : "Local verification"} />
+      </div>
+      <div className="kaspa-mini">
+        <span>Kaspa Anchoring</span>
+        {kaspaAnchor.explorer_url ? (
+          <a href={kaspaAnchor.explorer_url} target="_blank" rel="noreferrer">
+            {kaspaAnchor.tx_id?.slice(0, 18)}…
+          </a>
+        ) : (
+          <strong>Local package only</strong>
+        )}
+      </div>
+      <div className="limits">
+        <h4>Hard limits</h4>
+        {[
+          "No automatic chain action",
+          "No automatic weight changes",
+          "No real-person PII",
+          "Archetypes only",
+          "Decision support only",
+        ].map((item) => (
+          <span key={item}><Lock size={12} /> {item}</span>
+        ))}
+      </div>
+      <div className="event-log">
+        <h4>Checkpoint history</h4>
+        {control.events.slice(-4).map((event) => (
+          <div key={event.id}>
+            <span>{event.action}</span>
+            <p>{event.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function PersonaChat({
   selectedAgentId,
   setSelectedAgentId,
@@ -811,8 +1190,8 @@ function NumberControl({
   );
 }
 
-function Panel({ children }: { children: React.ReactNode }) {
-  return <section className="panel">{children}</section>;
+function Panel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <section className={`panel ${className}`}>{children}</section>;
 }
 
 function Metric({ label, value, tone }: { label: string; value: string; tone: "safe" | "warn" }) {
@@ -889,6 +1268,44 @@ function formatAuditDate(value?: string) {
 
 function humanizeStatus(value: string) {
   return value.replace(/_/g, " ");
+}
+
+function TopbarTile({
+  icon,
+  label,
+  value,
+  trailing,
+}: {
+  icon?: React.ReactNode;
+  label: string;
+  value: string;
+  trailing?: React.ReactNode;
+}) {
+  return (
+    <div className="topbar-tile">
+      {icon}
+      <div>
+        <span>{label}</span>
+        <strong>{value}</strong>
+      </div>
+      {trailing}
+    </div>
+  );
+}
+
+function StatusDock() {
+  return (
+    <footer className="status-dock">
+      <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
+      <Fact label="Scenario" value="London ULEZ Expansion" />
+      <Fact label="Policy Option" value="ULEZ Expansion to Outer London" />
+      <Fact label="Simulation Window" value="90 Days" />
+      <Fact label="Population" value="8.9M" />
+      <Fact label="Data Freshness" value="Cached 2026-07-01" />
+      <Fact label="Model Version" value="v0.3.0" />
+      <Fact label="System Status" value="Operational" />
+    </footer>
+  );
 }
 
 export default App;

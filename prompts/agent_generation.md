@@ -15,10 +15,13 @@ Each agent object should contain:
 - evidence_fact_ids
 - adaptation_capacity
 
-The output should cover every stakeholder group and emphasize ULEZ-relevant groups:
+The output should cover every stakeholder group in the supplied case_graph. If and only if the supplied case is ULEZ,
+emphasize these ULEZ-relevant groups:
 - outer London vehicle-dependent residents
 - inner London supporters
 - van drivers / tradespeople / small businesses
 - low-income households
+
+For any other policy, do not introduce ULEZ-specific groups unless they appear in the supplied stakeholders.
 
 Use qualitative stances only. Do not predict exact historical percentages or election results.

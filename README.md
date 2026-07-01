@@ -89,6 +89,26 @@ npm run dev -- --port 5173
 
 Then open `http://127.0.0.1:5173/`.
 
+Run the live policy-analysis API for arbitrary new policy documents:
+
+```bash
+cp .env.example .env
+# fill DEEPSEEK_API_KEY in .env; do not commit .env
+uv run python scripts/run_api.py --port 8000
+```
+
+In a second terminal, run the dashboard. Vite proxies `/api` to `http://127.0.0.1:8000`:
+
+```bash
+cd web
+npm run dev -- --port 5173
+```
+
+Use the `ULEZ selected` screen to paste or upload a new policy document and click `Run real analysis`.
+That path calls DeepSeek-backed extraction, archetype generation, mock event generation for visualization context,
+and LLM report generation. For non-ULEZ policies without a `truth_set`, the dashboard shows:
+`无历史回测数据，仅提供影响分析` and does not display a historical backtest.
+
 Prepare the Phase 4 Kaspa audit anchor package:
 
 ```bash

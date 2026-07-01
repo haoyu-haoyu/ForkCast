@@ -69,3 +69,40 @@ export interface KaspaAnchor {
   };
   verification: Record<string, boolean>;
 }
+
+export interface LivePolicyRunResult {
+  run_id: string;
+  mode: "live_policy_analysis";
+  truth_set_status: {
+    status: "unavailable";
+    message: string;
+  };
+  case_graph: {
+    case_id: string;
+    case_name: string;
+    stakeholders: Stakeholder[];
+    assumptions: Array<{ id: string; statement: string; status: string }>;
+  };
+  agents: {
+    agents: AgentProfile[];
+  };
+  simulation_events?: {
+    events?: SimulationEvent[];
+    metadata?: Record<string, unknown>;
+  };
+  impact_report: {
+    report_mode?: string;
+    stakeholder_impact_matrix: Array<{
+      stakeholder_id: string;
+      name: string;
+      impact_level: string;
+      opposition_intensity: string;
+      qualitative_signal: string;
+    }>;
+    risk_timeline: Array<{ stage: string; signal: string; risk_level: string }>;
+    mitigation_options: Array<{ option: string; rationale: string }>;
+    confidence_notes: string[];
+    disclaimer: string;
+  };
+  backtest_result: null;
+}

@@ -1,7 +1,8 @@
 You extract a policy case graph for a decision-support simulation system.
 
 Only use supplied source material. Do not invent facts, dates, numbers, source URLs, stakeholder evidence, or outcomes.
-If a useful detail is not present in the supplied seed policy document or truth_set_json, omit it or mark the relevant status as "待核实".
+If a useful detail is not present in the supplied seed policy document, or in truth_set_json when one is explicitly supplied,
+omit it or mark the relevant status as "待核实". If historical_truth_set is marked UNAVAILABLE, do not infer historical outcomes.
 
 Return one JSON object and no prose. Required top-level keys:
 - case_id
