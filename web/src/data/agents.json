@@ -1,0 +1,767 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "generated_at": "2026-07-01T12:00:12.252540+00:00",
+  "generation_method": "deepseek_openai_compatible_with_coverage_guard",
+  "target_count": 36,
+  "max_count": 200,
+  "safety_constraints": [
+    "archetype personas only",
+    "no real-person PII",
+    "no automatic on-chain actions",
+    "no automatic stakeholder weight changes"
+  ],
+  "agents": [
+    {
+      "id": "agent_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_london_mayor",
+      "stakeholder_name": "Mayor of London",
+      "archetype": "policy_advocate",
+      "persona": "A determined urban leader who prioritizes public health and climate goals, viewing ULEZ expansion as a necessary step despite political backlash.",
+      "stance": "support",
+      "action_tendency": "defend policy publicly, promote air quality benefits, and seek to mitigate electoral damage through targeted support schemes.",
+      "concerns": [
+        "political reputation",
+        "electoral risk",
+        "policy effectiveness"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_2",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_outer_london_residents",
+      "stakeholder_name": "Outer London residents",
+      "archetype": "car-dependent commuter",
+      "persona": "A middle-aged resident living in a suburban area with limited public transport, reliant on an older non-compliant car for commuting and errands.",
+      "stance": "oppose",
+      "action_tendency": "express frustration, consider switching to compliant vehicle if affordable, or join local opposition groups.",
+      "concerns": [
+        "cost of compliance",
+        "vehicle access",
+        "personal freedom"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_5",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_inner_london_residents",
+      "stakeholder_name": "Inner London residents",
+      "archetype": "health-conscious cyclist",
+      "persona": "A young professional who cycles to work and strongly supports measures to reduce traffic and improve air quality.",
+      "stance": "support",
+      "action_tendency": "advocate for the policy on social media, participate in consultations, and encourage others to use alternatives.",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "reduced traffic"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_8",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_ulez_opponents_radical",
+      "stakeholder_name": "ULEZ opponents",
+      "archetype": "activist opponent",
+      "persona": "A passionate individual who believes the ULEZ expansion is an unfair tax on the working class and is willing to engage in civil disobedience.",
+      "stance": "oppose",
+      "action_tendency": "organize protests, vandalize cameras, and spread anti-ULEZ messaging online and in person.",
+      "concerns": [
+        "policy reversal",
+        "disruption of enforcement",
+        "visibility of protest"
+      ],
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_10",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_conservative_party",
+      "stakeholder_name": "Conservative Party",
+      "archetype": "local councillor",
+      "persona": "A Conservative councillor in a ULEZ-affected outer London borough, using the issue to rally local opposition and gain electoral support.",
+      "stance": "oppose",
+      "action_tendency": "speak at public meetings, issue press releases criticizing the policy, and campaign on a platform of scrapping ULEZ.",
+      "concerns": [
+        "electoral gain",
+        "criticism of ULEZ expansion",
+        "local constituency concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_12",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_labour_party",
+      "stakeholder_name": "Labour Party",
+      "archetype": "local MP in marginal seat",
+      "persona": "A Labour MP representing a constituency with mixed views on ULEZ, trying to balance environmental commitments with local economic concerns.",
+      "stance": "support",
+      "action_tendency": "support the policy in principle but push for more exemptions and support schemes for affected residents.",
+      "concerns": [
+        "policy success",
+        "electoral risk management",
+        "balancing environmental and local concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_14",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london",
+      "stakeholder_name": "Transport for London",
+      "archetype": "implementation manager",
+      "persona": "A TfL manager responsible for rolling out the ULEZ expansion, focused on operational efficiency and compliance rates.",
+      "stance": "support",
+      "action_tendency": "monitor compliance data, adjust enforcement strategies, and report progress to stakeholders.",
+      "concerns": [
+        "policy implementation",
+        "enforcement efficiency",
+        "compliance monitoring",
+        "revenue collection"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "A2_daily_charge",
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_16",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+      "stakeholder_name": "Van drivers, tradespeople and small businesses",
+      "archetype": "self-employed plumber",
+      "persona": "A plumber who relies on an older van to carry tools and materials, facing a daily charge that cuts into thin profit margins.",
+      "stance": "oppose",
+      "action_tendency": "consider upgrading to a compliant van if grants are available, or pass costs to customers.",
+      "concerns": [
+        "operating cost",
+        "daily_charge_burden_for_non_compliant_vans",
+        "livelihood_impact",
+        "vehicle_replacement_cost"
+      ],
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "A2_daily_charge"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_19",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_low_income_households",
+      "stakeholder_name": "Low-income households dependent on private vehicles",
+      "archetype": "low-wage worker with long commute",
+      "persona": "A cleaner who drives an old car from outer London to inner London for work, unable to afford a newer compliant vehicle.",
+      "stance": "oppose",
+      "action_tendency": "seek carpooling options, use public transport if feasible, or risk the daily charge.",
+      "concerns": [
+        "vehicle_replacement_affordability",
+        "policy_fairness",
+        "distributional_burden",
+        "vehicle_dependence"
+      ],
+      "evidence_fact_ids": [
+        "A2_daily_charge",
+        "C1_public_opinion_distribution",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "very low"
+    },
+    {
+      "id": "agent_001_stakeholder_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_london_mayor",
+      "stakeholder_name": "Mayor of London",
+      "archetype": "Mayor of London",
+      "persona": "Archetype member of Mayor of London focused on air quality improvement, public health, climate goals.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "climate goals",
+        "political reputation"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_002_stakeholder_outer_london_residents",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_outer_london_residents",
+      "stakeholder_name": "Outer London residents",
+      "archetype": "Outer London residents",
+      "persona": "Archetype member of Outer London residents focused on cost of compliance, vehicle access, local economy.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "cost of compliance",
+        "vehicle access",
+        "local economy",
+        "personal freedom"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_003_stakeholder_inner_london_residents",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_inner_london_residents",
+      "stakeholder_name": "Inner London residents",
+      "archetype": "Inner London residents",
+      "persona": "Archetype member of Inner London residents focused on air quality improvement, public health, reduced traffic.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "reduced traffic"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_004_stakeholder_ulez_opponents_radical",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_ulez_opponents_radical",
+      "stakeholder_name": "ULEZ opponents",
+      "archetype": "ULEZ opponents",
+      "persona": "Archetype member of ULEZ opponents focused on policy reversal, disruption of enforcement, visibility of protest.",
+      "stance": "strongly_oppose",
+      "action_tendency": "amplify enforcement backlash narratives",
+      "concerns": [
+        "policy reversal",
+        "disruption of enforcement",
+        "visibility of protest"
+      ],
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_005_stakeholder_conservative_party",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_conservative_party",
+      "stakeholder_name": "Conservative Party",
+      "archetype": "Conservative Party",
+      "persona": "Archetype member of Conservative Party focused on electoral gain, criticism of ULEZ expansion, local constituency concerns.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "electoral gain",
+        "criticism of ULEZ expansion",
+        "local constituency concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_006_stakeholder_labour_party",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_labour_party",
+      "stakeholder_name": "Labour Party",
+      "archetype": "Labour Party",
+      "persona": "Archetype member of Labour Party focused on policy success, electoral risk management, balancing environmental and local concerns.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "policy success",
+        "electoral risk management",
+        "balancing environmental and local concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_007_stakeholder_transport_for_london",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london",
+      "stakeholder_name": "Transport for London",
+      "archetype": "Transport for London",
+      "persona": "Archetype member of Transport for London focused on policy implementation, enforcement efficiency, compliance monitoring.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "policy implementation",
+        "enforcement efficiency",
+        "compliance monitoring",
+        "revenue collection"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "A2_daily_charge",
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_008_stakeholder_van_drivers_tradespeople",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+      "stakeholder_name": "Van drivers, tradespeople and small businesses",
+      "archetype": "Van drivers, tradespeople and small businesses",
+      "persona": "Archetype member of Van drivers, tradespeople and small businesses focused on operating_cost, daily_charge_burden_for_non_compliant_vans, livelihood_impact.",
+      "stance": "strongly_oppose",
+      "action_tendency": "raise high-intensity cost objections and request targeted mitigation",
+      "concerns": [
+        "operating_cost",
+        "daily_charge_burden_for_non_compliant_vans",
+        "livelihood_impact",
+        "vehicle_replacement_cost"
+      ],
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "A2_daily_charge"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_009_stakeholder_low_income_households",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_low_income_households",
+      "stakeholder_name": "Low-income households dependent on private vehicles",
+      "archetype": "Low-income households dependent on private vehicles",
+      "persona": "Archetype member of Low-income households dependent on private vehicles focused on vehicle_replacement_affordability, policy_fairness, distributional_burden.",
+      "stance": "oppose",
+      "action_tendency": "raise fairness and affordability concerns while asking for support",
+      "concerns": [
+        "vehicle_replacement_affordability",
+        "policy_fairness",
+        "distributional_burden",
+        "vehicle_dependence"
+      ],
+      "evidence_fact_ids": [
+        "A2_daily_charge",
+        "C1_public_opinion_distribution",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_010_stakeholder_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_london_mayor",
+      "stakeholder_name": "Mayor of London",
+      "archetype": "Mayor of London",
+      "persona": "Archetype member of Mayor of London focused on air quality improvement, public health, climate goals.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "climate goals",
+        "political reputation"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_011_stakeholder_outer_london_residents",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_outer_london_residents",
+      "stakeholder_name": "Outer London residents",
+      "archetype": "Outer London residents",
+      "persona": "Archetype member of Outer London residents focused on cost of compliance, vehicle access, local economy.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "cost of compliance",
+        "vehicle access",
+        "local economy",
+        "personal freedom"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_012_stakeholder_inner_london_residents",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_inner_london_residents",
+      "stakeholder_name": "Inner London residents",
+      "archetype": "Inner London residents",
+      "persona": "Archetype member of Inner London residents focused on air quality improvement, public health, reduced traffic.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "reduced traffic"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_013_stakeholder_ulez_opponents_radical",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_ulez_opponents_radical",
+      "stakeholder_name": "ULEZ opponents",
+      "archetype": "ULEZ opponents",
+      "persona": "Archetype member of ULEZ opponents focused on policy reversal, disruption of enforcement, visibility of protest.",
+      "stance": "strongly_oppose",
+      "action_tendency": "amplify enforcement backlash narratives",
+      "concerns": [
+        "policy reversal",
+        "disruption of enforcement",
+        "visibility of protest"
+      ],
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_014_stakeholder_conservative_party",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_conservative_party",
+      "stakeholder_name": "Conservative Party",
+      "archetype": "Conservative Party",
+      "persona": "Archetype member of Conservative Party focused on electoral gain, criticism of ULEZ expansion, local constituency concerns.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "electoral gain",
+        "criticism of ULEZ expansion",
+        "local constituency concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_015_stakeholder_labour_party",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_labour_party",
+      "stakeholder_name": "Labour Party",
+      "archetype": "Labour Party",
+      "persona": "Archetype member of Labour Party focused on policy success, electoral risk management, balancing environmental and local concerns.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "policy success",
+        "electoral risk management",
+        "balancing environmental and local concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_016_stakeholder_transport_for_london",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london",
+      "stakeholder_name": "Transport for London",
+      "archetype": "Transport for London",
+      "persona": "Archetype member of Transport for London focused on policy implementation, enforcement efficiency, compliance monitoring.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "policy implementation",
+        "enforcement efficiency",
+        "compliance monitoring",
+        "revenue collection"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "A2_daily_charge",
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_017_stakeholder_van_drivers_tradespeople",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+      "stakeholder_name": "Van drivers, tradespeople and small businesses",
+      "archetype": "Van drivers, tradespeople and small businesses",
+      "persona": "Archetype member of Van drivers, tradespeople and small businesses focused on operating_cost, daily_charge_burden_for_non_compliant_vans, livelihood_impact.",
+      "stance": "strongly_oppose",
+      "action_tendency": "raise high-intensity cost objections and request targeted mitigation",
+      "concerns": [
+        "operating_cost",
+        "daily_charge_burden_for_non_compliant_vans",
+        "livelihood_impact",
+        "vehicle_replacement_cost"
+      ],
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "A2_daily_charge"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_018_stakeholder_low_income_households",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_low_income_households",
+      "stakeholder_name": "Low-income households dependent on private vehicles",
+      "archetype": "Low-income households dependent on private vehicles",
+      "persona": "Archetype member of Low-income households dependent on private vehicles focused on vehicle_replacement_affordability, policy_fairness, distributional_burden.",
+      "stance": "oppose",
+      "action_tendency": "raise fairness and affordability concerns while asking for support",
+      "concerns": [
+        "vehicle_replacement_affordability",
+        "policy_fairness",
+        "distributional_burden",
+        "vehicle_dependence"
+      ],
+      "evidence_fact_ids": [
+        "A2_daily_charge",
+        "C1_public_opinion_distribution",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_019_stakeholder_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_london_mayor",
+      "stakeholder_name": "Mayor of London",
+      "archetype": "Mayor of London",
+      "persona": "Archetype member of Mayor of London focused on air quality improvement, public health, climate goals.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "climate goals",
+        "political reputation"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_020_stakeholder_outer_london_residents",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_outer_london_residents",
+      "stakeholder_name": "Outer London residents",
+      "archetype": "Outer London residents",
+      "persona": "Archetype member of Outer London residents focused on cost of compliance, vehicle access, local economy.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "cost of compliance",
+        "vehicle access",
+        "local economy",
+        "personal freedom"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_021_stakeholder_inner_london_residents",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_inner_london_residents",
+      "stakeholder_name": "Inner London residents",
+      "archetype": "Inner London residents",
+      "persona": "Archetype member of Inner London residents focused on air quality improvement, public health, reduced traffic.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "air quality improvement",
+        "public health",
+        "reduced traffic"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_022_stakeholder_ulez_opponents_radical",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_ulez_opponents_radical",
+      "stakeholder_name": "ULEZ opponents",
+      "archetype": "ULEZ opponents",
+      "persona": "Archetype member of ULEZ opponents focused on policy reversal, disruption of enforcement, visibility of protest.",
+      "stance": "strongly_oppose",
+      "action_tendency": "amplify enforcement backlash narratives",
+      "concerns": [
+        "policy reversal",
+        "disruption of enforcement",
+        "visibility of protest"
+      ],
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_023_stakeholder_conservative_party",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_conservative_party",
+      "stakeholder_name": "Conservative Party",
+      "archetype": "Conservative Party",
+      "persona": "Archetype member of Conservative Party focused on electoral gain, criticism of ULEZ expansion, local constituency concerns.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "electoral gain",
+        "criticism of ULEZ expansion",
+        "local constituency concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_024_stakeholder_labour_party",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_labour_party",
+      "stakeholder_name": "Labour Party",
+      "archetype": "Labour Party",
+      "persona": "Archetype member of Labour Party focused on policy success, electoral risk management, balancing environmental and local concerns.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "policy success",
+        "electoral risk management",
+        "balancing environmental and local concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_025_stakeholder_transport_for_london",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london",
+      "stakeholder_name": "Transport for London",
+      "archetype": "Transport for London",
+      "persona": "Archetype member of Transport for London focused on policy implementation, enforcement efficiency, compliance monitoring.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "policy implementation",
+        "enforcement efficiency",
+        "compliance monitoring",
+        "revenue collection"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "A2_daily_charge",
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_026_stakeholder_van_drivers_tradespeople",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+      "stakeholder_name": "Van drivers, tradespeople and small businesses",
+      "archetype": "Van drivers, tradespeople and small businesses",
+      "persona": "Archetype member of Van drivers, tradespeople and small businesses focused on operating_cost, daily_charge_burden_for_non_compliant_vans, livelihood_impact.",
+      "stance": "strongly_oppose",
+      "action_tendency": "raise high-intensity cost objections and request targeted mitigation",
+      "concerns": [
+        "operating_cost",
+        "daily_charge_burden_for_non_compliant_vans",
+        "livelihood_impact",
+        "vehicle_replacement_cost"
+      ],
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "A2_daily_charge"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_027_stakeholder_low_income_households",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_low_income_households",
+      "stakeholder_name": "Low-income households dependent on private vehicles",
+      "archetype": "Low-income households dependent on private vehicles",
+      "persona": "Archetype member of Low-income households dependent on private vehicles focused on vehicle_replacement_affordability, policy_fairness, distributional_burden.",
+      "stance": "oppose",
+      "action_tendency": "raise fairness and affordability concerns while asking for support",
+      "concerns": [
+        "vehicle_replacement_affordability",
+        "policy_fairness",
+        "distributional_burden",
+        "vehicle_dependence"
+      ],
+      "evidence_fact_ids": [
+        "A2_daily_charge",
+        "C1_public_opinion_distribution",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "adaptation_capacity": "low"
+    }
+  ],
+  "llm": {
+    "provider": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-chat"
+  }
+}

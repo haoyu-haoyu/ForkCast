@@ -1,0 +1,130 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "run_id": "phase0_mock",
+  "mode": "mock",
+  "events": [
+    {
+      "event_id": "1377e140085d0c3c",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 1,
+      "agent_id": "agent_outer_london_driver_001",
+      "agent_archetype": "outer_london_low_income_driver",
+      "type": "post",
+      "stance": "against",
+      "topic": "vehicle_replacement_cost",
+      "content": "outer_london_low_income_driver raises vehicle_replacement_cost concerns about ulez_2023_expansion.",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "bd5a55bedf165482",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 1,
+      "agent_id": "agent_asthma_parent_001",
+      "agent_archetype": "parent_of_child_with_asthma",
+      "type": "post",
+      "stance": "support",
+      "topic": "school_routes",
+      "content": "parent_of_child_with_asthma raises school_routes concerns about ulez_2023_expansion.",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "4aaf5d9e7dd23600",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 1,
+      "agent_id": "agent_small_business_001",
+      "agent_archetype": "small_business_van_operator",
+      "type": "post",
+      "stance": "against",
+      "topic": "operating_cost",
+      "content": "small_business_van_operator raises operating_cost concerns about ulez_2023_expansion.",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "c3fe8580da794bfa",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 2,
+      "agent_id": "agent_outer_london_driver_001",
+      "agent_archetype": "outer_london_low_income_driver",
+      "type": "comment",
+      "stance": "against",
+      "topic": "daily_charge",
+      "content": "outer_london_low_income_driver raises daily_charge concerns about ulez_2023_expansion.",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "46a44f5fd5be0563",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 2,
+      "agent_id": "agent_outer_london_driver_001",
+      "agent_archetype": "outer_london_low_income_driver",
+      "type": "stance_change",
+      "from_stance": "against",
+      "to_stance": "strongly_against",
+      "reason": "mock interaction pressure on daily_charge",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "2cb8de73d361c606",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 2,
+      "agent_id": "agent_asthma_parent_001",
+      "agent_archetype": "parent_of_child_with_asthma",
+      "type": "comment",
+      "stance": "support",
+      "topic": "school_routes",
+      "content": "parent_of_child_with_asthma raises school_routes concerns about ulez_2023_expansion.",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "4c1111b7de3b6599",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 2,
+      "agent_id": "agent_asthma_parent_001",
+      "agent_archetype": "parent_of_child_with_asthma",
+      "type": "stance_change",
+      "from_stance": "support",
+      "to_stance": "uncertain",
+      "reason": "mock interaction pressure on school_routes",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "eb21d75af8dd15a6",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 2,
+      "agent_id": "agent_small_business_001",
+      "agent_archetype": "small_business_van_operator",
+      "type": "comment",
+      "stance": "against",
+      "topic": "operating_cost",
+      "content": "small_business_van_operator raises operating_cost concerns about ulez_2023_expansion.",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    },
+    {
+      "event_id": "e96211a10772cbeb",
+      "run_id": "phase0_mock",
+      "case_id": "ulez_2023_expansion",
+      "round": 2,
+      "agent_id": "agent_small_business_001",
+      "agent_archetype": "small_business_van_operator",
+      "type": "stance_change",
+      "from_stance": "against",
+      "to_stance": "strongly_against",
+      "reason": "mock interaction pressure on operating_cost",
+      "created_at": "2026-07-01T09:00:00+00:00"
+    }
+  ],
+  "metadata": {
+    "agent_count": 3,
+    "rounds": 2,
+    "random_seed": 20260701,
+    "disclaimer": "simulation is decision support, not deterministic forecast"
+  }
+}

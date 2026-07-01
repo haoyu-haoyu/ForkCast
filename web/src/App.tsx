@@ -1,0 +1,894 @@
+import { useMemo, useState } from "react";
+import {
+  AlertTriangle,
+  ArrowLeft,
+  Check,
+  ChevronRight,
+  ClipboardCheck,
+  Database,
+  FileText,
+  GitCompare,
+  Lock,
+  MessageSquare,
+  Play,
+  RefreshCcw,
+  ShieldCheck,
+  SlidersHorizontal,
+  UserRoundCheck,
+  X,
+} from "lucide-react";
+import {
+  approveCheckpoint,
+  canProceedTo,
+  createInitialControlState,
+  editCheckpoint,
+  rejectCheckpoint,
+  rollbackToPrevious,
+  type CheckpointKey,
+  type DemoStep,
+} from "./control";
+import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
+import { RUBRIC_LABELS } from "./rubric";
+import type { AgentProfile, BacktestRule, SimulationEvent, Stakeholder } from "./types";
+
+const demoSteps: Array<{ key: DemoStep; label: string; time: string; checkpoint?: CheckpointKey }> = [
+  { key: "before", label: "Before", time: "0-8s" },
+  { key: "select_case", label: "ULEZ selected", time: "8-16s" },
+  { key: "extraction_review", label: "Approve extraction", time: "16-28s", checkpoint: "extraction_review" },
+  { key: "agent_review", label: "Approve agents", time: "28-40s", checkpoint: "agent_review" },
+  { key: "simulation_config", label: "Run controls", time: "40-46s", checkpoint: "simulation_config" },
+  { key: "simulation_replay", label: "Simulation replay", time: "46-52s" },
+  { key: "impact_report", label: "Impact report", time: "52-66s" },
+  { key: "blind_backtest", label: "Blind backtest", time: "66-80s" },
+  { key: "audit", label: "Audit + Kaspa", time: "80-88s", checkpoint: "report_chain_review" },
+  { key: "closing", label: "Close", time: "88-90s" },
+];
+
+const checkpointSteps: CheckpointKey[] = [
+  "extraction_review",
+  "agent_review",
+  "simulation_config",
+  "report_chain_review",
+];
+
+function App() {
+  const [control, setControl] = useState(createInitialControlState);
+  const [activeStep, setActiveStep] = useState<DemoStep>("before");
+  const [stakeholders, setStakeholders] = useState(caseGraph.stakeholders);
+  const [newStakeholder, setNewStakeholder] = useState("");
+  const [disabledAgents, setDisabledAgents] = useState<Set<string>>(new Set());
+  const [agentCount, setAgentCount] = useState(simulation.metadata.agent_count);
+  const [rounds, setRounds] = useState(simulation.metadata.rounds);
+  const [budget, setBudget] = useState(100);
+  const [seedLocked, setSeedLocked] = useState(true);
+  const [liveSample, setLiveSample] = useState(false);
+  const [selectedAgentId, setSelectedAgentId] = useState(agents[0]?.id ?? "");
+  const [question, setQuestion] = useState("Why do you support or oppose this policy?");
+  const [claimVisibility, setClaimVisibility] = useState<Record<string, boolean>>(
+    Object.fromEntries(backtest.rules.map((rule) => [rule.rule_id, true])),
+  );
+  const [chainDecision, setChainDecision] = useState<"pending" | "payload_approved" | "refused">("pending");
+
+  const activeAgent = agents.find((agent) => agent.id === selectedAgentId) ?? agents[0];
+  const feedEvents = liveSample ? simulation.events.slice(0, 12) : simulation.events.slice(0, 26);
+  const groupCounts = useMemo(() => countBy(agents, "stakeholder_id"), []);
+
+  function approve(key: CheckpointKey) {
+    const next = approveCheckpoint(control, key);
+    setControl(next);
+    setActiveStep(next.activeStep);
+  }
+
+  function reject(key: CheckpointKey) {
+    const next = rejectCheckpoint(control, key);
+    setControl(next);
+    setActiveStep(key);
+  }
+
+  function edit(key: CheckpointKey, note: string) {
+    setControl(editCheckpoint(control, key, note));
+  }
+
+  function rollback() {
+    const next = rollbackToPrevious(control);
+    setControl(next);
+    setActiveStep(next.activeStep);
+  }
+
+  function addStakeholder() {
+    const label = newStakeholder.trim() || "Community advice services";
+    const stakeholder: Stakeholder = {
+      id: `local_added_${Date.now()}`,
+      name: label,
+      archetype_group: "human_added_review_item",
+      stance_prior: "unknown",
+      interests: ["manual_review_required"],
+    };
+    setStakeholders((items) => [...items, stakeholder]);
+    setNewStakeholder("");
+    edit("extraction_review", `Added stakeholder '${label}' for human review.`);
+  }
+
+  function removeStakeholder(id: string) {
+    setStakeholders((items) => items.filter((item) => item.id !== id));
+    edit("extraction_review", `Removed stakeholder '${id}' from reviewed extraction.`);
+  }
+
+  function toggleAgent(agentId: string) {
+    setDisabledAgents((current) => {
+      const next = new Set(current);
+      if (next.has(agentId)) next.delete(agentId);
+      else next.add(agentId);
+      return next;
+    });
+    edit("agent_review", `Toggled persona '${agentId}'.`);
+  }
+
+  return (
+    <main className="app-shell">
+      <header className="topbar">
+        <div>
+          <h1>Policy Impact Sandbox</h1>
+          <p>Control beats autonomy. ULEZ 2023 replay, answer-isolated blind backtest.</p>
+        </div>
+        <div className="topbar-actions">
+          <StatusPill tone="neutral">Mock replay online</StatusPill>
+          <StatusPill tone="safe">Blind prompt clean</StatusPill>
+          <button className="secondary" onClick={rollback}>
+            <ArrowLeft size={16} /> Rollback
+          </button>
+        </div>
+      </header>
+
+      <section className="workspace">
+        <aside className="timeline-rail">
+          <div className="rail-title">90s demo path</div>
+          {demoSteps.map((step) => (
+            <button
+              key={step.key}
+              className={`timeline-step ${activeStep === step.key ? "active" : ""}`}
+              onClick={() => setActiveStep(step.key)}
+            >
+              <span>{step.time}</span>
+              <strong>{step.label}</strong>
+              {step.checkpoint ? <CheckpointDot status={control.checkpoints[step.checkpoint].status} /> : null}
+            </button>
+          ))}
+        </aside>
+
+        <section className="main-stage">
+          <DemoHeader activeStep={activeStep} />
+          {activeStep === "before" && <BeforeScreen />}
+          {activeStep === "select_case" && <CaseSelectScreen />}
+          {activeStep === "extraction_review" && (
+            <ExtractionReview
+              stakeholders={stakeholders}
+              assumptions={caseGraph.assumptions}
+              value={newStakeholder}
+              onValue={setNewStakeholder}
+              onAdd={addStakeholder}
+              onRemove={removeStakeholder}
+              onApprove={() => approve("extraction_review")}
+              onReject={() => reject("extraction_review")}
+            />
+          )}
+          {activeStep === "agent_review" && (
+            <AgentReview
+              blocked={!canProceedTo(control, "agent_review")}
+              groupCounts={groupCounts}
+              disabledAgents={disabledAgents}
+              onToggleAgent={toggleAgent}
+              onApprove={() => approve("agent_review")}
+              onReject={() => reject("agent_review")}
+            />
+          )}
+          {activeStep === "simulation_config" && (
+            <SimulationConfig
+              blocked={!canProceedTo(control, "simulation_config")}
+              agentCount={agentCount}
+              rounds={rounds}
+              budget={budget}
+              seedLocked={seedLocked}
+              liveSample={liveSample}
+              setAgentCount={setAgentCount}
+              setRounds={setRounds}
+              setBudget={setBudget}
+              setSeedLocked={setSeedLocked}
+              setLiveSample={setLiveSample}
+              onApprove={() => approve("simulation_config")}
+              onReject={() => reject("simulation_config")}
+            />
+          )}
+          {activeStep === "simulation_replay" && <SimulationReplay events={feedEvents} liveSample={liveSample} />}
+          {activeStep === "impact_report" && <ImpactReport claimVisibility={claimVisibility} setClaimVisibility={setClaimVisibility} />}
+          {activeStep === "blind_backtest" && <BlindBacktest />}
+          {activeStep === "audit" && (
+            <AuditReview
+              blocked={!canProceedTo(control, "report_chain_review")}
+              chainDecision={chainDecision}
+              setChainDecision={setChainDecision}
+              onApprove={() => approve("report_chain_review")}
+              onReject={() => reject("report_chain_review")}
+            />
+          )}
+          {activeStep === "closing" && <ClosingScreen />}
+        </section>
+
+        <aside className="side-panel">
+          <CheckpointPanel control={control} />
+          <PersonaChat
+            selectedAgentId={selectedAgentId}
+            setSelectedAgentId={setSelectedAgentId}
+            agent={activeAgent}
+            question={question}
+            setQuestion={setQuestion}
+          />
+        </aside>
+      </section>
+    </main>
+  );
+}
+
+function DemoHeader({ activeStep }: { activeStep: DemoStep }) {
+  const current = demoSteps.find((step) => step.key === activeStep);
+  return (
+    <div className="demo-header">
+      <div>
+        <span>{current?.time}</span>
+        <h2>{current?.label}</h2>
+      </div>
+      <p>{headlineFor(activeStep)}</p>
+    </div>
+  );
+}
+
+function BeforeScreen() {
+  return (
+    <Panel>
+      <div className="before-grid">
+        <div>
+          <h3>Legacy impact assessment</h3>
+          <p className="large-copy">Weeks of consultants, surveys, hearings, spreadsheets and unverifiable handoffs.</p>
+        </div>
+        <Metric label="Typical cycle" value="3-8 weeks" tone="warn" />
+        <Metric label="Traceability" value="Fragmented" tone="warn" />
+        <Metric label="Human control" value="Late review" tone="warn" />
+      </div>
+      <div className="process-strip">
+        {["Policy memo", "Consultants", "Hearings", "Spreadsheet", "Board pack"].map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function CaseSelectScreen() {
+  return (
+    <Panel>
+      <div className="case-layout">
+        <div>
+          <h3>ULEZ 2023 London-wide expansion</h3>
+          <p>
+            Real historical case. The dashboard uses cached artifacts from extraction, agent generation, blind prediction,
+            mock replay and audit manifest.
+          </p>
+        </div>
+        <div className="case-facts">
+          <Fact label="Mode" value="Replay first, live sample optional" />
+          <Fact label="Backtest evidence" value="blind_prediction.json" />
+          <Fact label="Simulation" value="mock events for dashboard only" />
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+function ExtractionReview({
+  stakeholders,
+  assumptions,
+  value,
+  onValue,
+  onAdd,
+  onRemove,
+  onApprove,
+  onReject,
+}: {
+  stakeholders: Stakeholder[];
+  assumptions: Array<{ id: string; statement: string; status: string }>;
+  value: string;
+  onValue: (value: string) => void;
+  onAdd: () => void;
+  onRemove: (id: string) => void;
+  onApprove: () => void;
+  onReject: () => void;
+}) {
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Checkpoint 1: extraction review</h3>
+          <p>Agent proposes stakeholders and assumptions. It cannot proceed until a human approves or edits.</p>
+        </div>
+        <ActionCluster onApprove={onApprove} onReject={onReject} />
+      </div>
+      <div className="two-column">
+        <div>
+          <h4>Stakeholders</h4>
+          <div className="list-table">
+            {stakeholders.map((stakeholder) => (
+              <div className="table-row" key={stakeholder.id}>
+                <div>
+                  <strong>{sanitizeName(stakeholder.name)}</strong>
+                  <span>{stakeholder.archetype_group} · prior {stakeholder.stance_prior}</span>
+                </div>
+                <button className="icon-button" onClick={() => onRemove(stakeholder.id)} aria-label="Remove stakeholder">
+                  <X size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="inline-form">
+            <input value={value} onChange={(event) => onValue(event.target.value)} placeholder="Add missing stakeholder" />
+            <button className="secondary" onClick={onAdd}>Add</button>
+          </div>
+        </div>
+        <div>
+          <h4>Assumptions sheet</h4>
+          <div className="assumption-list">
+            {assumptions.slice(0, 5).map((assumption) => (
+              <div className="assumption-row" key={assumption.id}>
+                <span>{assumption.status}</span>
+                <p>{stripOutcomeNumbers(assumption.statement)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+function AgentReview({
+  blocked,
+  groupCounts,
+  disabledAgents,
+  onToggleAgent,
+  onApprove,
+  onReject,
+}: {
+  blocked: boolean;
+  groupCounts: Record<string, number>;
+  disabledAgents: Set<string>;
+  onToggleAgent: (id: string) => void;
+  onApprove: () => void;
+  onReject: () => void;
+}) {
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Checkpoint 2: archetype agent review</h3>
+          <p>Representative archetypes only. Adjust composition or disable personas before simulation.</p>
+        </div>
+        <ActionCluster onApprove={onApprove} onReject={onReject} blocked={blocked} />
+      </div>
+      <div className="composition-grid">
+        {Object.entries(groupCounts).map(([id, count]) => (
+          <div className="composition-row" key={id}>
+            <span>{compactStakeholder(id)}</span>
+            <strong>{count}</strong>
+            <input type="range" min="0" max="12" defaultValue={count} aria-label={`${id} count`} />
+          </div>
+        ))}
+      </div>
+      <h4>Persona controls</h4>
+      <div className="persona-list">
+        {agents.slice(0, 10).map((agent) => (
+          <button
+            className={`persona-row ${disabledAgents.has(agent.id) ? "disabled" : ""}`}
+            key={agent.id}
+            onClick={() => onToggleAgent(agent.id)}
+          >
+            <span>{agent.archetype}</span>
+            <em>{agent.stance} · {agent.adaptation_capacity} adaptation</em>
+          </button>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function SimulationConfig({
+  blocked,
+  agentCount,
+  rounds,
+  budget,
+  seedLocked,
+  liveSample,
+  setAgentCount,
+  setRounds,
+  setBudget,
+  setSeedLocked,
+  setLiveSample,
+  onApprove,
+  onReject,
+}: {
+  blocked: boolean;
+  agentCount: number;
+  rounds: number;
+  budget: number;
+  seedLocked: boolean;
+  liveSample: boolean;
+  setAgentCount: (value: number) => void;
+  setRounds: (value: number) => void;
+  setBudget: (value: number) => void;
+  setSeedLocked: (value: boolean) => void;
+  setLiveSample: (value: boolean) => void;
+  onApprove: () => void;
+  onReject: () => void;
+}) {
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Checkpoint 3: simulation config</h3>
+          <p>Approve scale, rounds, budget and seed. OASIS live is disabled; mock replay is the MVP path.</p>
+        </div>
+        <ActionCluster onApprove={onApprove} onReject={onReject} blocked={blocked} approveLabel="Approve run" />
+      </div>
+      <div className="config-grid">
+        <NumberControl label="Agent count" value={agentCount} min={10} max={200} onChange={setAgentCount} />
+        <NumberControl label="Rounds" value={rounds} min={1} max={5} onChange={setRounds} />
+        <NumberControl label="LLM budget cap" value={budget} min={10} max={200} onChange={setBudget} />
+        <label className="toggle-row">
+          <input type="checkbox" checked={seedLocked} onChange={(event) => setSeedLocked(event.target.checked)} />
+          Lock seed
+        </label>
+      </div>
+      <div className="run-actions">
+        <button className="primary" onClick={() => setLiveSample(false)}>
+          <Play size={16} /> Replay cached run
+        </button>
+        <button className="secondary" onClick={() => setLiveSample(!liveSample)}>
+          <RefreshCcw size={16} /> {liveSample ? "Show full replay" : "Run live sample"}
+        </button>
+        <button className="secondary" onClick={() => setAgentCount(Math.min(agentCount, 18))}>Downscale</button>
+      </div>
+    </Panel>
+  );
+}
+
+function SimulationReplay({ events, liveSample }: { events: SimulationEvent[]; liveSample: boolean }) {
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Simulation replay</h3>
+          <p>{liveSample ? "Small live sample view" : "Cached replay for demo resilience"} · posts, comments and stance shifts.</p>
+        </div>
+        <StatusPill tone="safe">{simulation.metadata.disclaimer}</StatusPill>
+      </div>
+      <div className="feed">
+        {events.map((event) => (
+          <div className={`feed-item ${event.type}`} key={event.event_id}>
+            <div>
+              <strong>{event.agent_archetype}</strong>
+              <span>round {event.round} · {event.type}</span>
+            </div>
+            <p>{event.content || `${event.from_stance} → ${event.to_stance}: ${event.reason}`}</p>
+          </div>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function ImpactReport({
+  claimVisibility,
+  setClaimVisibility,
+}: {
+  claimVisibility: Record<string, boolean>;
+  setClaimVisibility: (value: Record<string, boolean>) => void;
+}) {
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Impact report</h3>
+          <p>{impactReport.method_note}</p>
+          <p className="evidence-note">
+            Any dashboard score or monetary framing in this view is illustrative / demo estimate only. Evidence-backed
+            validation is the blind R1-R6 backtest.
+          </p>
+        </div>
+        <StatusPill tone="neutral">Evidence: {impactReport.backtest_evidence}</StatusPill>
+      </div>
+      <div className="report-grid">
+        <div>
+          <h4>Risk timeline</h4>
+          {impactReport.risk_timeline.map((risk) => (
+            <div className="risk-row" key={risk.stage}>
+              <span>{risk.stage}</span>
+              <strong>{risk.risk_level}</strong>
+              <p>{risk.signal}</p>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h4>Claim review</h4>
+          {backtest.rules.map((rule) => (
+            <div className={`claim-row ${claimVisibility[rule.rule_id] ? "" : "muted"}`} key={rule.rule_id}>
+              <span>{rule.rule_id}</span>
+              <p>{rule.system_signal}</p>
+              <button
+                className="secondary small"
+                onClick={() => setClaimVisibility({ ...claimVisibility, [rule.rule_id]: !claimVisibility[rule.rule_id] })}
+              >
+                {claimVisibility[rule.rule_id] ? "Delete" : "Restore"}
+              </button>
+              <button className="secondary small">Downgrade wording</button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <h4>Mitigation options</h4>
+      <div className="mitigation-list">
+        {impactReport.mitigation_options.map((item) => (
+          <div key={item.option}>
+            <strong>{item.option}</strong>
+            <p>{item.rationale}</p>
+          </div>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function BlindBacktest() {
+  const promptText = `${blindPrediction.prompt.system_prompt}\n${blindPrediction.prompt.user_prompt}`;
+  const forbidden = ["51%", "62%", "495", "416", "91.6", "96.2", "88.9", "97.1", "53%", "90,000", "Uxbridge"];
+  const found = forbidden.filter((token) => promptText.includes(token));
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Blind prediction backtest</h3>
+          <p>Backtest evidence comes from answer-isolated prediction, not mock demo events. R1 PARTIAL is shown honestly.</p>
+          <p className="evidence-note">Source: runs/ulez_2023_phase2_deepseek/backtest_result.json · rubric: backtest_rubric.md</p>
+        </div>
+        <StatusPill tone={found.length === 0 ? "safe" : "warn"}>{found.length === 0 ? "No outcome tokens in prompt" : "Prompt scan flagged"}</StatusPill>
+      </div>
+      <div className="backtest-table">
+        <div className="table-head">
+          <span>Rule</span>
+          <span>Rubric item</span>
+          <span>Blind prediction signal</span>
+          <span>Real outcome</span>
+          <span>Verdict</span>
+        </div>
+        {backtest.rules.map((rule) => (
+          <BacktestRow key={rule.rule_id} rule={rule} />
+        ))}
+      </div>
+      <div className="prompt-proof">
+        <div>
+          <h4>Prompt transparency</h4>
+          <p>Prediction function does not load truth_set. Stored prompt is inspectable and scanned for outcome tokens.</p>
+        </div>
+        <pre>{blindPrediction.prompt.system_prompt}</pre>
+      </div>
+    </Panel>
+  );
+}
+
+function AuditReview({
+  blocked,
+  chainDecision,
+  setChainDecision,
+  onApprove,
+  onReject,
+}: {
+  blocked: boolean;
+  chainDecision: "pending" | "payload_approved" | "refused";
+  setChainDecision: (value: "pending" | "payload_approved" | "refused") => void;
+  onApprove: () => void;
+  onReject: () => void;
+}) {
+  return (
+    <Panel>
+      <div className="panel-title-row">
+        <div>
+          <h3>Checkpoint 4: report and Kaspa review</h3>
+          <p>Manifest and chain payload are inspectable. This testnet anchor was broadcast only after checkpoint-4 human approval.</p>
+        </div>
+        <ActionCluster onApprove={onApprove} onReject={onReject} blocked={blocked} approveLabel="Approve report" />
+      </div>
+      <div className="audit-layout">
+        <div className="audit-list">
+          <div className="audit-meta">
+            <Fact label="Created" value={formatAuditDate(auditManifest.entries[0]?.timestamp)} />
+            <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
+            <Fact label="Data freshness" value="Cached 2026-07-01 replay" />
+          </div>
+          {auditManifest.entries.map((entry) => (
+            <div className="audit-row" key={entry.stage}>
+              <span>{entry.stage}</span>
+              <code>{entry.hash.slice(0, 18)}…</code>
+              <em>{entry.approval}</em>
+            </div>
+          ))}
+        </div>
+        <div className="chain-box">
+          <ShieldCheck size={24} />
+          <h4>Kaspa payload anchoring</h4>
+          <p>
+            Status: {humanizeStatus(kaspaAnchor.status)}. User approval remains required before any future transaction broadcast.
+          </p>
+          <div className="kaspa-facts">
+            <Fact label="Network" value={kaspaAnchor.network} />
+            <Fact label="Payload bytes" value={`${kaspaAnchor.payload_size_bytes}/${kaspaAnchor.payload_practical_limit_bytes}`} />
+            <Fact label="Explorer" value={kaspaAnchor.explorer_base_url.replace("https://", "")} />
+          </div>
+          <div className="hash-stack">
+            <span>Manifest hash</span>
+            <code>{kaspaAnchor.manifest_hash}</code>
+            <span>Payload hash</span>
+            <code>{kaspaAnchor.payload_hash}</code>
+            {kaspaAnchor.tx_id ? (
+              <>
+                <span>Kaspa tx id</span>
+                <code>{kaspaAnchor.tx_id}</code>
+              </>
+            ) : null}
+          </div>
+          {kaspaAnchor.explorer_url ? (
+            <a className="explorer-link" href={kaspaAnchor.explorer_url} target="_blank" rel="noreferrer">
+              Open Kaspa explorer
+            </a>
+          ) : (
+            <p className="evidence-note">Anchor package can be verified locally until a testnet tx id is configured.</p>
+          )}
+          <pre className="payload-preview">{kaspaAnchor.payload_canonical_json}</pre>
+          <button className="primary" onClick={() => setChainDecision("payload_approved")}>Approve anchored payload review</button>
+          <button className="secondary" onClick={() => setChainDecision("refused")}>Refuse on-chain anchor</button>
+          <StatusPill tone={chainDecision === "refused" ? "warn" : "neutral"}>{chainDecision}</StatusPill>
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+function ClosingScreen() {
+  return (
+    <Panel>
+      <div className="closing">
+        <h3>Weeks to hours, with the human still in control.</h3>
+        <p>Extraction, agent design, run configuration, blind backtest and audit manifest stay visible and reversible.</p>
+        <div className="closing-metrics">
+          <Metric label="Demo run" value="90 sec" tone="safe" />
+          <Metric label="Backtest" value="Blind" tone="safe" />
+          <Metric label="Autonomy" value="Gated" tone="safe" />
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+function CheckpointPanel({ control }: { control: ReturnType<typeof createInitialControlState> }) {
+  return (
+    <section className="control-panel">
+      <div className="side-title">
+        <ClipboardCheck size={18} />
+        <h3>Human control</h3>
+      </div>
+      {checkpointSteps.map((key) => {
+        const checkpoint = control.checkpoints[key];
+        return (
+          <div className={`checkpoint-row ${checkpoint.status}`} key={key}>
+            <span>{checkpoint.label}</span>
+            <strong>{checkpoint.status}</strong>
+            <code>{checkpoint.artifactHash}</code>
+          </div>
+        );
+      })}
+      <div className="limits">
+        <h4>Hard limits</h4>
+        {[
+          "No automatic chain action",
+          "No automatic weight changes",
+          "No real-person PII",
+          "Archetypes only",
+          "Decision support only",
+        ].map((item) => (
+          <span key={item}><Lock size={12} /> {item}</span>
+        ))}
+      </div>
+      <div className="event-log">
+        <h4>Checkpoint history</h4>
+        {control.events.slice(-5).map((event) => (
+          <div key={event.id}>
+            <span>{event.action}</span>
+            <p>{event.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PersonaChat({
+  selectedAgentId,
+  setSelectedAgentId,
+  agent,
+  question,
+  setQuestion,
+}: {
+  selectedAgentId: string;
+  setSelectedAgentId: (value: string) => void;
+  agent: AgentProfile;
+  question: string;
+  setQuestion: (value: string) => void;
+}) {
+  const answer = `As an archetype, I am ${agent.stance} because my concerns are ${agent.concerns.slice(0, 3).join(", ")}. I would ${agent.action_tendency}.`;
+  return (
+    <section className="chat-panel">
+      <div className="side-title">
+        <MessageSquare size={18} />
+        <h3>Persona chat</h3>
+      </div>
+      <select value={selectedAgentId} onChange={(event) => setSelectedAgentId(event.target.value)}>
+        {agents.slice(0, 18).map((item) => (
+          <option key={item.id} value={item.id}>{item.archetype}</option>
+        ))}
+      </select>
+      <textarea value={question} onChange={(event) => setQuestion(event.target.value)} />
+      <div className="chat-answer">
+        <strong>{agent.archetype}</strong>
+        <p>{answer}</p>
+        <span>Archetype only · no real-person PII</span>
+      </div>
+    </section>
+  );
+}
+
+function ActionCluster({
+  onApprove,
+  onReject,
+  blocked,
+  approveLabel = "Approve",
+}: {
+  onApprove: () => void;
+  onReject: () => void;
+  blocked?: boolean;
+  approveLabel?: string;
+}) {
+  return (
+    <div className="action-cluster">
+      <button className="primary" onClick={onApprove} disabled={blocked}>
+        <Check size={16} /> {approveLabel}
+      </button>
+      <button className="secondary">
+        <SlidersHorizontal size={16} /> Adjust
+      </button>
+      <button className="danger" onClick={onReject}>
+        <X size={16} /> Reject
+      </button>
+    </div>
+  );
+}
+
+function BacktestRow({ rule }: { rule: BacktestRule }) {
+  return (
+    <div className="backtest-row">
+      <strong>{rule.rule_id}</strong>
+      <p className="rubric-label">{RUBRIC_LABELS[rule.rule_id] ?? rule.rule_id}</p>
+      <p>{rule.system_signal}</p>
+      <p>{truncate(rule.real_outcome, 150)}</p>
+      <span className={`verdict ${rule.verdict.toLowerCase().replace(" ", "-")}`}>{rule.verdict}</span>
+    </div>
+  );
+}
+
+function NumberControl({
+  label,
+  value,
+  min,
+  max,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <label className="number-control">
+      <span>{label}</span>
+      <input type="number" value={value} min={min} max={max} onChange={(event) => onChange(Number(event.target.value))} />
+    </label>
+  );
+}
+
+function Panel({ children }: { children: React.ReactNode }) {
+  return <section className="panel">{children}</section>;
+}
+
+function Metric({ label, value, tone }: { label: string; value: string; tone: "safe" | "warn" }) {
+  return (
+    <div className={`metric ${tone}`}>
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
+function Fact({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="fact-row">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
+function StatusPill({ children, tone }: { children: React.ReactNode; tone: "safe" | "warn" | "neutral" }) {
+  return <span className={`status-pill ${tone}`}>{children}</span>;
+}
+
+function CheckpointDot({ status }: { status: string }) {
+  return <span className={`checkpoint-dot ${status}`} />;
+}
+
+function headlineFor(step: DemoStep) {
+  const copy: Record<DemoStep, string> = {
+    before: "Make the legacy process legible before replacing it.",
+    select_case: "Use a real historical policy case, not a toy example.",
+    extraction_review: "The agent proposes. The human approves, edits or rejects.",
+    agent_review: "Archetype agents are inspectable and bounded.",
+    simulation_config: "Scale, rounds, budget and seed are explicit controls.",
+    simulation_replay: "Replay is cached for the demo; live sample stays small.",
+    impact_report: "Decision memo, not black-box final answer.",
+    blind_backtest: "Credibility comes from answer-isolated blind prediction.",
+    audit: "Kaspa testnet anchor is live, with the manifest hash still gated by human approval.",
+    closing: "Control stays visible from intake to audit.",
+    report_chain_review: "Review claims and chain action before any anchor.",
+  };
+  return copy[step];
+}
+
+function countBy<T>(items: T[], key: keyof T) {
+  return items.reduce<Record<string, number>>((acc, item) => {
+    const value = String(item[key]);
+    acc[value] = (acc[value] ?? 0) + 1;
+    return acc;
+  }, {});
+}
+
+function compactStakeholder(id: string) {
+  return id.replace("stakeholder_", "").replace(/_/g, " ");
+}
+
+function sanitizeName(value: string) {
+  return value.replace(/\s*\([^)]*\)/g, "");
+}
+
+function stripOutcomeNumbers(value: string) {
+  return value.replace(/\d{1,3}(?:\.\d+)?%/g, "directional signal").replace(/\b\d{3,}\b/g, "historical number");
+}
+
+function truncate(value: string, limit: number) {
+  return value.length <= limit ? value : `${value.slice(0, limit - 1)}…`;
+}
+
+function formatAuditDate(value?: string) {
+  if (!value) return "2026-07";
+  return value.slice(0, 10);
+}
+
+function humanizeStatus(value: string) {
+  return value.replace(/_/g, " ");
+}
+
+export default App;

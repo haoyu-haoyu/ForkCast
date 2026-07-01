@@ -1,0 +1,177 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "generated_at": "2026-07-01T12:00:31.465357+00:00",
+  "disclaimer": "simulation is decision support, not deterministic forecast",
+  "report_mode": "mock_demo_visualization",
+  "backtest_evidence": "blind_prediction.json",
+  "method_note": "This impact report is generated from mock interaction events for dashboard demonstration. Historical backtest credibility is based on blind_prediction.json, not these mock events.",
+  "stakeholder_impact_matrix": [
+    {
+      "stakeholder_id": "stakeholder_london_mayor",
+      "name": "Mayor of London (Sadiq Khan)",
+      "agent_count": 4,
+      "impact_level": "medium",
+      "opposition_intensity": "low",
+      "primary_interests": [
+        "air quality improvement",
+        "public health",
+        "climate goals",
+        "political reputation"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_outer_london_residents",
+      "name": "Outer London residents",
+      "agent_count": 4,
+      "impact_level": "high",
+      "opposition_intensity": "high",
+      "primary_interests": [
+        "cost of compliance",
+        "vehicle access",
+        "local economy",
+        "personal freedom"
+      ],
+      "qualitative_signal": "outer-London backlash is stronger than inner-London support groups"
+    },
+    {
+      "stakeholder_id": "stakeholder_inner_london_residents",
+      "name": "Inner London residents",
+      "agent_count": 4,
+      "impact_level": "medium",
+      "opposition_intensity": "low",
+      "primary_interests": [
+        "air quality improvement",
+        "public health",
+        "reduced traffic"
+      ],
+      "qualitative_signal": "inner-London support is visible through air-quality and health framing"
+    },
+    {
+      "stakeholder_id": "stakeholder_ulez_opponents_radical",
+      "name": "ULEZ opponents (radical subgroup)",
+      "agent_count": 4,
+      "impact_level": "high",
+      "opposition_intensity": "high",
+      "primary_interests": [
+        "policy reversal",
+        "disruption of enforcement",
+        "visibility of protest"
+      ],
+      "qualitative_signal": "enforcement backlash and sabotage narratives are visible"
+    },
+    {
+      "stakeholder_id": "stakeholder_conservative_party",
+      "name": "Conservative Party (local and national)",
+      "agent_count": 4,
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "primary_interests": [
+        "electoral gain",
+        "criticism of ULEZ expansion",
+        "local constituency concerns"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_labour_party",
+      "name": "Labour Party (local and national)",
+      "agent_count": 4,
+      "impact_level": "medium",
+      "opposition_intensity": "low",
+      "primary_interests": [
+        "policy success",
+        "electoral risk management",
+        "balancing environmental and local concerns"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_transport_for_london",
+      "name": "Transport for London (TfL)",
+      "agent_count": 4,
+      "impact_level": "medium",
+      "opposition_intensity": "low",
+      "primary_interests": [
+        "policy implementation",
+        "enforcement efficiency",
+        "compliance monitoring",
+        "revenue collection"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+      "name": "Van drivers, tradespeople and small businesses",
+      "agent_count": 4,
+      "impact_level": "high",
+      "opposition_intensity": "very_high",
+      "primary_interests": [
+        "operating_cost",
+        "daily_charge_burden_for_non_compliant_vans",
+        "livelihood_impact",
+        "vehicle_replacement_cost"
+      ],
+      "qualitative_signal": "van-dependent tradespeople are a high-pressure economic group"
+    },
+    {
+      "stakeholder_id": "stakeholder_low_income_households",
+      "name": "Low-income households dependent on private vehicles",
+      "agent_count": 4,
+      "impact_level": "high",
+      "opposition_intensity": "high",
+      "primary_interests": [
+        "vehicle_replacement_affordability",
+        "policy_fairness",
+        "distributional_burden",
+        "vehicle_dependence"
+      ],
+      "qualitative_signal": "distributional burden and affordability concerns are visible"
+    }
+  ],
+  "risk_timeline": [
+    {
+      "stage": "short_term",
+      "signal": "outer-London and van-dependent groups show strong backlash",
+      "risk_level": "high"
+    },
+    {
+      "stage": "implementation_period",
+      "signal": "political salience and enforcement backlash require active management",
+      "risk_level": "high"
+    },
+    {
+      "stage": "longer_term",
+      "signal": "behavioural adaptation and compliance improvement emerge over time",
+      "risk_level": "medium"
+    }
+  ],
+  "mitigation_options": [
+    {
+      "option": "targeted support for van-dependent small businesses",
+      "rationale": "reduces the highest-impact economic pressure without changing stakeholder weights automatically"
+    },
+    {
+      "option": "low-income household transition assistance",
+      "rationale": "addresses distributional burden while preserving air-quality objectives"
+    },
+    {
+      "option": "visible enforcement legitimacy and camera-protection plan",
+      "rationale": "responds to enforcement backlash without escalating automated actions"
+    }
+  ],
+  "confidence_notes": [
+    "Backtest comparison is directional only and does not score exact historical percentages.",
+    "Political output is framed as political salience/electoral risk, not causal proof or election-result prediction.",
+    "Mock simulation is used for the 2026-07-01 MVP path; OASIS live simulation remains a stretch validation.",
+    "The R1-R6 backtest is scored from blind_prediction.json rather than mock simulation events."
+  ],
+  "system_signals": {
+    "R1": "outer-London and vehicle-dependent groups show clearly stronger opposition than inner-London support groups",
+    "R2": "van drivers, tradespeople and small businesses are singled out as high-impact, high-opposition economic groups",
+    "R3": "political salience and electoral risk are top risks; this is not a claim about a specific election result",
+    "R4": "enforcement backlash, sabotage narratives and camera resistance risk are visible",
+    "R5": "short-term opposition coexists with longer-term behavioural adaptation and improving compliance",
+    "R6": "air-quality and health benefits coexist with distributional burden for lower-income and vehicle-dependent groups"
+  }
+}

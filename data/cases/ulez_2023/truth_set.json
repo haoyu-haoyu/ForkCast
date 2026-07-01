@@ -1,0 +1,356 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "case_name": "London Ultra Low Emission Zone 2023 expansion",
+  "created_at": "2026-07-01",
+  "verification_policy": "Only facts with reliable source URL and source quote are marked 已确认. Missing or incomplete items are marked 待核实 or 未找到.",
+  "facts": [
+    {
+      "id": "A1_policy_effective_date_and_scope",
+      "category": "A. 政策基础事实",
+      "requested_item": "ULEZ 2023 扩区的确切生效日期；扩区范围",
+      "fact": "ULEZ 于 2023-08-29 扩展至所有 London boroughs；TfL 页面另说明该区域覆盖 all London boroughs and the City of London。",
+      "value": {
+        "effective_date": "2023-08-29",
+        "scope": "all London boroughs and the City of London"
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "Transport for London - ULEZ Expansion 2023",
+          "source_type": "official",
+          "url": "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone/ulez-expansion-2023",
+          "quote": "expanded across all London boroughs on 29 August 2023"
+        },
+        {
+          "source_name": "Transport for London - ULEZ Expansion 2023",
+          "source_type": "official",
+          "url": "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone/ulez-expansion-2023",
+          "quote": "all London boroughs and the City of London"
+        }
+      ],
+      "notes": "TfL 当前页面还说明 ULEZ operates across all London boroughs and does not include the M25，但本条采用扩区页作为主证据。"
+    },
+    {
+      "id": "A2_daily_charge",
+      "category": "A. 政策基础事实",
+      "requested_item": "非合规车辆的每日收费金额",
+      "fact": "非合规且未豁免车辆在 ULEZ 内行驶需支付每日 £12.50。",
+      "value": {
+        "daily_charge_gbp": 12.5
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "Transport for London - Ultra Low Emission Zone",
+          "source_type": "official",
+          "url": "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone",
+          "quote": "pay a £12.50 daily charge"
+        }
+      ],
+      "notes": "适用于 cars, motorcycles, vans and specialist vehicles up to 3.5 tonnes, and minibuses up to 5 tonnes；大型车辆适用 LEZ 规则。"
+    },
+    {
+      "id": "A3_emission_standards",
+      "category": "A. 政策基础事实",
+      "requested_item": "排放标准 petrol / diesel 分别是什么 Euro 标准",
+      "fact": "House of Commons Library briefing 将 ULEZ/CAZ 合规标准概括为 petrol cars/vans Euro 4，diesel cars/vans Euro 6。",
+      "value": {
+        "petrol_cars_and_vans": "Euro 4",
+        "diesel_cars_and_vans": "Euro 6",
+        "buses_coaches_hgvs": "Euro VI"
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "House of Commons Library - Clean Air Zones, Low Emission Zones and the London ULEZ",
+          "source_type": "official_parliamentary_research",
+          "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-9816/",
+          "quote": "Euro 4 for petrol cars and vans"
+        },
+        {
+          "source_name": "House of Commons Library - Clean Air Zones, Low Emission Zones and the London ULEZ",
+          "source_type": "official_parliamentary_research",
+          "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-9816/",
+          "quote": "Euro 6 for diesel cars and vans"
+        }
+      ],
+      "notes": "同页说明 Euro VI applies to buses, coaches and HGVs."
+    },
+    {
+      "id": "B1_uxbridge_by_election_result",
+      "category": "B. 政治后果",
+      "requested_item": "2023 Uxbridge and South Ruislip 补选的确切结果",
+      "fact": "2023-07-20 Uxbridge and South Ruislip by-election 为 Conservative hold；Steve Tuckwell 13,965 票、45.2%；Danny Beales 13,470 票、43.6%；多数票 495；投票率 46.1%。",
+      "value": {
+        "election_date": "2023-07-20",
+        "winning_party": "Conservative",
+        "result": "Conservative Hold",
+        "winner": "Steve Tuckwell",
+        "winner_votes": 13965,
+        "winner_vote_share_percent": 45.2,
+        "runner_up": "Danny Boy Beales",
+        "runner_up_party": "Labour",
+        "runner_up_votes": 13470,
+        "runner_up_vote_share_percent": 43.6,
+        "majority": 495,
+        "turnout_percent": 46.1
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "UK Parliament - Uxbridge and South Ruislip election result",
+          "source_type": "official",
+          "url": "https://members.parliament.uk/constituency/3817/election/412",
+          "quote": "Conservative Hold"
+        },
+        {
+          "source_name": "UK Parliament - Uxbridge and South Ruislip election result",
+          "source_type": "official",
+          "url": "https://members.parliament.uk/constituency/3817/election/412",
+          "quote": "Majority 495"
+        }
+      ],
+      "notes": "同页 breakdown 表列出 Steve Tuckwell / Conservative / 13,965 / 45.2% 与 Danny Boy Beales / Labour / 13,470 / 43.6%。"
+    },
+    {
+      "id": "B2_ulez_as_key_by_election_issue",
+      "category": "B. 政治后果",
+      "requested_item": "ULEZ 是否被公认为该补选的关键议题",
+      "fact": "可靠分析/报道将 ULEZ 扩区与 Uxbridge 补选结果直接关联：Institute for Government 认为 ULEZ plans 是 Labour narrow loss 的 key factor；YouGov 文章称 ULEZ 被 held responsible for Labour’s failure to win the seat。",
+      "value": {
+        "key_issue_status": "identified_as_key_issue_by_reliable_analysis"
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "Institute for Government - Will the Uxbridge by-election prove a crossroads for net zero?",
+          "source_type": "reputable_analysis",
+          "url": "https://www.instituteforgovernment.org.uk/comment/uxbridge-crossroads-net-zero",
+          "quote": "key factor in Labour's narrow loss"
+        },
+        {
+          "source_name": "YouGov - Londoners split on ULEZ expansion",
+          "source_type": "polling_organisation",
+          "url": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+          "quote": "held responsible for Labour’s failure"
+        }
+      ],
+      "notes": "这是政治解释/分析事实，不是官方选举委员会的因果认定。用于回测时应标为 political salience signal，而非确定因果。"
+    },
+    {
+      "id": "C1_public_opinion_distribution",
+      "category": "C. 公众反应",
+      "requested_item": "公众对 ULEZ 扩区的意见分布",
+      "fact": "YouGov/ITV 2023-08-09 至 2023-08-14 调查显示：Londoners 47% 支持扩区、42% 反对；inner London 支持 62% vs 反对 26%；outer London 反对 51% vs 支持 38%。",
+      "value": {
+        "pollster": "YouGov for ITV",
+        "fieldwork_dates": "2023-08-09 to 2023-08-14",
+        "london_support_percent": 47,
+        "london_oppose_percent": 42,
+        "inner_london_support_percent": 62,
+        "inner_london_oppose_percent": 26,
+        "outer_london_support_percent": 38,
+        "outer_london_oppose_percent": 51
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "YouGov - Londoners split on ULEZ expansion",
+          "source_type": "polling_organisation",
+          "url": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+          "quote": "47% supporting ... while 42% are opposed"
+        },
+        {
+          "source_name": "YouGov - Londoners split on ULEZ expansion",
+          "source_type": "polling_organisation",
+          "url": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+          "quote": "outer London ... 51% to 38%"
+        }
+      ],
+      "notes": "YouGov 页面说明调查为 for ITV, conducted on 9-14 August。"
+    },
+    {
+      "id": "C2_camera_vandalism_and_enforcement_resistance",
+      "category": "C. 公众反应",
+      "requested_item": "是否发生了摄像头破坏/执法抵制（Blade Runners 等）",
+      "fact": "Metropolitan Police FOI 显示 2023-08-01 至 2023-10-15 期间记录 416 起 ULEZ-related offences：59 theft、357 arson and criminal damage；property status 中 74 stolen、358 damaged。Sky/ITV 报道说明部分破坏者自称 Blade Runners。",
+      "value": {
+        "period": "2023-08-01 to 2023-10-15",
+        "offences_total": 416,
+        "theft_offences": 59,
+        "arson_and_criminal_damage_offences": 357,
+        "property_stolen_count": 74,
+        "property_damaged_count": 358,
+        "blade_runners_reference": true
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "Metropolitan Police FOI - Crimes relating to ULEZ cameras from August to October 2023",
+          "source_type": "official_foi",
+          "url": "https://www.met.police.uk/foi-ai/metropolitan-police/disclosure-2023/november-2023/crimes-ulez-cameras-august-october2023/",
+          "quote": "Grand Total 416"
+        },
+        {
+          "source_name": "Metropolitan Police FOI downloadable XLSX",
+          "source_type": "official_foi_attachment",
+          "url": "https://www.met.police.uk/SysSiteAssets/foi-media/metropolitan-police/disclosure_2023/november_2023/crimes-ulez-cameras-august-october2023.xlsx",
+          "quote": "Stolen 74; Damaged 358"
+        },
+        {
+          "source_name": "Sky News - anti-ULEZ suspect / blade runners",
+          "source_type": "mainstream_media",
+          "url": "https://news.sky.com/story/police-release-image-of-anti-ulez-suspect-as-hundreds-of-cameras-damaged-or-stolen-12942206",
+          "quote": "describe themselves as \"blade runners\""
+        }
+      ],
+      "notes": "FOI attachment caveat: property may be marked both stolen and damaged; property count and offence count should not be summed."
+    },
+    {
+      "id": "C3_public_view_on_camera_vandalism",
+      "category": "C. 公众反应",
+      "requested_item": "摄像头破坏/执法抵制的公众态度",
+      "fact": "YouGov/ITV 调查显示，Londoners 整体反对摄像头破坏行为 51% vs 支持 32%；但在 ULEZ 扩区反对者中，支持破坏行为 51% vs 反对 36%。",
+      "value": {
+        "londoners_oppose_vandalism_percent": 51,
+        "londoners_support_vandalism_percent": 32,
+        "ulez_opponents_support_vandalism_percent": 51,
+        "ulez_opponents_oppose_vandalism_percent": 36
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "YouGov - Londoners split on ULEZ expansion",
+          "source_type": "polling_organisation",
+          "url": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+          "quote": "opposed these actions by 51% to 32%"
+        },
+        {
+          "source_name": "YouGov - Londoners split on ULEZ expansion",
+          "source_type": "polling_organisation",
+          "url": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+          "quote": "support the lawbreaking ... 51% to 36%"
+        }
+      ],
+      "notes": "该项可用于回测模型是否捕捉到 opposition subgroup radicalisation，而不是整体公众态度。"
+    },
+    {
+      "id": "D1_six_month_compliance_rate_change",
+      "category": "D. 政策实际效果（6 个月后）",
+      "requested_item": "合规率变化",
+      "fact": "London-wide ULEZ 6 个月报告显示，subject vehicles 的 London-wide compliance rate 从 2023-06 的 91.6% 上升到 6 个月后的 96.2%。Cars 为 97.1%，vans 为 88.9%。",
+      "value": {
+        "london_wide_compliance_after_6_months_percent": 96.2,
+        "london_wide_compliance_june_2023_percent": 91.6,
+        "cars_after_6_months_percent": 97.1,
+        "cars_june_2023_percent": 93.0,
+        "vans_after_6_months_percent": 88.9,
+        "vans_june_2023_percent": 80.2
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "96.2 per cent, up from 91.6 per cent"
+        },
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "97.1 per cent of cars and 88.9 per cent of vans"
+        }
+      ],
+      "notes": "Report defines compliance rate as the share of detected vehicles in the zone that meet ULEZ standards."
+    },
+    {
+      "id": "D2_non_compliant_vehicle_count_change",
+      "category": "D. 政策实际效果（6 个月后）",
+      "requested_item": "非合规车辆数量变化",
+      "fact": "2024-02 与 2023-06 相比，London-wide ULEZ 平均每日检测到的 non-compliant vehicles 减少 90,000，降幅 53%。",
+      "value": {
+        "comparison_start": "2023-06",
+        "comparison_end": "2024-02",
+        "average_daily_non_compliant_vehicle_reduction": 90000,
+        "reduction_percent": 53
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "90,000 fewer non-compliant vehicles"
+        },
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "53 per cent reduction"
+        }
+      ],
+      "notes": "同页表述为 average day, February 2024 compared to June 2023."
+    },
+    {
+      "id": "D3_air_quality_and_emissions_changes",
+      "category": "D. 政策实际效果（6 个月后）",
+      "requested_item": "空气质量 / NO2 排放变化",
+      "fact": "6 个月报告给出 NOx emissions 和 NO2 concentrations 两类结果：outer London cars/vans NOx emissions 相对 no-ULEZ scenario 分别低 13% 和 7%；outer London roadside NO2 concentrations 在首 6 个月 up to 4.4% lower。",
+      "value": {
+        "outer_london_nox_emissions_cars_vs_no_ulez_percent_lower": 13,
+        "outer_london_nox_emissions_vans_vs_no_ulez_percent_lower": 7,
+        "outer_london_nox_saving_tonnes": 424,
+        "outer_london_roadside_no2_concentrations_first_6_months_percent_lower_up_to": 4.4,
+        "all_ulez_policies_roadside_no2_outer_london_percent_lower": 21,
+        "all_ulez_policies_roadside_no2_central_london_percent_lower": 53,
+        "all_ulez_policies_roadside_no2_inner_london_percent_lower": 24
+      },
+      "confidence_status": "已确认",
+      "sources": [
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "13 per cent and 7 per cent lower"
+        },
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "up to 4.4 per cent lower"
+        },
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "21 per cent lower in outer London"
+        }
+      ],
+      "notes": "官方页面使用 NOx emissions 和 roadside NO2 concentrations；不要把 NOx emissions 改写成 NO2 emissions。"
+    },
+    {
+      "id": "D4_no2_emissions_specific_metric",
+      "category": "D. 政策实际效果（6 个月后）",
+      "requested_item": "NO2 排放变化（精确为 NO2 emissions）",
+      "fact": "未在 London-wide ULEZ Six Month Report 页面中找到“NO2 emissions”这个精确指标；已找到的是 NOx emissions 与 NO2 roadside concentrations。",
+      "value": null,
+      "confidence_status": "未找到",
+      "sources": [
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "NOX emissions"
+        },
+        {
+          "source_name": "London City Hall - London-wide ULEZ Six Month Report",
+          "source_type": "official",
+          "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+          "quote": "roadside nitrogen dioxide (NO2) concentrations"
+        }
+      ],
+      "notes": "如项目必须使用 NO2 emissions，需要人工查阅 full report PDF 或 supplementary data sheet；当前网页级证据不足。"
+    }
+  ]
+}

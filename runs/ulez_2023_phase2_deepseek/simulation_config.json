@@ -1,0 +1,9 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "mode": "mock",
+  "agent_count": 36,
+  "rounds": 3,
+  "random_seed": 20260701,
+  "decision_support_disclaimer": "simulation is decision support, not deterministic forecast",
+  "oasis_live": false
+}

@@ -1,0 +1,73 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "run_id": "ulez_2023_phase2_deepseek",
+  "generated_at": "2026-07-01T12:00:31.474732+00:00",
+  "chain_status": "not_on_chain",
+  "human_approval_required_for_chain_anchor": true,
+  "entries": [
+    {
+      "stage": "case_graph",
+      "hash": "20836c56fd7d15b49272009f086cddc090b82faa9cede84343c481b3ef7b517a",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "data/cases/ulez_2023/case_graph.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "simulation_config",
+      "hash": "3a4a87030f58982c9e363842674cdba2c54891091c21a0643a9266ccb595262f",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/simulation_config.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "agents",
+      "hash": "345a655035c886c478083e6f9b8368f5fc325645b47486dc84c5fa25c70ab633",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/agents.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "blind_prediction",
+      "hash": "54548566b0bdb0e056b4607689a68990a2304067794828c0347223eb31d8f796",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/blind_prediction.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "simulation_events",
+      "hash": "0c389c74c2e43e1f53791405bcdf363008bbf079f57128c4bd6291b10a75281c",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/simulation_events.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "impact_report",
+      "hash": "e263a8825f943343cdccc791977393c07d643424b22b5dfda0b050743dcd86c7",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/impact_report.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "backtest_result",
+      "hash": "8e99896261ce4cefb6bdea72ccf5086653ed53f87243757079f8984caa4625fc",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/backtest_result.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    },
+    {
+      "stage": "persona_chat_sample",
+      "hash": "53f9008d572504622f9e6c8b017e32c6e8c321271d7d74f885dbe5ee701ef929",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/ulez_2023_phase2_deepseek/persona_chat_sample.json",
+      "timestamp": "2026-07-01T12:00:31.474732+00:00"
+    }
+  ]
+}

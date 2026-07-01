@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policy-impact-sandbox.local/schemas/audit_manifest.schema.json",
+  "title": "Audit Manifest",
+  "type": "object",
+  "required": ["case_id", "run_id", "entries"],
+  "additionalProperties": true,
+  "properties": {
+    "case_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stage", "hash", "actor", "approval", "artifact_uri", "timestamp"],
+        "additionalProperties": true,
+        "properties": {
+          "stage": { "type": "string" },
+          "hash": { "type": "string" },
+          "actor": { "type": "string" },
+          "approval": { "type": "string" },
+          "artifact_uri": { "type": "string" },
+          "timestamp": { "type": "string" }
+        }
+      }
+    }
+  }
+}

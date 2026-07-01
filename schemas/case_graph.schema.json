@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policy-impact-sandbox.local/schemas/case_graph.schema.json",
+  "title": "Policy Case Graph",
+  "type": "object",
+  "required": [
+    "case_id",
+    "case_name",
+    "generated_at",
+    "extraction_method",
+    "source_truth_set",
+    "entities",
+    "stakeholders",
+    "assumptions",
+    "constraints",
+    "evidence",
+    "graph"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "case_id": { "type": "string" },
+    "case_name": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "extraction_method": { "type": "string" },
+    "source_truth_set": {
+      "type": "object",
+      "required": ["path", "fact_count"],
+      "properties": {
+        "path": { "type": "string" },
+        "fact_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entity" }
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/stakeholder" }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/assumption" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/constraint" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "graph": { "$ref": "#/$defs/graph" }
+  },
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "required": ["id", "type", "name", "description", "evidence_fact_ids"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "stakeholder": {
+      "type": "object",
+      "required": ["id", "name", "archetype_group", "stance_prior", "interests", "evidence_fact_ids"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "archetype_group": { "type": "string" },
+        "stance_prior": { "type": "string" },
+        "interests": { "type": "array", "items": { "type": "string" } },
+        "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "required": ["id", "statement", "status", "evidence_fact_ids"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "statement": { "type": "string" },
+        "status": { "type": "string" },
+        "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "required": ["id", "kind", "statement", "evidence_fact_ids"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "type": "string" },
+        "statement": { "type": "string" },
+        "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["fact_id", "confidence_status", "source_urls", "quotes"],
+      "additionalProperties": true,
+      "properties": {
+        "fact_id": { "type": "string" },
+        "category": { "type": ["string", "null"] },
+        "confidence_status": { "type": ["string", "null"] },
+        "source_urls": { "type": "array", "items": { "type": "string" } },
+        "quotes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "graph": {
+      "type": "object",
+      "required": ["nodes", "edges"],
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "kind", "label"],
+            "additionalProperties": true
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source", "target", "type"],
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}

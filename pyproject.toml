@@ -1,0 +1,39 @@
+[project]
+name = "policy-impact-sandbox"
+version = "0.1.0"
+description = "Controllable policy impact simulation MVP for ULEZ 2023 backtesting"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "jsonschema>=4.23",
+    "networkx>=3.3",
+    "openai>=1.51",
+    "pydantic>=2.8",
+    "python-dotenv>=1.0",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+]
+oasis = [
+    "camel-oasis>=0.2.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/policy_impact_sandbox"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"

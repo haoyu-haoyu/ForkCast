@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policy-impact-sandbox.local/schemas/blind_prediction.schema.json",
+  "title": "Blind Prediction",
+  "type": "object",
+  "required": [
+    "case_id",
+    "mode",
+    "generated_at",
+    "llm",
+    "leakage_guard",
+    "prompt",
+    "blind_context",
+    "raw_prediction",
+    "prediction"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "case_id": { "type": "string" },
+    "mode": { "const": "blind_prediction" },
+    "generated_at": { "type": "string" },
+    "llm": {
+      "type": "object",
+      "required": ["provider", "model"],
+      "additionalProperties": true
+    },
+    "leakage_guard": {
+      "type": "object",
+      "required": ["truth_set_loaded_into_prompt", "truth_set_file_read_by_prediction_step", "excluded_case_graph_fields"],
+      "properties": {
+        "truth_set_loaded_into_prompt": { "const": false },
+        "truth_set_file_read_by_prediction_step": { "const": false },
+        "excluded_case_graph_fields": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "prompt": {
+      "type": "object",
+      "required": ["system_prompt", "user_prompt"],
+      "properties": {
+        "system_prompt": { "type": "string" },
+        "user_prompt": { "type": "string" }
+      }
+    },
+    "blind_context": { "type": "object" },
+    "raw_prediction": { "type": "object" },
+    "prediction": {
+      "type": "object",
+      "required": [
+        "summary",
+        "group_reactions",
+        "ranked_opposition_groups",
+        "political_consequences",
+        "time_dynamics",
+        "secondary_reactions",
+        "benefit_burden_balance",
+        "confidence_notes"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "summary": { "type": "string" },
+        "group_reactions": { "type": "array" },
+        "ranked_opposition_groups": { "type": "array" },
+        "political_consequences": { "type": "array" },
+        "time_dynamics": { "type": "array" },
+        "secondary_reactions": { "type": "array" },
+        "benefit_burden_balance": { "type": "array" },
+        "confidence_notes": { "type": "array" }
+      }
+    }
+  }
+}

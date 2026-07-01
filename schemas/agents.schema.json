@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policy-impact-sandbox.local/schemas/agents.schema.json",
+  "title": "Archetype Agent Profiles",
+  "type": "object",
+  "required": ["case_id", "agents"],
+  "additionalProperties": true,
+  "properties": {
+    "case_id": { "type": "string" },
+    "agents": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "required": ["id", "archetype", "stakeholder_id", "stance", "concerns", "evidence_fact_ids"],
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "archetype": { "type": "string" },
+          "stakeholder_id": { "type": "string" },
+          "stance": { "type": "string" },
+          "concerns": { "type": "array", "items": { "type": "string" } },
+          "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

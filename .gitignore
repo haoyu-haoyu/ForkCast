@@ -1,0 +1,12 @@
+.env
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+log/
+web/node_modules/
+web/dist/
+.playwright-mcp/
+.playwright-cli/
+phase3-*.png
+.kaspa-wallet/

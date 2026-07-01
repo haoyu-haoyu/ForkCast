@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policy-impact-sandbox.local/schemas/report_claims.schema.json",
+  "title": "Report Claims",
+  "type": "object",
+  "required": ["case_id", "disclaimer", "claims"],
+  "additionalProperties": true,
+  "properties": {
+    "case_id": { "type": "string" },
+    "disclaimer": {
+      "type": "string",
+      "const": "simulation is decision support, not deterministic forecast"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "direction", "confidence", "evidence_fact_ids"],
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "statement": { "type": "string" },
+          "direction": { "type": "string" },
+          "confidence": { "enum": ["low", "medium", "high", "待核实"] },
+          "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

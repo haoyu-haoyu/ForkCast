@@ -1,0 +1,464 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "mode": "blind_prediction",
+  "generated_at": "2026-07-01T12:00:31.464501+00:00",
+  "llm": {
+    "provider": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-chat"
+  },
+  "leakage_guard": {
+    "truth_set_loaded_into_prompt": false,
+    "truth_set_file_read_by_prediction_step": false,
+    "excluded_case_graph_fields": [
+      "evidence",
+      "evidence_fact_ids",
+      "evidence_note",
+      "graph",
+      "source_truth_set",
+      "entities except policy definition",
+      "historical assumptions derived from outcomes"
+    ]
+  },
+  "prompt": {
+    "system_prompt": "You are producing a blind policy impact prediction. Do not use historical outcome data, election results, post-implementation metrics, polling results, camera offence counts, compliance rates, air-quality measurements, or source quotes. Use only the provided sanitized policy context and stakeholder incentives. Return one JSON object and no prose. Do not predict exact percentages, vote margins, offence counts, or any specific election result. Political output must be framed as political salience/electoral risk only.",
+    "user_prompt": "sanitized_blind_case_context:\n{\n  \"case_id\": \"ulez_2023_expansion\",\n  \"case_name\": \"London Ultra Low Emission Zone 2023 expansion\",\n  \"policy_entities\": [\n    {\n      \"id\": \"entity_ulez_policy\",\n      \"type\": \"policy\",\n      \"name\": \"ULEZ 2023 Expansion\",\n      \"description\": \"Expansion of the London Ultra Low Emission Zone to all London boroughs and the City of London effective 2023-08-29, requiring non-compliant vehicles to pay a daily charge of £12.50.\"\n    }\n  ],\n  \"stakeholders\": [\n    {\n      \"id\": \"stakeholder_london_mayor\",\n      \"name\": \"Mayor of London\",\n      \"archetype_group\": \"policy_advocate\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"air quality improvement\",\n        \"public health\",\n        \"climate goals\",\n        \"political reputation\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_outer_london_residents\",\n      \"name\": \"Outer London residents\",\n      \"archetype_group\": \"affected_public\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"cost of compliance\",\n        \"vehicle access\",\n        \"local economy\",\n        \"personal freedom\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_inner_london_residents\",\n      \"name\": \"Inner London residents\",\n      \"archetype_group\": \"affected_public\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"air quality improvement\",\n        \"public health\",\n        \"reduced traffic\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_ulez_opponents_radical\",\n      \"name\": \"ULEZ opponents\",\n      \"archetype_group\": \"activist_opponent\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"policy reversal\",\n        \"disruption of enforcement\",\n        \"visibility of protest\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_conservative_party\",\n      \"name\": \"Conservative Party\",\n      \"archetype_group\": \"political_opponent\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"electoral gain\",\n        \"criticism of ULEZ expansion\",\n        \"local constituency concerns\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_labour_party\",\n      \"name\": \"Labour Party\",\n      \"archetype_group\": \"political_ally\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"policy success\",\n        \"electoral risk management\",\n        \"balancing environmental and local concerns\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_transport_for_london\",\n      \"name\": \"Transport for London\",\n      \"archetype_group\": \"implementing_agency\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"policy implementation\",\n        \"enforcement efficiency\",\n        \"compliance monitoring\",\n        \"revenue collection\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_van_drivers_tradespeople\",\n      \"name\": \"Van drivers, tradespeople and small businesses\",\n      \"archetype_group\": \"affected_business\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"operating_cost\",\n        \"daily_charge_burden_for_non_compliant_vans\",\n        \"livelihood_impact\",\n        \"vehicle_replacement_cost\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_low_income_households\",\n      \"name\": \"Low-income households dependent on private vehicles\",\n      \"archetype_group\": \"affected_public\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"vehicle_replacement_affordability\",\n        \"policy_fairness\",\n        \"distributional_burden\",\n        \"vehicle_dependence\"\n      ]\n    }\n  ],\n  \"blind_safe_assumptions\": [],\n  \"constraints\": [\n    {\n      \"id\": \"constraint_no_real_person_pii\",\n      \"kind\": \"safety\",\n      \"statement\": \"All agents in the simulation must be archetype agents; no real-person personally identifiable information (PII) may be used.\"\n    },\n    {\n      \"id\": \"constraint_decision_support_not_forecast\",\n      \"kind\": \"safety\",\n      \"statement\": \"The system is for decision support only, not for making forecasts or predictions about future outcomes.\"\n    },\n    {\n      \"id\": \"constraint_no_automatic_on_chain_action\",\n      \"kind\": \"safety\",\n      \"statement\": \"No automatic on-chain actions may be triggered by the simulation.\"\n    },\n    {\n      \"id\": \"constraint_no_automatic_stakeholder_weight_change\",\n      \"kind\": \"safety\",\n      \"statement\": \"Stakeholder weights must not be changed automatically by the simulation.\"\n    }\n  ],\n  \"sanitization_summary\": \"historical outcome evidence and post-implementation metrics removed before prediction\"\n}\n\nReturn JSON with keys: summary, group_reactions, ranked_opposition_groups, political_consequences, time_dynamics, secondary_reactions, benefit_burden_balance, confidence_notes. For group_reactions include group_id, direction, intensity, rationale."
+  },
+  "blind_context": {
+    "case_id": "ulez_2023_expansion",
+    "case_name": "London Ultra Low Emission Zone 2023 expansion",
+    "policy_entities": [
+      {
+        "id": "entity_ulez_policy",
+        "type": "policy",
+        "name": "ULEZ 2023 Expansion",
+        "description": "Expansion of the London Ultra Low Emission Zone to all London boroughs and the City of London effective 2023-08-29, requiring non-compliant vehicles to pay a daily charge of £12.50."
+      }
+    ],
+    "stakeholders": [
+      {
+        "id": "stakeholder_london_mayor",
+        "name": "Mayor of London",
+        "archetype_group": "policy_advocate",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "air quality improvement",
+          "public health",
+          "climate goals",
+          "political reputation"
+        ]
+      },
+      {
+        "id": "stakeholder_outer_london_residents",
+        "name": "Outer London residents",
+        "archetype_group": "affected_public",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "cost of compliance",
+          "vehicle access",
+          "local economy",
+          "personal freedom"
+        ]
+      },
+      {
+        "id": "stakeholder_inner_london_residents",
+        "name": "Inner London residents",
+        "archetype_group": "affected_public",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "air quality improvement",
+          "public health",
+          "reduced traffic"
+        ]
+      },
+      {
+        "id": "stakeholder_ulez_opponents_radical",
+        "name": "ULEZ opponents",
+        "archetype_group": "activist_opponent",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "policy reversal",
+          "disruption of enforcement",
+          "visibility of protest"
+        ]
+      },
+      {
+        "id": "stakeholder_conservative_party",
+        "name": "Conservative Party",
+        "archetype_group": "political_opponent",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "electoral gain",
+          "criticism of ULEZ expansion",
+          "local constituency concerns"
+        ]
+      },
+      {
+        "id": "stakeholder_labour_party",
+        "name": "Labour Party",
+        "archetype_group": "political_ally",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "policy success",
+          "electoral risk management",
+          "balancing environmental and local concerns"
+        ]
+      },
+      {
+        "id": "stakeholder_transport_for_london",
+        "name": "Transport for London",
+        "archetype_group": "implementing_agency",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "policy implementation",
+          "enforcement efficiency",
+          "compliance monitoring",
+          "revenue collection"
+        ]
+      },
+      {
+        "id": "stakeholder_van_drivers_tradespeople",
+        "name": "Van drivers, tradespeople and small businesses",
+        "archetype_group": "affected_business",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "operating_cost",
+          "daily_charge_burden_for_non_compliant_vans",
+          "livelihood_impact",
+          "vehicle_replacement_cost"
+        ]
+      },
+      {
+        "id": "stakeholder_low_income_households",
+        "name": "Low-income households dependent on private vehicles",
+        "archetype_group": "affected_public",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "vehicle_replacement_affordability",
+          "policy_fairness",
+          "distributional_burden",
+          "vehicle_dependence"
+        ]
+      }
+    ],
+    "blind_safe_assumptions": [],
+    "constraints": [
+      {
+        "id": "constraint_no_real_person_pii",
+        "kind": "safety",
+        "statement": "All agents in the simulation must be archetype agents; no real-person personally identifiable information (PII) may be used."
+      },
+      {
+        "id": "constraint_decision_support_not_forecast",
+        "kind": "safety",
+        "statement": "The system is for decision support only, not for making forecasts or predictions about future outcomes."
+      },
+      {
+        "id": "constraint_no_automatic_on_chain_action",
+        "kind": "safety",
+        "statement": "No automatic on-chain actions may be triggered by the simulation."
+      },
+      {
+        "id": "constraint_no_automatic_stakeholder_weight_change",
+        "kind": "safety",
+        "statement": "Stakeholder weights must not be changed automatically by the simulation."
+      }
+    ],
+    "sanitization_summary": "historical outcome evidence and post-implementation metrics removed before prediction"
+  },
+  "raw_prediction_text": "{\n  \"summary\": \"The ULEZ 2023 expansion imposes a daily charge on non-compliant vehicles across all London boroughs, creating a clear split between inner London residents who benefit from improved air quality and outer London residents, small businesses, and low-income households who bear the compliance cost. The policy generates high political salience due to concentrated burdens on vocal groups and diffuse benefits, making it a potent electoral issue for opponents.\",\n  \"group_reactions\": [\n    {\n      \"group_id\": \"stakeholder_outer_london_residents\",\n      \"direction\": \"oppose\",\n      \"intensity\": \"high\",\n      \"rationale\": \"Direct daily charge for non-compliant vehicles, perceived as unfair tax on car-dependent suburbs with limited public transport alternatives.\"\n    },\n    {\n      \"group_id\": \"stakeholder_inner_london_residents\",\n      \"direction\": \"support\",\n      \"intensity\": \"moderate\",\n      \"rationale\": \"Already experienced benefits of existing ULEZ, support expansion for cleaner air and reduced traffic, but less personally affected by new charge.\"\n    },\n    {\n      \"group_id\": \"stakeholder_ulez_opponents_radical\",\n      \"direction\": \"oppose\",\n      \"intensity\": \"very high\",\n      \"rationale\": \"Seeks policy reversal and disruption; expansion provides new target for protests and enforcement sabotage.\"\n    },\n    {\n      \"group_id\": \"stakeholder_conservative_party\",\n      \"direction\": \"oppose\",\n      \"intensity\": \"high\",\n      \"rationale\": \"Sees electoral opportunity in mobilizing outer London and business discontent; can frame as 'war on motorists' and Labour overreach.\"\n    },\n    {\n      \"group_id\": \"stakeholder_labour_party\",\n      \"direction\": \"support\",\n      \"intensity\": \"moderate\",\n      \"rationale\": \"Supports environmental goals but faces electoral risk in outer London constituencies; must manage backlash from affected voters.\"\n    },\n    {\n      \"group_id\": \"stakeholder_van_drivers_tradespeople\",\n      \"direction\": \"oppose\",\n      \"intensity\": \"very high\",\n      \"rationale\": \"Daily charge directly impacts operating costs and livelihoods; vehicle replacement is expensive and disruptive for small businesses.\"\n    },\n    {\n      \"group_id\": \"stakeholder_low_income_households\",\n      \"direction\": \"oppose\",\n      \"intensity\": \"high\",\n      \"rationale\": \"Disproportionate burden: least able to afford vehicle replacement or daily charge, yet often most dependent on older cars for work and access.\"\n    },\n    {\n      \"group_id\": \"stakeholder_transport_for_london\",\n      \"direction\": \"support\",\n      \"intensity\": \"moderate\",\n      \"rationale\": \"Responsible for implementation and enforcement; focused on operational efficiency and compliance, but may face logistical challenges from protests.\"\n    },\n    {\n      \"group_id\": \"stakeholder_london_mayor\",\n      \"direction\": \"support\",\n      \"intensity\": \"high\",\n      \"rationale\": \"Policy is signature environmental initiative; success bolsters reputation on air quality and climate, but failure or backlash damages credibility.\"\n    }\n  ],\n  \"ranked_opposition_groups\": [\n    {\n      \"group_id\": \"stakeholder_van_drivers_tradespeople\",\n      \"rank\": 1,\n      \"rationale\": \"Highest direct economic impact per actor; daily charge is a recurring cost that threatens livelihoods, leading to sustained and vocal opposition.\"\n    },\n    {\n      \"group_id\": \"stakeholder_ulez_opponents_radical\",\n      \"rank\": 2,\n      \"rationale\": \"Motivated to disrupt enforcement and gain media attention; can amplify opposition beyond their numbers through protests and civil disobedience.\"\n    },\n    {\n      \"group_id\": \"stakeholder_low_income_households\",\n      \"rank\": 3,\n      \"rationale\": \"High burden relative to income, but less organized than business groups; may be mobilized by political opponents.\"\n    },\n    {\n      \"group_id\": \"stakeholder_outer_london_residents\",\n      \"rank\": 4,\n      \"rationale\": \"Large group with diffuse costs; opposition is broad but less intense per individual than tradespeople or activists.\"\n    },\n    {\n      \"group_id\": \"stakeholder_conservative_party\",\n      \"rank\": 5,\n      \"rationale\": \"Political opponent leveraging existing discontent; opposition is strategic and electoral, not directly affected by the charge.\"\n    }\n  ],\n  \"political_consequences\": {\n    \"electoral_risk_for_advocates\": \"high\",\n    \"rationale\": \"The policy creates a clear wedge issue in outer London constituencies where Labour holds marginal seats. The concentrated burden on small businesses and car-dependent voters can be exploited by the Conservative Party and local opponents, increasing electoral risk for the Mayor and Labour Party in the next London mayoral and local elections.\",\n    \"salience_level\": \"high\",\n    \"key_swing_groups\": [\"stakeholder_outer_london_residents\", \"stakeholder_van_drivers_tradespeople\", \"stakeholder_low_income_households\"]\n  },\n  \"time_dynamics\": {\n    \"short_term_1_to_6_months\": \"High protest activity and media coverage; enforcement challenges from radical opponents; initial compliance costs dominate public discourse.\",\n    \"medium_term_6_to_18_months\": \"Gradual compliance as some replace vehicles; opposition may persist among those unable to afford replacement; political campaigns use ULEZ as key issue.\",\n    \"long_term_18_months_plus\": \"If air quality improvements become measurable, support may grow among inner London residents; but resentment in outer London may remain entrenched, especially if economic benefits are not visible.\"\n  },\n  \"secondary_reactions\": [\n    {\n      \"group_id\": \"stakeholder_labour_party\",\n      \"reaction\": \"internal tension\",\n      \"rationale\": \"Balancing environmental credibility with electoral survival in outer London; may push for mitigation measures like scrappage scheme expansion.\"\n    },\n    {\n      \"group_id\": \"stakeholder_transport_for_london\",\n      \"reaction\": \"operational strain\",\n      \"rationale\": \"Enforcement requires camera installation and data processing; protests may target cameras, increasing maintenance costs.\"\n    },\n    {\n      \"group_id\": \"stakeholder_london_mayor\",\n      \"reaction\": \"reputational risk\",\n      \"rationale\": \"Policy success or failure directly tied to mayoral legacy; may need to offer concessions or additional support to affected groups to reduce backlash.\"\n    }\n  ],\n  \"benefit_burden_balance\": {\n    \"beneficiaries\": [\"stakeholder_inner_london_residents\"],\n    \"burdened\": [\"stakeholder_outer_london_residents\", \"stakeholder_van_drivers_tradespeople\", \"stakeholder_low_income_households\"],\n    \"imbalance_severity\": \"high\",\n    \"rationale\": \"Benefits (cleaner air, health) are diffuse and long-term, accruing mainly to inner London. Burdens (daily charge, vehicle replacement cost) are immediate, concentrated, and fall on outer London residents, small businesses, and low-income households, creating a classic concentrated-costs/diffuse-benefits political dynamic that fuels opposition.\"\n  },\n  \"confidence_notes\": {\n    \"overall_confidence\": \"moderate\",\n    \"limitations\": [\n      \"No historical outcome data or post-implementation metrics available; analysis based solely on stakeholder incentives and policy design.\",\n      \"Visible prior stances are unknown; actual positions may differ from archetype assumptions.\",\n      \"Blind safe assumptions list is empty; no additional context provided to calibrate intensity or likelihood of reactions.\"\n    ],\n    \"key_uncertainties\": [\n      \"Effectiveness of mitigation measures (e.g., scrappage schemes) in reducing burden on low-income households.\",\n      \"Degree of public transport alternatives in outer London, which affects dependence on private vehicles.\",\n      \"Potential for legal challenges or government intervention to delay or modify the expansion.\"\n    ]\n  }\n}",
+  "raw_prediction": {
+    "summary": "The ULEZ 2023 expansion imposes a daily charge on non-compliant vehicles across all London boroughs, creating a clear split between inner London residents who benefit from improved air quality and outer London residents, small businesses, and low-income households who bear the compliance cost. The policy generates high political salience due to concentrated burdens on vocal groups and diffuse benefits, making it a potent electoral issue for opponents.",
+    "group_reactions": [
+      {
+        "group_id": "stakeholder_outer_london_residents",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "Direct daily charge for non-compliant vehicles, perceived as unfair tax on car-dependent suburbs with limited public transport alternatives."
+      },
+      {
+        "group_id": "stakeholder_inner_london_residents",
+        "direction": "support",
+        "intensity": "moderate",
+        "rationale": "Already experienced benefits of existing ULEZ, support expansion for cleaner air and reduced traffic, but less personally affected by new charge."
+      },
+      {
+        "group_id": "stakeholder_ulez_opponents_radical",
+        "direction": "oppose",
+        "intensity": "very high",
+        "rationale": "Seeks policy reversal and disruption; expansion provides new target for protests and enforcement sabotage."
+      },
+      {
+        "group_id": "stakeholder_conservative_party",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "Sees electoral opportunity in mobilizing outer London and business discontent; can frame as 'war on motorists' and Labour overreach."
+      },
+      {
+        "group_id": "stakeholder_labour_party",
+        "direction": "support",
+        "intensity": "moderate",
+        "rationale": "Supports environmental goals but faces electoral risk in outer London constituencies; must manage backlash from affected voters."
+      },
+      {
+        "group_id": "stakeholder_van_drivers_tradespeople",
+        "direction": "oppose",
+        "intensity": "very high",
+        "rationale": "Daily charge directly impacts operating costs and livelihoods; vehicle replacement is expensive and disruptive for small businesses."
+      },
+      {
+        "group_id": "stakeholder_low_income_households",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "Disproportionate burden: least able to afford vehicle replacement or daily charge, yet often most dependent on older cars for work and access."
+      },
+      {
+        "group_id": "stakeholder_transport_for_london",
+        "direction": "support",
+        "intensity": "moderate",
+        "rationale": "Responsible for implementation and enforcement; focused on operational efficiency and compliance, but may face logistical challenges from protests."
+      },
+      {
+        "group_id": "stakeholder_london_mayor",
+        "direction": "support",
+        "intensity": "high",
+        "rationale": "Policy is signature environmental initiative; success bolsters reputation on air quality and climate, but failure or backlash damages credibility."
+      }
+    ],
+    "ranked_opposition_groups": [
+      {
+        "group_id": "stakeholder_van_drivers_tradespeople",
+        "rank": 1,
+        "rationale": "Highest direct economic impact per actor; daily charge is a recurring cost that threatens livelihoods, leading to sustained and vocal opposition."
+      },
+      {
+        "group_id": "stakeholder_ulez_opponents_radical",
+        "rank": 2,
+        "rationale": "Motivated to disrupt enforcement and gain media attention; can amplify opposition beyond their numbers through protests and civil disobedience."
+      },
+      {
+        "group_id": "stakeholder_low_income_households",
+        "rank": 3,
+        "rationale": "High burden relative to income, but less organized than business groups; may be mobilized by political opponents."
+      },
+      {
+        "group_id": "stakeholder_outer_london_residents",
+        "rank": 4,
+        "rationale": "Large group with diffuse costs; opposition is broad but less intense per individual than tradespeople or activists."
+      },
+      {
+        "group_id": "stakeholder_conservative_party",
+        "rank": 5,
+        "rationale": "Political opponent leveraging existing discontent; opposition is strategic and electoral, not directly affected by the charge."
+      }
+    ],
+    "political_consequences": {
+      "electoral_risk_for_advocates": "high",
+      "rationale": "The policy creates a clear wedge issue in outer London constituencies where Labour holds marginal seats. The concentrated burden on small businesses and car-dependent voters can be exploited by the Conservative Party and local opponents, increasing electoral risk for the Mayor and Labour Party in the next London mayoral and local elections.",
+      "salience_level": "high",
+      "key_swing_groups": [
+        "stakeholder_outer_london_residents",
+        "stakeholder_van_drivers_tradespeople",
+        "stakeholder_low_income_households"
+      ]
+    },
+    "time_dynamics": {
+      "short_term_1_to_6_months": "High protest activity and media coverage; enforcement challenges from radical opponents; initial compliance costs dominate public discourse.",
+      "medium_term_6_to_18_months": "Gradual compliance as some replace vehicles; opposition may persist among those unable to afford replacement; political campaigns use ULEZ as key issue.",
+      "long_term_18_months_plus": "If air quality improvements become measurable, support may grow among inner London residents; but resentment in outer London may remain entrenched, especially if economic benefits are not visible."
+    },
+    "secondary_reactions": [
+      {
+        "group_id": "stakeholder_labour_party",
+        "reaction": "internal tension",
+        "rationale": "Balancing environmental credibility with electoral survival in outer London; may push for mitigation measures like scrappage scheme expansion."
+      },
+      {
+        "group_id": "stakeholder_transport_for_london",
+        "reaction": "operational strain",
+        "rationale": "Enforcement requires camera installation and data processing; protests may target cameras, increasing maintenance costs."
+      },
+      {
+        "group_id": "stakeholder_london_mayor",
+        "reaction": "reputational risk",
+        "rationale": "Policy success or failure directly tied to mayoral legacy; may need to offer concessions or additional support to affected groups to reduce backlash."
+      }
+    ],
+    "benefit_burden_balance": {
+      "beneficiaries": [
+        "stakeholder_inner_london_residents"
+      ],
+      "burdened": [
+        "stakeholder_outer_london_residents",
+        "stakeholder_van_drivers_tradespeople",
+        "stakeholder_low_income_households"
+      ],
+      "imbalance_severity": "high",
+      "rationale": "Benefits (cleaner air, health) are diffuse and long-term, accruing mainly to inner London. Burdens (daily charge, vehicle replacement cost) are immediate, concentrated, and fall on outer London residents, small businesses, and low-income households, creating a classic concentrated-costs/diffuse-benefits political dynamic that fuels opposition."
+    },
+    "confidence_notes": {
+      "overall_confidence": "moderate",
+      "limitations": [
+        "No historical outcome data or post-implementation metrics available; analysis based solely on stakeholder incentives and policy design.",
+        "Visible prior stances are unknown; actual positions may differ from archetype assumptions.",
+        "Blind safe assumptions list is empty; no additional context provided to calibrate intensity or likelihood of reactions."
+      ],
+      "key_uncertainties": [
+        "Effectiveness of mitigation measures (e.g., scrappage schemes) in reducing burden on low-income households.",
+        "Degree of public transport alternatives in outer London, which affects dependence on private vehicles.",
+        "Potential for legal challenges or government intervention to delay or modify the expansion."
+      ]
+    }
+  },
+  "prediction": {
+    "summary": "The ULEZ 2023 expansion imposes a daily charge on non-compliant vehicles across all London boroughs, creating a clear split between inner London residents who benefit from improved air quality and outer London residents, small businesses, and low-income households who bear the compliance cost. The policy generates high political salience due to concentrated burdens on vocal groups and diffuse benefits, making it a potent electoral issue for opponents.",
+    "group_reactions": [
+      {
+        "group_id": "stakeholder_outer_london_residents",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "Direct daily charge for non-compliant vehicles, perceived as unfair tax on car-dependent suburbs with limited public transport alternatives."
+      },
+      {
+        "group_id": "stakeholder_inner_london_residents",
+        "direction": "support",
+        "intensity": "moderate",
+        "rationale": "Already experienced benefits of existing ULEZ, support expansion for cleaner air and reduced traffic, but less personally affected by new charge."
+      },
+      {
+        "group_id": "stakeholder_ulez_opponents_radical",
+        "direction": "oppose",
+        "intensity": "very high",
+        "rationale": "Seeks policy reversal and disruption; expansion provides new target for protests and enforcement sabotage."
+      },
+      {
+        "group_id": "stakeholder_conservative_party",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "Sees electoral opportunity in mobilizing outer London and business discontent; can frame as 'war on motorists' and Labour overreach."
+      },
+      {
+        "group_id": "stakeholder_labour_party",
+        "direction": "support",
+        "intensity": "moderate",
+        "rationale": "Supports environmental goals but faces electoral risk in outer London constituencies; must manage backlash from affected voters."
+      },
+      {
+        "group_id": "stakeholder_van_drivers_tradespeople",
+        "direction": "oppose",
+        "intensity": "very high",
+        "rationale": "Daily charge directly impacts operating costs and livelihoods; vehicle replacement is expensive and disruptive for small businesses."
+      },
+      {
+        "group_id": "stakeholder_low_income_households",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "Disproportionate burden: least able to afford vehicle replacement or daily charge, yet often most dependent on older cars for work and access."
+      },
+      {
+        "group_id": "stakeholder_transport_for_london",
+        "direction": "support",
+        "intensity": "moderate",
+        "rationale": "Responsible for implementation and enforcement; focused on operational efficiency and compliance, but may face logistical challenges from protests."
+      },
+      {
+        "group_id": "stakeholder_london_mayor",
+        "direction": "support",
+        "intensity": "high",
+        "rationale": "Policy is signature environmental initiative; success bolsters reputation on air quality and climate, but failure or backlash damages credibility."
+      }
+    ],
+    "ranked_opposition_groups": [
+      {
+        "group_id": "stakeholder_van_drivers_tradespeople",
+        "rank": 1,
+        "rationale": "Highest direct economic impact per actor; daily charge is a recurring cost that threatens livelihoods, leading to sustained and vocal opposition."
+      },
+      {
+        "group_id": "stakeholder_ulez_opponents_radical",
+        "rank": 2,
+        "rationale": "Motivated to disrupt enforcement and gain media attention; can amplify opposition beyond their numbers through protests and civil disobedience."
+      },
+      {
+        "group_id": "stakeholder_low_income_households",
+        "rank": 3,
+        "rationale": "High burden relative to income, but less organized than business groups; may be mobilized by political opponents."
+      },
+      {
+        "group_id": "stakeholder_outer_london_residents",
+        "rank": 4,
+        "rationale": "Large group with diffuse costs; opposition is broad but less intense per individual than tradespeople or activists."
+      },
+      {
+        "group_id": "stakeholder_conservative_party",
+        "rank": 5,
+        "rationale": "Political opponent leveraging existing discontent; opposition is strategic and electoral, not directly affected by the charge."
+      }
+    ],
+    "political_consequences": [
+      {
+        "electoral_risk_for_advocates": "high",
+        "rationale": "The policy creates a clear wedge issue in outer London constituencies where Labour holds marginal seats. The concentrated burden on small businesses and car-dependent voters can be exploited by the Conservative Party and local opponents, increasing electoral risk for the Mayor and Labour Party in the next London mayoral and local elections.",
+        "salience_level": "high",
+        "key_swing_groups": [
+          "stakeholder_outer_london_residents",
+          "stakeholder_van_drivers_tradespeople",
+          "stakeholder_low_income_households"
+        ]
+      }
+    ],
+    "time_dynamics": [
+      {
+        "short_term_1_to_6_months": "High protest activity and media coverage; enforcement challenges from radical opponents; initial compliance costs dominate public discourse.",
+        "medium_term_6_to_18_months": "Gradual compliance as some replace vehicles; opposition may persist among those unable to afford replacement; political campaigns use ULEZ as key issue.",
+        "long_term_18_months_plus": "If air quality improvements become measurable, support may grow among inner London residents; but resentment in outer London may remain entrenched, especially if economic benefits are not visible."
+      }
+    ],
+    "secondary_reactions": [
+      {
+        "group_id": "stakeholder_labour_party",
+        "reaction": "internal tension",
+        "rationale": "Balancing environmental credibility with electoral survival in outer London; may push for mitigation measures like scrappage scheme expansion."
+      },
+      {
+        "group_id": "stakeholder_transport_for_london",
+        "reaction": "operational strain",
+        "rationale": "Enforcement requires camera installation and data processing; protests may target cameras, increasing maintenance costs."
+      },
+      {
+        "group_id": "stakeholder_london_mayor",
+        "reaction": "reputational risk",
+        "rationale": "Policy success or failure directly tied to mayoral legacy; may need to offer concessions or additional support to affected groups to reduce backlash."
+      }
+    ],
+    "benefit_burden_balance": [
+      {
+        "beneficiaries": [
+          "stakeholder_inner_london_residents"
+        ],
+        "burdened": [
+          "stakeholder_outer_london_residents",
+          "stakeholder_van_drivers_tradespeople",
+          "stakeholder_low_income_households"
+        ],
+        "imbalance_severity": "high",
+        "rationale": "Benefits (cleaner air, health) are diffuse and long-term, accruing mainly to inner London. Burdens (daily charge, vehicle replacement cost) are immediate, concentrated, and fall on outer London residents, small businesses, and low-income households, creating a classic concentrated-costs/diffuse-benefits political dynamic that fuels opposition."
+      }
+    ],
+    "confidence_notes": [
+      {
+        "overall_confidence": "moderate",
+        "limitations": [
+          "No historical outcome data or post-implementation metrics available; analysis based solely on stakeholder incentives and policy design.",
+          "Visible prior stances are unknown; actual positions may differ from archetype assumptions.",
+          "Blind safe assumptions list is empty; no additional context provided to calibrate intensity or likelihood of reactions."
+        ],
+        "key_uncertainties": [
+          "Effectiveness of mitigation measures (e.g., scrappage schemes) in reducing burden on low-income households.",
+          "Degree of public transport alternatives in outer London, which affects dependence on private vehicles.",
+          "Potential for legal challenges or government intervention to delay or modify the expansion."
+        ]
+      }
+    ]
+  }
+}

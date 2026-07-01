@@ -1,0 +1,994 @@
+{
+  "case_id": "ulez_2023_expansion",
+  "case_name": "London Ultra Low Emission Zone 2023 expansion",
+  "entities": [
+    {
+      "id": "entity_ulez_policy",
+      "type": "policy",
+      "name": "ULEZ 2023 Expansion",
+      "description": "Expansion of the London Ultra Low Emission Zone to all London boroughs and the City of London effective 2023-08-29, requiring non-compliant vehicles to pay a daily charge of £12.50.",
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "A2_daily_charge",
+        "A3_emission_standards"
+      ]
+    },
+    {
+      "id": "entity_uxbridge_by_election",
+      "type": "political_event",
+      "name": "Uxbridge and South Ruislip by-election 2023",
+      "description": "By-election held on 2023-07-20 resulting in a Conservative hold, with ULEZ expansion identified as a key issue.",
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ]
+    },
+    {
+      "id": "entity_camera_vandalism",
+      "type": "public_reaction",
+      "name": "ULEZ camera vandalism and enforcement resistance",
+      "description": "416 ULEZ-related offences recorded between 2023-08-01 and 2023-10-15, including theft, arson, and criminal damage, with some perpetrators self-identifying as 'Blade Runners'.",
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ]
+    },
+    {
+      "id": "entity_compliance_change",
+      "type": "policy_outcome",
+      "name": "Compliance rate change after 6 months",
+      "description": "London-wide compliance rate rose from 91.6% in June 2023 to 96.2% after 6 months; average daily non-compliant vehicles reduced by 90,000 (53%).",
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ]
+    },
+    {
+      "id": "entity_air_quality_change",
+      "type": "policy_outcome",
+      "name": "Air quality and emissions changes after 6 months",
+      "description": "Outer London NOx emissions from cars and vans lower by 13% and 7% respectively vs no-ULEZ scenario; outer London roadside NO2 concentrations up to 4.4% lower in first 6 months.",
+      "evidence_fact_ids": [
+        "D3_air_quality_and_emissions_changes",
+        "D4_no2_emissions_specific_metric"
+      ]
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "stakeholder_london_mayor",
+      "name": "Mayor of London (Sadiq Khan)",
+      "archetype_group": "policy_advocate",
+      "stance_prior": "support",
+      "interests": [
+        "air quality improvement",
+        "public health",
+        "climate goals",
+        "political reputation"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "D3_air_quality_and_emissions_changes"
+      ]
+    },
+    {
+      "id": "stakeholder_outer_london_residents",
+      "name": "Outer London residents",
+      "archetype_group": "affected_public",
+      "stance_prior": "oppose",
+      "interests": [
+        "cost of compliance",
+        "vehicle access",
+        "local economy",
+        "personal freedom"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution",
+        "C3_public_view_on_camera_vandalism"
+      ]
+    },
+    {
+      "id": "stakeholder_inner_london_residents",
+      "name": "Inner London residents",
+      "archetype_group": "affected_public",
+      "stance_prior": "support",
+      "interests": [
+        "air quality improvement",
+        "public health",
+        "reduced traffic"
+      ],
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution"
+      ]
+    },
+    {
+      "id": "stakeholder_ulez_opponents_radical",
+      "name": "ULEZ opponents (radical subgroup)",
+      "archetype_group": "activist_opponent",
+      "stance_prior": "oppose",
+      "interests": [
+        "policy reversal",
+        "disruption of enforcement",
+        "visibility of protest"
+      ],
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ]
+    },
+    {
+      "id": "stakeholder_conservative_party",
+      "name": "Conservative Party (local and national)",
+      "archetype_group": "political_opponent",
+      "stance_prior": "oppose",
+      "interests": [
+        "electoral gain",
+        "criticism of ULEZ expansion",
+        "local constituency concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ]
+    },
+    {
+      "id": "stakeholder_labour_party",
+      "name": "Labour Party (local and national)",
+      "archetype_group": "political_ally",
+      "stance_prior": "support",
+      "interests": [
+        "policy success",
+        "electoral risk management",
+        "balancing environmental and local concerns"
+      ],
+      "evidence_fact_ids": [
+        "B1_uxbridge_by_election_result",
+        "B2_ulez_as_key_by_election_issue"
+      ]
+    },
+    {
+      "id": "stakeholder_transport_for_london",
+      "name": "Transport for London (TfL)",
+      "archetype_group": "implementing_agency",
+      "stance_prior": "support",
+      "interests": [
+        "policy implementation",
+        "enforcement efficiency",
+        "compliance monitoring",
+        "revenue collection"
+      ],
+      "evidence_fact_ids": [
+        "A1_policy_effective_date_and_scope",
+        "A2_daily_charge",
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ]
+    },
+    {
+      "id": "stakeholder_van_drivers_tradespeople",
+      "name": "Van drivers, tradespeople and small businesses",
+      "archetype_group": "affected_business",
+      "stance_prior": "oppose",
+      "interests": [
+        "operating_cost",
+        "daily_charge_burden_for_non_compliant_vans",
+        "livelihood_impact",
+        "vehicle_replacement_cost"
+      ],
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "A2_daily_charge"
+      ],
+      "evidence_note": "Vans have a lower six-month compliance rate than cars in the truth set, indicating heavier transition pressure for van-dependent workers and small businesses."
+    },
+    {
+      "id": "stakeholder_low_income_households",
+      "name": "Low-income households dependent on private vehicles",
+      "archetype_group": "affected_public",
+      "stance_prior": "oppose",
+      "interests": [
+        "vehicle_replacement_affordability",
+        "policy_fairness",
+        "distributional_burden",
+        "vehicle_dependence"
+      ],
+      "evidence_fact_ids": [
+        "A2_daily_charge",
+        "C1_public_opinion_distribution",
+        "D3_air_quality_and_emissions_changes"
+      ],
+      "evidence_note": "The case graph models distributional pain alongside air-quality benefits: the daily charge and outer-London opposition evidence anchor burden concerns, while air-quality evidence anchors benefits."
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "assumption_ulez_causal_election_impact",
+      "statement": "ULEZ expansion was a key factor in the Labour Party's narrow loss in the Uxbridge and South Ruislip by-election.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "B2_ulez_as_key_by_election_issue"
+      ]
+    },
+    {
+      "id": "assumption_compliance_trend_continues",
+      "statement": "The observed compliance rate increase from 91.6% to 96.2% will continue or stabilize at a high level beyond 6 months.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change"
+      ]
+    },
+    {
+      "id": "assumption_air_quality_improvement_sustained",
+      "statement": "The reduction in NOx emissions and NO2 concentrations observed in the first 6 months will be sustained or increase over time.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "D3_air_quality_and_emissions_changes"
+      ]
+    },
+    {
+      "id": "assumption_public_opinion_stable",
+      "statement": "Public opinion distribution (47% support, 42% oppose London-wide) remains stable over the simulation period.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "C1_public_opinion_distribution"
+      ]
+    },
+    {
+      "id": "assumption_vandalism_escalation",
+      "statement": "Camera vandalism and enforcement resistance will escalate if opposition remains high.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "C2_camera_vandalism_and_enforcement_resistance",
+        "C3_public_view_on_camera_vandalism"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "constraint_no_real_person_pii",
+      "kind": "safety",
+      "statement": "All agents in the simulation must be archetype agents; no real-person personally identifiable information (PII) may be used.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "constraint_decision_support_not_forecast",
+      "kind": "safety",
+      "statement": "The system is for decision support only, not for making forecasts or predictions about future outcomes.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "constraint_no_automatic_on_chain_action",
+      "kind": "safety",
+      "statement": "No automatic on-chain actions may be triggered by the simulation.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "constraint_no_automatic_stakeholder_weight_change",
+      "kind": "safety",
+      "statement": "Stakeholder weights must not be changed automatically by the simulation.",
+      "evidence_fact_ids": []
+    }
+  ],
+  "generated_at": "2026-07-01T11:04:24.683760+00:00",
+  "extraction_method": "llm_deepseek_openai_compatible",
+  "source_truth_set": {
+    "path": "data/cases/ulez_2023/truth_set.json",
+    "fact_count": 12
+  },
+  "evidence": [
+    {
+      "fact_id": "A1_policy_effective_date_and_scope",
+      "category": "A. 政策基础事实",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone/ulez-expansion-2023",
+        "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone/ulez-expansion-2023"
+      ],
+      "quotes": [
+        "expanded across all London boroughs on 29 August 2023",
+        "all London boroughs and the City of London"
+      ]
+    },
+    {
+      "fact_id": "A2_daily_charge",
+      "category": "A. 政策基础事实",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone"
+      ],
+      "quotes": [
+        "pay a £12.50 daily charge"
+      ]
+    },
+    {
+      "fact_id": "A3_emission_standards",
+      "category": "A. 政策基础事实",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://commonslibrary.parliament.uk/research-briefings/cbp-9816/",
+        "https://commonslibrary.parliament.uk/research-briefings/cbp-9816/"
+      ],
+      "quotes": [
+        "Euro 4 for petrol cars and vans",
+        "Euro 6 for diesel cars and vans"
+      ]
+    },
+    {
+      "fact_id": "B1_uxbridge_by_election_result",
+      "category": "B. 政治后果",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://members.parliament.uk/constituency/3817/election/412",
+        "https://members.parliament.uk/constituency/3817/election/412"
+      ],
+      "quotes": [
+        "Conservative Hold",
+        "Majority 495"
+      ]
+    },
+    {
+      "fact_id": "B2_ulez_as_key_by_election_issue",
+      "category": "B. 政治后果",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://www.instituteforgovernment.org.uk/comment/uxbridge-crossroads-net-zero",
+        "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion"
+      ],
+      "quotes": [
+        "key factor in Labour's narrow loss",
+        "held responsible for Labour’s failure"
+      ]
+    },
+    {
+      "fact_id": "C1_public_opinion_distribution",
+      "category": "C. 公众反应",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+        "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion"
+      ],
+      "quotes": [
+        "47% supporting ... while 42% are opposed",
+        "outer London ... 51% to 38%"
+      ]
+    },
+    {
+      "fact_id": "C2_camera_vandalism_and_enforcement_resistance",
+      "category": "C. 公众反应",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://www.met.police.uk/foi-ai/metropolitan-police/disclosure-2023/november-2023/crimes-ulez-cameras-august-october2023/",
+        "https://www.met.police.uk/SysSiteAssets/foi-media/metropolitan-police/disclosure_2023/november_2023/crimes-ulez-cameras-august-october2023.xlsx",
+        "https://news.sky.com/story/police-release-image-of-anti-ulez-suspect-as-hundreds-of-cameras-damaged-or-stolen-12942206"
+      ],
+      "quotes": [
+        "Grand Total 416",
+        "Stolen 74; Damaged 358",
+        "describe themselves as \"blade runners\""
+      ]
+    },
+    {
+      "fact_id": "C3_public_view_on_camera_vandalism",
+      "category": "C. 公众反应",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+        "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion"
+      ],
+      "quotes": [
+        "opposed these actions by 51% to 32%",
+        "support the lawbreaking ... 51% to 36%"
+      ]
+    },
+    {
+      "fact_id": "D1_six_month_compliance_rate_change",
+      "category": "D. 政策实际效果（6 个月后）",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report"
+      ],
+      "quotes": [
+        "96.2 per cent, up from 91.6 per cent",
+        "97.1 per cent of cars and 88.9 per cent of vans"
+      ]
+    },
+    {
+      "fact_id": "D2_non_compliant_vehicle_count_change",
+      "category": "D. 政策实际效果（6 个月后）",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report"
+      ],
+      "quotes": [
+        "90,000 fewer non-compliant vehicles",
+        "53 per cent reduction"
+      ]
+    },
+    {
+      "fact_id": "D3_air_quality_and_emissions_changes",
+      "category": "D. 政策实际效果（6 个月后）",
+      "confidence_status": "已确认",
+      "source_urls": [
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report"
+      ],
+      "quotes": [
+        "13 per cent and 7 per cent lower",
+        "up to 4.4 per cent lower",
+        "21 per cent lower in outer London"
+      ]
+    },
+    {
+      "fact_id": "D4_no2_emissions_specific_metric",
+      "category": "D. 政策实际效果（6 个月后）",
+      "confidence_status": "未找到",
+      "source_urls": [
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report"
+      ],
+      "quotes": [
+        "NOX emissions",
+        "roadside nitrogen dioxide (NO2) concentrations"
+      ]
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "assumption:assumption_air_quality_improvement_sustained",
+        "label": "The reduction in NOx emissions and NO2 concentrations observed in the first 6 months will be sustained or increase over time.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assumption_compliance_trend_continues",
+        "label": "The observed compliance rate increase from 91.6% to 96.2% will continue or stabilize at a high level beyond 6 months.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assumption_public_opinion_stable",
+        "label": "Public opinion distribution (47% support, 42% oppose London-wide) remains stable over the simulation period.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assumption_ulez_causal_election_impact",
+        "label": "ULEZ expansion was a key factor in the Labour Party's narrow loss in the Uxbridge and South Ruislip by-election.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assumption_vandalism_escalation",
+        "label": "Camera vandalism and enforcement resistance will escalate if opposition remains high.",
+        "kind": "assumption"
+      },
+      {
+        "id": "case:ulez_2023_expansion",
+        "label": "ulez_2023_expansion",
+        "kind": "case"
+      },
+      {
+        "id": "constraint:constraint_decision_support_not_forecast",
+        "label": "The system is for decision support only, not for making forecasts or predictions about future outcomes.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:constraint_no_automatic_on_chain_action",
+        "label": "No automatic on-chain actions may be triggered by the simulation.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:constraint_no_automatic_stakeholder_weight_change",
+        "label": "Stakeholder weights must not be changed automatically by the simulation.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:constraint_no_real_person_pii",
+        "label": "All agents in the simulation must be archetype agents; no real-person personally identifiable information (PII) may be used.",
+        "kind": "constraint"
+      },
+      {
+        "id": "entity:entity_air_quality_change",
+        "label": "Air quality and emissions changes after 6 months",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:entity_camera_vandalism",
+        "label": "ULEZ camera vandalism and enforcement resistance",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:entity_compliance_change",
+        "label": "Compliance rate change after 6 months",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:entity_ulez_policy",
+        "label": "ULEZ 2023 Expansion",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:entity_uxbridge_by_election",
+        "label": "Uxbridge and South Ruislip by-election 2023",
+        "kind": "entity"
+      },
+      {
+        "id": "evidence:A1_policy_effective_date_and_scope",
+        "label": "A1_policy_effective_date_and_scope",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:A2_daily_charge",
+        "label": "A2_daily_charge",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:A3_emission_standards",
+        "label": "A3_emission_standards",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:B1_uxbridge_by_election_result",
+        "label": "B1_uxbridge_by_election_result",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:B2_ulez_as_key_by_election_issue",
+        "label": "B2_ulez_as_key_by_election_issue",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:C1_public_opinion_distribution",
+        "label": "C1_public_opinion_distribution",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:C2_camera_vandalism_and_enforcement_resistance",
+        "label": "C2_camera_vandalism_and_enforcement_resistance",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:C3_public_view_on_camera_vandalism",
+        "label": "C3_public_view_on_camera_vandalism",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:D1_six_month_compliance_rate_change",
+        "label": "D1_six_month_compliance_rate_change",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:D2_non_compliant_vehicle_count_change",
+        "label": "D2_non_compliant_vehicle_count_change",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:D3_air_quality_and_emissions_changes",
+        "label": "D3_air_quality_and_emissions_changes",
+        "kind": "evidence"
+      },
+      {
+        "id": "evidence:D4_no2_emissions_specific_metric",
+        "label": "D4_no2_emissions_specific_metric",
+        "kind": "evidence"
+      },
+      {
+        "id": "stakeholder:stakeholder_conservative_party",
+        "label": "Conservative Party (local and national)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_inner_london_residents",
+        "label": "Inner London residents",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_labour_party",
+        "label": "Labour Party (local and national)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_london_mayor",
+        "label": "Mayor of London (Sadiq Khan)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_low_income_households",
+        "label": "Low-income households dependent on private vehicles",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_outer_london_residents",
+        "label": "Outer London residents",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_transport_for_london",
+        "label": "Transport for London (TfL)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_ulez_opponents_radical",
+        "label": "ULEZ opponents (radical subgroup)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stakeholder_van_drivers_tradespeople",
+        "label": "Van drivers, tradespeople and small businesses",
+        "kind": "stakeholder"
+      }
+    ],
+    "edges": [
+      {
+        "source": "assumption:assumption_air_quality_improvement_sustained",
+        "target": "evidence:D3_air_quality_and_emissions_changes",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "assumption:assumption_compliance_trend_continues",
+        "target": "evidence:D1_six_month_compliance_rate_change",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "assumption:assumption_public_opinion_stable",
+        "target": "evidence:C1_public_opinion_distribution",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "assumption:assumption_ulez_causal_election_impact",
+        "target": "evidence:B2_ulez_as_key_by_election_issue",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "assumption:assumption_vandalism_escalation",
+        "target": "evidence:C2_camera_vandalism_and_enforcement_resistance",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "assumption:assumption_vandalism_escalation",
+        "target": "evidence:C3_public_view_on_camera_vandalism",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "assumption:assumption_air_quality_improvement_sustained",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "assumption:assumption_compliance_trend_continues",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "assumption:assumption_public_opinion_stable",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "assumption:assumption_ulez_causal_election_impact",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "assumption:assumption_vandalism_escalation",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "constraint:constraint_decision_support_not_forecast",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "constraint:constraint_no_automatic_on_chain_action",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "constraint:constraint_no_automatic_stakeholder_weight_change",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "constraint:constraint_no_real_person_pii",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "entity:entity_air_quality_change",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "entity:entity_camera_vandalism",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "entity:entity_compliance_change",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "entity:entity_ulez_policy",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "entity:entity_uxbridge_by_election",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:A1_policy_effective_date_and_scope",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:A2_daily_charge",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:A3_emission_standards",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:B1_uxbridge_by_election_result",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:B2_ulez_as_key_by_election_issue",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:C1_public_opinion_distribution",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:C2_camera_vandalism_and_enforcement_resistance",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:C3_public_view_on_camera_vandalism",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:D1_six_month_compliance_rate_change",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:D2_non_compliant_vehicle_count_change",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:D3_air_quality_and_emissions_changes",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "evidence:D4_no2_emissions_specific_metric",
+        "type": "HAS_EVIDENCE"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_conservative_party",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_inner_london_residents",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_labour_party",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_london_mayor",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_low_income_households",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_outer_london_residents",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_transport_for_london",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_ulez_opponents_radical",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:ulez_2023_expansion",
+        "target": "stakeholder:stakeholder_van_drivers_tradespeople",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "entity:entity_air_quality_change",
+        "target": "evidence:D3_air_quality_and_emissions_changes",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_air_quality_change",
+        "target": "evidence:D4_no2_emissions_specific_metric",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_camera_vandalism",
+        "target": "evidence:C2_camera_vandalism_and_enforcement_resistance",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_camera_vandalism",
+        "target": "evidence:C3_public_view_on_camera_vandalism",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_compliance_change",
+        "target": "evidence:D1_six_month_compliance_rate_change",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_compliance_change",
+        "target": "evidence:D2_non_compliant_vehicle_count_change",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_ulez_policy",
+        "target": "evidence:A1_policy_effective_date_and_scope",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_ulez_policy",
+        "target": "evidence:A2_daily_charge",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_ulez_policy",
+        "target": "evidence:A3_emission_standards",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_uxbridge_by_election",
+        "target": "evidence:B1_uxbridge_by_election_result",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "entity:entity_uxbridge_by_election",
+        "target": "evidence:B2_ulez_as_key_by_election_issue",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_conservative_party",
+        "target": "evidence:B1_uxbridge_by_election_result",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_conservative_party",
+        "target": "evidence:B2_ulez_as_key_by_election_issue",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_inner_london_residents",
+        "target": "evidence:C1_public_opinion_distribution",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_labour_party",
+        "target": "evidence:B1_uxbridge_by_election_result",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_labour_party",
+        "target": "evidence:B2_ulez_as_key_by_election_issue",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_london_mayor",
+        "target": "evidence:A1_policy_effective_date_and_scope",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_london_mayor",
+        "target": "evidence:D3_air_quality_and_emissions_changes",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_low_income_households",
+        "target": "evidence:A2_daily_charge",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_low_income_households",
+        "target": "evidence:C1_public_opinion_distribution",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_low_income_households",
+        "target": "evidence:D3_air_quality_and_emissions_changes",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_outer_london_residents",
+        "target": "evidence:C1_public_opinion_distribution",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_outer_london_residents",
+        "target": "evidence:C3_public_view_on_camera_vandalism",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_transport_for_london",
+        "target": "evidence:A1_policy_effective_date_and_scope",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_transport_for_london",
+        "target": "evidence:A2_daily_charge",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_transport_for_london",
+        "target": "evidence:D1_six_month_compliance_rate_change",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_transport_for_london",
+        "target": "evidence:D2_non_compliant_vehicle_count_change",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_ulez_opponents_radical",
+        "target": "evidence:C2_camera_vandalism_and_enforcement_resistance",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_ulez_opponents_radical",
+        "target": "evidence:C3_public_view_on_camera_vandalism",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_van_drivers_tradespeople",
+        "target": "evidence:A2_daily_charge",
+        "type": "SUPPORTED_BY"
+      },
+      {
+        "source": "stakeholder:stakeholder_van_drivers_tradespeople",
+        "target": "evidence:D1_six_month_compliance_rate_change",
+        "type": "SUPPORTED_BY"
+      }
+    ]
+  },
+  "llm": {
+    "provider": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-chat"
+  },
+  "augmented_at": "2026-07-01T11:14:42.012975+00:00",
+  "augmentation_notes": [
+    "Added van drivers/tradespeople/small businesses as a distinct high-impact affected_business group.",
+    "Added low-income households as a distinct affected_public group for distributional burden analysis."
+  ]
+}

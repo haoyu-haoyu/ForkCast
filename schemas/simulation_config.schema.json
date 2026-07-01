@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policy-impact-sandbox.local/schemas/simulation_config.schema.json",
+  "title": "Simulation Config",
+  "type": "object",
+  "required": ["case_id", "mode", "agent_count", "rounds", "random_seed"],
+  "additionalProperties": true,
+  "properties": {
+    "case_id": { "type": "string" },
+    "mode": { "enum": ["mock", "oasis"] },
+    "agent_count": { "type": "integer", "minimum": 1, "maximum": 200 },
+    "rounds": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "random_seed": { "type": "integer" },
+    "decision_support_disclaimer": { "type": "string" }
+  }
+}
