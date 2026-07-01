@@ -23,3 +23,25 @@ This impact report is generated from mock interaction events for dashboard demon
 - targeted support for van-dependent small businesses: reduces the highest-impact economic pressure without changing stakeholder weights automatically
 - low-income household transition assistance: addresses distributional burden while preserving air-quality objectives
 - visible enforcement legitimacy and camera-protection plan: responds to enforcement backlash without escalating automated actions
+
+## Robustness
+
+Mode: `real_llm`. Extraction rerun: `False`.
+
+### Repeat Stability
+
+- R1: 5/5 runs agree (stable); majority `PARTIAL`
+- R2: 5/5 runs agree (stable); majority `HIT`
+- R3: 5/5 runs agree (stable); majority `HIT`
+- R4: 4/5 runs agree (UNSTABLE); majority `MISS`
+- R5: 5/5 runs agree (stable); majority `HIT`
+- R6: 5/5 runs agree (stable); majority `BALANCED HIT`
+
+### Weight Sensitivity
+
+- R1: robust (0 flips across 6 perturbations)
+- R2: robust (0 flips across 6 perturbations)
+- R3: robust (0 flips across 6 perturbations)
+- R4: assumption_sensitive (2 flips across 6 perturbations)
+- R5: robust (0 flips across 6 perturbations)
+- R6: robust (0 flips across 6 perturbations)

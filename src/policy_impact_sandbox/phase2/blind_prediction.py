@@ -166,13 +166,16 @@ def _clean_policy_entity(entity: dict[str, Any]) -> dict[str, Any]:
 
 
 def _clean_stakeholder(stakeholder: dict[str, Any]) -> dict[str, Any]:
-    return {
+    cleaned = {
         "id": stakeholder["id"],
         "name": _sanitize_archetype_text(stakeholder.get("name", stakeholder["id"])),
         "archetype_group": stakeholder.get("archetype_group"),
         "visible_prior_stance": "unknown",
         "interests": stakeholder.get("interests", []),
     }
+    if "weight" in stakeholder:
+        cleaned["weight"] = stakeholder["weight"]
+    return cleaned
 
 
 def _normalize_prediction(parsed: dict[str, Any]) -> dict[str, Any]:
