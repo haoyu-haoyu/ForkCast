@@ -65,6 +65,8 @@ def main() -> int:
     print(f"Wrote Kaspa anchor record: {output_path}")
     print(f"Status: {anchor_record['status']}")
     print(f"Manifest hash: {anchor_record['manifest_hash']}")
+    if anchor_record.get("head_hash"):
+        print(f"Hash-chain head: {anchor_record['head_hash']}")
     print(f"Payload hash: {anchor_record['payload_hash']}")
     print(f"Payload bytes: {anchor_record['payload_size_bytes']}/{anchor_record['payload_practical_limit_bytes']}")
     if anchor_record.get("explorer_url"):

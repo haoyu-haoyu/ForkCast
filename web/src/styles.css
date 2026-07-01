@@ -752,6 +752,10 @@ button {
   min-height: 300px;
 }
 
+.live-result.review {
+  background: #fff;
+}
+
 .live-result.empty {
   display: grid;
   place-content: center;
@@ -804,6 +808,77 @@ button {
 .result-block p {
   font-size: 13px;
   margin-bottom: 4px;
+}
+
+.review-table {
+  display: grid;
+  gap: 7px;
+}
+
+.review-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 86px 74px;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 8px;
+  background: var(--surface-2);
+}
+
+.review-row span {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-row em {
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.review-row input {
+  min-height: 30px;
+  padding: 5px 7px;
+}
+
+.low-confidence {
+  color: var(--amber) !important;
+}
+
+.chain-link-list {
+  display: grid;
+  gap: 6px;
+}
+
+.chain-link-list div {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 116px;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 8px;
+  background: #fff;
+}
+
+.chain-link-list span,
+.chain-link-list em {
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.chain-link-list code {
+  justify-self: end;
 }
 
 .error-note {

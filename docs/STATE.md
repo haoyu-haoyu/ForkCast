@@ -585,13 +585,10 @@ OASIS live probe stretch:
 
 ## Known Gaps And TODOs
 
-- Live API is synchronous and one-shot; it does not yet support `RECEIVED -> EXTRACTING -> AWAITING_REVIEW -> ...`.
-- Live API does not persist runs under `runs/{run_id}/`.
-- Live API has no GET/PATCH/approve endpoints for review.
-- Current audit manifest is per-artifact independent hashing, not a chained approval-aware hash chain.
-- Existing Kaspa tx anchors the legacy manifest hash, not a new hash-chain head.
+- Task 1 update: live API now creates async-style persisted runs, pauses at `AWAITING_REVIEW`, supports GET/PATCH/approve, records approval diffs, and resumes to report generation.
+- Task 1 update: new live-run manifests use a chained approval-aware hash chain; see `docs/HASH_CHAIN.md`.
+- Existing Kaspa tx still anchors the legacy ULEZ manifest hash. New live-run anchor packages commit to the chain head while legacy verification remains supported.
 - No independent verifier script exists yet.
-- Frontend review screen is not yet driven by async run status polling.
 - Frontend persona chat is still deterministic/local, not a live LLM chat endpoint.
 - Ablation baseline harness does not exist yet.
 - Stability/sensitivity harness does not exist yet.

@@ -4,6 +4,7 @@ export interface Stakeholder {
   archetype_group: string;
   stance_prior: string;
   interests: string[];
+  weight?: number;
 }
 
 export interface AgentProfile {
@@ -48,6 +49,35 @@ export interface AuditEntry {
   artifact_uri: string;
   approval: string;
   timestamp: string;
+}
+
+export interface HashChainLink {
+  id: string;
+  stage: string;
+  payload_hash: string;
+  previous_hash: string | null;
+  hash: string;
+}
+
+export interface ChainedAuditManifest {
+  case_id: string;
+  run_id: string;
+  generated_at: string;
+  chain_status: string;
+  head_hash: string;
+  hash_chain: {
+    canonicalization: string;
+    links: HashChainLink[];
+    head_hash: string;
+  };
+  approval_event: {
+    timestamp: string;
+    stage: string;
+    editor: "human";
+    diff: LivePolicyReviewDiff[];
+    approved_hash: string;
+  };
+  entries: AuditEntry[];
 }
 
 export interface KaspaAnchor {
@@ -105,4 +135,49 @@ export interface LivePolicyRunResult {
     disclaimer: string;
   };
   backtest_result: null;
+}
+
+export type LivePolicyRunStatusName =
+  | "RECEIVED"
+  | "EXTRACTING"
+  | "AWAITING_REVIEW"
+  | "SIMULATING"
+  | "REPORTING"
+  | "AWAITING_ANCHOR_APPROVAL"
+  | "DONE"
+  | "FAILED";
+
+export interface LivePolicyRunStart {
+  run_id: string;
+  status: LivePolicyRunStatusName;
+}
+
+export interface LivePolicyReviewDiff {
+  path: string;
+  before: unknown;
+  after: unknown;
+}
+
+export interface LivePolicyRunStatus extends Partial<LivePolicyRunResult> {
+  run_id: string;
+  status: LivePolicyRunStatusName;
+  truth_set_status: {
+    status: "unavailable";
+    message: string;
+  };
+  case_graph_ai?: LivePolicyRunResult["case_graph"] | null;
+  case_graph_approved?: LivePolicyRunResult["case_graph"] | null;
+  review_diff: LivePolicyReviewDiff[];
+  approval_event?: {
+    timestamp: string;
+    stage: string;
+    editor: "human";
+    diff: LivePolicyReviewDiff[];
+    approved_hash: string;
+  } | null;
+  audit_manifest?: ChainedAuditManifest | null;
+  failed?: {
+    stage: string;
+    error: string;
+  };
 }

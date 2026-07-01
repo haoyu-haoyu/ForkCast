@@ -2,14 +2,14 @@
 
 ## What Goes On Chain
 
-Policy Impact Sandbox keeps AI reasoning, prompts, archetype agents, mock event logs, and source evidence off-chain. The Kaspa payload commits only to the canonical SHA-256 hash of `runs/ulez_2023_phase2_deepseek/audit_manifest.json`.
+Policy Impact Sandbox keeps AI reasoning, prompts, archetype agents, mock event logs, and source evidence off-chain. The existing ULEZ demo transaction commits to the canonical SHA-256 hash of `runs/ulez_2023_phase2_deepseek/audit_manifest.json`; new live policy runs commit to the hash-chain `head_hash` described in `docs/HASH_CHAIN.md`.
 
 The payload generated for this demo is:
 
 - `protocol`: `policy-impact-sandbox.kaspa-anchor`
 - `case_id`: `ulez_2023_expansion`
 - `run_id`: `ulez_2023_phase2_deepseek`
-- `stage`: `audit_manifest`
+- `stage`: `audit_manifest` for the legacy ULEZ demo, or `hash_chain_head` for new live policy runs.
 - `manifest_hash`: SHA-256 of the canonical audit manifest
 - `manifest_uri`: local artifact path
 - `artifact_count`: number of manifest entries

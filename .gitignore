@@ -10,3 +10,4 @@ web/dist/
 .playwright-cli/
 phase3-*.png
 .kaspa-wallet/
+runs/policy_run_*/

@@ -30,9 +30,9 @@ import {
   type DemoStep,
 } from "./control";
 import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
-import { submitPolicyRun } from "./livePolicy";
+import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
 import { RUBRIC_LABELS } from "./rubric";
-import type { AgentProfile, BacktestRule, LivePolicyRunResult, SimulationEvent, Stakeholder } from "./types";
+import type { AgentProfile, BacktestRule, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
 
 const demoSteps: Array<{ key: DemoStep; label: string; time: string; checkpoint?: CheckpointKey }> = [
   { key: "before", label: "Before", time: "0-8s" },
@@ -69,9 +69,10 @@ function App() {
   const [question, setQuestion] = useState("Why do you support or oppose this policy?");
   const [policyText, setPolicyText] = useState("");
   const [policyFileName, setPolicyFileName] = useState("");
-  const [policyRunStatus, setPolicyRunStatus] = useState<"idle" | "running" | "succeeded" | "failed">("idle");
+  const [policyRunStatus, setPolicyRunStatus] = useState<"idle" | "running" | "awaiting_review" | "approving" | "succeeded" | "failed">("idle");
   const [policyRunError, setPolicyRunError] = useState("");
-  const [policyRunResult, setPolicyRunResult] = useState<LivePolicyRunResult | null>(null);
+  const [policyRunResult, setPolicyRunResult] = useState<LivePolicyRunStatus | null>(null);
+  const [reviewDraft, setReviewDraft] = useState<LivePolicyRunStatus["case_graph_ai"] | null>(null);
   const [claimVisibility, setClaimVisibility] = useState<Record<string, boolean>>(
     Object.fromEntries(backtest.rules.map((rule) => [rule.rule_id, true])),
   );
@@ -143,16 +144,58 @@ function App() {
     setPolicyRunStatus("running");
     setPolicyRunError("");
     try {
-      const result = await submitPolicyRun({
+      const started = await startPolicyRun({
         policyText,
         agentCount: Math.max(12, Math.min(agentCount, 50)),
         rounds: Math.max(1, Math.min(rounds, 3)),
       });
+      const result = await pollPolicyRun(started.run_id, ["AWAITING_REVIEW", "FAILED"]);
       setPolicyRunResult(result);
-      setPolicyRunStatus("succeeded");
+      setReviewDraft(result.case_graph_approved || result.case_graph_ai || null);
+      setPolicyRunStatus(result.status === "FAILED" ? "failed" : "awaiting_review");
     } catch (error) {
       setPolicyRunStatus("failed");
       setPolicyRunError(error instanceof Error ? error.message : "Policy analysis failed.");
+    }
+  }
+
+  function updateReviewStakeholderWeight(index: number, weight: number) {
+    if (!reviewDraft) return;
+    const next = structuredClone(reviewDraft);
+    if (!next.stakeholders[index]) return;
+    next.stakeholders[index].weight = weight;
+    setReviewDraft(next);
+  }
+
+  async function saveReviewEdits() {
+    if (!policyRunResult?.run_id || !reviewDraft) return;
+    setPolicyRunError("");
+    try {
+      await patchPolicyRunCaseGraph(policyRunResult.run_id, reviewDraft);
+      const result = await getPolicyRun(policyRunResult.run_id);
+      setPolicyRunResult(result);
+      setReviewDraft(result.case_graph_approved || reviewDraft);
+      setPolicyRunStatus(result.status === "FAILED" ? "failed" : "awaiting_review");
+    } catch (error) {
+      setPolicyRunStatus("failed");
+      setPolicyRunError(error instanceof Error ? error.message : "Review update failed.");
+    }
+  }
+
+  async function approveReviewAndContinue() {
+    if (!policyRunResult?.run_id || !reviewDraft) return;
+    setPolicyRunStatus("approving");
+    setPolicyRunError("");
+    try {
+      await patchPolicyRunCaseGraph(policyRunResult.run_id, reviewDraft);
+      await approvePolicyRun(policyRunResult.run_id);
+      const result = await pollPolicyRun(policyRunResult.run_id, ["AWAITING_ANCHOR_APPROVAL", "DONE", "FAILED"]);
+      setPolicyRunResult(result);
+      setReviewDraft(result.case_graph_approved || reviewDraft);
+      setPolicyRunStatus(result.status === "FAILED" ? "failed" : "succeeded");
+    } catch (error) {
+      setPolicyRunStatus("failed");
+      setPolicyRunError(error instanceof Error ? error.message : "Approval failed.");
     }
   }
 
@@ -216,6 +259,10 @@ function App() {
               runStatus={policyRunStatus}
               runError={policyRunError}
               runResult={policyRunResult}
+              reviewDraft={reviewDraft}
+              onWeightChange={updateReviewStakeholderWeight}
+              onSaveReview={saveReviewEdits}
+              onApproveReview={approveReviewAndContinue}
             />
           )}
           {activeStep === "extraction_review" && (
@@ -332,6 +379,10 @@ function CaseSelectScreen({
   runStatus,
   runError,
   runResult,
+  reviewDraft,
+  onWeightChange,
+  onSaveReview,
+  onApproveReview,
 }: {
   goToStep: (step: DemoStep) => void;
   policyText: string;
@@ -339,11 +390,15 @@ function CaseSelectScreen({
   policyFileName: string;
   onFile: (file: File | undefined) => void;
   onRun: () => void;
-  runStatus: "idle" | "running" | "succeeded" | "failed";
+  runStatus: "idle" | "running" | "awaiting_review" | "approving" | "succeeded" | "failed";
   runError: string;
-  runResult: LivePolicyRunResult | null;
+  runResult: LivePolicyRunStatus | null;
+  reviewDraft: LivePolicyRunStatus["case_graph_ai"] | null;
+  onWeightChange: (index: number, weight: number) => void;
+  onSaveReview: () => void;
+  onApproveReview: () => void;
 }) {
-  const canRun = policyText.trim().length > 20 && runStatus !== "running";
+  const canRun = policyText.trim().length > 20 && !["running", "approving"].includes(runStatus);
   return (
     <Panel className="cockpit-panel">
       <div className="control-title">
@@ -475,7 +530,7 @@ function CaseSelectScreen({
             </p>
           </div>
           <StatusPill tone={runResult ? "safe" : "neutral"}>
-            {runResult ? runResult.truth_set_status.message : "Live analysis"}
+            {runResult ? `${runResult.status} · ${runResult.truth_set_status.message}` : "Live analysis"}
           </StatusPill>
         </div>
         <div className="policy-run-grid">
@@ -507,7 +562,14 @@ function CaseSelectScreen({
             </div>
             {runError ? <p className="error-note">{runError}</p> : null}
           </div>
-          <LivePolicyResultPanel result={runResult} />
+          <LivePolicyResultPanel
+            result={runResult}
+            reviewDraft={reviewDraft}
+            runStatus={runStatus}
+            onWeightChange={onWeightChange}
+            onSaveReview={onSaveReview}
+            onApproveReview={onApproveReview}
+          />
         </div>
       </div>
     </Panel>
@@ -561,7 +623,21 @@ function CockpitCard({ title, subtitle, children }: { title: string; subtitle: s
   );
 }
 
-function LivePolicyResultPanel({ result }: { result: LivePolicyRunResult | null }) {
+function LivePolicyResultPanel({
+  result,
+  reviewDraft,
+  runStatus,
+  onWeightChange,
+  onSaveReview,
+  onApproveReview,
+}: {
+  result: LivePolicyRunStatus | null;
+  reviewDraft: LivePolicyRunStatus["case_graph_ai"] | null;
+  runStatus: "idle" | "running" | "awaiting_review" | "approving" | "succeeded" | "failed";
+  onWeightChange: (index: number, weight: number) => void;
+  onSaveReview: () => void;
+  onApproveReview: () => void;
+}) {
   if (!result) {
     return (
       <div className="live-result empty">
@@ -575,38 +651,141 @@ function LivePolicyResultPanel({ result }: { result: LivePolicyRunResult | null 
     );
   }
 
+  if (result.status === "FAILED") {
+    return (
+      <div className="live-result">
+        <div className="result-header">
+          <div>
+            <span>{result.run_id}</span>
+            <h4>Run failed at {result.failed?.stage ?? "unknown stage"}</h4>
+          </div>
+          <StatusPill tone="warn">FAILED</StatusPill>
+        </div>
+        <p className="error-note">{result.failed?.error ?? "Unknown failure"}</p>
+      </div>
+    );
+  }
+
+  if (result.status === "AWAITING_REVIEW") {
+    const draft = reviewDraft || result.case_graph_approved || result.case_graph_ai;
+    return (
+      <div className="live-result review">
+        <div className="result-header">
+          <div>
+            <span>{result.run_id}</span>
+            <h4>{draft?.case_name ?? "Extraction review"}</h4>
+          </div>
+          <StatusPill tone="warn">Human review required</StatusPill>
+        </div>
+        <div className="result-block">
+          <strong>Editable stakeholders</strong>
+          <div className="review-table">
+            {(draft?.stakeholders ?? []).map((stakeholder, index) => (
+              <label className="review-row" key={stakeholder.id}>
+                <span>{stakeholder.name}</span>
+                <em>{stakeholder.stance_prior}</em>
+                <input
+                  type="number"
+                  min="0"
+                  max="3"
+                  step="0.1"
+                  value={stakeholder.weight ?? 1}
+                  onChange={(event) => onWeightChange(index, Number(event.target.value))}
+                />
+              </label>
+            ))}
+          </div>
+        </div>
+        <div className="result-block">
+          <strong>Assumptions</strong>
+          {(draft?.assumptions ?? []).slice(0, 4).map((assumption) => (
+            <p className={assumption.status === "已确认" ? "" : "low-confidence"} key={assumption.id}>
+              {assumption.status}: {assumption.statement}
+            </p>
+          ))}
+        </div>
+        <div className="result-block">
+          <strong>Visible diff</strong>
+          {result.review_diff.length ? (
+            result.review_diff.slice(0, 5).map((item) => (
+              <p key={item.path}>
+                <code>{item.path}</code>: {String(item.before)} → {String(item.after)}
+              </p>
+            ))
+          ) : (
+            <p>No human edits saved yet.</p>
+          )}
+        </div>
+        <div className="run-actions">
+          <button className="secondary" onClick={onSaveReview}>Save review edits</button>
+          <button className="primary" onClick={onApproveReview} disabled={runStatus === "approving"}>
+            <Check size={16} /> {runStatus === "approving" ? "Approving..." : "Approve and continue"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const manifest = result.audit_manifest;
+  const approvalDiff = manifest?.approval_event?.diff ?? [];
+  const chainLinks = manifest?.hash_chain?.links ?? [];
   return (
     <div className="live-result">
       <div className="result-header">
         <div>
           <span>{result.run_id}</span>
-          <h4>{result.case_graph.case_name}</h4>
+          <h4>{result.case_graph_approved?.case_name ?? result.case_graph_ai?.case_name ?? "Live policy run"}</h4>
         </div>
         <StatusPill tone="warn">{result.truth_set_status.message}</StatusPill>
       </div>
       <div className="result-block">
         <strong>Extracted stakeholders</strong>
-        {result.case_graph.stakeholders.slice(0, 5).map((stakeholder) => (
+        {(result.case_graph_approved?.stakeholders ?? result.case_graph_ai?.stakeholders ?? []).slice(0, 5).map((stakeholder) => (
           <p key={stakeholder.id}>{stakeholder.name} · {stakeholder.stance_prior}</p>
         ))}
       </div>
       <div className="result-block">
         <strong>Generated archetypes</strong>
-        <p>{result.agents.agents.length} archetype agents · no real-person PII</p>
+        <p>{result.agents?.agents.length ?? 0} archetype agents · no real-person PII</p>
       </div>
       <div className="result-block">
         <strong>Report signals</strong>
-        {result.impact_report.risk_timeline.slice(0, 3).map((risk) => (
+        {(result.impact_report?.risk_timeline ?? []).slice(0, 3).map((risk) => (
           <p key={risk.stage}>{risk.stage}: {risk.signal}</p>
         ))}
       </div>
       <div className="result-block">
         <strong>Mitigation options</strong>
-        {result.impact_report.mitigation_options.slice(0, 2).map((item) => (
+        {(result.impact_report?.mitigation_options ?? []).slice(0, 2).map((item) => (
           <p key={item.option}>{item.option}: {item.rationale}</p>
         ))}
       </div>
-      <p className="evidence-note">{result.impact_report.disclaimer}</p>
+      {manifest ? (
+        <div className="result-block">
+          <strong>Audit hash chain</strong>
+          <p className="evidence-note">Head: {manifest.head_hash.slice(0, 18)}...</p>
+          <div className="chain-link-list">
+            {chainLinks.map((link) => (
+              <div key={link.id}>
+                <span>{link.id}</span>
+                <em>{link.stage}</em>
+                <code>{link.hash.slice(0, 14)}...</code>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+      {approvalDiff.length ? (
+        <div className="result-block">
+          <strong>Human approval diff</strong>
+          {approvalDiff.slice(0, 4).map((item) => (
+            <p key={item.path}>
+              <code>{item.path}</code>: {String(item.before)} → {String(item.after)}
+            </p>
+          ))}
+        </div>
+      ) : null}
+      <p className="evidence-note">{result.impact_report?.disclaimer}</p>
     </div>
   );
 }
@@ -1268,6 +1447,24 @@ function formatAuditDate(value?: string) {
 
 function humanizeStatus(value: string) {
   return value.replace(/_/g, " ");
+}
+
+async function pollPolicyRun(
+  runId: string,
+  terminalStatuses: LivePolicyRunStatusName[],
+  maxAttempts = 90,
+): Promise<LivePolicyRunStatus> {
+  let latest = await getPolicyRun(runId);
+  for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+    if (terminalStatuses.includes(latest.status)) return latest;
+    await delay(1000);
+    latest = await getPolicyRun(runId);
+  }
+  return latest;
+}
+
+function delay(ms: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
 function TopbarTile({

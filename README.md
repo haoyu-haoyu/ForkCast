@@ -117,7 +117,7 @@ uv run python scripts/kaspa_anchor_manifest.py \
   --network testnet-10
 ```
 
-This writes `runs/ulez_2023_phase2_deepseek/kaspa_anchor.json` and copies it into the dashboard data folder. It hashes the canonical audit manifest and prepares the exact Kaspa transaction payload.
+This writes `runs/ulez_2023_phase2_deepseek/kaspa_anchor.json` and copies it into the dashboard data folder. Legacy ULEZ demo artifacts commit to the canonical audit manifest hash. New live policy runs use the hash-chain head described in `docs/HASH_CHAIN.md`.
 
 The current demo artifact has already been broadcast to Kaspa `testnet-10` after explicit human approval:
 
@@ -159,8 +159,8 @@ Project LLM calls read `LLM_API_KEY`/`LLM_BASE_URL`/`LLM_MODEL` first, then fall
 - `runs/<run_id>/simulation_events.json`: mock simulation event log and detected signals.
 - `runs/<run_id>/impact_report.json`: stakeholder impact matrix, risk timeline, mitigations and confidence notes.
 - `runs/<run_id>/backtest_result.json`: R1-R6 directional verdicts from blind prediction, not mock demo events.
-- `runs/<run_id>/audit_manifest.json`: canonical JSON SHA-256 manifest for Phase 4 anchoring.
-- `runs/<run_id>/kaspa_anchor.json`: Kaspa payload commitment package for manifest-hash anchoring.
+- `runs/<run_id>/audit_manifest.json`: canonical JSON SHA-256 manifest with hash-chain links and head hash.
+- `runs/<run_id>/kaspa_anchor.json`: Kaspa payload commitment package for the hash-chain head, with legacy manifest-hash verification still supported.
 - `web/`: React + Vite dashboard for the 90-second controlled demo.
 - `schemas/`: JSON Schemas for Phase 1+ contracts.
 - `prompts/`: extraction/report prompts for Phase 1+.
@@ -172,4 +172,4 @@ Project LLM calls read `LLM_API_KEY`/`LLM_BASE_URL`/`LLM_MODEL` first, then fall
 - Agents must not send Kaspa/Canton transactions automatically.
 - Reports must state: simulation is decision support, not deterministic forecast.
 - Backtest credibility comes from `blind_prediction.json`; mock simulation remains a dashboard/demo visualization aid.
-- Kaspa anchoring commits only to the audit manifest hash; AI reasoning and artifacts stay off-chain.
+- Kaspa anchoring commits only to a manifest hash or hash-chain head; AI reasoning and artifacts stay off-chain.

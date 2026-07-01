@@ -25,18 +25,24 @@ def build_kaspa_anchor_record(
 ) -> dict[str, Any]:
     """Build the Kaspa commitment payload without broadcasting a transaction.
 
-    The payload commits only to the canonical audit manifest hash. It does not
-    include LLM prompts, simulation logs, personas, PII, or source documents.
+    Chained live-run manifests commit to the hash-chain head. Legacy cached
+    manifests continue to commit to the canonical audit manifest hash. The
+    payload never includes LLM prompts, simulation logs, personas, PII, or
+    source documents.
     """
 
     prepared_at = datetime.now(timezone.utc).isoformat()
     manifest_hash = canonical_sha256(audit_manifest)
+    head_hash = _hash_chain_head(audit_manifest)
+    commitment_type = "hash_chain_head" if head_hash else "audit_manifest_hash"
+    on_chain_payload = "hash_chain_head_commitment" if head_hash else "manifest_hash_commitment_only"
     payload = {
         "protocol": "policy-impact-sandbox.kaspa-anchor",
         "version": 1,
         "case_id": audit_manifest["case_id"],
         "run_id": audit_manifest["run_id"],
-        "stage": "audit_manifest",
+        "stage": commitment_type,
+        "commitment_type": commitment_type,
         "manifest_hash": f"sha256:{manifest_hash}",
         "manifest_uri": manifest_uri,
         "artifact_count": len(audit_manifest.get("entries", [])),
@@ -48,11 +54,14 @@ def build_kaspa_anchor_record(
         },
         "chain_policy": {
             "off_chain_ai_reasoning": True,
-            "on_chain_payload": "manifest_hash_commitment_only",
+            "on_chain_payload": on_chain_payload,
             "decision_support_not_forecast": True,
         },
         "created_at": prepared_at,
     }
+    if head_hash:
+        payload["head_hash"] = f"sha256:{head_hash}"
+        payload["hash_chain_status"] = audit_manifest.get("chain_status", "hash_chained")
     payload_json = canonical_json(payload)
     payload_size = len(payload_json.encode("utf-8"))
     if payload_size > KASPA_PAYLOAD_PRACTICAL_LIMIT_BYTES:
@@ -78,6 +87,7 @@ def build_kaspa_anchor_record(
         "explorer_base_url": explorer_base,
         "manifest_uri": manifest_uri,
         "manifest_hash": manifest_hash,
+        "head_hash": head_hash,
         "payload_hash": payload_hash,
         "payload_size_bytes": payload_size,
         "payload_practical_limit_bytes": KASPA_PAYLOAD_PRACTICAL_LIMIT_BYTES,
@@ -113,15 +123,33 @@ def build_kaspa_anchor_record(
 
 def verify_kaspa_anchor_record(audit_manifest: dict[str, Any], anchor_record: dict[str, Any]) -> dict[str, Any]:
     expected_manifest_hash = canonical_sha256(audit_manifest)
+    expected_head_hash = _hash_chain_head(audit_manifest)
     payload_json = canonical_json(anchor_record["payload"])
     expected_payload_hash = hashlib.sha256(payload_json.encode("utf-8")).hexdigest()
     return {
         "manifest_hash_matches": anchor_record.get("manifest_hash") == expected_manifest_hash,
+        "head_hash_matches": anchor_record.get("head_hash") == expected_head_hash,
+        "payload_manifest_hash_matches": anchor_record["payload"].get("manifest_hash")
+        == f"sha256:{expected_manifest_hash}",
+        "payload_head_hash_matches": expected_head_hash is None
+        or anchor_record["payload"].get("head_hash") == f"sha256:{expected_head_hash}",
         "payload_hash_matches": anchor_record.get("payload_hash") == expected_payload_hash,
         "payload_size_matches": anchor_record.get("payload_size_bytes") == len(payload_json.encode("utf-8")),
         "payload_under_practical_limit": len(payload_json.encode("utf-8")) <= KASPA_PAYLOAD_PRACTICAL_LIMIT_BYTES,
         "automatic_chain_actions_disabled": anchor_record.get("automatic_chain_actions_allowed") is False,
     }
+
+
+def _hash_chain_head(audit_manifest: dict[str, Any]) -> str | None:
+    head_hash = audit_manifest.get("head_hash")
+    if isinstance(head_hash, str) and head_hash:
+        return head_hash
+    hash_chain = audit_manifest.get("hash_chain")
+    if isinstance(hash_chain, dict):
+        nested_head_hash = hash_chain.get("head_hash")
+        if isinstance(nested_head_hash, str) and nested_head_hash:
+            return nested_head_hash
+    return None
 
 
 def _explorer_base_url(network: str) -> str:
