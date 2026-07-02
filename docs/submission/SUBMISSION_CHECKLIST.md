@@ -9,8 +9,10 @@ Core material:
 - GitHub repo: include source, schemas, prompts, scripts, data contracts, docs and generated demo artifacts.
 - README: one-line definition, before/after framing, local run commands, safety rules and known limitations.
 - 90-second demo: use `docs/submission/DEMO_RUNBOOK.md`.
-- ULEZ blind backtest report: `runs/ulez_2023_phase2_deepseek/backtest.md`.
-- Backtest integrity explanation: `docs/methodology/backtest_integrity.md`.
+- ULEZ automated keyword-rubric output: `runs/ulez_2023_phase2_deepseek/backtest.md`.
+- Blind prediction and grading explanation: `docs/methodology/backtest_integrity.md`.
+- Human adjudication sheet: `docs/evaluation/ulez_human_adjudication.md`.
+- Negative controls: `docs/evaluation/negative_controls.md`.
 - Human-control layer explanation: `docs/product/control_flow.md`.
 
 What to emphasize:
@@ -18,7 +20,9 @@ What to emphasize:
 - Control beats autonomy: four approval checkpoints, rollback/superseded history and hard limits.
 - Agents are archetypes only; no real-person PII.
 - No automatic chain action and no automatic stakeholder-weight changes.
-- Blind backtest uses answer-isolated prediction, not mock events.
+- ForkCast generates answer-isolated blind predictions; the prediction step does not read outcome data.
+- Automated R1-R6 verdicts are keyword-rubric signal coverage, not semantic truth verification.
+- Human adjudication against source-backed truth-set facts is the grading path.
 
 Still missing before final upload:
 
@@ -58,7 +62,7 @@ Still missing before final upload:
 
 Current status:
 
-- Canton/Daml proof was not implemented. This was intentionally deferred because the mainline scope was Conduct + Kaspa + ULEZ blind backtest.
+- Canton/Daml proof was not implemented. This was intentionally deferred because the mainline scope was Conduct + Kaspa + ULEZ answer-isolated prediction and audit anchoring.
 - There is no Canton LocalNet artifact, Daml model, ledger transaction or Canton submission proof in this MVP.
 
 If submitting to a Canton-related track:

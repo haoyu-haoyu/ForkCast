@@ -2,17 +2,17 @@
 
 ## One Sentence
 
-Policy Impact Sandbox is a human-controlled AI workflow that turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated historical backtest and a Kaspa-anchored audit trail.
+ForkCast is a human-controlled AI workflow that turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated blind prediction and a Kaspa-anchored audit trail.
 
 ## Core Innovation
 
-The credibility move is the answer-isolated blind backtest.
+The credibility move is answer isolation plus explicit grading limits.
 
-The system first asks DeepSeek for a qualitative prediction using only sanitized policy context: policy facts, stakeholder groups, interests and safety constraints. The prediction step does not load `truth_set.json` and the prompt explicitly forbids post-implementation outcomes such as polling percentages, election results, compliance rates, camera offence counts and air-quality measurements.
+ForkCast generates answer-isolated blind predictions: the prediction step provably never reads outcome data, and leakage guards are recorded per run. The system first asks DeepSeek for a qualitative prediction using only sanitized policy context: policy facts, stakeholder groups, interests and safety constraints. The prediction step does not load `truth_set.json` and the prompt explicitly forbids post-implementation outcomes such as polling percentages, election results, compliance rates, camera offence counts and air-quality measurements.
 
-Only after `blind_prediction.json` is written does the backtest code load the verified ULEZ truth set and score R1-R6 directionally. That means the demo comparison is not based on mock events that were written after seeing the answers. Mock simulation remains only a visualization layer.
+Predictions are graded two ways: (1) an automated keyword rubric, whose limits we exposed ourselves via negative controls; it checks signal coverage, not semantic truth; and (2) human adjudication against a source-backed truth set in `docs/evaluation/ulez_human_adjudication.md`. Mock simulation remains only a visualization layer.
 
-Current blind-backtest result:
+Current automated keyword-rubric signal coverage:
 
 - R1: PARTIAL
 - R2: HIT
@@ -25,7 +25,8 @@ Current blind-backtest result:
 
 - Real ULEZ 2023 historical truth set with sourced facts and quotes.
 - Real DeepSeek-backed blind prediction artifact.
-- Real answer-isolated backtest result from `backtest_result.json`.
+- Real automated keyword-rubric output from `backtest_result.json`, with its limits documented in `docs/evaluation/negative_controls.md`.
+- Human adjudication sheet at `docs/evaluation/ulez_human_adjudication.md` for source-backed human grading.
 - Real human-in-the-loop control UI with four checkpoints: extraction, agents, run config, report/chain review.
 - Real hard limits in the dashboard: no automatic chain action, no automatic weight changes, no real-person PII, archetypes only and decision support only.
 - Real Kaspa TN-10 transaction anchoring the audit-manifest payload:
@@ -41,9 +42,9 @@ Current blind-backtest result:
 
 ## Honest Limits
 
-- This is not a randomized holdout. It is an answer-isolated historical backtest on one known policy case.
+- This is not a randomized holdout. It is an answer-isolated blind prediction on one known policy case, followed by automated signal-coverage scoring and human adjudication material.
 - The case graph still names stakeholder groups relevant to ULEZ, so the blind test is not free of all framing information.
-- The backtest is directional only. It does not claim exact polling percentages, vote margins, offence counts, compliance rates or air-quality numbers.
+- The automated R1-R6 rubric is directional signal coverage only. It does not claim verified accuracy, exact polling percentages, vote margins, offence counts, compliance rates or air-quality numbers.
 - Kaspa anchoring proves an audit-manifest commitment, not the truth of the AI's conclusions.
 - SilverScript/Covenants are not implemented as production chain rules in this MVP.
 - Canton/Daml is not implemented.
@@ -52,7 +53,7 @@ Current blind-backtest result:
 
 ### Is this a true holdout?
 
-No. It is an answer-isolated historical backtest. The model is prevented from seeing the truth set and outcome tokens before prediction, then the written prediction is scored against verified outcomes. That is weaker than a randomized holdout but much stronger than a mock simulation tuned to match known results.
+No. It is an answer-isolated blind prediction on a known historical case. The model is prevented from seeing the truth set and outcome tokens before prediction. Afterward, the prediction is reviewed through an automated keyword rubric and a human adjudication sheet against source-backed outcomes.
 
 ### How do you prove the model did not see the answers?
 
@@ -60,15 +61,15 @@ Show `blind_prediction.json` and `docs/methodology/backtest_integrity.md`. The p
 
 ### Did the mock simulation drive the backtest?
 
-No. Mock events are only for the social-feed visualization and demo continuity. The backtest table reads `backtest_result.json`, which scores `blind_prediction.json` against the truth set.
+No. Mock events are only for the social-feed visualization and demo continuity. The rubric table reads `backtest_result.json`, which characterizes `blind_prediction.json` for expected signal coverage.
 
 ### Why is R1 only PARTIAL?
 
-Because the blind prediction identified outer-London opposition but did not cleanly capture the full inner-vs-outer contrast. We keep that as PARTIAL because a credible demo should not hide misses.
+Because the blind prediction identified outer-London opposition but did not cleanly capture the full inner-vs-outer contrast under the keyword rubric. We keep that as PARTIAL because a credible demo should not hide rubric misses.
 
 ### Is the automated R1-R6 scorer a semantic judge?
 
-No. The evidence-hardening controls show it is a reproducible prediction-text signal checklist, not a semantic comparator against truth-set content. Inverting truth facts, shuffling fact alignment and temporarily inverting the harness-level RULE_FACTS surrogate did not change verdicts. Use `docs/evaluation/ulez_human_adjudication.md` for human accuracy grading.
+No. The evidence-hardening controls show it is a reproducible prediction-text signal checklist, not a semantic comparator against truth-set content. Inverting truth facts, shuffling fact alignment and temporarily inverting the harness-level RULE_FACTS surrogate did not change verdicts. Use `docs/evaluation/ulez_human_adjudication.md` for human grading.
 
 ### Did OASIS run live?
 
@@ -76,7 +77,7 @@ Not in the mainline MVP. OASIS was treated as a single-point risk and remains an
 
 ### Where do the money/score numbers come from?
 
-They are illustrative/demo estimates for the dashboard. The evidence-backed validation is the R1-R6 blind backtest and its source-linked truth set.
+They are illustrative/demo estimates for the dashboard. The evidence-backed grading path is the answer-isolated blind prediction plus human adjudication against the source-linked truth set.
 
 ### What exactly is on Kaspa?
 

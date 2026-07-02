@@ -7,11 +7,11 @@ No scorer code was modified.
 
 - Scorer leniency found: `True`
 - Controls collapse toward chance: `False`
-- Summary: Negative controls did not reduce hit rate, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.
+- Summary: Negative controls did not reduce rubric coverage, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.
 
-## Hit Rates
+## Rubric Coverage Rates
 
-| Condition | Hit rate | Verdicts |
+| Condition | Rubric coverage | Verdicts |
 |---|---:|---|
 | Real truth set, cached blind prediction | 0.8333 | R1=PARTIAL, R2=HIT, R3=HIT, R4=HIT, R5=HIT, R6=BALANCED HIT |
 | Inverted-truth control | 0.8333 | R1=PARTIAL, R2=HIT, R3=HIT, R4=HIT, R5=HIT, R6=BALANCED HIT |
@@ -50,8 +50,8 @@ Control C interpretation: verdicts did not change after replacing `RULE_FACTS` w
 
 ## Interpretation
 
-Negative controls did not reduce hit rate, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.
+Negative controls did not reduce rubric coverage, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.
 
-These controls are intentionally adversarial. They show that the current R1-R6 scorer is useful as a signal-extraction checklist, but not yet a semantic truth-comparison evaluator: changing/shuffling truth-set content and inverting the harness-level RULE_FACTS surrogate does not change verdicts because verdicts are derived from blind-prediction text signals. This is an evidence-hardening finding, not a product claim.
+These controls are intentionally adversarial. They show that the current R1-R6 scorer is useful as a signal-extraction checklist, but not yet a semantic truth-comparison evaluator: changing/shuffling truth-set content and inverting the harness-level RULE_FACTS surrogate does not change verdicts because verdicts are derived from blind-prediction text signals. The 0.8333 values above are rubric-coverage numbers, not accuracy. This is an evidence-hardening finding, not a product claim.
 
 Cross-case control status: `not_run` — CC 2003 cross-case control is gated on human verification of the draft truth set.

@@ -55,13 +55,13 @@ Click through this exact path:
 5. `Run controls`, then click `Approve run`
 6. `Simulation replay`
 7. `Impact report`
-8. `Blind backtest`
+8. `Blind rubric`
 9. `Audit + Kaspa`
 10. `Close`
 
 ## What Must Be Visible
 
-- Blind backtest table reads the real R1-R6 result set.
+- Blind prediction rubric table reads the real automated keyword-rubric R1-R6 result set.
 - R1 is `PARTIAL`.
 - R6 is `BALANCED HIT`.
 - Prompt transparency shows the blind prompt and `No outcome tokens in prompt`.
@@ -75,7 +75,8 @@ Click through this exact path:
 ## Boundaries To State In The Demo
 
 - Mock simulation is visualization only.
-- Backtest credibility comes from `blind_prediction.json`.
+- ForkCast generates answer-isolated blind predictions; automated R1-R6 verdicts show keyword-rubric signal coverage, not semantic truth verification.
+- Human grading should use the adjudication sheet against source-backed facts.
 - Any money or score framing is illustrative/demo estimate only.
 - The project is decision support, not deterministic forecast.
 - OASIS live mode and Canton are not part of this safe demo version.

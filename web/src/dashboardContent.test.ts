@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { auditManifest, backtest, impactReport, kaspaAnchor } from "./data";
 import { buildClaimsAuditRows, claimsAuditNotice, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
@@ -23,7 +24,7 @@ const FORBIDDEN_DEMO_STRINGS = [
 ];
 
 describe("dashboard evidence content", () => {
-  it("uses the real blind backtest R1-R6 result set", () => {
+  it("uses the cached automated rubric R1-R6 result set", () => {
     expect(backtest.backtest_mode).toBe("blind_prediction");
     expect(backtest.rules.map((rule) => rule.rule_id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6"]);
     expect(RUBRIC_LABELS.R1).toContain("Outer London");
@@ -32,6 +33,17 @@ describe("dashboard evidence content", () => {
     expect(RUBRIC_LABELS.R4).toContain("Enforcement resistance");
     expect(RUBRIC_LABELS.R5).toContain("Behavioural adaptation");
     expect(RUBRIC_LABELS.R6).toContain("Benefit/burden balance");
+  });
+
+  it("labels automated verdicts as rubric coverage rather than semantic verification", () => {
+    const appSource = readFileSync(new URL("./App.tsx", import.meta.url), "utf-8");
+
+    expect(appSource).toContain(
+      "Automated keyword-rubric verdicts — signal coverage, not semantic verification. See negative controls & human adjudication.",
+    );
+    expect(appSource).toContain("Human grading");
+    expect(appSource).toContain("Adjudication sheet");
+    expect(appSource).not.toContain("Evidence-backed validation is the blind R1-R6 backtest");
   });
 
   it("does not include stale generic metrics or 2025 placeholder dates in evidence text", () => {

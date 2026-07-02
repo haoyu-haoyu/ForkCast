@@ -43,7 +43,7 @@ const demoSteps: Array<{ key: DemoStep; label: string; time: string; checkpoint?
   { key: "simulation_config", label: "Run controls", time: "40-46s", checkpoint: "simulation_config" },
   { key: "simulation_replay", label: "Simulation replay", time: "46-52s" },
   { key: "impact_report", label: "Impact report", time: "52-66s" },
-  { key: "blind_backtest", label: "Blind backtest", time: "66-80s" },
+  { key: "blind_backtest", label: "Blind rubric", time: "66-80s" },
   { key: "audit", label: "Audit + Kaspa", time: "80-88s", checkpoint: "report_chain_review" },
   { key: "closing", label: "Close", time: "88-90s" },
 ];
@@ -455,7 +455,7 @@ function CaseSelectScreen({
           status="pending"
           metrics={[
             ["Claims reviewed", String(backtest.rules.length)],
-            ["Backtest mode", "Blind"],
+            ["Rubric mode", "Blind"],
             ["Kaspa anchor", kaspaAnchor.status === "anchored" ? "Live tx" : "Local"],
             ["Disclaimers", "On"],
           ]}
@@ -480,7 +480,7 @@ function CaseSelectScreen({
             View full stream <ChevronRight size={16} />
           </button>
         </CockpitCard>
-        <CockpitCard title="Blind Backtest Results" subtitle="Answer-isolated R1-R6">
+        <CockpitCard title="Blind Rubric Coverage" subtitle="Answer-isolated R1-R6">
           <div className="compact-backtest">
             {backtest.rules.map((rule) => (
               <div className="compact-backtest-row" key={rule.rule_id}>
@@ -491,22 +491,22 @@ function CaseSelectScreen({
             ))}
           </div>
           <div className="hit-strip">
-            <Metric label="Strict hits" value="5 / 6" tone="safe" />
+            <Metric label="Rubric covered" value="5 / 6" tone="safe" />
             <Metric label="Partial" value="R1" tone="warn" />
-            <Metric label="Assessment" value="Strong" tone="safe" />
+            <Metric label="Mechanism" value="Keyword rubric" tone="safe" />
           </div>
           <button className="link-button" onClick={() => goToStep("blind_backtest")}>
-            View detailed backtest report <ChevronRight size={16} />
+            View detailed rubric report <ChevronRight size={16} />
           </button>
         </CockpitCard>
         <CockpitCard title="Impact Summary" subtitle="Illustrative / demo estimates only">
           <div className="impact-summary-list">
             {[
-              ["Evidence-backed validation", "Blind R1-R6"],
+              ["Prediction isolation", "No outcome data"],
               ["Prompt scan", "No outcome tokens"],
               ["Kaspa anchoring", kaspaAnchor.tx_id ? "Testnet tx live" : "Local package"],
               ["Report mode", "Decision support"],
-              ["Real backtest source", "truth_set + rubric"],
+              ["Human grading", "Adjudication sheet"],
             ].map(([label, value]) => (
               <div key={label}>
                 <span>{label}</span>
@@ -527,7 +527,7 @@ function CaseSelectScreen({
             <h3>Run a new policy document</h3>
             <p>
               This path calls the backend pipeline with DeepSeek extraction, archetype generation and report generation.
-              New policies do not have a truth_set, so no historical backtest is shown.
+              New policies do not have a truth_set, so no historical grading material is shown.
             </p>
           </div>
           <StatusPill tone={runResult ? "safe" : "neutral"}>
@@ -646,7 +646,7 @@ function LivePolicyResultPanel({
         <h4>Result will appear here</h4>
         <p>
           The cached ULEZ replay remains available for the 90-second demo. This panel is for new policies with no
-          historical backtest dataset.
+          historical truth-set grading dataset.
         </p>
       </div>
     );
@@ -1007,8 +1007,8 @@ function ImpactReport({
           <h3>Impact report</h3>
           <p>{impactReport.method_note}</p>
           <p className="evidence-note">
-            Any dashboard score or monetary framing in this view is illustrative / demo estimate only. Evidence-backed
-            validation is the blind R1-R6 backtest.
+            Any dashboard score or monetary framing in this view is illustrative / demo estimate only. Automated R1-R6
+            verdicts are keyword-rubric signal coverage; human adjudication is the grading path.
           </p>
         </div>
         <StatusPill tone="neutral">Evidence: {impactReport.backtest_evidence}</StatusPill>
@@ -1083,8 +1083,9 @@ function BlindBacktest() {
     <Panel>
       <div className="panel-title-row">
         <div>
-          <h3>Blind prediction backtest</h3>
-          <p>Backtest evidence comes from answer-isolated prediction, not mock demo events. R1 PARTIAL is shown honestly.</p>
+          <h3>Blind prediction rubric coverage</h3>
+          <p>ForkCast generates answer-isolated blind predictions; the prediction step does not read outcome data.</p>
+          <p className="evidence-note">Automated keyword-rubric verdicts — signal coverage, not semantic verification. See negative controls & human adjudication.</p>
           <p className="evidence-note">Source: runs/ulez_2023_phase2_deepseek/backtest_result.json · rubric: backtest_rubric.md</p>
         </div>
         <StatusPill tone={found.length === 0 ? "safe" : "warn"}>{found.length === 0 ? "No outcome tokens in prompt" : "Prompt scan flagged"}</StatusPill>
@@ -1194,10 +1195,10 @@ function ClosingScreen() {
     <Panel>
       <div className="closing">
         <h3>Weeks to hours, with the human still in control.</h3>
-        <p>Extraction, agent design, run configuration, blind backtest and audit manifest stay visible and reversible.</p>
+        <p>Extraction, agent design, run configuration, blind prediction grading and audit manifest stay visible and reversible.</p>
         <div className="closing-metrics">
           <Metric label="Demo run" value="90 sec" tone="safe" />
-          <Metric label="Backtest" value="Blind" tone="safe" />
+          <Metric label="Prediction" value="Blind" tone="safe" />
           <Metric label="Autonomy" value="Gated" tone="safe" />
         </div>
       </div>
@@ -1432,7 +1433,7 @@ function headlineFor(step: DemoStep) {
     simulation_config: "Scale, rounds, budget and seed are explicit controls.",
     simulation_replay: "Replay is cached for the demo; live sample stays small.",
     impact_report: "Decision memo, not black-box final answer.",
-    blind_backtest: "Credibility comes from answer-isolated blind prediction.",
+    blind_backtest: "Prediction is answer-isolated; grading limits stay visible.",
     audit: "Kaspa testnet anchor is live, with the manifest hash still gated by human approval.",
     closing: "Control stays visible from intake to audit.",
     report_chain_review: "Review claims and chain action before any anchor.",

@@ -2,15 +2,15 @@
 
 Review-gated AI policy impact analysis with a hash-chained, Kaspa-anchored audit trail.
 
-ForkCast turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated historical backtest and a verifiable audit commitment. The core design is not "autonomous policy making"; it is human-reviewed decision support with explicit approval gates before extraction, agent generation, simulation configuration and chain anchoring. The demo case is the 2023 London ULEZ expansion, where the blind R1-R6 backtest is separated from the truth set to reduce answer leakage. Kaspa TN-10 anchoring commits to the approved audit manifest or hash-chain head while keeping AI reasoning, source documents and reports off-chain.
+ForkCast turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated blind prediction and a verifiable audit commitment. The core design is not "autonomous policy making"; it is human-reviewed decision support with explicit approval gates before extraction, agent generation, simulation configuration and chain anchoring. The demo case is the 2023 London ULEZ expansion, where the blind prediction step provably never reads outcome data and leakage guards are recorded per run. Kaspa TN-10 anchoring commits to the approved audit manifest or hash-chain head while keeping AI reasoning, source documents and reports off-chain.
 
 Before: impact assessment is weeks of consultants, hearings, spreadsheets and fragmented traceability.
 
-After: the same policy decision is reviewed through visible approval checkpoints, cached replay, blind R1-R6 backtest evidence and a verifiable manifest hash on Kaspa testnet.
+After: the same policy decision is reviewed through visible approval checkpoints, cached replay, answer-isolated prediction evidence, source-backed human adjudication material and a verifiable manifest hash on Kaspa testnet.
 
 Current implementation status:
 
-- Mainline MVP is Conduct control layer + ULEZ blind backtest + Kaspa TN-10 audit anchoring.
+- Mainline MVP is Conduct control layer + ULEZ answer-isolated blind prediction + Kaspa TN-10 audit anchoring.
 - OASIS is an optional, non-integrated runtime probe only, not part of the main demo pipeline and not a hard blocker.
 - The demo uses deterministic mock simulation events with the same downstream contract.
 - Project LLM calls use a DeepSeek/OpenAI-compatible client.
@@ -62,7 +62,7 @@ npm install
 npm run dev -- --port 5173
 ```
 
-Use the `ULEZ selected` screen to paste or upload a new policy document and click `Run real analysis`. For non-ULEZ policies without a `truth_set`, the dashboard shows `无历史回测数据，仅提供影响分析` and does not display a historical backtest.
+Use the `ULEZ selected` screen to paste or upload a new policy document and click `Run real analysis`. For non-ULEZ policies without a `truth_set`, the dashboard shows `无历史回测数据，仅提供影响分析` and does not display historical grading material.
 
 ## Key Documents
 
@@ -70,7 +70,9 @@ Use the `ULEZ selected` screen to paste or upload a new policy document and clic
 - Operator anchoring runbook: `docs/OPERATOR_RUNBOOK.md`
 - Kaspa integration notes: `docs/submission/kaspa-integration.md`
 - Evaluation and ablation notes: `docs/evaluation/ablation_ulez.md`
-- Backtest integrity method: `docs/methodology/backtest_integrity.md`
+- Negative controls: `docs/evaluation/negative_controls.md`
+- Human adjudication sheet: `docs/evaluation/ulez_human_adjudication.md`
+- Blind prediction grading method: `docs/methodology/backtest_integrity.md`
 
 ## Development Commands
 
@@ -180,7 +182,7 @@ Project LLM calls read `LLM_API_KEY`/`LLM_BASE_URL`/`LLM_MODEL` first, then fall
 
 ## Data Layout
 
-- `data/cases/ulez_2023/truth_set.json`: verified historical facts for backtesting.
+- `data/cases/ulez_2023/truth_set.json`: source-backed historical facts for human adjudication.
 - `data/cases/ulez_2023/sources.md`: human-readable evidence list.
 - `data/cases/ulez_2023/seed_policy.md`: compact policy brief used as extraction input.
 - `data/cases/ulez_2023/case_graph.json`: Phase 1 structured case graph output.
@@ -190,7 +192,7 @@ Project LLM calls read `LLM_API_KEY`/`LLM_BASE_URL`/`LLM_MODEL` first, then fall
 - `runs/<run_id>/blind_prediction.json`: answer-isolated prediction prompt, sanitized context, and raw LLM prediction.
 - `runs/<run_id>/simulation_events.json`: mock simulation event log and detected signals.
 - `runs/<run_id>/impact_report.json`: stakeholder impact matrix, risk timeline, mitigations and confidence notes.
-- `runs/<run_id>/backtest_result.json`: R1-R6 directional verdicts from blind prediction, not mock demo events.
+- `runs/<run_id>/backtest_result.json`: automated keyword-rubric R1-R6 signal-coverage verdicts from blind prediction, not semantic truth verification and not mock demo events.
 - `runs/<run_id>/audit_manifest.json`: canonical JSON SHA-256 manifest with hash-chain links and head hash.
 - `runs/<run_id>/kaspa_anchor.json`: Kaspa payload commitment package for the hash-chain head, with legacy manifest-hash verification still supported.
 - `web/`: React + Vite dashboard for the 90-second controlled demo.
@@ -203,5 +205,7 @@ Project LLM calls read `LLM_API_KEY`/`LLM_BASE_URL`/`LLM_MODEL` first, then fall
 - Agents must not add sources or alter stakeholder weights without user approval.
 - Agents must not send Kaspa/Canton transactions automatically.
 - Reports must state: simulation is decision support, not deterministic forecast.
-- Backtest credibility comes from `blind_prediction.json`; mock simulation remains a dashboard/demo visualization aid.
+- ForkCast generates answer-isolated blind predictions: the prediction step provably never reads outcome data, with leakage guards recorded per run.
+- Predictions are graded two ways: an automated keyword rubric whose limits are documented in `docs/evaluation/negative_controls.md`, and human adjudication against a source-backed truth set in `docs/evaluation/ulez_human_adjudication.md`.
+- Mock simulation remains a dashboard/demo visualization aid.
 - Kaspa anchoring commits only to a manifest hash or hash-chain head; AI reasoning and artifacts stay off-chain.

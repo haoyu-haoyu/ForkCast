@@ -1,6 +1,6 @@
 {
   "case_id": "ulez_2023_expansion",
-  "generated_at": "2026-07-02T03:23:31.628722+00:00",
+  "generated_at": "2026-07-02T04:19:06.847540+00:00",
   "scorer": "evaluate_blind_prediction_backtest",
   "prediction_artifact": "runs/ulez_2023_phase2_deepseek/blind_prediction.json",
   "truth_set_artifact": "data/cases/ulez_2023/truth_set.json",
@@ -670,7 +670,7 @@
     "controls_collapse_toward_chance": false,
     "control_c_verdicts_changed_from_baseline": false,
     "mechanism": "text_signal_checklist_no_comparison_target",
-    "summary": "Negative controls did not reduce hit rate, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.",
+    "summary": "Negative controls did not reduce rubric coverage, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.",
     "scorer_modified": false
   },
   "mechanism_by_rule": {

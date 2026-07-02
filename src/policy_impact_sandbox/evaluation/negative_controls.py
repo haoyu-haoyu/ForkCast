@@ -153,7 +153,7 @@ def run_negative_controls(
             "control_c_verdicts_changed_from_baseline": rule_facts_verdicts_changed,
             "mechanism": mechanism,
             "summary": (
-                "Negative controls did not reduce hit rate, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target."
+                "Negative controls did not reduce rubric coverage, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target."
                 if scorer_leniency_finding
                 else "Control C changed verdicts; this indicates a semantic comparator with code-level ground-truth polarity, not truth_set.json as the operative source."
             ),
@@ -227,9 +227,9 @@ def render_negative_controls_markdown(result: dict[str, Any]) -> str:
         f"- Controls collapse toward chance: `{finding['controls_collapse_toward_chance']}`",
         f"- Summary: {finding['summary']}",
         "",
-        "## Hit Rates",
+        "## Rubric Coverage Rates",
         "",
-        "| Condition | Hit rate | Verdicts |",
+        "| Condition | Rubric coverage | Verdicts |",
         "|---|---:|---|",
         f"| Real truth set, cached blind prediction | {baseline['hit_rate']:.4f} | {_format_verdicts(baseline['verdicts'])} |",
         f"| Inverted-truth control | {inverted['hit_rate']:.4f} | {_format_verdicts(inverted['verdicts'])} |",
@@ -274,7 +274,7 @@ def render_negative_controls_markdown(result: dict[str, Any]) -> str:
         "",
         finding["summary"],
         "",
-        "These controls are intentionally adversarial. They show that the current R1-R6 scorer is useful as a signal-extraction checklist, but not yet a semantic truth-comparison evaluator: changing/shuffling truth-set content and inverting the harness-level RULE_FACTS surrogate does not change verdicts because verdicts are derived from blind-prediction text signals. This is an evidence-hardening finding, not a product claim.",
+        "These controls are intentionally adversarial. They show that the current R1-R6 scorer is useful as a signal-extraction checklist, but not yet a semantic truth-comparison evaluator: changing/shuffling truth-set content and inverting the harness-level RULE_FACTS surrogate does not change verdicts because verdicts are derived from blind-prediction text signals. The 0.8333 values above are rubric-coverage numbers, not accuracy. This is an evidence-hardening finding, not a product claim.",
         "",
         "Cross-case control status: `{status}` — {reason}".format(**result["controls"]["cross_case"]),
     ]
