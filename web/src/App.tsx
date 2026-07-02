@@ -31,8 +31,9 @@ import {
 } from "./control";
 import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
 import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
+import { buildClaimsAuditRows, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
-import type { AgentProfile, BacktestRule, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
+import type { AgentProfile, BacktestRule, ClaimProvenanceRow, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
 
 const demoSteps: Array<{ key: DemoStep; label: string; time: string; checkpoint?: CheckpointKey }> = [
   { key: "before", label: "Before", time: "0-8s" },
@@ -997,6 +998,7 @@ function ImpactReport({
   claimVisibility: Record<string, boolean>;
   setClaimVisibility: (value: Record<string, boolean>) => void;
 }) {
+  const claimsAuditRows = buildClaimsAuditRows(impactReport, backtest);
   return (
     <Panel>
       <div className="panel-title-row">
@@ -1023,15 +1025,16 @@ function ImpactReport({
         </div>
         <div>
           <h4>Claim review</h4>
-          {backtest.rules.map((rule) => (
-            <div className={`claim-row ${claimVisibility[rule.rule_id] ? "" : "muted"}`} key={rule.rule_id}>
-              <span>{rule.rule_id}</span>
-              <p>{rule.system_signal}</p>
+          {claimsAuditRows.slice(0, 6).map((row) => (
+            <div className={`claim-row ${claimVisibility[row.id] === false ? "muted" : ""}`} key={row.id}>
+              <span>{row.id.replace("backtest_", "")}</span>
+              <p>{row.claim}</p>
+              <ProvenancePill provenance={row.provenance_class} />
               <button
                 className="secondary small"
-                onClick={() => setClaimVisibility({ ...claimVisibility, [rule.rule_id]: !claimVisibility[rule.rule_id] })}
+                onClick={() => setClaimVisibility({ ...claimVisibility, [row.id]: claimVisibility[row.id] === false })}
               >
-                {claimVisibility[rule.rule_id] ? "Delete" : "Restore"}
+                {claimVisibility[row.id] === false ? "Restore" : "Delete"}
               </button>
               <button className="secondary small">Downgrade wording</button>
             </div>
@@ -1047,8 +1050,27 @@ function ImpactReport({
           </div>
         ))}
       </div>
+      <h4>Claims audit table</h4>
+      <div className="claims-audit-table">
+        <div className="claims-audit-head">
+          <span>Claim</span>
+          <span>Provenance</span>
+          <span>Evidence pointer</span>
+        </div>
+        {claimsAuditRows.slice(0, 8).map((row) => (
+          <div className="claims-audit-row" key={`audit-${row.id}`}>
+            <p>{row.claim}</p>
+            <ProvenancePill provenance={row.provenance_class} />
+            <code>{row.evidence_pointer}</code>
+          </div>
+        ))}
+      </div>
     </Panel>
   );
+}
+
+function ProvenancePill({ provenance }: { provenance: ClaimProvenanceRow["provenance_class"] }) {
+  return <em className={`provenance-pill ${provenance.toLowerCase()}`}>{PROVENANCE_LABELS[provenance]}</em>;
 }
 
 function BlindBacktest() {

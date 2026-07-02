@@ -12,6 +12,9 @@ def generate_impact_report(
     simulation_result: dict[str, Any],
 ) -> dict[str, Any]:
     signals = simulation_result.get("signals", {})
+    risk_timeline = _risk_timeline(signals)
+    mitigation_options = _mitigation_options()
+    system_signals = _system_signals(signals)
     report = {
         "case_id": case_graph["case_id"],
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -20,15 +23,16 @@ def generate_impact_report(
         "backtest_evidence": "blind_prediction.json",
         "method_note": "This impact report is generated from mock interaction events for dashboard demonstration. Historical backtest credibility is based on blind_prediction.json, not these mock events.",
         "stakeholder_impact_matrix": _stakeholder_matrix(case_graph, agents_payload, signals),
-        "risk_timeline": _risk_timeline(signals),
-        "mitigation_options": _mitigation_options(),
+        "risk_timeline": risk_timeline,
+        "mitigation_options": mitigation_options,
         "confidence_notes": [
             "Backtest comparison is directional only and does not score exact historical percentages.",
             "Political output is framed as political salience/electoral risk, not causal proof or election-result prediction.",
             "Mock simulation is used for the 2026-07-01 MVP path; OASIS live simulation remains a stretch validation.",
             "The R1-R6 backtest is scored from blind_prediction.json rather than mock simulation events.",
         ],
-        "system_signals": _system_signals(signals),
+        "system_signals": system_signals,
+        "claims_audit_table": _claims_audit_table(system_signals, risk_timeline, mitigation_options),
     }
     return report
 
@@ -53,6 +57,18 @@ def render_impact_report_markdown(report: dict[str, Any]) -> str:
     lines.extend(["", "## Mitigation Options"])
     for item in report["mitigation_options"]:
         lines.append(f"- {item['option']}: {item['rationale']}")
+    lines.extend(
+        [
+            "",
+            "## Claims Audit",
+            "| Claim | Provenance | Evidence pointer |",
+            "|---|---|---|",
+        ]
+    )
+    for item in report.get("claims_audit_table", []):
+        lines.append(
+            f"| {item['claim']} | {item['provenance_class']} | {item['evidence_pointer']} |"
+        )
     return "\n".join(lines) + "\n"
 
 
@@ -163,3 +179,72 @@ def _system_signals(signals: dict[str, str]) -> dict[str, str]:
     if signals.get("air_quality_benefit") == "present" and signals.get("distributional_burden") == "present":
         output["R6"] = "air-quality and health benefits coexist with distributional burden for lower-income and vehicle-dependent groups"
     return output
+
+
+def _claims_audit_table(
+    system_signals: dict[str, str],
+    risk_timeline: list[dict[str, str]],
+    mitigation_options: list[dict[str, str]],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for rule_id, claim in system_signals.items():
+        rows.append(
+            {
+                "id": f"claim_{rule_id}",
+                "claim": claim,
+                "provenance_class": "INFERRED-FROM-DOCUMENT",
+                "evidence_pointer": _rule_evidence_pointer(rule_id),
+                "evidence_fact_ids": _rule_fact_ids(rule_id),
+                "source_artifact": "simulation_events.json + case_graph.json",
+                "confidence": "medium",
+            }
+        )
+    for risk in risk_timeline:
+        rows.append(
+            {
+                "id": f"risk_{risk['stage']}",
+                "claim": risk["signal"],
+                "provenance_class": "INFERRED-FROM-DOCUMENT",
+                "evidence_pointer": f"simulation_events.signals; risk_timeline.{risk['stage']}",
+                "evidence_fact_ids": [],
+                "source_artifact": "simulation_events.json",
+                "confidence": "medium",
+            }
+        )
+    for index, option in enumerate(mitigation_options, start=1):
+        rows.append(
+            {
+                "id": f"mitigation_{index}",
+                "claim": option["rationale"],
+                "provenance_class": "MODEL-PRIOR",
+                "evidence_pointer": f"impact_report.mitigation_options[{index - 1}]",
+                "evidence_fact_ids": [],
+                "source_artifact": "impact_report_generation_rule",
+                "confidence": "low",
+            }
+        )
+    return rows
+
+
+def _rule_evidence_pointer(rule_id: str) -> str:
+    mapping = {
+        "R1": "case_graph.stakeholders.outer_london/inner_london; simulation_events.signals.outer_london_backlash",
+        "R2": "case_graph.stakeholders.van_drivers_tradespeople; simulation_events.signals.van_tradespeople_pressure",
+        "R3": "simulation_events.signals.political_salience; report note forbids election-result prediction",
+        "R4": "simulation_events.signals.enforcement_backlash",
+        "R5": "simulation_events.signals.behavioural_adaptation",
+        "R6": "simulation_events.signals.air_quality_benefit + distributional_burden",
+    }
+    return mapping.get(rule_id, "impact_report.system_signals")
+
+
+def _rule_fact_ids(rule_id: str) -> list[str]:
+    mapping = {
+        "R1": ["C1_public_opinion_distribution"],
+        "R2": ["D1_six_month_compliance_rate_change", "A2_daily_charge"],
+        "R3": ["B1_uxbridge_by_election_result", "B2_ulez_as_key_by_election_issue"],
+        "R4": ["C2_camera_vandalism_and_enforcement_resistance"],
+        "R5": ["D1_six_month_compliance_rate_change", "D2_non_compliant_vehicle_count_change"],
+        "R6": ["D3_air_quality_and_emissions_changes", "A2_daily_charge", "C1_public_opinion_distribution"],
+    }
+    return mapping.get(rule_id, [])

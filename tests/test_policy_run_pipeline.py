@@ -137,6 +137,9 @@ def test_generic_policy_run_does_not_load_truth_set_and_marks_backtest_unavailab
     assert result["truth_set_status"]["message"] == "无历史回测数据，仅提供影响分析"
     assert result["backtest_result"] is None
     assert result["impact_report"]["disclaimer"] == "simulation is decision support, not deterministic forecast"
+    assert result["impact_report"]["claims_audit_table"]
+    assert all(row["provenance_class"] for row in result["impact_report"]["claims_audit_table"])
     assert result["audit_manifest"]["entries"]
     assert len(result["agents"]["agents"]) == 4
     assert all("truth_set_json" not in user_prompt for _, user_prompt in client.calls)
+    assert any("claims_audit_table" in system_prompt for system_prompt, _ in client.calls)

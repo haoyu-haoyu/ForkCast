@@ -36,6 +36,15 @@ def generate_llm_impact_report(
         indent=2,
     )
     parsed = parse_json_object(llm_client.complete_json(system_prompt=system_prompt, user_prompt=user_prompt))
+    stakeholder_impact_matrix = _list(parsed.get("stakeholder_impact_matrix"))
+    risk_timeline = _list(parsed.get("risk_timeline"))
+    mitigation_options = _list(parsed.get("mitigation_options"))
+    claims_audit_table = _normalize_claim_rows(
+        _list(parsed.get("claims_audit_table")),
+        stakeholder_impact_matrix=stakeholder_impact_matrix,
+        risk_timeline=risk_timeline,
+        mitigation_options=mitigation_options,
+    )
     return {
         "case_id": case_graph["case_id"],
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -43,12 +52,13 @@ def generate_llm_impact_report(
         "report_mode": "llm_policy_analysis_no_truth_set",
         "backtest_evidence": None,
         "method_note": "No historical truth_set was supplied; this report provides impact analysis only, not backtest validation.",
-        "stakeholder_impact_matrix": _list(parsed.get("stakeholder_impact_matrix")),
-        "risk_timeline": _list(parsed.get("risk_timeline")),
-        "mitigation_options": _list(parsed.get("mitigation_options")),
+        "stakeholder_impact_matrix": stakeholder_impact_matrix,
+        "risk_timeline": risk_timeline,
+        "mitigation_options": mitigation_options,
         "confidence_notes": _string_list(parsed.get("confidence_notes"))
         or ["无历史回测数据，仅提供影响分析。"],
         "system_signals": {},
+        "claims_audit_table": claims_audit_table,
     }
 
 
@@ -62,3 +72,80 @@ def _string_list(value: Any) -> list[str]:
     if not isinstance(value, list):
         return []
     return [str(item) for item in value if str(item).strip()]
+
+
+def _normalize_claim_rows(
+    rows: list[dict[str, Any]],
+    stakeholder_impact_matrix: list[dict[str, Any]],
+    risk_timeline: list[dict[str, Any]],
+    mitigation_options: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    normalized = []
+    allowed = {"DOCUMENT-CITED", "INFERRED-FROM-DOCUMENT", "MODEL-PRIOR"}
+    for index, row in enumerate(rows, start=1):
+        claim = str(row.get("claim") or row.get("statement") or "").strip()
+        if not claim:
+            continue
+        provenance_class = str(row.get("provenance_class") or "INFERRED-FROM-DOCUMENT")
+        if provenance_class not in allowed:
+            provenance_class = "INFERRED-FROM-DOCUMENT"
+        normalized.append(
+            {
+                "id": str(row.get("id") or f"claim_{index}"),
+                "claim": claim,
+                "provenance_class": provenance_class,
+                "evidence_pointer": str(row.get("evidence_pointer") or "llm_report_context"),
+                "evidence_fact_ids": [str(item) for item in row.get("evidence_fact_ids", [])],
+                "source_artifact": str(row.get("source_artifact") or "impact_report_generation_context"),
+                "confidence": str(row.get("confidence") or "medium"),
+            }
+        )
+    return normalized or _fallback_claim_rows(stakeholder_impact_matrix, risk_timeline, mitigation_options)
+
+
+def _fallback_claim_rows(
+    stakeholder_impact_matrix: list[dict[str, Any]],
+    risk_timeline: list[dict[str, Any]],
+    mitigation_options: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for item in stakeholder_impact_matrix:
+        if item.get("qualitative_signal"):
+            rows.append(
+                {
+                    "id": f"stakeholder_{item.get('stakeholder_id', len(rows) + 1)}",
+                    "claim": str(item["qualitative_signal"]),
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": f"case_graph.stakeholders.{item.get('stakeholder_id', 'unknown')}; simulation_events.signals",
+                    "evidence_fact_ids": [],
+                    "source_artifact": "case_graph.json + simulation_events.json",
+                    "confidence": "medium",
+                }
+            )
+    for item in risk_timeline:
+        if item.get("signal"):
+            rows.append(
+                {
+                    "id": f"risk_{item.get('stage', len(rows) + 1)}",
+                    "claim": str(item["signal"]),
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": f"risk_timeline.{item.get('stage', 'unknown')}",
+                    "evidence_fact_ids": [],
+                    "source_artifact": "impact_report.json",
+                    "confidence": "medium",
+                }
+            )
+    for index, item in enumerate(mitigation_options, start=1):
+        if item.get("rationale"):
+            rows.append(
+                {
+                    "id": f"mitigation_{index}",
+                    "claim": str(item["rationale"]),
+                    "provenance_class": "MODEL-PRIOR",
+                    "evidence_pointer": f"mitigation_options[{index - 1}]",
+                    "evidence_fact_ids": [],
+                    "source_artifact": "impact_report_generation_prompt",
+                    "confidence": "low",
+                }
+            )
+    return rows

@@ -1,7 +1,7 @@
 {
   "case_id": "london_congestion_charge_2003",
   "run_id": "congestion_charge_2003_draft_mock",
-  "generated_at": "2026-07-02T00:11:22.534459+00:00",
+  "generated_at": "2026-07-02T00:17:00.432232+00:00",
   "chain_status": "not_on_chain",
   "human_approval_required_for_chain_anchor": true,
   "entries": [
@@ -11,7 +11,7 @@
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "data/cases/congestion_charge_2003/case_graph.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "simulation_config",
@@ -19,39 +19,39 @@
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/simulation_config.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "agents",
-      "hash": "691a4ec622475f5fe3d42bd4c498fbeedc109ad1a8c14f20699a365aa6c6fa2a",
+      "hash": "dbce8b3e76f586e3b33e4ef93ffc196736de23cfcd251d18e062bfc405c13efc",
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/agents.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "blind_prediction",
-      "hash": "1f1941a788832c54b805eafb94a27a303b6c1dd16254d5df6a20d0b592b15667",
+      "hash": "244fc73d22601bc8d2675ada2e68b7e462c77c3cb0cc0bc6875762665ea24a8f",
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/blind_prediction.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "simulation_events",
-      "hash": "41ceffd3c8ef798c8b74b879cacceb0540e6e7ae6c5ac9c3353a0e46f37bc180",
+      "hash": "34cbb1d4c85fcc7de81f965f80a4c4fff398dc37f512127f3f93cda63c63eb69",
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/simulation_events.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "impact_report",
-      "hash": "0d4c2b80b1c5d2e4f137d67eb3e315f3a62219bf95c5f96b045f36f6abca6339",
+      "hash": "084e36769a0baf5c04589cbfd1df1279e7345684823014dce75b82787cd5d26b",
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/impact_report.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "backtest_result",
@@ -59,7 +59,7 @@
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/backtest_result.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     },
     {
       "stage": "persona_chat_sample",
@@ -67,7 +67,7 @@
       "actor": "conduct_core",
       "approval": "not_on_chain",
       "artifact_uri": "runs/congestion_charge_2003_draft_mock/persona_chat_sample.json",
-      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+      "timestamp": "2026-07-02T00:17:00.432232+00:00"
     }
   ]
 }

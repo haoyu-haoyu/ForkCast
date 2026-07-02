@@ -20,9 +20,15 @@
         "properties": {
           "id": { "type": "string" },
           "statement": { "type": "string" },
+          "claim": { "type": "string" },
           "direction": { "type": "string" },
           "confidence": { "enum": ["low", "medium", "high", "待核实"] },
-          "evidence_fact_ids": { "type": "array", "items": { "type": "string" } }
+          "evidence_fact_ids": { "type": "array", "items": { "type": "string" } },
+          "provenance_class": {
+            "enum": ["DOCUMENT-CITED", "INFERRED-FROM-DOCUMENT", "MODEL-PRIOR"]
+          },
+          "evidence_pointer": { "type": "string" },
+          "source_artifact": { "type": "string" }
         }
       }
     }

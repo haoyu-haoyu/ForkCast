@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { auditManifest, backtest, kaspaAnchor } from "./data";
+import { auditManifest, backtest, impactReport, kaspaAnchor } from "./data";
+import { buildClaimsAuditRows, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
 
 const FORBIDDEN_DEMO_STRINGS = [
@@ -56,5 +57,18 @@ describe("dashboard evidence content", () => {
       expect(kaspaAnchor.explorer_url).toContain("explorer-tn10.kaspa.org/txs/");
       expect(kaspaAnchor.send_attempt.attempted).toBe(true);
     }
+  });
+
+  it("renders provenance labels for report claims without mutating anchored artifacts", () => {
+    const rows = buildClaimsAuditRows(impactReport, backtest);
+
+    expect(rows.length).toBeGreaterThanOrEqual(backtest.rules.length);
+    expect(rows.map((row) => row.provenance_class)).toContain("INFERRED-FROM-DOCUMENT");
+    expect(Object.keys(PROVENANCE_LABELS)).toEqual([
+      "DOCUMENT-CITED",
+      "INFERRED-FROM-DOCUMENT",
+      "MODEL-PRIOR",
+    ]);
+    expect(rows.every((row) => row.claim && row.evidence_pointer)).toBe(true);
   });
 });

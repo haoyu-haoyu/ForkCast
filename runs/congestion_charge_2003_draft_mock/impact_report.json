@@ -1,6 +1,6 @@
 {
   "case_id": "london_congestion_charge_2003",
-  "generated_at": "2026-07-02T00:11:22.529379+00:00",
+  "generated_at": "2026-07-02T00:17:00.422848+00:00",
   "disclaimer": "simulation is decision support, not deterministic forecast",
   "report_mode": "mock_demo_visualization",
   "backtest_evidence": "blind_prediction.json",
@@ -144,5 +144,73 @@
   ],
   "system_signals": {
     "R5": "short-term opposition coexists with longer-term behavioural adaptation and improving compliance"
-  }
+  },
+  "claims_audit_table": [
+    {
+      "id": "claim_R5",
+      "claim": "short-term opposition coexists with longer-term behavioural adaptation and improving compliance",
+      "provenance_class": "INFERRED-FROM-DOCUMENT",
+      "evidence_pointer": "simulation_events.signals.behavioural_adaptation",
+      "evidence_fact_ids": [
+        "D1_six_month_compliance_rate_change",
+        "D2_non_compliant_vehicle_count_change"
+      ],
+      "source_artifact": "simulation_events.json + case_graph.json",
+      "confidence": "medium"
+    },
+    {
+      "id": "risk_short_term",
+      "claim": "outer-London and van-dependent groups show strong backlash",
+      "provenance_class": "INFERRED-FROM-DOCUMENT",
+      "evidence_pointer": "simulation_events.signals; risk_timeline.short_term",
+      "evidence_fact_ids": [],
+      "source_artifact": "simulation_events.json",
+      "confidence": "medium"
+    },
+    {
+      "id": "risk_implementation_period",
+      "claim": "political salience and enforcement backlash require active management",
+      "provenance_class": "INFERRED-FROM-DOCUMENT",
+      "evidence_pointer": "simulation_events.signals; risk_timeline.implementation_period",
+      "evidence_fact_ids": [],
+      "source_artifact": "simulation_events.json",
+      "confidence": "medium"
+    },
+    {
+      "id": "risk_longer_term",
+      "claim": "behavioural adaptation and compliance improvement emerge over time",
+      "provenance_class": "INFERRED-FROM-DOCUMENT",
+      "evidence_pointer": "simulation_events.signals; risk_timeline.longer_term",
+      "evidence_fact_ids": [],
+      "source_artifact": "simulation_events.json",
+      "confidence": "medium"
+    },
+    {
+      "id": "mitigation_1",
+      "claim": "reduces the highest-impact economic pressure without changing stakeholder weights automatically",
+      "provenance_class": "MODEL-PRIOR",
+      "evidence_pointer": "impact_report.mitigation_options[0]",
+      "evidence_fact_ids": [],
+      "source_artifact": "impact_report_generation_rule",
+      "confidence": "low"
+    },
+    {
+      "id": "mitigation_2",
+      "claim": "addresses distributional burden while preserving air-quality objectives",
+      "provenance_class": "MODEL-PRIOR",
+      "evidence_pointer": "impact_report.mitigation_options[1]",
+      "evidence_fact_ids": [],
+      "source_artifact": "impact_report_generation_rule",
+      "confidence": "low"
+    },
+    {
+      "id": "mitigation_3",
+      "claim": "responds to enforcement backlash without escalating automated actions",
+      "provenance_class": "MODEL-PRIOR",
+      "evidence_pointer": "impact_report.mitigation_options[2]",
+      "evidence_fact_ids": [],
+      "source_artifact": "impact_report_generation_rule",
+      "confidence": "low"
+    }
+  ]
 }

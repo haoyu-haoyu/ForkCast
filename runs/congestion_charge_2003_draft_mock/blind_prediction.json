@@ -1,7 +1,7 @@
 {
   "case_id": "london_congestion_charge_2003",
   "mode": "blind_prediction",
-  "generated_at": "2026-07-02T00:11:22.528550+00:00",
+  "generated_at": "2026-07-02T00:17:00.421904+00:00",
   "llm": {
     "provider": "mock",
     "base_url": null,

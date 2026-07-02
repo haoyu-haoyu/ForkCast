@@ -7,7 +7,7 @@ import impactReportJson from "./data/impact_report.json";
 import auditManifestJson from "./data/audit_manifest.json";
 import kaspaAnchorJson from "./data/kaspa_anchor.json";
 
-import type { AgentProfile, AuditEntry, BacktestRule, KaspaAnchor, SimulationEvent, Stakeholder } from "./types";
+import type { AgentProfile, AuditEntry, BacktestRule, ClaimProvenanceRow, KaspaAnchor, SimulationEvent, Stakeholder } from "./types";
 
 export const caseGraph = caseGraphJson as {
   case_id: string;
@@ -52,6 +52,7 @@ export const impactReport = impactReportJson as {
   risk_timeline: Array<{ stage: string; signal: string; risk_level: string }>;
   mitigation_options: Array<{ option: string; rationale: string }>;
   confidence_notes: string[];
+  claims_audit_table?: ClaimProvenanceRow[];
 };
 export const auditManifest = auditManifestJson as {
   chain_status: string;

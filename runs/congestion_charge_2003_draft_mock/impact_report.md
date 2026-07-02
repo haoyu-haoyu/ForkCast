@@ -18,3 +18,14 @@ This impact report is generated from mock interaction events for dashboard demon
 - targeted support for van-dependent small businesses: reduces the highest-impact economic pressure without changing stakeholder weights automatically
 - low-income household transition assistance: addresses distributional burden while preserving air-quality objectives
 - visible enforcement legitimacy and camera-protection plan: responds to enforcement backlash without escalating automated actions
+
+## Claims Audit
+| Claim | Provenance | Evidence pointer |
+|---|---|---|
+| short-term opposition coexists with longer-term behavioural adaptation and improving compliance | INFERRED-FROM-DOCUMENT | simulation_events.signals.behavioural_adaptation |
+| outer-London and van-dependent groups show strong backlash | INFERRED-FROM-DOCUMENT | simulation_events.signals; risk_timeline.short_term |
+| political salience and enforcement backlash require active management | INFERRED-FROM-DOCUMENT | simulation_events.signals; risk_timeline.implementation_period |
+| behavioural adaptation and compliance improvement emerge over time | INFERRED-FROM-DOCUMENT | simulation_events.signals; risk_timeline.longer_term |
+| reduces the highest-impact economic pressure without changing stakeholder weights automatically | MODEL-PRIOR | impact_report.mitigation_options[0] |
+| addresses distributional burden while preserving air-quality objectives | MODEL-PRIOR | impact_report.mitigation_options[1] |
+| responds to enforcement backlash without escalating automated actions | MODEL-PRIOR | impact_report.mitigation_options[2] |

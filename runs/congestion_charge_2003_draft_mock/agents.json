@@ -1,6 +1,6 @@
 {
   "case_id": "london_congestion_charge_2003",
-  "generated_at": "2026-07-02T00:11:22.526550+00:00",
+  "generated_at": "2026-07-02T00:17:00.419999+00:00",
   "generation_method": "deepseek_openai_compatible_with_coverage_guard",
   "target_count": 35,
   "max_count": 200,

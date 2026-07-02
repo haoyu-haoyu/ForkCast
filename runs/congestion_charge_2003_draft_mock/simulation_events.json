@@ -2,7 +2,7 @@
   "case_id": "london_congestion_charge_2003",
   "run_id": "congestion_charge_2003_draft_mock",
   "mode": "mock",
-  "generated_at": "2026-07-02T00:11:22.529376+00:00",
+  "generated_at": "2026-07-02T00:17:00.422844+00:00",
   "events": [
     {
       "event_id": "b54dd3cc73e867f1",
@@ -16,7 +16,7 @@
       "stance": "support",
       "topic": "reduce congestion",
       "content": "Transport for London and Mayor of London discusses reduce congestion with stance support.",
-      "created_at": "2026-07-02T00:11:22.529097+00:00"
+      "created_at": "2026-07-02T00:17:00.422508+00:00"
     },
     {
       "event_id": "4c2073980db4ec4e",
@@ -30,7 +30,7 @@
       "stance": "oppose",
       "topic": "daily charge cost",
       "content": "Central London drivers and regular car users discusses daily charge cost with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529104+00:00"
+      "created_at": "2026-07-02T00:17:00.422514+00:00"
     },
     {
       "event_id": "813b7e8516142d40",
@@ -44,7 +44,7 @@
       "stance": "mixed",
       "topic": "charge operating cost",
       "content": "Freight, goods and service operators discusses charge operating cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529107+00:00"
+      "created_at": "2026-07-02T00:17:00.422518+00:00"
     },
     {
       "event_id": "adb879e6a7cfc041",
@@ -58,7 +58,7 @@
       "stance": "mixed",
       "topic": "customer access",
       "content": "Central London businesses, retail and leisure discusses customer access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529110+00:00"
+      "created_at": "2026-07-02T00:17:00.422521+00:00"
     },
     {
       "event_id": "47f6c24667a71337",
@@ -72,7 +72,7 @@
       "stance": "support",
       "topic": "bus reliability",
       "content": "Bus and public transport users discusses bus reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529113+00:00"
+      "created_at": "2026-07-02T00:17:00.422523+00:00"
     },
     {
       "event_id": "1827387cda87f31c",
@@ -86,7 +86,7 @@
       "stance": "mixed",
       "topic": "traffic displacement",
       "content": "Boundary-area residents and boroughs discusses traffic displacement with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529115+00:00"
+      "created_at": "2026-07-02T00:17:00.422526+00:00"
     },
     {
       "event_id": "57cd079047eb6c6f",
@@ -100,7 +100,7 @@
       "stance": "mixed",
       "topic": "journey time reliability",
       "content": "Taxi, coach and essential trip users discusses journey time reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529118+00:00"
+      "created_at": "2026-07-02T00:17:00.422529+00:00"
     },
     {
       "event_id": "c0aa8a1da2926281",
@@ -114,7 +114,7 @@
       "stance": "support",
       "topic": "reduce congestion",
       "content": "Transport for London and Mayor of London discusses reduce congestion with stance support.",
-      "created_at": "2026-07-02T00:11:22.529125+00:00"
+      "created_at": "2026-07-02T00:17:00.422536+00:00"
     },
     {
       "event_id": "0929770b7176a2ee",
@@ -128,7 +128,7 @@
       "stance": "oppose",
       "topic": "daily charge cost",
       "content": "Central London drivers and regular car users discusses daily charge cost with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529128+00:00"
+      "created_at": "2026-07-02T00:17:00.422539+00:00"
     },
     {
       "event_id": "759a7f3e84faecc0",
@@ -142,7 +142,7 @@
       "stance": "mixed",
       "topic": "charge operating cost",
       "content": "Freight, goods and service operators discusses charge operating cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529131+00:00"
+      "created_at": "2026-07-02T00:17:00.422542+00:00"
     },
     {
       "event_id": "186d389ec121550c",
@@ -156,7 +156,7 @@
       "stance": "mixed",
       "topic": "customer access",
       "content": "Central London businesses, retail and leisure discusses customer access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529133+00:00"
+      "created_at": "2026-07-02T00:17:00.422544+00:00"
     },
     {
       "event_id": "4fe6732bb3842670",
@@ -170,7 +170,7 @@
       "stance": "support",
       "topic": "bus reliability",
       "content": "Bus and public transport users discusses bus reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529135+00:00"
+      "created_at": "2026-07-02T00:17:00.422546+00:00"
     },
     {
       "event_id": "c6bb37d50047b632",
@@ -184,7 +184,7 @@
       "stance": "mixed",
       "topic": "traffic displacement",
       "content": "Boundary-area residents and boroughs discusses traffic displacement with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529141+00:00"
+      "created_at": "2026-07-02T00:17:00.422548+00:00"
     },
     {
       "event_id": "504fb83fa81986b1",
@@ -198,7 +198,7 @@
       "stance": "mixed",
       "topic": "journey time reliability",
       "content": "Taxi, coach and essential trip users discusses journey time reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529144+00:00"
+      "created_at": "2026-07-02T00:17:00.422550+00:00"
     },
     {
       "event_id": "9e807248a335d018",
@@ -212,7 +212,7 @@
       "stance": "support",
       "topic": "reduce congestion",
       "content": "Transport for London and Mayor of London discusses reduce congestion with stance support.",
-      "created_at": "2026-07-02T00:11:22.529146+00:00"
+      "created_at": "2026-07-02T00:17:00.422552+00:00"
     },
     {
       "event_id": "c70a3f1d39e4a591",
@@ -226,7 +226,7 @@
       "stance": "oppose",
       "topic": "daily charge cost",
       "content": "Central London drivers and regular car users discusses daily charge cost with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529148+00:00"
+      "created_at": "2026-07-02T00:17:00.422554+00:00"
     },
     {
       "event_id": "04960d35d89e89bd",
@@ -240,7 +240,7 @@
       "stance": "mixed",
       "topic": "charge operating cost",
       "content": "Freight, goods and service operators discusses charge operating cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529150+00:00"
+      "created_at": "2026-07-02T00:17:00.422556+00:00"
     },
     {
       "event_id": "ff81689cb4655265",
@@ -254,7 +254,7 @@
       "stance": "mixed",
       "topic": "customer access",
       "content": "Central London businesses, retail and leisure discusses customer access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529152+00:00"
+      "created_at": "2026-07-02T00:17:00.422558+00:00"
     },
     {
       "event_id": "ae0561426b4dedef",
@@ -268,7 +268,7 @@
       "stance": "support",
       "topic": "bus reliability",
       "content": "Bus and public transport users discusses bus reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529154+00:00"
+      "created_at": "2026-07-02T00:17:00.422560+00:00"
     },
     {
       "event_id": "ae04364f125cffaf",
@@ -282,7 +282,7 @@
       "stance": "mixed",
       "topic": "traffic displacement",
       "content": "Boundary-area residents and boroughs discusses traffic displacement with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529156+00:00"
+      "created_at": "2026-07-02T00:17:00.422562+00:00"
     },
     {
       "event_id": "125a0749e97256de",
@@ -296,7 +296,7 @@
       "stance": "mixed",
       "topic": "journey time reliability",
       "content": "Taxi, coach and essential trip users discusses journey time reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529158+00:00"
+      "created_at": "2026-07-02T00:17:00.422567+00:00"
     },
     {
       "event_id": "c9c1a20349aba34c",
@@ -310,7 +310,7 @@
       "stance": "support",
       "topic": "reduce congestion",
       "content": "Transport for London and Mayor of London discusses reduce congestion with stance support.",
-      "created_at": "2026-07-02T00:11:22.529162+00:00"
+      "created_at": "2026-07-02T00:17:00.422569+00:00"
     },
     {
       "event_id": "bcd52d27f22dcd44",
@@ -324,7 +324,7 @@
       "stance": "oppose",
       "topic": "daily charge cost",
       "content": "Central London drivers and regular car users discusses daily charge cost with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529164+00:00"
+      "created_at": "2026-07-02T00:17:00.422571+00:00"
     },
     {
       "event_id": "b488bc4aadb4da9a",
@@ -338,7 +338,7 @@
       "stance": "mixed",
       "topic": "charge operating cost",
       "content": "Freight, goods and service operators discusses charge operating cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529166+00:00"
+      "created_at": "2026-07-02T00:17:00.422572+00:00"
     },
     {
       "event_id": "da259901d25da69d",
@@ -352,7 +352,7 @@
       "stance": "mixed",
       "topic": "customer access",
       "content": "Central London businesses, retail and leisure discusses customer access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529168+00:00"
+      "created_at": "2026-07-02T00:17:00.422574+00:00"
     },
     {
       "event_id": "a2cd491d5ceb749d",
@@ -366,7 +366,7 @@
       "stance": "support",
       "topic": "bus reliability",
       "content": "Bus and public transport users discusses bus reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529170+00:00"
+      "created_at": "2026-07-02T00:17:00.422576+00:00"
     },
     {
       "event_id": "9ff0c01ff952b44b",
@@ -380,7 +380,7 @@
       "stance": "mixed",
       "topic": "traffic displacement",
       "content": "Boundary-area residents and boroughs discusses traffic displacement with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529172+00:00"
+      "created_at": "2026-07-02T00:17:00.422578+00:00"
     },
     {
       "event_id": "b4166481d6682501",
@@ -394,7 +394,7 @@
       "stance": "mixed",
       "topic": "journey time reliability",
       "content": "Taxi, coach and essential trip users discusses journey time reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529174+00:00"
+      "created_at": "2026-07-02T00:17:00.422580+00:00"
     },
     {
       "event_id": "a6d4b47ee0fde3b6",
@@ -408,7 +408,7 @@
       "stance": "support",
       "topic": "reduce congestion",
       "content": "Transport for London and Mayor of London discusses reduce congestion with stance support.",
-      "created_at": "2026-07-02T00:11:22.529176+00:00"
+      "created_at": "2026-07-02T00:17:00.422582+00:00"
     },
     {
       "event_id": "5a67eb8851fb00f2",
@@ -422,7 +422,7 @@
       "stance": "oppose",
       "topic": "daily charge cost",
       "content": "Central London drivers and regular car users discusses daily charge cost with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529178+00:00"
+      "created_at": "2026-07-02T00:17:00.422584+00:00"
     },
     {
       "event_id": "27678ed4f5b3af5c",
@@ -436,7 +436,7 @@
       "stance": "mixed",
       "topic": "charge operating cost",
       "content": "Freight, goods and service operators discusses charge operating cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529180+00:00"
+      "created_at": "2026-07-02T00:17:00.422586+00:00"
     },
     {
       "event_id": "b77839d0703e5f33",
@@ -450,7 +450,7 @@
       "stance": "mixed",
       "topic": "customer access",
       "content": "Central London businesses, retail and leisure discusses customer access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529182+00:00"
+      "created_at": "2026-07-02T00:17:00.422588+00:00"
     },
     {
       "event_id": "b1bab900906b31ab",
@@ -464,7 +464,7 @@
       "stance": "support",
       "topic": "bus reliability",
       "content": "Bus and public transport users discusses bus reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529184+00:00"
+      "created_at": "2026-07-02T00:17:00.422591+00:00"
     },
     {
       "event_id": "e065ccf3532d8937",
@@ -478,7 +478,7 @@
       "stance": "mixed",
       "topic": "traffic displacement",
       "content": "Boundary-area residents and boroughs discusses traffic displacement with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529186+00:00"
+      "created_at": "2026-07-02T00:17:00.422594+00:00"
     },
     {
       "event_id": "09159f8dde145ef4",
@@ -492,7 +492,7 @@
       "stance": "mixed",
       "topic": "journey time reliability",
       "content": "Taxi, coach and essential trip users discusses journey time reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529188+00:00"
+      "created_at": "2026-07-02T00:17:00.422596+00:00"
     },
     {
       "event_id": "da55b9928b9ad530",
@@ -506,7 +506,7 @@
       "stance": "support",
       "topic": "fund transport improvements",
       "content": "Transport for London and Mayor of London discusses fund transport improvements with stance support.",
-      "created_at": "2026-07-02T00:11:22.529194+00:00"
+      "created_at": "2026-07-02T00:17:00.422598+00:00"
     },
     {
       "event_id": "defb0cbf12380fe4",
@@ -520,7 +520,7 @@
       "stance": "oppose",
       "topic": "route access",
       "content": "Central London drivers and regular car users discusses route access with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529199+00:00"
+      "created_at": "2026-07-02T00:17:00.422602+00:00"
     },
     {
       "event_id": "ae82dc6ce95c7079",
@@ -534,7 +534,7 @@
       "stance": "mixed",
       "topic": "delivery reliability",
       "content": "Freight, goods and service operators discusses delivery reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529201+00:00"
+      "created_at": "2026-07-02T00:17:00.422604+00:00"
     },
     {
       "event_id": "7afc782d36e6211d",
@@ -548,7 +548,7 @@
       "stance": "mixed",
       "topic": "sales and footfall",
       "content": "Central London businesses, retail and leisure discusses sales and footfall with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529203+00:00"
+      "created_at": "2026-07-02T00:17:00.422606+00:00"
     },
     {
       "event_id": "85acba2c6e5757cd",
@@ -562,7 +562,7 @@
       "stance": "support",
       "topic": "journey time",
       "content": "Bus and public transport users discusses journey time with stance support.",
-      "created_at": "2026-07-02T00:11:22.529205+00:00"
+      "created_at": "2026-07-02T00:17:00.422608+00:00"
     },
     {
       "event_id": "d7b5ceeacc37cc9f",
@@ -576,7 +576,7 @@
       "stance": "mixed",
       "topic": "local access",
       "content": "Boundary-area residents and boroughs discusses local access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529208+00:00"
+      "created_at": "2026-07-02T00:17:00.422610+00:00"
     },
     {
       "event_id": "1e225814da0dc72e",
@@ -590,7 +590,7 @@
       "stance": "mixed",
       "topic": "fare or service cost",
       "content": "Taxi, coach and essential trip users discusses fare or service cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529210+00:00"
+      "created_at": "2026-07-02T00:17:00.422613+00:00"
     },
     {
       "event_id": "db317b17fa3c3b28",
@@ -604,7 +604,7 @@
       "stance": "support",
       "topic": "fund transport improvements",
       "content": "Transport for London and Mayor of London discusses fund transport improvements with stance support.",
-      "created_at": "2026-07-02T00:11:22.529212+00:00"
+      "created_at": "2026-07-02T00:17:00.422615+00:00"
     },
     {
       "event_id": "32c947fe413a47eb",
@@ -618,7 +618,7 @@
       "stance": "oppose",
       "topic": "route access",
       "content": "Central London drivers and regular car users discusses route access with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529214+00:00"
+      "created_at": "2026-07-02T00:17:00.422616+00:00"
     },
     {
       "event_id": "f6dda4683d5e49e3",
@@ -632,7 +632,7 @@
       "stance": "mixed",
       "topic": "delivery reliability",
       "content": "Freight, goods and service operators discusses delivery reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529216+00:00"
+      "created_at": "2026-07-02T00:17:00.422618+00:00"
     },
     {
       "event_id": "5bdf8cab9d01172a",
@@ -646,7 +646,7 @@
       "stance": "mixed",
       "topic": "sales and footfall",
       "content": "Central London businesses, retail and leisure discusses sales and footfall with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529218+00:00"
+      "created_at": "2026-07-02T00:17:00.422620+00:00"
     },
     {
       "event_id": "841beff9ee46f8be",
@@ -660,7 +660,7 @@
       "stance": "support",
       "topic": "journey time",
       "content": "Bus and public transport users discusses journey time with stance support.",
-      "created_at": "2026-07-02T00:11:22.529220+00:00"
+      "created_at": "2026-07-02T00:17:00.422622+00:00"
     },
     {
       "event_id": "f3b2e10c8aa6de38",
@@ -674,7 +674,7 @@
       "stance": "mixed",
       "topic": "local access",
       "content": "Boundary-area residents and boroughs discusses local access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529222+00:00"
+      "created_at": "2026-07-02T00:17:00.422624+00:00"
     },
     {
       "event_id": "5cf72bdefc4147da",
@@ -688,7 +688,7 @@
       "stance": "mixed",
       "topic": "fare or service cost",
       "content": "Taxi, coach and essential trip users discusses fare or service cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529224+00:00"
+      "created_at": "2026-07-02T00:17:00.422626+00:00"
     },
     {
       "event_id": "1f754bfc879d1a7f",
@@ -702,7 +702,7 @@
       "stance": "support",
       "topic": "fund transport improvements",
       "content": "Transport for London and Mayor of London discusses fund transport improvements with stance support.",
-      "created_at": "2026-07-02T00:11:22.529226+00:00"
+      "created_at": "2026-07-02T00:17:00.422628+00:00"
     },
     {
       "event_id": "21fc3f8546d8229e",
@@ -716,7 +716,7 @@
       "stance": "oppose",
       "topic": "route access",
       "content": "Central London drivers and regular car users discusses route access with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529228+00:00"
+      "created_at": "2026-07-02T00:17:00.422630+00:00"
     },
     {
       "event_id": "209a3a0d4a339bc2",
@@ -730,7 +730,7 @@
       "stance": "mixed",
       "topic": "delivery reliability",
       "content": "Freight, goods and service operators discusses delivery reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529230+00:00"
+      "created_at": "2026-07-02T00:17:00.422632+00:00"
     },
     {
       "event_id": "d4a3a34c8381557d",
@@ -744,7 +744,7 @@
       "stance": "mixed",
       "topic": "sales and footfall",
       "content": "Central London businesses, retail and leisure discusses sales and footfall with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529232+00:00"
+      "created_at": "2026-07-02T00:17:00.422634+00:00"
     },
     {
       "event_id": "93da993ffbf5267e",
@@ -758,7 +758,7 @@
       "stance": "support",
       "topic": "journey time",
       "content": "Bus and public transport users discusses journey time with stance support.",
-      "created_at": "2026-07-02T00:11:22.529234+00:00"
+      "created_at": "2026-07-02T00:17:00.422636+00:00"
     },
     {
       "event_id": "5f4fc72e5ac28565",
@@ -772,7 +772,7 @@
       "stance": "mixed",
       "topic": "local access",
       "content": "Boundary-area residents and boroughs discusses local access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529236+00:00"
+      "created_at": "2026-07-02T00:17:00.422638+00:00"
     },
     {
       "event_id": "26fe376eafc0d85a",
@@ -786,7 +786,7 @@
       "stance": "mixed",
       "topic": "fare or service cost",
       "content": "Taxi, coach and essential trip users discusses fare or service cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529238+00:00"
+      "created_at": "2026-07-02T00:17:00.422640+00:00"
     },
     {
       "event_id": "b443b530d78ed27c",
@@ -800,7 +800,7 @@
       "stance": "support",
       "topic": "fund transport improvements",
       "content": "Transport for London and Mayor of London discusses fund transport improvements with stance support.",
-      "created_at": "2026-07-02T00:11:22.529240+00:00"
+      "created_at": "2026-07-02T00:17:00.422642+00:00"
     },
     {
       "event_id": "87199a6f8746f2fe",
@@ -814,7 +814,7 @@
       "stance": "oppose",
       "topic": "route access",
       "content": "Central London drivers and regular car users discusses route access with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529242+00:00"
+      "created_at": "2026-07-02T00:17:00.422644+00:00"
     },
     {
       "event_id": "6ac8530d21ebc4e9",
@@ -828,7 +828,7 @@
       "stance": "mixed",
       "topic": "delivery reliability",
       "content": "Freight, goods and service operators discusses delivery reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529245+00:00"
+      "created_at": "2026-07-02T00:17:00.422646+00:00"
     },
     {
       "event_id": "8906c0abfc73dcc2",
@@ -842,7 +842,7 @@
       "stance": "mixed",
       "topic": "sales and footfall",
       "content": "Central London businesses, retail and leisure discusses sales and footfall with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529247+00:00"
+      "created_at": "2026-07-02T00:17:00.422648+00:00"
     },
     {
       "event_id": "c83724ec211a3062",
@@ -856,7 +856,7 @@
       "stance": "support",
       "topic": "journey time",
       "content": "Bus and public transport users discusses journey time with stance support.",
-      "created_at": "2026-07-02T00:11:22.529249+00:00"
+      "created_at": "2026-07-02T00:17:00.422652+00:00"
     },
     {
       "event_id": "cffeacb4ec273b46",
@@ -870,7 +870,7 @@
       "stance": "mixed",
       "topic": "local access",
       "content": "Boundary-area residents and boroughs discusses local access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529256+00:00"
+      "created_at": "2026-07-02T00:17:00.422654+00:00"
     },
     {
       "event_id": "6715d2f209c884ae",
@@ -884,7 +884,7 @@
       "stance": "mixed",
       "topic": "fare or service cost",
       "content": "Taxi, coach and essential trip users discusses fare or service cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529258+00:00"
+      "created_at": "2026-07-02T00:17:00.422656+00:00"
     },
     {
       "event_id": "81f6db315deebfdb",
@@ -898,7 +898,7 @@
       "stance": "support",
       "topic": "fund transport improvements",
       "content": "Transport for London and Mayor of London discusses fund transport improvements with stance support.",
-      "created_at": "2026-07-02T00:11:22.529260+00:00"
+      "created_at": "2026-07-02T00:17:00.422658+00:00"
     },
     {
       "event_id": "a66ce389cef9e883",
@@ -912,7 +912,7 @@
       "stance": "oppose",
       "topic": "route access",
       "content": "Central London drivers and regular car users discusses route access with stance oppose.",
-      "created_at": "2026-07-02T00:11:22.529263+00:00"
+      "created_at": "2026-07-02T00:17:00.422660+00:00"
     },
     {
       "event_id": "329106251227c0ce",
@@ -926,7 +926,7 @@
       "stance": "mixed",
       "topic": "delivery reliability",
       "content": "Freight, goods and service operators discusses delivery reliability with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529267+00:00"
+      "created_at": "2026-07-02T00:17:00.422662+00:00"
     },
     {
       "event_id": "dc479a535ecae720",
@@ -940,7 +940,7 @@
       "stance": "mixed",
       "topic": "sales and footfall",
       "content": "Central London businesses, retail and leisure discusses sales and footfall with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529269+00:00"
+      "created_at": "2026-07-02T00:17:00.422664+00:00"
     },
     {
       "event_id": "70017f975d427d48",
@@ -954,7 +954,7 @@
       "stance": "support",
       "topic": "journey time",
       "content": "Bus and public transport users discusses journey time with stance support.",
-      "created_at": "2026-07-02T00:11:22.529273+00:00"
+      "created_at": "2026-07-02T00:17:00.422666+00:00"
     },
     {
       "event_id": "26d9b9bc12f91231",
@@ -968,7 +968,7 @@
       "stance": "mixed",
       "topic": "local access",
       "content": "Boundary-area residents and boroughs discusses local access with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529275+00:00"
+      "created_at": "2026-07-02T00:17:00.422668+00:00"
     },
     {
       "event_id": "88cab668fe91c422",
@@ -982,7 +982,7 @@
       "stance": "mixed",
       "topic": "fare or service cost",
       "content": "Taxi, coach and essential trip users discusses fare or service cost with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529277+00:00"
+      "created_at": "2026-07-02T00:17:00.422670+00:00"
     },
     {
       "event_id": "8421e00dc9288337",
@@ -996,7 +996,7 @@
       "stance": "support",
       "topic": "maintain operational reliability",
       "content": "Transport for London and Mayor of London discusses maintain operational reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529280+00:00"
+      "created_at": "2026-07-02T00:17:00.422673+00:00"
     },
     {
       "event_id": "d2f00bcfccd0bf61",
@@ -1010,7 +1010,7 @@
       "stance": "mixed_adapting",
       "topic": "travel time reliability",
       "content": "Central London drivers and regular car users remains concerned but starts adapting behaviour over time.",
-      "created_at": "2026-07-02T00:11:22.529283+00:00"
+      "created_at": "2026-07-02T00:17:00.422675+00:00"
     },
     {
       "event_id": "4cbcc2fd87200419",
@@ -1024,7 +1024,7 @@
       "from_stance": "oppose",
       "to_stance": "mixed_adapting",
       "reason": "short-term opposition persists while compliance behaviour gradually adjusts",
-      "created_at": "2026-07-02T00:11:22.529285+00:00"
+      "created_at": "2026-07-02T00:17:00.422678+00:00"
     },
     {
       "event_id": "d0dbe7e296a0ec5f",
@@ -1038,7 +1038,7 @@
       "stance": "mixed",
       "topic": "access to central clients",
       "content": "Freight, goods and service operators discusses access to central clients with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529288+00:00"
+      "created_at": "2026-07-02T00:17:00.422680+00:00"
     },
     {
       "event_id": "947a30c4f2b97534",
@@ -1052,7 +1052,7 @@
       "stance": "mixed",
       "topic": "staff commuting",
       "content": "Central London businesses, retail and leisure discusses staff commuting with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529290+00:00"
+      "created_at": "2026-07-02T00:17:00.422682+00:00"
     },
     {
       "event_id": "c783cba0a625645f",
@@ -1066,7 +1066,7 @@
       "stance": "support",
       "topic": "transport investment",
       "content": "Bus and public transport users discusses transport investment with stance support.",
-      "created_at": "2026-07-02T00:11:22.529292+00:00"
+      "created_at": "2026-07-02T00:17:00.422755+00:00"
     },
     {
       "event_id": "f2cc333c42a27139",
@@ -1080,7 +1080,7 @@
       "stance": "mixed",
       "topic": "boundary fairness",
       "content": "Boundary-area residents and boroughs discusses boundary fairness with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529294+00:00"
+      "created_at": "2026-07-02T00:17:00.422757+00:00"
     },
     {
       "event_id": "9dde8c288af270eb",
@@ -1094,7 +1094,7 @@
       "stance": "mixed",
       "topic": "access to central London",
       "content": "Taxi, coach and essential trip users discusses access to central London with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529297+00:00"
+      "created_at": "2026-07-02T00:17:00.422760+00:00"
     },
     {
       "event_id": "af365cca37707059",
@@ -1108,7 +1108,7 @@
       "stance": "support",
       "topic": "maintain operational reliability",
       "content": "Transport for London and Mayor of London discusses maintain operational reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529299+00:00"
+      "created_at": "2026-07-02T00:17:00.422762+00:00"
     },
     {
       "event_id": "18e88d1137665d2b",
@@ -1122,7 +1122,7 @@
       "stance": "mixed_adapting",
       "topic": "travel time reliability",
       "content": "Central London drivers and regular car users remains concerned but starts adapting behaviour over time.",
-      "created_at": "2026-07-02T00:11:22.529301+00:00"
+      "created_at": "2026-07-02T00:17:00.422764+00:00"
     },
     {
       "event_id": "a57a4d45d5f8be74",
@@ -1136,7 +1136,7 @@
       "from_stance": "oppose",
       "to_stance": "mixed_adapting",
       "reason": "short-term opposition persists while compliance behaviour gradually adjusts",
-      "created_at": "2026-07-02T00:11:22.529303+00:00"
+      "created_at": "2026-07-02T00:17:00.422767+00:00"
     },
     {
       "event_id": "7dcc12ac3b4b6706",
@@ -1150,7 +1150,7 @@
       "stance": "mixed",
       "topic": "access to central clients",
       "content": "Freight, goods and service operators discusses access to central clients with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529305+00:00"
+      "created_at": "2026-07-02T00:17:00.422769+00:00"
     },
     {
       "event_id": "4975e0a9b52c92f5",
@@ -1164,7 +1164,7 @@
       "stance": "mixed",
       "topic": "staff commuting",
       "content": "Central London businesses, retail and leisure discusses staff commuting with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529307+00:00"
+      "created_at": "2026-07-02T00:17:00.422771+00:00"
     },
     {
       "event_id": "0190b8b79bd4c560",
@@ -1178,7 +1178,7 @@
       "stance": "support",
       "topic": "transport investment",
       "content": "Bus and public transport users discusses transport investment with stance support.",
-      "created_at": "2026-07-02T00:11:22.529310+00:00"
+      "created_at": "2026-07-02T00:17:00.422773+00:00"
     },
     {
       "event_id": "21a6b7d679a67b70",
@@ -1192,7 +1192,7 @@
       "stance": "mixed",
       "topic": "boundary fairness",
       "content": "Boundary-area residents and boroughs discusses boundary fairness with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529312+00:00"
+      "created_at": "2026-07-02T00:17:00.422775+00:00"
     },
     {
       "event_id": "ae7ac1cafa6d80c9",
@@ -1206,7 +1206,7 @@
       "stance": "mixed",
       "topic": "access to central London",
       "content": "Taxi, coach and essential trip users discusses access to central London with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529314+00:00"
+      "created_at": "2026-07-02T00:17:00.422777+00:00"
     },
     {
       "event_id": "d904069fc14c1083",
@@ -1220,7 +1220,7 @@
       "stance": "support",
       "topic": "maintain operational reliability",
       "content": "Transport for London and Mayor of London discusses maintain operational reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529316+00:00"
+      "created_at": "2026-07-02T00:17:00.422779+00:00"
     },
     {
       "event_id": "9c76614fca6b5d92",
@@ -1234,7 +1234,7 @@
       "stance": "mixed_adapting",
       "topic": "travel time reliability",
       "content": "Central London drivers and regular car users remains concerned but starts adapting behaviour over time.",
-      "created_at": "2026-07-02T00:11:22.529318+00:00"
+      "created_at": "2026-07-02T00:17:00.422782+00:00"
     },
     {
       "event_id": "4ba58e1fc0e1aae1",
@@ -1248,7 +1248,7 @@
       "from_stance": "oppose",
       "to_stance": "mixed_adapting",
       "reason": "short-term opposition persists while compliance behaviour gradually adjusts",
-      "created_at": "2026-07-02T00:11:22.529320+00:00"
+      "created_at": "2026-07-02T00:17:00.422783+00:00"
     },
     {
       "event_id": "0bf43caa478879c4",
@@ -1262,7 +1262,7 @@
       "stance": "mixed",
       "topic": "access to central clients",
       "content": "Freight, goods and service operators discusses access to central clients with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529322+00:00"
+      "created_at": "2026-07-02T00:17:00.422785+00:00"
     },
     {
       "event_id": "56d65da0337e5814",
@@ -1276,7 +1276,7 @@
       "stance": "mixed",
       "topic": "staff commuting",
       "content": "Central London businesses, retail and leisure discusses staff commuting with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529324+00:00"
+      "created_at": "2026-07-02T00:17:00.422788+00:00"
     },
     {
       "event_id": "f98b108d625e647c",
@@ -1290,7 +1290,7 @@
       "stance": "support",
       "topic": "transport investment",
       "content": "Bus and public transport users discusses transport investment with stance support.",
-      "created_at": "2026-07-02T00:11:22.529326+00:00"
+      "created_at": "2026-07-02T00:17:00.422790+00:00"
     },
     {
       "event_id": "cab5c5a884fc12fc",
@@ -1304,7 +1304,7 @@
       "stance": "mixed",
       "topic": "boundary fairness",
       "content": "Boundary-area residents and boroughs discusses boundary fairness with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529328+00:00"
+      "created_at": "2026-07-02T00:17:00.422792+00:00"
     },
     {
       "event_id": "84e050e638926262",
@@ -1318,7 +1318,7 @@
       "stance": "mixed",
       "topic": "access to central London",
       "content": "Taxi, coach and essential trip users discusses access to central London with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529330+00:00"
+      "created_at": "2026-07-02T00:17:00.422795+00:00"
     },
     {
       "event_id": "4d2bb6cf80a42e3d",
@@ -1332,7 +1332,7 @@
       "stance": "support",
       "topic": "maintain operational reliability",
       "content": "Transport for London and Mayor of London discusses maintain operational reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529332+00:00"
+      "created_at": "2026-07-02T00:17:00.422797+00:00"
     },
     {
       "event_id": "153a8e5deb3786be",
@@ -1346,7 +1346,7 @@
       "stance": "mixed_adapting",
       "topic": "travel time reliability",
       "content": "Central London drivers and regular car users remains concerned but starts adapting behaviour over time.",
-      "created_at": "2026-07-02T00:11:22.529334+00:00"
+      "created_at": "2026-07-02T00:17:00.422799+00:00"
     },
     {
       "event_id": "7bb463a1b5150dcd",
@@ -1360,7 +1360,7 @@
       "from_stance": "oppose",
       "to_stance": "mixed_adapting",
       "reason": "short-term opposition persists while compliance behaviour gradually adjusts",
-      "created_at": "2026-07-02T00:11:22.529336+00:00"
+      "created_at": "2026-07-02T00:17:00.422800+00:00"
     },
     {
       "event_id": "2d5ced6180f9aabe",
@@ -1374,7 +1374,7 @@
       "stance": "mixed",
       "topic": "access to central clients",
       "content": "Freight, goods and service operators discusses access to central clients with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529338+00:00"
+      "created_at": "2026-07-02T00:17:00.422802+00:00"
     },
     {
       "event_id": "1edf68843038b8f0",
@@ -1388,7 +1388,7 @@
       "stance": "mixed",
       "topic": "staff commuting",
       "content": "Central London businesses, retail and leisure discusses staff commuting with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529340+00:00"
+      "created_at": "2026-07-02T00:17:00.422805+00:00"
     },
     {
       "event_id": "880633315b8f7673",
@@ -1402,7 +1402,7 @@
       "stance": "support",
       "topic": "transport investment",
       "content": "Bus and public transport users discusses transport investment with stance support.",
-      "created_at": "2026-07-02T00:11:22.529342+00:00"
+      "created_at": "2026-07-02T00:17:00.422807+00:00"
     },
     {
       "event_id": "4d657dff1f7bedd6",
@@ -1416,7 +1416,7 @@
       "stance": "mixed",
       "topic": "boundary fairness",
       "content": "Boundary-area residents and boroughs discusses boundary fairness with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529344+00:00"
+      "created_at": "2026-07-02T00:17:00.422816+00:00"
     },
     {
       "event_id": "5e9e27179a2c55a4",
@@ -1430,7 +1430,7 @@
       "stance": "mixed",
       "topic": "access to central London",
       "content": "Taxi, coach and essential trip users discusses access to central London with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529348+00:00"
+      "created_at": "2026-07-02T00:17:00.422818+00:00"
     },
     {
       "event_id": "f8eea318081d1977",
@@ -1444,7 +1444,7 @@
       "stance": "support",
       "topic": "maintain operational reliability",
       "content": "Transport for London and Mayor of London discusses maintain operational reliability with stance support.",
-      "created_at": "2026-07-02T00:11:22.529350+00:00"
+      "created_at": "2026-07-02T00:17:00.422820+00:00"
     },
     {
       "event_id": "edb396ff69e05c22",
@@ -1458,7 +1458,7 @@
       "stance": "mixed_adapting",
       "topic": "travel time reliability",
       "content": "Central London drivers and regular car users remains concerned but starts adapting behaviour over time.",
-      "created_at": "2026-07-02T00:11:22.529352+00:00"
+      "created_at": "2026-07-02T00:17:00.422822+00:00"
     },
     {
       "event_id": "f8a33777b854e2f7",
@@ -1472,7 +1472,7 @@
       "from_stance": "oppose",
       "to_stance": "mixed_adapting",
       "reason": "short-term opposition persists while compliance behaviour gradually adjusts",
-      "created_at": "2026-07-02T00:11:22.529354+00:00"
+      "created_at": "2026-07-02T00:17:00.422824+00:00"
     },
     {
       "event_id": "3f94ab103e0bcca1",
@@ -1486,7 +1486,7 @@
       "stance": "mixed",
       "topic": "access to central clients",
       "content": "Freight, goods and service operators discusses access to central clients with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529356+00:00"
+      "created_at": "2026-07-02T00:17:00.422826+00:00"
     },
     {
       "event_id": "5c442f560856e89c",
@@ -1500,7 +1500,7 @@
       "stance": "mixed",
       "topic": "staff commuting",
       "content": "Central London businesses, retail and leisure discusses staff commuting with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529358+00:00"
+      "created_at": "2026-07-02T00:17:00.422828+00:00"
     },
     {
       "event_id": "89dc0f54b185ee9a",
@@ -1514,7 +1514,7 @@
       "stance": "support",
       "topic": "transport investment",
       "content": "Bus and public transport users discusses transport investment with stance support.",
-      "created_at": "2026-07-02T00:11:22.529360+00:00"
+      "created_at": "2026-07-02T00:17:00.422830+00:00"
     },
     {
       "event_id": "737b8bd18c7cf628",
@@ -1528,7 +1528,7 @@
       "stance": "mixed",
       "topic": "boundary fairness",
       "content": "Boundary-area residents and boroughs discusses boundary fairness with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529362+00:00"
+      "created_at": "2026-07-02T00:17:00.422832+00:00"
     },
     {
       "event_id": "07ed14794be25e0f",
@@ -1542,7 +1542,7 @@
       "stance": "mixed",
       "topic": "access to central London",
       "content": "Taxi, coach and essential trip users discusses access to central London with stance mixed.",
-      "created_at": "2026-07-02T00:11:22.529365+00:00"
+      "created_at": "2026-07-02T00:17:00.422834+00:00"
     }
   ],
   "signals": {

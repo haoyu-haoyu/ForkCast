@@ -51,6 +51,14 @@ def test_report_and_backtest_follow_rubric_verdicts() -> None:
         "R5": "HIT",
         "R6": "BALANCED HIT",
     }
+    claim_rows = report["claims_audit_table"]
+    assert claim_rows
+    assert {row["provenance_class"] for row in claim_rows} >= {
+        "INFERRED-FROM-DOCUMENT",
+        "MODEL-PRIOR",
+    }
+    assert all(row["evidence_pointer"] for row in claim_rows)
+    assert all(row["claim"] for row in claim_rows)
     assert "political salience" in result["rules"][2]["note"]
     assert "495" not in result["rules"][2]["system_signal"]
     markdown = render_backtest_markdown(result)

@@ -37,10 +37,20 @@ export interface SimulationEvent {
 
 export interface BacktestRule {
   rule_id: string;
-  verdict: "HIT" | "PARTIAL" | "MISS" | "BALANCED HIT";
+  verdict: "HIT" | "PARTIAL" | "MISS" | "BALANCED HIT" | "NOT_SCORED";
   system_signal: string;
   real_outcome: string;
   note: string;
+}
+
+export interface ClaimProvenanceRow {
+  id: string;
+  claim: string;
+  provenance_class: "DOCUMENT-CITED" | "INFERRED-FROM-DOCUMENT" | "MODEL-PRIOR";
+  evidence_pointer: string;
+  evidence_fact_ids: string[];
+  source_artifact: string;
+  confidence: "low" | "medium" | "high" | "待核实" | string;
 }
 
 export interface AuditEntry {
@@ -133,6 +143,7 @@ export interface LivePolicyRunResult {
     mitigation_options: Array<{ option: string; rationale: string }>;
     confidence_notes: string[];
     disclaimer: string;
+    claims_audit_table?: ClaimProvenanceRow[];
   };
   backtest_result: null;
 }
