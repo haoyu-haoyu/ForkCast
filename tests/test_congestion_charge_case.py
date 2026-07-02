@@ -71,3 +71,20 @@ def test_congestion_charge_mock_run_exists_as_plumbing_only() -> None:
     assert {item["verdict"] for item in backtest_result["rules"]} == {"NOT_SCORED"}
     assert {item["system_signal"] for item in backtest_result["rules"]} == {""}
     assert audit_manifest["case_id"] == "london_congestion_charge_2003"
+
+
+def test_congestion_charge_verification_checklist_covers_all_draft_facts() -> None:
+    truth_set = _read_json(CASE_DIR / "truth_set.json")
+    checklist = Path("docs/evaluation/cc2003_verification_checklist.md").read_text(encoding="utf-8")
+
+    assert "CC 2003 Truth-Set Human Verification Checklist" in checklist
+    assert "Current headline_excluded: `True`" in checklist
+    assert "CONFIRM" in checklist
+    assert "REJECT" in checklist
+    assert "EDIT" in checklist
+    for fact in truth_set["facts"]:
+        assert fact["id"] in checklist
+        assert fact["fact"] in checklist
+        for source in fact["sources"]:
+            assert source["url"] in checklist
+            assert source["quote"] in checklist
