@@ -42,7 +42,7 @@ describe("dashboard evidence content", () => {
       "Automated keyword-rubric verdicts — signal coverage, not semantic verification. See negative controls & human adjudication.",
     );
     expect(appSource).toContain("Human grading");
-    expect(appSource).toContain("Adjudication sheet");
+    expect(appSource).toContain("Pending - see docs/evaluation/ulez_human_adjudication.md");
     expect(appSource).not.toContain("Evidence-backed validation is the blind R1-R6 backtest");
   });
 

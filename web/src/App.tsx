@@ -506,7 +506,7 @@ function CaseSelectScreen({
               ["Prompt scan", "No outcome tokens"],
               ["Kaspa anchoring", kaspaAnchor.tx_id ? "Testnet tx live" : "Local package"],
               ["Report mode", "Decision support"],
-              ["Human grading", "Adjudication sheet"],
+              ["Human grading", "Pending - see docs/evaluation/ulez_human_adjudication.md"],
             ].map(([label, value]) => (
               <div key={label}>
                 <span>{label}</span>
