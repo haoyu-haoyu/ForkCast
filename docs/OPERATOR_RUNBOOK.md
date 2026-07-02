@@ -72,6 +72,39 @@ Expected result:
 - `runs/${RUN_ID}/kaspa_anchor.json` has `status: "anchored"`.
 - `explorer_url` points to `https://explorer-tn10.kaspa.org/txs/${TX_ID}`.
 
+## Ship The Anchored Showcase Run
+
+`runs/policy_run_*` is ignored by default so routine local experiments do not pollute the repo. For the final public showcase run, deliberately force-add the run directory after `record_anchor_tx.py` has written the real transaction id. Do not rename or move the run after anchoring; the manifest stores artifact URIs for the original run directory, and the verifier resolves artifacts from `--run-dir`.
+
+```bash
+git add -f "runs/${RUN_ID}/"
+git status --short "runs/${RUN_ID}"
+git commit -m "chore: add anchored showcase run ${RUN_ID}"
+```
+
+Update `README.md` with the new transaction id and the exact verification command:
+
+```bash
+uv run python scripts/verify_run.py \
+  --run-dir "runs/${RUN_ID}" \
+  --txid "${TX_ID}" \
+  --network testnet-10
+```
+
+Then verify from a fresh clone against the real TN-10 explorer:
+
+```bash
+cd /tmp
+git clone <repo-url> policy-impact-sandbox-verify
+cd policy-impact-sandbox-verify
+uv run python scripts/verify_run.py \
+  --run-dir "runs/${RUN_ID}" \
+  --txid "${TX_ID}" \
+  --network testnet-10
+```
+
+Caution: the showcase run's input policy text ships in a public repo. Use only a public document and no private data.
+
 ## Safety Notes
 
 - Agents never broadcast transactions automatically.

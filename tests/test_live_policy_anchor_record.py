@@ -5,6 +5,7 @@ from pathlib import Path
 
 from policy_impact_sandbox.live_policy.anchoring import record_anchor_transaction
 from policy_impact_sandbox.phase2.audit import build_chained_audit_manifest
+from policy_impact_sandbox.phase4.kaspa_anchor import build_kaspa_anchor_record
 
 
 def test_record_anchor_transaction_writes_anchor_and_marks_run_done(tmp_path: Path) -> None:
@@ -51,3 +52,46 @@ def test_record_anchor_transaction_writes_anchor_and_marks_run_done(tmp_path: Pa
     assert status["status"] == "DONE"
     assert status["anchor"]["tx_id"] == "abc123"
     assert status["history"][-1]["status"] == "DONE"
+
+
+def test_record_anchor_transaction_preserves_prepared_payload(tmp_path: Path) -> None:
+    run_dir = tmp_path / "runs" / "policy_run_test"
+    run_dir.mkdir(parents=True)
+    manifest = build_chained_audit_manifest(
+        case_id="school_street_trial",
+        run_id="policy_run_test",
+        artifacts={
+            "policy_input": (str(run_dir / "input.json"), {"policy_text": "School street trial"}),
+            "case_graph_ai": (str(run_dir / "case_graph_ai.json"), {"case_id": "school_street_trial"}),
+            "approval_event": (
+                str(run_dir / "approval_event.json"),
+                {
+                    "timestamp": "2026-07-02T00:00:00+00:00",
+                    "stage": "case_graph_review",
+                    "editor": "human",
+                    "diff": [{"path": "/stakeholders/0/weight", "before": 1.0, "after": 1.2}],
+                    "approved_hash": "approved-hash",
+                },
+            ),
+            "simulation_outputs": (str(run_dir / "simulation_outputs.json"), {"events": []}),
+            "report": (str(run_dir / "impact_report.json"), {"risk_timeline": []}),
+        },
+    )
+    manifest_path = run_dir / "audit_manifest.json"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    prepared_anchor = build_kaspa_anchor_record(manifest, str(manifest_path), network="testnet-10")
+    (run_dir / "kaspa_anchor.json").write_text(json.dumps(prepared_anchor), encoding="utf-8")
+    (run_dir / "status.json").write_text(
+        json.dumps({"run_id": "policy_run_test", "status": "AWAITING_ANCHOR_APPROVAL", "history": []}),
+        encoding="utf-8",
+    )
+
+    record_anchor_transaction(run_dir=run_dir, tx_id="abc123", network="testnet-10")
+
+    recorded_anchor = json.loads((run_dir / "kaspa_anchor.json").read_text(encoding="utf-8"))
+    assert recorded_anchor["status"] == "anchored"
+    assert recorded_anchor["tx_id"] == "abc123"
+    assert recorded_anchor["explorer_url"] == "https://explorer-tn10.kaspa.org/txs/abc123"
+    assert recorded_anchor["payload"] == prepared_anchor["payload"]
+    assert recorded_anchor["payload_hash"] == prepared_anchor["payload_hash"]
+    assert recorded_anchor["payload_canonical_json"] == prepared_anchor["payload_canonical_json"]
