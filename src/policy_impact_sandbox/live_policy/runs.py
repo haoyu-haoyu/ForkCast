@@ -131,6 +131,7 @@ class LivePolicyRunManager:
             "timestamp": _now(),
             "stage": "case_graph_review",
             "editor": "human",
+            "actor": "human",
             "diff": diff,
             "approved_hash": canonical_sha256(approved),
         }

@@ -43,6 +43,7 @@ describe("dashboard evidence content", () => {
     );
     expect(appSource).toContain("Human grading");
     expect(appSource).toContain("Pending - see docs/evaluation/ulez_human_adjudication.md");
+    expect(appSource).toContain("No changes were made — approve anyway?");
     expect(appSource).not.toContain("Evidence-backed validation is the blind R1-R6 backtest");
   });
 

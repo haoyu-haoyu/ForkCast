@@ -31,6 +31,7 @@ import {
 } from "./control";
 import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
 import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
+import { diffCaseGraphReview, hasUnsavedReviewDiff } from "./liveReview";
 import { buildClaimsAuditRows, claimsAuditNotice, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
 import type { AgentProfile, BacktestRule, ClaimProvenanceRow, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
@@ -185,6 +186,10 @@ function App() {
 
   async function approveReviewAndContinue() {
     if (!policyRunResult?.run_id || !reviewDraft) return;
+    if (!hasUnsavedReviewDiff(policyRunResult.case_graph_ai, reviewDraft)) {
+      const approvedWithoutChanges = window.confirm("No changes were made — approve anyway?");
+      if (!approvedWithoutChanges) return;
+    }
     setPolicyRunStatus("approving");
     setPolicyRunError("");
     try {
@@ -669,6 +674,7 @@ function LivePolicyResultPanel({
 
   if (result.status === "AWAITING_REVIEW") {
     const draft = reviewDraft || result.case_graph_approved || result.case_graph_ai;
+    const visibleDiff = diffCaseGraphReview(result.case_graph_ai, draft);
     return (
       <div className="live-result review">
         <div className="result-header">
@@ -707,7 +713,13 @@ function LivePolicyResultPanel({
         </div>
         <div className="result-block">
           <strong>Visible diff</strong>
-          {result.review_diff.length ? (
+          {visibleDiff.length ? (
+            visibleDiff.slice(0, 5).map((item) => (
+              <p key={item.path}>
+                <code>{item.path}</code>: {String(item.before)} → {String(item.after)}
+              </p>
+            ))
+          ) : result.review_diff.length ? (
             result.review_diff.slice(0, 5).map((item) => (
               <p key={item.path}>
                 <code>{item.path}</code>: {String(item.before)} → {String(item.after)}

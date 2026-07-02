@@ -84,6 +84,7 @@ export interface ChainedAuditManifest {
     timestamp: string;
     stage: string;
     editor: "human";
+    actor: "human";
     diff: LivePolicyReviewDiff[];
     approved_hash: string;
   };
@@ -183,6 +184,7 @@ export interface LivePolicyRunStatus extends Partial<LivePolicyRunResult> {
     timestamp: string;
     stage: string;
     editor: "human";
+    actor: "human";
     diff: LivePolicyReviewDiff[];
     approved_hash: string;
   } | null;

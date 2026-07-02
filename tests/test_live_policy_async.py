@@ -46,9 +46,55 @@ def test_live_policy_run_pauses_for_review_records_diff_and_resumes(tmp_path: Pa
     assert final["status"] == "AWAITING_ANCHOR_APPROVAL"
     assert final["impact_report"]["stakeholder_impact_matrix"]
     assert final["audit_manifest"]["approval_event"]["diff"][0]["after"] == 1.2
+    assert final["audit_manifest"]["approval_event"]["actor"] == "human"
+    assert final["approval_event"]["actor"] == "human"
     assert final["audit_manifest"]["hash_chain"]["head_hash"]
     assert (tmp_path / "runs" / run_id / "approval_event.json").exists()
     assert (tmp_path / "runs" / run_id / "audit_manifest.json").exists()
+
+
+def test_live_policy_run_records_null_weight_to_number_diff(tmp_path: Path) -> None:
+    app = create_app(
+        llm_client_factory=RecordingLLMClient,
+        run_root=tmp_path / "runs",
+        run_background=False,
+    )
+    client = TestClient(app)
+
+    response = client.post(
+        "/api/policy-runs",
+        json={
+            "policy_text": "Create a school street trial with exemptions and camera enforcement.",
+            "agent_count": 4,
+            "rounds": 2,
+        },
+    )
+
+    assert response.status_code == 202
+    run_id = response.json()["run_id"]
+    review = client.get(f"/api/policy-runs/{run_id}").json()
+    approved_case_graph = review["case_graph_ai"]
+    assert "weight" not in approved_case_graph["stakeholders"][0]
+
+    approved_case_graph["stakeholders"][0]["weight"] = 0.8
+    patch_response = client.patch(
+        f"/api/policy-runs/{run_id}",
+        json={"case_graph": approved_case_graph},
+    )
+
+    assert patch_response.status_code == 200
+    assert patch_response.json()["review_diff"] == [
+        {"path": "/stakeholders/0/weight", "before": None, "after": 0.8}
+    ]
+
+    approve_response = client.post(f"/api/policy-runs/{run_id}/approve")
+
+    assert approve_response.status_code == 202
+    final = client.get(f"/api/policy-runs/{run_id}").json()
+    assert final["audit_manifest"]["approval_event"]["diff"] == [
+        {"path": "/stakeholders/0/weight", "before": None, "after": 0.8}
+    ]
+    assert final["audit_manifest"]["approval_event"]["actor"] == "human"
 
 
 def test_live_policy_run_failed_stage_is_persisted(tmp_path: Path) -> None:
