@@ -1,0 +1,11 @@
+banana banana router moonlight
+
+Here is a recipe fragment, a random shell error, and a shopping list:
+
+- eggs
+- green paint
+- sudo: command not found
+- 192.168.1.1
+- a poem about static electricity
+
+No public policy, no implementation date, no jurisdiction, no stakeholders and no decision context are intentionally supplied in this fixture.

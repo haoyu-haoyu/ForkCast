@@ -1,0 +1,603 @@
+SOURCE_URL: https://www.gov.uk/government/consultations/creating-a-smokefree-generation-and-tackling-youth-vaping/creating-a-smokefree-generation-and-tackling-youth-vaping-your-views
+SOURCE_TYPE: GOV.UK public consultation page
+LICENCE_NOTE: GOV.UK content is generally available under the Open Government Licence unless otherwise stated.
+FIXTURE_PURPOSE: adversarial long public consultation document for extraction stress testing.
+
+Creating a smokefree generation and tackling youth vaping: your views - GOV.UK
+Cookies on GOV.UK
+We use some essential cookies to make this website work.
+We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
+We also use cookies set by other sites to help us deliver content from their services.
+You have accepted additional cookies. You can change your cookie settings at any time.
+You have rejected additional cookies. You can change your cookie settings at any time.
+Accept additional cookies Reject additional cookies View cookies Hide cookie message Skip to main content
+Navigation menu
+Menu Menu
+Services and information
+Benefits
+Births, death, marriages and care
+Business and self-employed
+Childcare and parenting
+Citizenship and living in the UK
+Crime, justice and the law
+Disabled people
+Driving and transport
+Education and learning
+Employing people
+Environment and countryside
+Housing and local services
+Money and tax
+Passports, travel and living abroad
+Visas and immigration
+Working, jobs and pensions
+Government activity
+Departments
+Departments, agencies and public bodies
+News
+News stories, speeches, letters and notices
+Guidance and regulation
+Detailed guidance, regulations and rules
+Research and statistics
+Reports, analysis and official statistics
+Policy papers and consultations
+Consultations and strategy
+Transparency
+Data, Freedom of Information releases and corporate reports
+Search GOV.UK × Search GOV.UK
+Search
+Search GOV.UK Search
+Home
+Health and social care
+Public health
+Health improvement
+Smoking
+Creating a smokefree generation and tackling youth vaping
+Department
+of Health &
+Social Care
+Scottish
+Government
+Welsh
+Government
+Department of Health (Northern Ireland)
+Consultation outcome
+Creating a smokefree generation and tackling youth vaping: your views
+Updated 12 February 2024
+This was published under the 2022 to 2024 Sunak Conservative government
+Contents
+Summary
+Legislating to create a smokefree generation
+Tackling the rise in youth vaping
+Restricting vape flavours
+Regulating point of sale displays
+Regulating vape packaging and product presentation
+Restricting the supply and sale of disposable vaping products
+Non-nicotine vapes and other nicotine consumer products
+Affordability
+Enforcement
+How to respond
+Next steps
+Annex 1: vape types and flavours
+Annex 2: privacy notice
+Print this page
+© Crown copyright 2024
+This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated. To view this licence, visit nationalarchives.gov.uk/doc/open-government-licence/version/3 or write to the Information Policy Team, The National Archives, Kew, London TW9 4DU, or email: psi@nationalarchives.gov.uk .
+Where we have identified any third party copyright information you will need to obtain permission from the copyright holders concerned.
+This publication is available at https://www.gov.uk/government/consultations/creating-a-smokefree-generation-and-tackling-youth-vaping/creating-a-smokefree-generation-and-tackling-youth-vaping-your-views
+Summary
+Background
+Smoking is the single most entirely preventable cause of ill health, disability, and death in the UK. It is responsible for around 80,000 deaths a year, including about:
+64,000 deaths per year in England (as reported by the Office for Health Improvement and Disparities in Local tobacco control profiles )
+8,300 deaths per year in Scotland (as reported by the Scottish Public Health Observatory’s information on smoking attributable deaths )
+5,600 deaths per year in Wales (as reported by the Public Health Wales Smoking in Wales report )
+2,200 deaths per year in Northern Ireland (as reported by the Northern Ireland Department of Health’s tobacco control information )
+No other consumer product kills up to two-thirds of its users. The Office for National Statistics’ Adult smoking habits in the UK 2022 reported that 6.4 million people in the UK were current smokers. This was 12.9% of people in the UK, and:
+12.7% in England
+14.1% in Wales
+14.0% in Northern Ireland
+13.9% in Scotland
+Smoking causes harm throughout people’s lives, not only for the smoker but for those around them. It is a major risk factor for poor maternal and infant outcomes, significantly increasing the chance of stillbirth and can trigger asthma in children. Smoking causes around 1 in 4 of all UK cancer deaths and is responsible for the great majority of lung cancer cases. Smoking is also a major cause of premature heart disease, stroke and heart failure, and increases the risk of dementia in the elderly. Smokers lose an average of 10 years of life expectancy, or around 1 year for every 4 smoking years.
+As a result, smoking puts significant pressure on the NHS. In England, almost every minute of every day someone is admitted to hospital because of smoking, and up to 75,000 GP appointments could be attributed to smoking each month - equivalent to over 100 appointments every hour.
+That is why, on 4 October 2023, the Department of Health and Social Care ( DHSC ) published a command paper Stopping the start: our new plan to create a smokefree generation setting out proposed action to protect future generations from the harms of smoking by creating the first smokefree generation, which the UK Government and devolved administrations are now seeking to consult on.
+Devolved administrations is a collective term for the executive bodies in Northern Ireland, Scotland and Wales: the Northern Ireland Executive, the Scottish Government and the Welsh Government.
+The command paper also set out measures to crack down on youth vaping. The Action on Smoking and Health ( ASH ) report Use of e-cigarettes among young people in Great Britain shows that the number of children using vapes has tripled in the past 3 years and a staggering 20.5% of children in Great Britain had tried vaping in 2023. According to the Northern Ireland Young persons behaviour and attitudes survey 2022 , 21.3% of 11 to 16 year olds in Northern Ireland reported having ever used an e-cigarette.
+Due to nicotine content and the unknown long-term harms, vaping carries risks to health and lifelong addiction for children. The health advice is clear: young people and people who have never smoked should not vape.
+The UK Government and devolved administrations have a duty to protect our children from the potential harms associated with underage vaping, while their lungs and brains are still developing. So, the UK Government and devolved administrations are consulting on several proposals on youth vaping including:
+restricting flavours
+regulating point of sale displays
+regulating packaging and presentation
+considering restricting the supply and sale of disposable vapes
+whether regulations should extend to non-nicotine vapes
+taking action on the affordability of vapes
+These will need to balance having the biggest impact on youth vaping with ensuring vapes continue to support adult smokers to quit.
+The command paper also focused on new measures to ensure the law is enforced. Underage and illicit sales of tobacco, and more recently vapes, are undermining the work of the UK Government and devolved administrations to regulate the industry and protect public health. In England and Wales, the government is seeking to introduce new powers for local authorities to issue fixed penalty notices (on the spot fines) to clamp down on those irresponsibly selling tobacco products and vapes to underage people.
+Consultation overview
+The consultation asks questions in 3 areas for which new legislation would be needed:
+Creating a smokefree generation: on smoking, the case for change is clear and the UK Government and devolved administrations are consulting on the smokefree generation policy and its scope to inform future legislation.
+Tackling youth vaping: while there is also significant evidence for action to tackle youth vaping, within each proposal the UK Government and devolved administrations are consulting on several options to ensure we take the most appropriate and impactful steps, building on England’s analysis of the youth vaping call for evidence .
+Enforcement: the consultation also asks questions on the proposal to introduce new powers for local authorities in England and Wales to issue fixed penalty notices to enforce age of sale legislation of tobacco products and vapes.
+The UK Government and devolved administrations would like to understand the impacts on businesses and on people, and if there are any impacts on groups with protected characteristics (see Discrimination: your rights ). We want to hear from:
+the public - from young people, parents, carers and teachers
+the retail sector and the independent vaping industry
+local authorities across the UK
+clinicians and medical professionals
+public health stakeholders and academic experts
+employers and trade unions
+The UK Government and devolved administrations would like to receive as much detail as possible under each of the themes of the consultation. For each multiple choice question, you will be able to provide additional information and evidence to support your answer through free text boxes.
+The UK Government and devolved administrations will only make any decisions on these proposed measures after fully considering:
+the consultation responses we receive
+the evidence provided in those responses
+a further review of the international evidence base
+Following this, impact assessments will be published.
+The UK Government, Scottish Government and Welsh Government intend to bring forward legislation as soon as possible. In Northern Ireland, the outcome of this consultation will inform decisions of incoming ministers and the Northern Ireland Executive, or in the absence of ministers, those decisions that can be taken under the Northern Ireland (Executive Formation etc) Act 2022 . This applies to all proposals in the consultation document.
+Territorial extent
+Health policy is a devolved matter in Scotland, Wales and Northern Ireland. DHSC in England, the Directorate for Population Health in Scotland, the Health and Social Services Group in Wales and the Department of Health in Northern Ireland are each responsible for improving public health. This includes reducing tobacco use by implementing comprehensive tobacco control strategies and minimising the health risks of youth vaping.
+Environmental policy, like health policy, is a devolved matter. DHSC , the Department for Environment, Food and Rural Affairs and the devolved administrations will work together to agree a policy across the 4 nations on restricting disposable vapes and other appropriate measures.
+While the legislative proposals in the command paper Stopping the start: our new plan to create a smokefree generation set out an approach for England only, governments across the UK are now consulting to understand whether they should take action in the areas outlined in the paper. So, with agreement with the devolved administrations, DHSC is leading this consultation UK-wide.
+Tobacco industry declaration
+The UK is a party to the World Health Organization Framework Convention on Tobacco Control and so has an obligation to protect the development of public health policy from the vested interests of the tobacco industry.
+To meet this obligation, we ask all respondents to disclose whether they have any direct or indirect links to, or receive funding from, the tobacco industry.
+Legislating to create a smokefree generation
+There is no more addictive product that is legally sold in our shops than tobacco. Three-quarters of smokers would never have started if they had the choice again.
+As outlined in the command paper Stopping the start: our new plan to create a smokefree generation , we want to stop the start of addiction, as it is much easier to never start smoking than to have to quit. The UK Government, Scotland and Wales will bring forward legislation making it an offence to sell tobacco products to anyone born on or after 1 January 2009.
+The law will stop children turning 14 this year or younger from ever legally being sold tobacco products. In effect, raising the smoking age by a year each year until it applies to the whole population. The Department of Health in Northern Ireland will consider measures relating to a smokefree generation following this consultation.
+Policy summary
+This policy will make it an offence for anyone born on or after 1 January 2009 to be sold tobacco products (and in Scotland, also an offence for anyone born on or after 1 January 2009 to purchase tobacco products).
+This follows a similar approach to New Zealand who became the first country in the world to introduce a restriction on the sale of tobacco to anyone born after a specified date, as part of its Smokefree Aotearoa 2025 Action Plan . The New Zealand legislation makes it an offence to sell smoked tobacco products to anyone born on or after 1 January 2009, to first take effect in January 2027.
+The UK Government, Scotland and Wales will also make it an offence for anyone at or over the legal age to purchase tobacco products on behalf of someone born on or after 1 January 2009 (‘proxy purchasing’). The Department of Health in Northern Ireland will consider appropriate measures relating to a smokefree generation following this consultation.
+Products in scope of the new legislation will mirror the current scope of age of sale legislation for tobacco products. This includes a wider range of products (see ‘Product scope’ below) than the New Zealand legislation, which only included smoked tobacco. However, New Zealand is taking forward other measures which the UK Government is not proposing, including through a licensing scheme to significantly reduce the number of retail outlets that can sell tobacco and through new limits to reduce the nicotine strength of cigarettes.
+Product scope
+In England and Wales, the current age of sale restriction is imposed under the Children and Young Persons Act 1933 . The age of sale restriction applies to tobacco products and cigarette papers.
+In Scotland, the age of sale restrictions are set out Part 1 of the Tobacco and Primary Medical Services (Scotland) Act 2010 . Those restrictions apply to tobacco products and cigarette papers, which are defined in section 35 of that act.
+In Northern Ireland, the age of sale restrictions for tobacco are set out in the Health and Personal Social Services (Northern Ireland) Order 1978 and through subsequent amendments.
+We propose that all tobacco products, cigarette papers and herbal smoking products would be subject to the proposed age of sale.
+Products that would be in scope of the change include:
+cigarettes
+cigarette papers
+hand rolled tobacco
+cigars
+cigarillos
+pipe tobacco
+waterpipe tobacco products (for example shisha)
+chewing tobacco
+heated tobacco
+nasal tobacco (snuff)
+herbal smoking products
+All other products such as vapes and nicotine replacement therapies would be out of scope for the smokefree generation proposal, because they do not contain tobacco and are often used as a quit aid for those who smoke.
+Age of sale statements
+In England and Wales, the Children and Young Persons (Protection from Tobacco) Act 1991 requires retailers selling tobacco to display a notice in a prominent position at the point of sale stating that “it is illegal to sell tobacco products to anyone under the age of 18”.
+In Scotland, this requirement is contained in the Tobacco and Primary Medical Services (Scotland) Act 2010 .
+In Northern Ireland, this requirement is contained in the Children and Young Persons (Protection from Tobacco) (Northern Ireland) Order 1991 .
+In light of this, the UK Government, Scotland and Wales propose that display statements will need to be changed and required to read “it is illegal to sell tobacco products to anyone born on or after 1 January 2009”.
+The Department of Health in Northern Ireland will consider measures relating to age of sale statements following this consultation.
+Prohibiting anyone born on or after 1 January 2009 from ever being sold tobacco products (and also from purchasing tobacco products, in Scotland) will impact children who are turning 14 or younger in 2023. Setting this date will mean the change in the law would come into effect in 3 to 4 years’ time from January 2027, when this group of children turns 18.
+Question
+Do you agree or disagree that the age of sale for tobacco products should be changed so that anyone born on or after 1 January 2009 will never be legally sold (and also in Scotland, never legally purchase) tobacco products?
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Proxy sales refer to a person at or over the legal age of sale purchasing a product on behalf of someone under the legal age of sale. Proxy sales are prohibited under existing tobacco age of sale legislation. In this context, prohibiting proxy sales would mean that anyone born before 1 January 2009 would be prohibited from purchasing tobacco products on behalf of anyone born on or after 1 January 2009.
+Question
+Do you think that proxy sales should also be prohibited?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+The following products would be in scope of the new legislation:
+cigarettes
+cigarette papers
+hand rolled tobacco
+cigars
+cigarillos
+pipe tobacco
+waterpipe tobacco products (for example, shisha)
+chewing tobacco
+heated tobacco
+nasal tobacco (snuff)
+herbal smoking products
+This mirrors the current scope of age of sale legislation in England and Wales. Existing age of sale requirements in Scotland currently cover products consisting wholly or partly of tobacco and which are intended to be smoked, sniffed, sucked or chewed. Insofar as the products listed would not be within the scope of the existing restrictions, it is proposed that the scope of the Scottish legislation be expanded to include them.
+Question
+Do you agree or disagree that all tobacco products, cigarette papers and herbal smoking products should be covered in the new legislation?
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+It is currently a legal requirement for retail premises to display the following statement ‘it is illegal to sell tobacco products to anyone under 18’. This requirement would need to be changed to align with the new age of sale.
+Question
+Do you agree or disagree that warning notices in retail premises will need to be changed to read ‘it is illegal to sell tobacco products to anyone born on or after 1 January 2009’ when the law comes into effect?
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Tackling the rise in youth vaping
+Vapes are an effective tool for adult smokers to quit, especially when combined with expert support. Ensuring vapes can continue to be made available to current adult smokers is vital to supporting current smokers to quit. However, vaping is not recommended for children, or indeed non-smokers, and carries risk of future harm and addiction. The number of children vaping has risen sharply over the past few years. In England, we carried out a youth vaping call for evidence and received a variety of suggested measures to reduce the appeal and availability of vapes to children.
+The Tobacco and Related Products Regulations 2016 sets product standards for nicotine vapes including restrictions on maximum nicotine strength, refill bottle and tank size limits, packaging and advertising (including prohibiting advertising on television and radio) in the UK.
+In 2022, the Scottish Government consulted on proposals to make regulations under existing powers in the Health (Tobacco, Nicotine etc. and Care) (Scotland) Act 2016 to restrict the advertising and promotion of nicotine vapour products (nicotine vapour products include both nicotine and non-nicotine vapes). The proposals included restrictions on advertising, brand-sharing in products and services, free distribution and nominal pricing and sponsorship.
+In Wales, the Public Health (Wales) Act 2017 introduced regulatory making powers to introduce a national register of retailers of tobacco and nicotine products. In Northern Ireland, the Health (Miscellaneous Provisions) Act (Northern Ireland) 2016 provides a power to ban vape sales from vending machines.
+As outlined in the command paper Stopping the start: our new plan to create a smokefree generation , it is important to consult on a set of proposals to reduce youth vaping, ensuring we get the balance right between protecting children and supporting adult smokers to quit. The proposals being consulted on include:
+restricting vape flavours
+regulating vape packaging and product presentation
+regulating point of sale displays
+restricting the supply and sale of disposable vapes
+exploring further restrictions for non-nicotine vapes and other nicotine consumer products such as nicotine pouches
+action on the affordability of vapes, exploring a new duty on vapes
+The ‘Stopping the start: our new plan to create a smokefree generation’ paper also set out an existing plan to legislate in order to close the loophole in our laws which allows industry to give free samples of nicotine and non-nicotine vapes (and other nicotine products) to under 18s, as well as to introduce an age restriction for non-nicotine vapes. These would apply to England and Wales only, but we will explore the possibility of inclusion of the other devolved administrations in such provisions where appropriate.
+Restricting vape flavours
+Evidence on vape flavours
+Research shows that children are attracted to the fruit and sweet flavours of vapes, both in their taste and smell, as well as how they are described. Restricting flavours has the potential to significantly reduce youth vaping.
+In Great Britain, the ASH 2023 report Use of e-cigarettes among young people in Great Britain shows that the most frequently used vape flavouring for children is ‘fruit flavour’, with 60% of current children using them. Seventeen per cent of children who vape choose sweet flavours such as chocolate or candy.
+However, research by London South Bank University has found that there is evidence that flavoured vaping products can assist adults to quit smoking. So, any restriction on flavours needs to be carefully balanced with ensuring vapes continue to be available and accessible to support adults to quit smoking.
+This is why the UK Government, Scotland and Wales are considering the options for how vape flavours and descriptions could be restricted in legislation. The Department of Health in Northern Ireland will consider measures relating to flavours following this consultation.
+More information on the range of flavours and types of devices is available in Annex 1: vape types and flavours.
+Options for how we can restrict vape flavours
+Option 1: limiting how the vape is described.
+Vape flavours can be restricted by the way they are described. For example, New Zealand has done this by mandating vape flavour descriptions, in their Smokefree Environments and Regulated Products Amendment Regulations 2023 , to a specified list that includes generic flavour names such as ‘tobacco’ or ‘berry’. This means that vapes could be called ‘blueberry’, but not ‘blueberry muffin’ for example.
+Option 2: limiting the ingredients in vapes.
+Vape flavours can be restricted by only permitting certain ingredients to be used in the product. In the Netherlands, for example, there is a specified list of ingredients that can be used in vapes, which are those that produce a ‘tobacco’ taste and pose almost no health harm.
+Option 3: limiting the characterising flavours (the taste and smell) of vapes.
+The characterising flavours of vapes (the way a vape smells or tastes to a consumer) can be restricted. In 2020, when menthol flavoured cigarettes were banned in the UK, they were restricted based on the characterising flavour of menthol. Finland, for example, has restricted all characterising flavours for vapes, apart from the flavour of tobacco.
+Options for which flavours vapes should be limited to
+As well as consulting on how the UK Government and devolved administrations should restrict vape flavours, we are also asking which flavours vapes should be limited to. We are considering restricting flavours to one of the following options:
+Option A: flavours limited to tobacco only
+Option B: flavours limited to tobacco, mint and menthol only
+Option C: flavours limited to tobacco, mint, menthol and fruits only
+We will also consider regulating non-nicotine vapes in the same way.
+Question
+Do you agree or disagree that the UK Government and devolved administrations should restrict vape flavours?
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Which option or options do you think would be the most effective way for the UK Government and devolved administrations to implement restrictions on flavours? (You may select more than one answer)
+Option 1: limiting how the vape is described
+Option 2: limiting the ingredients in vapes
+Option 3: limiting the characterising flavours (the taste and smell) of vapes
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Which option do you think would be the most effective way for the UK Government and devolved administrations to restrict vape flavours to children and young people?
+Option A: flavours limited to tobacco only
+Option B: flavours limited to tobacco, mint and menthol only
+Option C: flavours limited to tobacco, mint, menthol and fruits only
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you think there are any alternative flavour options the UK Government and devolved administrations should consider?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you think non-nicotine e-liquid, for example shortfills, should also be included in restrictions on vape flavours?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Regulating point of sale displays
+Unlike tobacco products, vapes are currently allowed to be displayed at the point of sale. Children can see and handle vapes in retail outlets where they are often displayed alongside confectionery and on accessible shelves. The ASH report Public support for government action on tobacco found that 74% of adults in England support the prohibiting of point of sale promotion of vapes.
+The UK Government and devolved administrations want to limit the exposure of children to vapes and keep them out of sight and reach of children. However, it is important not to inhibit people who currently smoke from accessing vapes as a quit aid, so they must remain visible enough.
+Specialist vape shops are retail outlets that specialise in the sale of vaping products. The UK Government and devolved administrations want to consider if they should be an exception to any restrictions, as they usually have a wider selection of devices and products available. Also, some shops have staff trained by the National Centre for Smoking Cessation and Training , to offer more tailored advice for smokers wanting to quit. The UK Government and devolved administrations are keen to hear responses on this and we have included a specific question on this.
+The UK Government, Scotland and Wales will also consider regulating non-nicotine vapes and non-nicotine e-liquids in the same way. The Department of Health in Northern Ireland will consider measures relating to non-nicotine vapes, following consultation. There is the opportunity to provide your opinions and evidence about this in the section on non-nicotine vapes.
+There are 2 options for regulating point of sale displays of vapes:
+Option 1: vapes must be kept behind the counter and cannot be on display, like tobacco products
+Option 2: vapes must be kept behind the counter but can be on display
+Question
+Which option do you think would be the most effective way to restrict vapes to children and young people?
+Option 1: vapes must be kept behind the counter and cannot be on display, like tobacco products
+Option 2: vapes must be kept behind the counter but can be on display
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you think exemptions should be made for specialist vape shops?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+If you disagree with regulating point of sale displays, what alternative measures do you think the UK Government and devolved administrations should consider?
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Regulating vape packaging and product presentation
+The youth vaping call for evidence in England showed that children are attracted to vapes through brightly coloured products and packaging and child friendly images such as cartoons. They are designed to appeal to children, and this must stop.
+Research on vape packaging published by the JAMA Network has shown that standardised vape packaging with reduced brand imagery can decrease the appeal to young people who have not previously smoked or vaped, without reducing the appeal of vapes to adult smokers.
+Options for regulating vape packaging
+The UK Government, Scotland and Wales are considering further regulating the packaging of vapes. The Department of Health in Northern Ireland will consider measures relating to regulating vape packaging following this consultation. We want to ensure that no part of the vape device, nor its packaging, is targeted at children. This includes:
+any unit packet (first wrap or container of an item)
+any container pack (the portable device in which a material is stored, transported, disposed of or handled)
+the presentation of the vape device
+There are several possible options for how packaging and presentation of vapes can be restricted.
+Option 1: prohibiting the use of cartoons, characters, animals, inanimate objects and other child friendly imagery, on both the vape packaging and vape device. This would still allow for colouring and tailored brand design.
+Option 2: prohibiting the use of all imagery and colouring on both the vape packaging and vape device. This would still allow for branding, such as logos and names.
+Option 3: prohibiting the use of all imagery and colouring and branding for both the vape packaging and vape device. This is equivalent to the standardised packaging rules on tobacco.
+Question
+Which option do you think would be the most effective way for the UK Government and devolved administrations to restrict the way vapes can be packaged and presented to reduce youth vaping?
+Option 1: prohibiting the use of cartoons, characters, animals, inanimate objects, and other child friendly imagery, on both the vape packaging and vape device. This would still allow for colouring and tailored brand design
+Option 2: prohibiting the use of all imagery and colouring on both the vape packaging and vape device but still allow branding such as logos and names
+Option 3: prohibiting the use of all imagery and colouring and branding (standardised packaging) for both the vape packaging and vape device
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+If you disagree with regulating vape packaging, what alternative measures do you think the UK Government and devolved administrations should consider?
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Restricting the supply and sale of disposable vaping products
+The use of disposable vaping products (sometimes referred to as single-use vapes) has increased substantially in recent years. Disposable vapes are products that are not rechargeable, that are not refillable or that are neither rechargeable nor refillable. In contrast, a reusable vape is a product which can be recharged and fully refilled an unlimited number of times by the user. Products can contain vape liquid with or without nicotine.
+There is growing concern over the environmental impacts of disposable vapes given their lithium batteries and hard to recycle components and the increasing frequency in which these products are littered or thrown in the bin. Recent research on vape disposal by YouGov commissioned by Material Focus found that almost 5 million disposable vapes are either littered or thrown away in general waste every week.
+There are measures already in place to ensure responsible production and disposal of waste electrical and electronic items through the Waste Electrical and Electronic Equipment Regulations 2013 ( WEEE ) and obligations under the Waste Batteries and Accumulators Regulations 2009 . However, evidence suggests compliance with these obligations is low, given the recent surge of businesses supplying disposable vapes. Both the WEEE and batteries regulations are being reviewed, with consultations planned.
+In 2023, the Scottish Government commissioned Zero Waste Scotland to examine the environmental impact of single-use vapes and consider options to tackle the issue. Environmental impacts highlighted by Zero Waste Scotland’s Environmental impact of single-use e-cigarettes review include:
+the impact of littering
+fire risks associated with unsafe disposal of their contents, including lithium batteries and chemicals
+greenhouse gas emissions and water consumption generated in their manufacture
+There is also evidence of a significant and widespread increase in the use of disposable vapes by children. ASH ’s Use of e-cigarettes among young people in Great Britain survey found that 69% of vape users aged 11 to 17 mainly used disposable vapes in 2023. Northern Ireland’s Young person’s behaviour and attitude survey 2022 shows that 85.7% of 11 to 16 year olds in Northern Ireland who currently use e-cigarettes reported that they used disposables.
+There are a range of policy options to tackle the environmental impact of single-use vapes, including improved product design, increasing access to responsible disposal options, public communication campaigns, as well as potential restrictions on single-use vapes.
+The UK Government, Scotland and Wales are considering restrictions on the sale and supply of disposable vaping products (including non-nicotine vapes), including prohibiting the sale of these products, due to the environmental impacts of disposable vapes. Northern Ireland will consider measures relating to disposable vapes following this consultation.
+The approach to the enforcement of any restrictions would be a matter for individual nations, with civil sanctions such as fixed penalty notices being the preferred enforcement mechanism where appropriate.
+Question
+Do you agree or disagree that there should be restrictions on the sale and supply of disposable vapes?
+That is, those that are not rechargeable, not refillable or that are neither rechargeable nor refillable.
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you agree or disagree that restrictions on disposable vapes should take the form of prohibiting their sale and supply?
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Are there any other types of product or descriptions of products that you think should be included in these restrictions?
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you agree or disagree that an implementation period for restrictions on disposable vapes should be no less than 6 months after the law is introduced?
+Agree
+Disagree
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Are there other measures that would be required, alongside restrictions on supply and sale of disposable vapes, to ensure the policy is effective in improving environmental outcomes?
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Non-nicotine vapes and other nicotine consumer products
+Non-nicotine vapes
+Non-nicotine vapes (or nicotine-free vapes) are covered by the General Products Safety Regulations ( GPSR ) 2005 in the UK.
+Like nicotine vapes, they can come in liquid form to be used in a device or already contained as a liquid in a device. There are 3 categories of these types of non-nicotine vapes:
+shortfill and longfill vapes
+disposable (single-use) vapes
+alternative non-nicotine vapes
+Alternative non-nicotine vapes are often advertised as wellness vapes. They are not currently subject to the same age restrictions or product standards as nicotine-containing vapes and there are some calls for non-nicotine vapes to be regulated in the same way as nicotine vapes.
+There is evidence that children are accessing these products and the UK Government and devolved administrations want to prevent potential future health harms from non-nicotine vapes. Scotland has already introduced age of sale requirements for non-nicotine vapes.
+So, the UK Government and the Welsh Government will seek to introduce legislation to prohibit the sale of non-nicotine vapes to under 18s as a first step to protect children from accessing and using these vapes. The Department of Health in Northern Ireland will consider measures relating to non-nicotine vapes to under 18s following this consultation.
+The UK Government and devolved administrations are also interested in views on whether we should also impose further restrictions on non-nicotine vapes that we have outlined in this consultation for nicotine vapes.
+Other nicotine consumer products
+There are other consumer nicotine products in the UK market such as nicotine pouches. They are not regulated under the Tobacco and Related Products Regulations 2016 but by GPSR . There are no mandated age of sale restrictions in the UK, but the UK Government, Northern Ireland and Wales have regulatory making powers to mandate these.
+Recent research on tobacco-free nicotine pouch use in Great Britain suggests that although nicotine pouch use is low among adults (0.26% or 1 in 400 users in Great Britain), it is more popular with younger and middle-aged men who also use other nicotine products and have a history of smoking. Northern Ireland’s Young person’s behaviour and attitudes survey 2022 shows that 4.8% of year 11 and year 12 pupils reported ever having used nicotine pouches in 2022.
+Question
+Do you have any evidence that the UK Government and devolved administrations should consider related to the harms or use of non-nicotine vapes?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you think the UK Government and devolved administrations should regulate non-nicotine vapes under a similar regulatory framework as nicotine vapes?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you have any evidence that the UK Government and devolved administrations should consider on the harms or use of other consumer nicotine products such as nicotine pouches?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+Do you think the UK Government and devolved administrations should regulate other consumer nicotine products such as nicotine pouches under a similar regulatory framework as nicotine vapes?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Affordability
+Price difference between vaping and smoking
+There is currently a significant difference in price between vapes and tobacco products, in part because vapes are only subject to VAT, whereas tobacco has VAT and duty (at least a £7.87 duty on a packet of 20 cigarettes). Smoking is 3 times more expensive than vaping, and it is estimated that the average smoker in England could save around £670 per year from switching to vaping. This price differential is important, as it can encourage smokers to switch from cigarettes to vapes.
+However, this also means that vapes are more readily accessible to young people and other non-smokers, especially disposable and refillable devices.
+Cost of vapes
+Disposable vapes are considerably cheaper to buy than other vape products. The most popular disposable vape among young people in 2022 was the Elf Bar, which costs around £5, compared to a reusable Elf Bar which costs around £8. Mod or tank devices vary in price, but are in the region of £40 to £50, with additional costs for the e-liquid.
+Table 1: average cost of vapes across different product categories
+Product category Unit cost (average)
+Disposable £6
+Reusable: pre-filled pod kits £12
+Reusable: vape kits (refillable cartridges) £40
+Duty and taxes on vapes
+Fifteen European countries including Germany and Italy have introduced a national tax on vapes and Canada has introduced a vaping duty. American research on the intended and unintended effects of e-cigarette taxes on youth tobacco use shows that taxes on vapes are associated with reductions in vaping, but at the potential risk of increasing youth smoking.
+The effect of increasing the prices of vapes
+The majority of respondents in DHSC ’s youth vaping call for evidence (64%) said price increases would reduce the demand for vapes. Thirty-six per cent of respondents said vapes are affordable and within the average child’s buying power and that price has a significant impact on the appeal of vapes, with a further 22% stating that disposable vapes specifically are affordable.
+A quarter of respondents thought there was a risk that price increases may have a negative impact on smoking cessation progress, given the use of vapes as an aid to quit smoking. Eleven per cent of respondents stated that the price differential between vapes and cigarettes increased the appeal of vaping.
+Policy considerations
+This consultation covers a range of measures to reduce the appeal and availability of vapes to children. To support this agenda, the UK Government thinks that there is a strong case to take action on affordability and so is exploring options, including a new duty on vapes as other countries have done, while ensuring that there is a significant differential between duty on vapes and duty on tobacco products.
+Question
+Do you think that an increase in the price of vapes would reduce the number of young people who vape?
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Enforcement
+A strong approach to enforcement is vital if the smokefree generation and youth vaping policy is to have real impact. Underage and illicit sale of tobacco, and more recently vapes, is undermining work to regulate the industry and protect public health.
+In Stopping the start: our new plan to create a smokefree generation , additional steps were set out to clamp down on those illegally selling tobacco products and vapes to underage people and to prevent illicit products from being sold.
+One of these measures is introducing new powers for local authorities to issue fixed penalty notices to enforce age of sale legislation for tobacco products and vapes in England and Wales.
+In Scotland, local authorities already have powers to issue fixed penalty notices to retailers and individuals who commit an offence under the Tobacco and Primary Medical Services (Scotland) Act 2010 . In Northern Ireland, there is local enforcement through the Tobacco Retailers Act (Northern Ireland) 2014 . It is proposed that the existing enforcement regime would continue to apply to age of sale restrictions.
+Introducing on the spot fines for underage sales
+Local authorities take a proportionate approach to enforce age of sale restrictions on tobacco products and vapes, that reflects the level of offence committed. For example, in England, penalties can be escalated, starting with a warning through to a maximum fine of £2,500. In the case of the most serious or repeat offences, local authorities can apply for a court order to prevent the offending retailer from opening for a period of time.
+The current penalty regime requires local authorities to prosecute the individual or business in question and for the individual or business in question to be convicted in a magistrates’ court. Trading standards officers say this time-consuming court procedure limits their ability to issue fines and is a significant gap in their operational capabilities.
+Question
+Do you think that fixed penalty notices should be issued for breaches of age of sale legislation for tobacco products and vapes?
+Powers to issue fixed penalty notices would provide an alternative means for local authorities to enforce age of sale legislation for tobacco products and vapes in addition to existing penalties.
+Yes
+No
+Don’t know
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+What level of fixed penalty notice should be given for an underage tobacco sale?
+£100
+£200
+Other
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+Question
+What level of fixed penalty notice should be given for an underage vape sale?
+£100
+£200
+Other
+Please explain your answer and provide evidence or your opinion to support further development of our approach. (maximum 300 words)
+How to respond
+This consultation seeks feedback on the proposed measures, to inform future legislation. On youth vaping, there are a number of options proposed, to ensure the UK Government and devolved administrations take the most appropriate and impactful steps, building on existing evidence.
+The consultation closes on 6 December 2023 at 11:59pm and you can respond via our online survey .
+If you’re responding as an individual sharing your professional views or on behalf of an organisation, you may upload a document to support your response at the end of the survey. Please do not upload information that could identify an individual or member of the public.
+If you have any issues completing the online survey, contact sfgconsultation@dhsc.gov.uk . Please do not include any personal information in your email.
+Next steps
+Following the consultation period, the UK Government, Scottish Government and Welsh Government intend to bring forward legislation as soon as possible.
+In Northern Ireland, the outcome of this consultation will inform decisions of incoming Ministers and the Northern Ireland Executive, or in the absence of Ministers, those decisions that can be taken under the Northern Ireland (Executive Formation etc) Act 2022 .
+Annex 1: vape types and flavours
+Vape devices
+Vape devices can be manufactured in different ways with some looking like conventional cigarettes, cigars or pipes. Some resemble pens or USB flash drives. Larger devices, such as tank systems or mods tend to have reusable parts.
+Refillable and rechargeable devices
+Refillable and rechargeable vapes are multi-use rather than single-use, and last much longer than standard single-use products. The device does not come pre-filled but sometimes an e-liquid is sold with the device. Users can refill with e-liquid and recharge the battery. Certain components of the products can be replaced such as the coils and batteries.
+Pod systems
+A vape pod system is a vape that uses a pod rather than a vape tank. A pod system consists of a small battery, which is rechargeable, and a refillable or replaceable pod that contains the e-liquid.
+Tank or mod devices
+Vape mods or tank devices are a type of vape device that are designed for vape users who want a more customisable vaping experience. They typically offer more features such as a bigger and more powerful battery and adjustable power (wattage).
+Other types of devices include ‘cigalikes’ and vape pens, as well as hybrids of the above, such as pod mods.
+Vape flavours
+Tobacco flavours
+Many adult vape users start with tobacco-flavoured e-liquids to simulate the taste of traditional cigarettes. These can range from mild and smooth to bold and robust, imitating different types of tobacco.
+Menthol and mint flavours
+Mint and menthol e-liquids are used to give vapes a cooling sensation when vaped. They are reminiscent of menthol cigarettes.
+Fruit flavours
+Fruit flavours are among the most popular choices for vapes. They include a wide range of options, such as strawberry, apple, blueberry and mango.
+Dessert and sweet flavours
+The second most popular choice of e-liquid used by children are dessert and candy flavours, such as bubblegum, cotton candy or candy floss, vanilla, caramel, or cheesecake.
+Beverage flavours
+E-liquids can mimic the flavours of various beverages, including coffee, cola and energy drinks.
+Tobacco blends
+Some e-liquids combine tobacco flavours with other elements like vanilla, caramel or nuts.
+Custom mixes
+Some vape users prefer to create their own custom e-liquid flavours by combining various flavour concentrates to suit personal preferences.
+Annex 2: privacy notice
+Introduction
+This notice sets out how we will use the information collected through this call for evidence, as well as your rights as a respondent under the UK General Data Protection Regulation ( GDPR ).
+Data controller
+DHSC is the data controller.
+What information we collect about you
+When you respond to the consultation online, we will collect information on:
+whether you are responding as an individual member of the public or on behalf of an organisation
+the name of your organisation and where your organisation operates (if you are responding on behalf of an organisation)
+what sector you work in
+what the main focus of your work is
+We also ask for some personal information, which we will collect if you choose to respond. This includes:
+your age
+where you live
+your sex
+your gender identity
+your ethnic group
+your email address
+your IP address
+Please do not include any other personal information in your responses to free text questions in the survey.
+How we use your information
+We collect your information as part of the consultation process:
+for statistical purposes, for example to understand how representative the results are and whether views and experiences vary across organisations
+so that DHSC can contact you for further information about your response
+to reduce the likelihood of individuals being able to submit multiple responses
+If you have given consent, DHSC can contact you to allow you to amend or delete your response or to send you a reminder before the consultation closes, if you have not submitted your final response.
+Legal basis for processing your information
+The legal bases for processing your information are:
+to perform a task carried out in the public interest. In this case asking the public to provide evidence to answer a range of questions about tobacco and vaping
+that it’s necessary for reasons of public interest in public health. It helps us ensure that our proposals on how the government will protect future generations from the addictions of tobacco and vaping considers the views and experiences of different demographic groups who have different experiences of tobacco and vaping
+The legal basis for processing your special category data (in this case, personal data revealing racial or ethnic origin) is that it’s necessary for reasons of public interest in health or social care under article 9 of the UK GDPR . It helps us ensure that this consultation considers the views and experiences of different demographic groups and with different knowledge and experience on tobacco and vaping. For more information, you can read this guide to special category data .
+Who your information may be shared with
+Responses to the online consultation may be seen by:
+DHSC officials running the consultation process
+officials from other government departments and devolved administrations who will be reviewing the consultation responses
+DHSC ’s third-party supplier (SocialOptic), who is responsible for running and hosting the online survey
+International data transfers and storage locations
+Storage of data by DHSC is provided via secure computing infrastructure on servers located in the European Economic Area. DHSC platforms are subject to extensive security protections and encryption measures.
+Storage of data by SocialOptic is provided via secure servers located in the UK.
+How long we keep your information
+We will hold your personal information for up to one year after the online consultation closes. Anonymised information will be kept indefinitely.
+We will ask SocialOptic to securely delete the information held on their system one year after the online consultation closes.
+How we protect your information and keep it secure
+DHSC uses a range of technical, organisational and administrative security measures to protect any information we hold in our records from:
+loss
+misuse
+unauthorised access
+disclosure
+alteration
+destruction
+We have written procedures and policies that are regularly audited and reviewed at a senior level.
+SocialOptic is Cyber Essentials certified. This is a government backed scheme that helps organisations protect themselves against the most common cyber attacks.
+Your rights
+By law, you have a number of rights and processing your data does not take away or reduce these rights, under the UK GDPR and the UK Data Protection Act 2018.
+You have the right to:
+ask for and receive copies of information about you
+get information about you corrected if you think it’s inaccurate
+limit how your information is used, for example you can ask for it to be restricted if you think it’s inaccurate
+object to your information being used
+get information deleted
+Some of these rights might not apply when the information is being used for research. We will let you know if this is the case.
+Contact us or make a complaint
+We will always try to respond to concerns or queries that you have about your data.
+If you are unhappy about how your information is being used, or if you want to complain about how your data is used as part of this consultation, you should email data_protection@dhsc.gov.uk or write to:
+Data Protection Officer
+39 Victoria Street
+London
+SW1H 0EU
+If you are still not satisfied, you can complain to the Information Commissioner’s Office ( ICO ). You can find out how to contact them at the ICO website . Their postal address is:
+Information Commissioner’s Office
+Wycliffe House
+Water Lane
+Wilmslow
+Cheshire
+SK9 5AF
+Changes to this privacy notice
+We keep this privacy notice under regular review, and we will update it if necessary. All updated versions will be marked by a change note on the consultation page.
+Back to top
+Is this page useful?
+Maybe
+Yes this page is useful
+No this page is not useful
+Thank you for your feedback Report a problem with this page
+Help us improve GOV.UK
+Do not include personal or financial information like your National Insurance number or credit card details.
+This field is for robots only. Please leave blank What were you doing? What went wrong? Send Cancel
+Help us improve GOV.UK
+To help us improve GOV.UK, we’d like to know more about your visit today. Please fill in this survey (opens in a new tab ) .
+Cancel
+Services and information
+Benefits
+Births, death, marriages and care
+Business and self-employed
+Childcare and parenting
+Citizenship and living in the UK
+Crime, justice and the law
+Disabled people
+Driving and transport
+Education and learning
+Employing people
+Environment and countryside
+Housing and local services
+Money and tax
+Passports, travel and living abroad
+Visas and immigration
+Working, jobs and pensions
+Government activity
+Departments
+News
+Guidance and regulation
+Research and statistics
+Policy papers and consultations
+Transparency
+How government works
+Get involved
+Support links
+Help
+Privacy
+Cookies
+Accessibility statement
+Contact
+Terms and conditions
+Rhestr o Wasanaethau Cymraeg
+Government Digital Service
+All content is available under the Open Government Licence v3.0 , except where otherwise stated © Crown copyright

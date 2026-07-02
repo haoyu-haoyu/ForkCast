@@ -1,0 +1,5 @@
+TITLE: TLS handshake implementation notes
+
+This document describes a non-policy technical protocol. The client sends ClientHello with supported cipher suites, signature algorithms, ALPN values and an ephemeral key share. The server chooses a cipher suite, returns ServerHello, sends certificate material and signs the transcript. Implementations must reject downgrade markers, enforce certificate validation, maintain constant-time cryptographic operations and avoid nonce reuse.
+
+This is not a consultation, regulation, transport scheme, environmental rule, public service change or budget proposal. It has no affected civic stakeholders beyond generic software operators and users.

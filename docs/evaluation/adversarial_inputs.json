@@ -1,0 +1,221 @@
+{
+  "generated_at": "2026-07-02T02:52:37.400617+00:00",
+  "fixture_dir": "tests/fixtures/adversarial",
+  "case_graph_schema": "schemas/case_graph.schema.json",
+  "results": [
+    {
+      "fixture": "long_public_consultation.txt",
+      "path": "tests/fixtures/adversarial/long_public_consultation.txt",
+      "input_characters": 57945,
+      "source_url": "https://www.gov.uk/government/consultations/creating-a-smokefree-generation-and-tackling-youth-vaping/creating-a-smokefree-generation-and-tackling-youth-vaping-your-views",
+      "mock": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "govuk_smokefree_generation_consultation",
+        "case_name": "GOV.UK smokefree generation consultation",
+        "entity_count": 1,
+        "stakeholder_count": 2,
+        "assumption_count": 1,
+        "constraint_count": 4,
+        "confidence_flags": [
+          "long_document_extraction_truncated:low_confidence_long_input"
+        ],
+        "metadata": {
+          "provider": "mock",
+          "model": "adversarial_deterministic"
+        }
+      },
+      "real_llm": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "smokefree_generation_youth_vaping_consultation",
+        "case_name": "Creating a Smokefree Generation and Tackling Youth Vaping Consultation",
+        "entity_count": 8,
+        "stakeholder_count": 7,
+        "assumption_count": 7,
+        "constraint_count": 12,
+        "confidence_flags": [],
+        "metadata": {
+          "provider": "deepseek",
+          "base_url": "https://api.deepseek.com",
+          "model": "deepseek-chat"
+        }
+      }
+    },
+    {
+      "fixture": "contradictory_policy.txt",
+      "path": "tests/fixtures/adversarial/contradictory_policy.txt",
+      "input_characters": 815,
+      "source_url": "",
+      "mock": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "contradictory_clean_air_parking_pilot",
+        "case_name": "Contradictory clean-air parking pilot",
+        "entity_count": 1,
+        "stakeholder_count": 2,
+        "assumption_count": 2,
+        "constraint_count": 4,
+        "confidence_flags": [
+          "access_rule_contradiction:contradiction_flag",
+          "funding_rule_contradiction:contradiction_flag"
+        ],
+        "metadata": {
+          "provider": "mock",
+          "model": "adversarial_deterministic"
+        }
+      },
+      "real_llm": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "contradictory_parking_clean_air_pilot",
+        "case_name": "Contradictory parking and clean-air pilot",
+        "entity_count": 3,
+        "stakeholder_count": 8,
+        "assumption_count": 3,
+        "constraint_count": 8,
+        "confidence_flags": [],
+        "metadata": {
+          "provider": "deepseek",
+          "base_url": "https://api.deepseek.com",
+          "model": "deepseek-chat"
+        }
+      }
+    },
+    {
+      "fixture": "off_topic_junk.txt",
+      "path": "tests/fixtures/adversarial/off_topic_junk.txt",
+      "input_characters": 342,
+      "source_url": "",
+      "mock": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "off_topic_junk",
+        "case_name": "Off-topic junk input",
+        "entity_count": 0,
+        "stakeholder_count": 1,
+        "assumption_count": 1,
+        "constraint_count": 4,
+        "confidence_flags": [
+          "input_not_policy:low_confidence_non_policy"
+        ],
+        "metadata": {
+          "provider": "mock",
+          "model": "adversarial_deterministic"
+        }
+      },
+      "real_llm": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "fixture_empty_policy_001",
+        "case_name": "Fixture Empty Policy Case",
+        "entity_count": 0,
+        "stakeholder_count": 1,
+        "assumption_count": 0,
+        "constraint_count": 4,
+        "confidence_flags": [],
+        "metadata": {
+          "provider": "deepseek",
+          "base_url": "https://api.deepseek.com",
+          "model": "deepseek-chat"
+        }
+      }
+    },
+    {
+      "fixture": "near_empty.txt",
+      "path": "tests/fixtures/adversarial/near_empty.txt",
+      "input_characters": 8,
+      "source_url": "",
+      "mock": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "near_empty_input",
+        "case_name": "Near-empty input",
+        "entity_count": 0,
+        "stakeholder_count": 1,
+        "assumption_count": 1,
+        "constraint_count": 4,
+        "confidence_flags": [
+          "insufficient_policy_detail:low_confidence_insufficient_input"
+        ],
+        "metadata": {
+          "provider": "mock",
+          "model": "adversarial_deterministic"
+        }
+      },
+      "real_llm": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "policy_case_001",
+        "case_name": "Generic Policy Decision Support Case",
+        "entity_count": 1,
+        "stakeholder_count": 3,
+        "assumption_count": 2,
+        "constraint_count": 8,
+        "confidence_flags": [],
+        "metadata": {
+          "provider": "deepseek",
+          "base_url": "https://api.deepseek.com",
+          "model": "deepseek-chat"
+        }
+      }
+    },
+    {
+      "fixture": "non_policy_technical.txt",
+      "path": "tests/fixtures/adversarial/non_policy_technical.txt",
+      "input_characters": 684,
+      "source_url": "",
+      "mock": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "non_policy_technical_document",
+        "case_name": "Non-policy technical document",
+        "entity_count": 1,
+        "stakeholder_count": 1,
+        "assumption_count": 1,
+        "constraint_count": 4,
+        "confidence_flags": [
+          "not_public_policy:low_confidence_non_policy"
+        ],
+        "metadata": {
+          "provider": "mock",
+          "model": "adversarial_deterministic"
+        }
+      },
+      "real_llm": {
+        "status": "schema_valid",
+        "schema_valid": true,
+        "validation_error": null,
+        "case_id": "tls_handshake_implementation_notes",
+        "case_name": "TLS handshake implementation notes",
+        "entity_count": 3,
+        "stakeholder_count": 2,
+        "assumption_count": 1,
+        "constraint_count": 8,
+        "confidence_flags": [],
+        "metadata": {
+          "provider": "deepseek",
+          "base_url": "https://api.deepseek.com",
+          "model": "deepseek-chat"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "fixture_count": 5,
+    "mock_crashes": 0,
+    "mock_schema_valid_count": 5,
+    "real_llm_status_counts": {
+      "schema_valid": 5
+    }
+  }
+}
