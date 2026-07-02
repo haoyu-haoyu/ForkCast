@@ -1,8 +1,8 @@
-# Policy Impact Sandbox MVP
+# ForkCast
 
-Policy Impact Sandbox is a controllable AI workflow for policy/decision impact assessment. The MVP is scoped to one historical backtest case: the 2023 London ULEZ expansion.
+Review-gated AI policy impact analysis with a hash-chained, Kaspa-anchored audit trail.
 
-In one sentence: it turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated historical backtest and a Kaspa-anchored audit trail.
+ForkCast turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated historical backtest and a verifiable audit commitment. The core design is not "autonomous policy making"; it is human-reviewed decision support with explicit approval gates before extraction, agent generation, simulation configuration and chain anchoring. The demo case is the 2023 London ULEZ expansion, where the blind R1-R6 backtest is separated from the truth set to reduce answer leakage. Kaspa TN-10 anchoring commits to the approved audit manifest or hash-chain head while keeping AI reasoning, source documents and reports off-chain.
 
 Before: impact assessment is weeks of consultants, hearings, spreadsheets and fragmented traceability.
 
@@ -15,11 +15,12 @@ Current implementation status:
 - The demo uses deterministic mock simulation events with the same downstream contract.
 - Project LLM calls use a DeepSeek/OpenAI-compatible client.
 - Kaspa Phase 4 has a real TN-10 transaction: `f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`.
-- Fetch.ai and Canton are intentionally out of scope until the Conduct/Kaspa/Ulez mainline is running.
+- Anchor coverage boundary: the f553 transaction covers only the eight artifacts listed in the anchored ULEZ manifest. Later robustness and ablation artifacts are intentionally documented as not covered by that transaction.
+- Fetch.ai and Canton are intentionally out of scope until the Conduct/Kaspa/ULEZ mainline is running.
 
-## Demo-Ready Quick Start
+## Quick Start: Offline Cached ULEZ Demo
 
-Run the cached dashboard path:
+Run the cached dashboard path. This does not require an API server or LLM key.
 
 ```bash
 uv sync
@@ -37,6 +38,39 @@ Build the static dashboard for offline fallback:
 cd web
 npm run build
 ```
+
+## Quick Start: Live Policy Analysis
+
+Copy `.env.example` to `.env` locally and fill only the variables you need. Do not commit `.env`.
+
+```bash
+cp .env.example .env
+# required for live LLM calls
+DEEPSEEK_API_KEY=<your local key>
+# optional OpenAI-compatible overrides
+LLM_BASE_URL=https://api.deepseek.com
+LLM_MODEL=deepseek-chat
+```
+
+Run the live policy-analysis API and dashboard:
+
+```bash
+uv sync
+uv run python scripts/run_api.py --port 8000
+cd web
+npm install
+npm run dev -- --port 5173
+```
+
+Use the `ULEZ selected` screen to paste or upload a new policy document and click `Run real analysis`. For non-ULEZ policies without a `truth_set`, the dashboard shows `无历史回测数据，仅提供影响分析` and does not display a historical backtest.
+
+## Key Documents
+
+- Demo path: `docs/submission/DEMO_RUNBOOK.md`
+- Operator anchoring runbook: `docs/OPERATOR_RUNBOOK.md`
+- Kaspa integration notes: `docs/submission/kaspa-integration.md`
+- Evaluation and ablation notes: `docs/evaluation/ablation_ulez.md`
+- Backtest integrity method: `docs/methodology/backtest_integrity.md`
 
 ## Development Commands
 
@@ -79,16 +113,6 @@ Run Phase 2 without an external LLM for local smoke tests:
 uv run python scripts/run_phase2.py --mock-llm --run-id ulez_2023_phase2_mock --agent-count 36 --rounds 3
 ```
 
-Run the Phase 3 dashboard:
-
-```bash
-cd web
-npm install
-npm run dev -- --port 5173
-```
-
-Then open `http://127.0.0.1:5173/`.
-
 Run the live policy-analysis API for arbitrary new policy documents:
 
 ```bash
@@ -104,10 +128,7 @@ cd web
 npm run dev -- --port 5173
 ```
 
-Use the `ULEZ selected` screen to paste or upload a new policy document and click `Run real analysis`.
-That path calls DeepSeek-backed extraction, archetype generation, mock event generation for visualization context,
-and LLM report generation. For non-ULEZ policies without a `truth_set`, the dashboard shows:
-`无历史回测数据，仅提供影响分析` and does not display a historical backtest.
+That path calls DeepSeek-backed extraction, archetype generation, mock event generation for visualization context and LLM report generation.
 
 Prepare the Phase 4 Kaspa audit anchor package:
 
