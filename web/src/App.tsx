@@ -31,7 +31,7 @@ import {
 } from "./control";
 import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
 import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
-import { buildClaimsAuditRows, PROVENANCE_LABELS } from "./provenance";
+import { buildClaimsAuditRows, claimsAuditNotice, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
 import type { AgentProfile, BacktestRule, ClaimProvenanceRow, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
 
@@ -999,6 +999,7 @@ function ImpactReport({
   setClaimVisibility: (value: Record<string, boolean>) => void;
 }) {
   const claimsAuditRows = buildClaimsAuditRows(impactReport, backtest);
+  const provenanceNotice = claimsAuditNotice(claimsAuditRows);
   return (
     <Panel>
       <div className="panel-title-row">
@@ -1057,6 +1058,7 @@ function ImpactReport({
           <span>Provenance</span>
           <span>Evidence pointer</span>
         </div>
+        {provenanceNotice ? <p className="claims-audit-notice">{provenanceNotice}</p> : null}
         {claimsAuditRows.slice(0, 8).map((row) => (
           <div className="claims-audit-row" key={`audit-${row.id}`}>
             <p>{row.claim}</p>

@@ -46,7 +46,7 @@ export interface BacktestRule {
 export interface ClaimProvenanceRow {
   id: string;
   claim: string;
-  provenance_class: "DOCUMENT-CITED" | "INFERRED-FROM-DOCUMENT" | "MODEL-PRIOR";
+  provenance_class: "DOCUMENT-CITED" | "INFERRED-FROM-DOCUMENT" | "MODEL-PRIOR" | "UNCLASSIFIED_LEGACY";
   evidence_pointer: string;
   evidence_fact_ids: string[];
   source_artifact: string;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { auditManifest, backtest, impactReport, kaspaAnchor } from "./data";
-import { buildClaimsAuditRows, PROVENANCE_LABELS } from "./provenance";
+import { buildClaimsAuditRows, claimsAuditNotice, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
 
 const FORBIDDEN_DEMO_STRINGS = [
@@ -59,16 +59,53 @@ describe("dashboard evidence content", () => {
     }
   });
 
-  it("renders provenance labels for report claims without mutating anchored artifacts", () => {
+  it("marks anchored legacy report claims as unclassified when provenance fields are absent", () => {
     const rows = buildClaimsAuditRows(impactReport, backtest);
 
     expect(rows.length).toBeGreaterThanOrEqual(backtest.rules.length);
-    expect(rows.map((row) => row.provenance_class)).toContain("INFERRED-FROM-DOCUMENT");
-    expect(Object.keys(PROVENANCE_LABELS)).toEqual([
+    expect(new Set(rows.map((row) => row.provenance_class))).toEqual(new Set(["UNCLASSIFIED_LEGACY"]));
+    expect(PROVENANCE_LABELS.UNCLASSIFIED_LEGACY).toBe("Unclassified (legacy report)");
+    expect(claimsAuditNotice(rows)).toBe(
+      "This report predates provenance classification and is anchored; claims are shown unclassified.",
+    );
+    expect(Object.keys(PROVENANCE_LABELS).slice(0, 3)).toEqual([
       "DOCUMENT-CITED",
       "INFERRED-FROM-DOCUMENT",
       "MODEL-PRIOR",
     ]);
     expect(rows.every((row) => row.claim && row.evidence_pointer)).toBe(true);
+  });
+
+  it("preserves real provenance classes when the report contains provenance fields", () => {
+    const rows = buildClaimsAuditRows(
+      {
+        ...impactReport,
+        claims_audit_table: [
+          {
+            id: "claim_document",
+            claim: "Document-backed statement",
+            provenance_class: "DOCUMENT-CITED",
+            evidence_pointer: "truth_set.C1",
+            evidence_fact_ids: ["C1"],
+            source_artifact: "truth_set.json",
+            confidence: "high",
+          },
+          {
+            id: "claim_model_prior",
+            claim: "Mitigation design statement",
+            provenance_class: "MODEL-PRIOR",
+            evidence_pointer: "impact_report.mitigation_options[0]",
+            evidence_fact_ids: [],
+            source_artifact: "impact_report.json",
+            confidence: "low",
+          },
+        ],
+      },
+      backtest,
+    );
+
+    expect(rows.map((row) => row.provenance_class)).toEqual(["DOCUMENT-CITED", "MODEL-PRIOR"]);
+    expect(rows.map((row) => PROVENANCE_LABELS[row.provenance_class])).toEqual(["Document-cited", "Model prior"]);
+    expect(claimsAuditNotice(rows)).toBe("");
   });
 });

@@ -1132,6 +1132,12 @@ textarea {
   background: var(--amber-2);
 }
 
+.provenance-pill.unclassified_legacy {
+  border-color: var(--line-strong);
+  color: var(--muted);
+  background: var(--surface-2);
+}
+
 .mitigation-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1168,6 +1174,15 @@ textarea {
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
+}
+
+.claims-audit-notice {
+  margin: 0;
+  padding: 10px 12px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .claims-audit-row {

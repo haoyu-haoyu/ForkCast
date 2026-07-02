@@ -4,7 +4,11 @@ export const PROVENANCE_LABELS: Record<ClaimProvenanceRow["provenance_class"], s
   "DOCUMENT-CITED": "Document-cited",
   "INFERRED-FROM-DOCUMENT": "Inferred from document",
   "MODEL-PRIOR": "Model prior",
+  UNCLASSIFIED_LEGACY: "Unclassified (legacy report)",
 };
+
+export const LEGACY_PROVENANCE_NOTICE =
+  "This report predates provenance classification and is anchored; claims are shown unclassified.";
 
 export function buildClaimsAuditRows(
   impactReport: {
@@ -24,7 +28,7 @@ export function buildClaimsAuditRows(
       normalizeRow({
         id: `backtest_${rule.rule_id}`,
         claim: rule.system_signal,
-        provenance_class: "INFERRED-FROM-DOCUMENT",
+        provenance_class: "UNCLASSIFIED_LEGACY",
         evidence_pointer: `backtest_result.rules.${rule.rule_id}; blind_prediction.json`,
         evidence_fact_ids: [],
         source_artifact: "backtest_result.json + blind_prediction.json",
@@ -36,7 +40,7 @@ export function buildClaimsAuditRows(
     normalizeRow({
       id: `risk_${risk.stage}`,
       claim: risk.signal,
-      provenance_class: "INFERRED-FROM-DOCUMENT",
+      provenance_class: "UNCLASSIFIED_LEGACY",
       evidence_pointer: `impact_report.risk_timeline.${risk.stage}`,
       evidence_fact_ids: [],
       source_artifact: "impact_report.json",
@@ -48,7 +52,7 @@ export function buildClaimsAuditRows(
     normalizeRow({
       id: `mitigation_${index + 1}`,
       claim: item.rationale,
-      provenance_class: "MODEL-PRIOR",
+      provenance_class: "UNCLASSIFIED_LEGACY",
       evidence_pointer: `impact_report.mitigation_options[${index}]`,
       evidence_fact_ids: [],
       source_artifact: "impact_report.json",
@@ -57,6 +61,10 @@ export function buildClaimsAuditRows(
   );
 
   return [...backtestRows, ...riskRows, ...mitigationRows];
+}
+
+export function claimsAuditNotice(rows: ClaimProvenanceRow[]): string {
+  return rows.some((row) => row.provenance_class === "UNCLASSIFIED_LEGACY") ? LEGACY_PROVENANCE_NOTICE : "";
 }
 
 function normalizeRow(row: ClaimProvenanceRow): ClaimProvenanceRow {
