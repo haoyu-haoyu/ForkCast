@@ -21,13 +21,20 @@ def test_negative_controls_expose_truth_content_insensitivity(tmp_path: Path) ->
 
     baseline = result["controls"]["baseline_cached_prediction"]
     inverted = result["controls"]["inverted_truth"]
+    inverted_rule_facts = result["controls"]["inverted_rule_facts"]
     shuffled = result["controls"]["shuffled_alignment"]
     assert result["finding"]["scorer_leniency_found"] is True
+    assert result["finding"]["mechanism"] == "text_signal_checklist_no_comparison_target"
     assert baseline["hit_rate"] == inverted["hit_rate"]
+    assert baseline["hit_rate"] == inverted_rule_facts["hit_rate"]
+    assert inverted_rule_facts["verdicts_changed_from_baseline"] is False
     assert shuffled["distribution"]["values"] == [baseline["hit_rate"]] * 3
-    assert shuffled["real_ablation_full_pipeline_mean_hit_rate"] == 0.7333
+    assert shuffled["ablation_reference"]["status"] == "not_compared"
     assert (tmp_path / "negative_controls.json").exists()
-    assert "Scorer leniency found: `True`" in (tmp_path / "negative_controls.md").read_text(encoding="utf-8")
+    markdown = (tmp_path / "negative_controls.md").read_text(encoding="utf-8")
+    assert "Scorer leniency found: `True`" in markdown
+    assert "Control C: inverted RULE_FACTS surrogate" in markdown
+    assert "text-signal checklist with no comparison target" in markdown
     assert Path("data/cases/ulez_2023/truth_set.json").read_text(encoding="utf-8") == original_truth
 
 
@@ -50,6 +57,8 @@ def test_negative_controls_cli_writes_artifacts(tmp_path: Path) -> None:
 
     assert result.returncode == 0, result.stderr
     assert "scorer_leniency_found=True" in result.stdout
+    assert "mechanism=text_signal_checklist_no_comparison_target" in result.stdout
     artifact = json.loads((tmp_path / "negative_controls.json").read_text(encoding="utf-8"))
     assert artifact["controls"]["shuffled_alignment"]["permutations"] == 2
+    assert artifact["controls"]["inverted_rule_facts"]["verdicts_changed_from_baseline"] is False
     assert artifact["controls"]["cross_case"]["status"] == "not_run"

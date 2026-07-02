@@ -66,6 +66,10 @@ No. Mock events are only for the social-feed visualization and demo continuity. 
 
 Because the blind prediction identified outer-London opposition but did not cleanly capture the full inner-vs-outer contrast. We keep that as PARTIAL because a credible demo should not hide misses.
 
+### Is the automated R1-R6 scorer a semantic judge?
+
+No. The evidence-hardening controls show it is a reproducible prediction-text signal checklist, not a semantic comparator against truth-set content. Inverting truth facts, shuffling fact alignment and temporarily inverting the harness-level RULE_FACTS surrogate did not change verdicts. Use `docs/evaluation/ulez_human_adjudication.md` for human accuracy grading.
+
 ### Did OASIS run live?
 
 Not in the mainline MVP. OASIS was treated as a single-point risk and remains an optional, non-integrated probe, so the project switched to mock simulation mode for the end-to-end demo. Real LLM calls for extraction, agent profiles, reports and blind prediction use DeepSeek.

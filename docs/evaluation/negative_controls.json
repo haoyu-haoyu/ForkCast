@@ -1,6 +1,6 @@
 {
   "case_id": "ulez_2023_expansion",
-  "generated_at": "2026-07-02T02:48:33.447444+00:00",
+  "generated_at": "2026-07-02T03:23:31.628722+00:00",
   "scorer": "evaluate_blind_prediction_backtest",
   "prediction_artifact": "runs/ulez_2023_phase2_deepseek/blind_prediction.json",
   "truth_set_artifact": "data/cases/ulez_2023/truth_set.json",
@@ -131,6 +131,95 @@
         ]
       },
       "control_description": "Same blind prediction scored against direction-inverted truth facts."
+    },
+    "inverted_rule_facts": {
+      "case_id": "ulez_2023_expansion__negative_control_inverted_rule_facts",
+      "hit_rate": 0.8333,
+      "verdicts": {
+        "R1": "PARTIAL",
+        "R2": "HIT",
+        "R3": "HIT",
+        "R4": "HIT",
+        "R5": "HIT",
+        "R6": "BALANCED HIT"
+      },
+      "backtest_result": {
+        "case_id": "ulez_2023_expansion__negative_control_inverted_rule_facts",
+        "backtest_mode": "blind_prediction",
+        "prediction_artifact": "blind_prediction.json",
+        "disclaimer": "simulation is decision support, not deterministic forecast",
+        "rubric_path": "backtest_rubric.md",
+        "rules": [
+          {
+            "rule_id": "R1",
+            "real_outcome": "Inverted control: outer London does not show stronger opposition than inner London.",
+            "system_signal": "Blind prediction identifies outer-London opposition but inner-London contrast is weak.",
+            "verdict": "PARTIAL",
+            "note": "Blind prediction is checked for outer-London opposition stronger than inner-London support."
+          },
+          {
+            "rule_id": "R2",
+            "real_outcome": "Inverted control: van drivers, tradespeople and small businesses are not singled out as a high-impact group.",
+            "system_signal": "Blind prediction singles out van drivers, tradespeople or small businesses as high-opposition/high-impact groups.",
+            "verdict": "HIT",
+            "note": "Blind prediction must single out van drivers/tradespeople/small businesses; generic vehicle cost pressure is only partial."
+          },
+          {
+            "rule_id": "R3",
+            "real_outcome": "Inverted control: the policy is not politically salient and is not linked to Uxbridge electoral risk. | Inverted control: the policy is not politically salient and is not linked to Uxbridge electoral risk.",
+            "system_signal": "Blind prediction flags political salience/electoral risk without claiming a specific election result.",
+            "verdict": "HIT",
+            "note": "Counts political salience/electoral risk only; not causal proof and not an election result prediction."
+          },
+          {
+            "rule_id": "R4",
+            "real_outcome": "Inverted control: no enforcement resistance, camera vandalism or sabotage signal occurs.",
+            "system_signal": "Blind prediction flags enforcement resistance, sabotage, camera backlash or vandalism risk.",
+            "verdict": "HIT",
+            "note": "Blind prediction is checked for enforcement resistance, sabotage, or camera backlash."
+          },
+          {
+            "rule_id": "R5",
+            "real_outcome": "Inverted control: compliance does not improve over time and no adaptation signal is observed. | Inverted control: compliance does not improve over time and no adaptation signal is observed.",
+            "system_signal": "Blind prediction flags short-term backlash with longer-term adaptation/compliance improvement.",
+            "verdict": "HIT",
+            "note": "Blind prediction is checked for short-term opposition plus longer-term adaptation/compliance direction."
+          },
+          {
+            "rule_id": "R6",
+            "real_outcome": "Inverted control: neither air-quality benefit nor distributional burden is observed. | Inverted control: neither air-quality benefit nor distributional burden is observed. | Inverted control: neither air-quality benefit nor distributional burden is observed.",
+            "system_signal": "Blind prediction captures both air-quality/health benefits and distributional fairness burden.",
+            "verdict": "BALANCED HIT",
+            "note": "BALANCED HIT requires both air-quality/health benefit and fairness/distributional burden."
+          }
+        ]
+      },
+      "control_description": "Same blind prediction scored while negative-controls temporarily replace RULE_FACTS with inverted-polarity synthetic fact IDs.",
+      "temporary_rule_facts": {
+        "R1": [
+          "CONTROL_C_R1_1"
+        ],
+        "R2": [
+          "CONTROL_C_R2_1"
+        ],
+        "R3": [
+          "CONTROL_C_R3_1",
+          "CONTROL_C_R3_2"
+        ],
+        "R4": [
+          "CONTROL_C_R4_1"
+        ],
+        "R5": [
+          "CONTROL_C_R5_1",
+          "CONTROL_C_R5_2"
+        ],
+        "R6": [
+          "CONTROL_C_R6_1",
+          "CONTROL_C_R6_2",
+          "CONTROL_C_R6_3"
+        ]
+      },
+      "verdicts_changed_from_baseline": false
     },
     "shuffled_alignment": {
       "control_description": "Same blind prediction scored against truth facts permuted across R1-R6 alignments.",
@@ -565,13 +654,10 @@
           0.8333
         ]
       },
-      "real_ablation_full_pipeline_mean_hit_rate": 0.7333,
-      "real_rate_position": {
-        "real_rate": 0.7333,
-        "permutation_count": 20,
-        "count_less_or_equal": 0,
-        "count_greater_or_equal": 20,
-        "percentile_less_or_equal": 0.0
+      "ablation_reference": {
+        "artifact": "docs/evaluation/ablation_ulez.json",
+        "status": "not_compared",
+        "reason": "Removed from this control: a k=5 ablation mean is a different sample from the cached-run shuffle distribution."
       }
     },
     "cross_case": {
@@ -582,7 +668,87 @@
   "finding": {
     "scorer_leniency_found": true,
     "controls_collapse_toward_chance": false,
-    "summary": "Negative controls did not reduce hit rate; current scorer verdicts are driven by prediction text signals and not by semantic comparison against truth-set content.",
+    "control_c_verdicts_changed_from_baseline": false,
+    "mechanism": "text_signal_checklist_no_comparison_target",
+    "summary": "Negative controls did not reduce hit rate, and Control C did not change verdicts when RULE_FACTS was temporarily inverted. Current scorer verdicts are driven by prediction text signals with no comparison target.",
     "scorer_modified": false
+  },
+  "mechanism_by_rule": {
+    "R1": {
+      "verdict_source": "prediction text patterns alone with no comparison target",
+      "rule_facts": "RULE_FACTS maps R1 to C1_public_opinion_distribution only; it contains no expected polarity.",
+      "signal_source": "outer/inner stakeholder reaction text matched by _blind_prediction_signals.",
+      "code_refs": [
+        "backtest.py:8-14",
+        "backtest.py:44-62",
+        "backtest.py:143-147",
+        "backtest.py:152-171",
+        "backtest.py:219-224"
+      ]
+    },
+    "R2": {
+      "verdict_source": "prediction text patterns alone with no comparison target",
+      "rule_facts": "RULE_FACTS maps R2 to D1_six_month_compliance_rate_change only; it contains no expected polarity.",
+      "signal_source": "van/tradespeople/small-business and high-opposition terms matched in prediction text.",
+      "code_refs": [
+        "backtest.py:8-14",
+        "backtest.py:44-62",
+        "backtest.py:143-147",
+        "backtest.py:157",
+        "backtest.py:172-176",
+        "backtest.py:219-224"
+      ]
+    },
+    "R3": {
+      "verdict_source": "prediction text patterns alone with no comparison target",
+      "rule_facts": "RULE_FACTS maps R3 to Uxbridge result and ULEZ-as-key-issue facts; it contains no expected polarity.",
+      "signal_source": "political salience/electoral-risk terms matched in prediction text.",
+      "code_refs": [
+        "backtest.py:8-14",
+        "backtest.py:44-62",
+        "backtest.py:143-147",
+        "backtest.py:158",
+        "backtest.py:177-178",
+        "backtest.py:219-224"
+      ]
+    },
+    "R4": {
+      "verdict_source": "prediction text patterns alone with no comparison target",
+      "rule_facts": "RULE_FACTS maps R4 to camera vandalism/enforcement-resistance facts; it contains no expected polarity.",
+      "signal_source": "enforcement resistance, sabotage, camera, or vandal terms matched in prediction text.",
+      "code_refs": [
+        "backtest.py:8-14",
+        "backtest.py:44-62",
+        "backtest.py:143-147",
+        "backtest.py:159",
+        "backtest.py:179-180",
+        "backtest.py:219-224"
+      ]
+    },
+    "R5": {
+      "verdict_source": "prediction text patterns alone with no comparison target",
+      "rule_facts": "RULE_FACTS maps R5 to compliance and non-compliant-vehicle facts; it contains no expected polarity.",
+      "signal_source": "adaptation/compliance terms plus over-time terms matched in prediction text.",
+      "code_refs": [
+        "backtest.py:8-14",
+        "backtest.py:44-62",
+        "backtest.py:143-147",
+        "backtest.py:160-162",
+        "backtest.py:181-182",
+        "backtest.py:219-224"
+      ]
+    },
+    "R6": {
+      "verdict_source": "prediction text patterns alone with no comparison target",
+      "rule_facts": "RULE_FACTS maps R6 to air-quality, charge and public-opinion facts; it contains no expected polarity.",
+      "signal_source": "air-quality/health/emissions terms plus distributional/fairness/burden terms matched in prediction text.",
+      "code_refs": [
+        "backtest.py:8-14",
+        "backtest.py:44-62",
+        "backtest.py:143-147",
+        "backtest.py:163-187",
+        "backtest.py:233-238"
+      ]
+    }
   }
 }

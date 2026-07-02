@@ -19,7 +19,7 @@ Current state as of 2026-07-02: the repository is frozen around the cached ULEZ 
 - Directional-only resolution: current backtests judge direction and qualitative salience, not exact magnitudes, dates, costs, vote shares, or calibrated probability forecasts.
 - Mock simulation is a visualization aid: the social feed and event replay help explain how stakeholders interact, but the credibility claim comes from answer-isolated blind prediction, not from mock events.
 - In-process background tasks: live runs currently execute through the app process rather than a durable queue. A restart during a live run can interrupt work.
-- Scorer leniency is documented: A1 negative controls did not collapse toward chance. The current scorer can be satisfied by blind-prediction text signals even when truth alignment is inverted or shuffled. This is evidence to improve the scorer before scaling claims.
+- Scorer mechanism is documented: A1/D1-D2 negative controls show the automated R1-R6 scorer is a prediction-text signal checklist with no semantic comparison target. Inverting truth-set content, shuffling fact alignment, and temporarily inverting the harness-level RULE_FACTS surrogate did not change verdicts. Accuracy evidence should therefore use the human adjudication sheet, while the scorer remains a reproducible extraction aid.
 - Extraction is permissive on bad inputs: A2 showed schema-valid outputs for adversarial, underspecified, off-topic, and technical inputs. That is graceful from a crash-safety perspective, but it does not yet enforce strong "ask for clarification" behavior.
 - Anchor coverage boundary: the Kaspa anchor commits to manifest hashes and metadata. AI reasoning, source text, and large artifacts remain off-chain and must be verified through the repository artifacts plus canonical hashing.
 - OASIS is optional and non-integrated: the earlier OASIS probe is not part of the default pipeline. ForkCast currently uses mock replay for demonstration unless a future ablation-gated simulation backend proves it improves blind backtest performance.
@@ -78,5 +78,5 @@ Acceptance: a server restart mid-run loses nothing, and two concurrent runs do n
 
 - "The demo is intentionally conservative: one verified case, answer-isolated backtest, and visible limits."
 - "Mock replay is not our evidence. It is only the UI explanation layer."
-- "The A1 negative controls found scorer leniency, so we are not overselling the score. That finding is exactly why Phase B starts with truth-set workbench and ablation-gated feature entry."
+- "The A1/D1-D2 controls found the automated scorer is a text-signal checklist, not a semantic judge. We are not overselling the score; final accuracy evidence should come from the human adjudication sheet and future scorer redesign."
 - "The chain anchor proves artifact commitment, not policy correctness. Correctness comes from source-backed truth sets, blind prompts, and verification scripts."
