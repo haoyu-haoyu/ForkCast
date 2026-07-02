@@ -7,7 +7,7 @@ describe("checkpoint control layer", () => {
 
     const blocked = approveCheckpoint(state, "agent_review");
     expect(blocked.checkpoints.agent_review.status).toBe("pending");
-    expect(blocked.events.at(-1)?.status).toBe("blocked");
+    expect(blocked.events[blocked.events.length - 1]?.status).toBe("blocked");
 
     const approved = approveCheckpoint(state, "extraction_review");
     expect(approved.checkpoints.extraction_review.status).toBe("approved");

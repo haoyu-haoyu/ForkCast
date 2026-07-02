@@ -133,10 +133,10 @@ export function editCheckpoint(state: ControlState, checkpoint: CheckpointKey, n
 }
 
 export function rollbackToPrevious(state: ControlState): ControlState {
-  const latestApprovedIndex = [...ORDER]
+  const approvedIndexes = [...ORDER]
     .map((key, index) => ({ key, index }))
-    .filter(({ key }) => state.checkpoints[key].status === "approved")
-    .at(-1)?.index;
+    .filter(({ key }) => state.checkpoints[key].status === "approved");
+  const latestApprovedIndex = approvedIndexes[approvedIndexes.length - 1]?.index;
   const currentIndex = latestApprovedIndex ?? activeCheckpointIndex(state.activeStep);
   const checkpoint = ORDER[Math.max(0, currentIndex)];
   const previous = ORDER[Math.max(0, currentIndex - 1)];
