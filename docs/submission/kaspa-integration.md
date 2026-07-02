@@ -4,6 +4,8 @@
 
 Policy Impact Sandbox keeps AI reasoning, prompts, archetype agents, mock event logs, and source evidence off-chain. The existing ULEZ demo transaction commits to the canonical SHA-256 hash of `runs/ulez_2023_phase2_deepseek/audit_manifest.json`; new live policy runs commit to the hash-chain `head_hash` described in `docs/HASH_CHAIN.md`.
 
+Anchor coverage boundary: `robustness.json`, ablation artifacts, and anything generated after 2026-07-01 in `runs/ulez_2023_phase2_deepseek/` are NOT covered by the f553 anchor; only the eight artifacts listed in the anchored manifest are committed to on-chain.
+
 The payload generated for this demo is:
 
 - `protocol`: `policy-impact-sandbox.kaspa-anchor`

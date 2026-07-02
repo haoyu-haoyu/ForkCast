@@ -124,6 +124,17 @@ The current demo artifact has already been broadcast to Kaspa `testnet-10` after
 - Tx id: `f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`
 - Explorer: `https://explorer-tn10.kaspa.org/txs/f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`
 
+## Verify The Audit Trail Yourself
+
+Verify the legacy ULEZ f553 transaction against the committed artifacts and public TN-10 explorer:
+
+```bash
+uv run python scripts/verify_run.py \
+  --run-dir runs/ulez_2023_phase2_deepseek \
+  --txid f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123 \
+  --network testnet-10
+```
+
 Future broadcasts must use a local testnet wallet from environment variables and an explicit approval flag:
 
 ```bash
