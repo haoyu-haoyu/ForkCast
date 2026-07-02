@@ -1,0 +1,53 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "backtest_mode": "blind_prediction_draft_not_scored",
+  "prediction_artifact": "blind_prediction.json",
+  "disclaimer": "simulation is decision support, not deterministic forecast",
+  "rubric_path": "backtest_rubric.md",
+  "headline_excluded": true,
+  "verification_policy": "DRAFT — PENDING HUMAN VERIFICATION",
+  "rules": [
+    {
+      "rule_id": "R1",
+      "real_outcome": "Draft truth set pending human verification; excluded from headline numbers.",
+      "system_signal": "",
+      "verdict": "NOT_SCORED",
+      "note": "Draft truth set pending human verification; excluded from headline numbers."
+    },
+    {
+      "rule_id": "R2",
+      "real_outcome": "Draft truth set pending human verification; excluded from headline numbers.",
+      "system_signal": "",
+      "verdict": "NOT_SCORED",
+      "note": "Draft truth set pending human verification; excluded from headline numbers."
+    },
+    {
+      "rule_id": "R3",
+      "real_outcome": "Draft truth set pending human verification; excluded from headline numbers.",
+      "system_signal": "",
+      "verdict": "NOT_SCORED",
+      "note": "Draft truth set pending human verification; excluded from headline numbers."
+    },
+    {
+      "rule_id": "R4",
+      "real_outcome": "Draft truth set pending human verification; excluded from headline numbers.",
+      "system_signal": "",
+      "verdict": "NOT_SCORED",
+      "note": "Draft truth set pending human verification; excluded from headline numbers."
+    },
+    {
+      "rule_id": "R5",
+      "real_outcome": "Draft truth set pending human verification; excluded from headline numbers.",
+      "system_signal": "",
+      "verdict": "NOT_SCORED",
+      "note": "Draft truth set pending human verification; excluded from headline numbers."
+    },
+    {
+      "rule_id": "R6",
+      "real_outcome": "Draft truth set pending human verification; excluded from headline numbers.",
+      "system_signal": "",
+      "verdict": "NOT_SCORED",
+      "note": "Draft truth set pending human verification; excluded from headline numbers."
+    }
+  ]
+}

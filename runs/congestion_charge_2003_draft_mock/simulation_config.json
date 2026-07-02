@@ -1,0 +1,9 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "mode": "mock",
+  "agent_count": 35,
+  "rounds": 3,
+  "random_seed": 20260701,
+  "decision_support_disclaimer": "simulation is decision support, not deterministic forecast",
+  "oasis_live": false
+}

@@ -45,6 +45,39 @@ def test_blind_context_excludes_truth_set_and_historical_outcome_fields() -> Non
         assert token not in serialized
 
 
+def test_blind_context_includes_generic_policy_entity_and_excludes_outcomes() -> None:
+    case_graph = {
+        "case_id": "sample_policy",
+        "case_name": "Sample Policy",
+        "entities": [
+            {
+                "id": "entity_sample_policy",
+                "type": "policy",
+                "name": "Sample Policy",
+                "description": "A proposed charge that changes travel incentives.",
+                "evidence_fact_ids": ["outcome_fact"],
+            },
+            {
+                "id": "entity_sample_outcome",
+                "type": "policy_outcome",
+                "name": "Observed outcome",
+                "description": "Post-implementation result that must not enter the blind prompt.",
+            },
+        ],
+        "stakeholders": [],
+        "constraints": [],
+    }
+
+    blind_context = make_blind_case_context(case_graph)
+    serialized = json.dumps(blind_context, ensure_ascii=False)
+
+    assert "entity_sample_policy" in serialized
+    assert "A proposed charge that changes travel incentives." in serialized
+    assert "entity_sample_outcome" not in serialized
+    assert "Post-implementation result" not in serialized
+    assert "outcome_fact" not in serialized
+
+
 def test_blind_prediction_prompt_records_no_truth_set_or_outcome_tokens() -> None:
     case_graph = json.loads(Path("data/cases/ulez_2023/case_graph.json").read_text(encoding="utf-8"))
     blind_context = make_blind_case_context(case_graph)

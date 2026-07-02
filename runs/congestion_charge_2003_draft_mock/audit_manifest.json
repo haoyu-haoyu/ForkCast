@@ -1,0 +1,73 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "run_id": "congestion_charge_2003_draft_mock",
+  "generated_at": "2026-07-02T00:11:22.534459+00:00",
+  "chain_status": "not_on_chain",
+  "human_approval_required_for_chain_anchor": true,
+  "entries": [
+    {
+      "stage": "case_graph",
+      "hash": "94c8eaaa2b935916f52832cad389d460e919856063d1c1a55eb341c5d2c8a582",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "data/cases/congestion_charge_2003/case_graph.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "simulation_config",
+      "hash": "205604c35b90da5ed1161180bac0eeb0fd38e3003f9097fb26836cff0bf9315e",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/simulation_config.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "agents",
+      "hash": "691a4ec622475f5fe3d42bd4c498fbeedc109ad1a8c14f20699a365aa6c6fa2a",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/agents.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "blind_prediction",
+      "hash": "1f1941a788832c54b805eafb94a27a303b6c1dd16254d5df6a20d0b592b15667",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/blind_prediction.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "simulation_events",
+      "hash": "41ceffd3c8ef798c8b74b879cacceb0540e6e7ae6c5ac9c3353a0e46f37bc180",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/simulation_events.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "impact_report",
+      "hash": "0d4c2b80b1c5d2e4f137d67eb3e315f3a62219bf95c5f96b045f36f6abca6339",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/impact_report.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "backtest_result",
+      "hash": "3060beed270a1676c3cf0b2a405af5ae4740ba5006a09d56e889e33e8747f5eb",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/backtest_result.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    },
+    {
+      "stage": "persona_chat_sample",
+      "hash": "bf84a21a225528e78d23d286c082864fe52ab0da8c6e6c5938d1cf89e2f7d4b6",
+      "actor": "conduct_core",
+      "approval": "not_on_chain",
+      "artifact_uri": "runs/congestion_charge_2003_draft_mock/persona_chat_sample.json",
+      "timestamp": "2026-07-02T00:11:22.534459+00:00"
+    }
+  ]
+}

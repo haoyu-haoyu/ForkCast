@@ -1,0 +1,148 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "generated_at": "2026-07-02T00:11:22.529379+00:00",
+  "disclaimer": "simulation is decision support, not deterministic forecast",
+  "report_mode": "mock_demo_visualization",
+  "backtest_evidence": "blind_prediction.json",
+  "method_note": "This impact report is generated from mock interaction events for dashboard demonstration. Historical backtest credibility is based on blind_prediction.json, not these mock events.",
+  "stakeholder_impact_matrix": [
+    {
+      "stakeholder_id": "stakeholder_transport_for_london_mayor",
+      "name": "Transport for London and Mayor of London",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "low",
+      "primary_interests": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_central_london_drivers",
+      "name": "Central London drivers and regular car users",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "primary_interests": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_goods_service_operators",
+      "name": "Freight, goods and service operators",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "primary_interests": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_central_london_businesses",
+      "name": "Central London businesses, retail and leisure",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "primary_interests": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_bus_public_transport_users",
+      "name": "Bus and public transport users",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "low",
+      "primary_interests": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_boundary_residents_boroughs",
+      "name": "Boundary-area residents and boroughs",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "primary_interests": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    },
+    {
+      "stakeholder_id": "stakeholder_taxi_coach_users",
+      "name": "Taxi, coach and essential trip users",
+      "agent_count": 5,
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "primary_interests": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "qualitative_signal": "policy salience and implementation risk are monitored"
+    }
+  ],
+  "risk_timeline": [
+    {
+      "stage": "short_term",
+      "signal": "outer-London and van-dependent groups show strong backlash",
+      "risk_level": "medium"
+    },
+    {
+      "stage": "implementation_period",
+      "signal": "political salience and enforcement backlash require active management",
+      "risk_level": "medium"
+    },
+    {
+      "stage": "longer_term",
+      "signal": "behavioural adaptation and compliance improvement emerge over time",
+      "risk_level": "medium"
+    }
+  ],
+  "mitigation_options": [
+    {
+      "option": "targeted support for van-dependent small businesses",
+      "rationale": "reduces the highest-impact economic pressure without changing stakeholder weights automatically"
+    },
+    {
+      "option": "low-income household transition assistance",
+      "rationale": "addresses distributional burden while preserving air-quality objectives"
+    },
+    {
+      "option": "visible enforcement legitimacy and camera-protection plan",
+      "rationale": "responds to enforcement backlash without escalating automated actions"
+    }
+  ],
+  "confidence_notes": [
+    "Backtest comparison is directional only and does not score exact historical percentages.",
+    "Political output is framed as political salience/electoral risk, not causal proof or election-result prediction.",
+    "Mock simulation is used for the 2026-07-01 MVP path; OASIS live simulation remains a stretch validation.",
+    "The R1-R6 backtest is scored from blind_prediction.json rather than mock simulation events."
+  ],
+  "system_signals": {
+    "R5": "short-term opposition coexists with longer-term behavioural adaptation and improving compliance"
+  }
+}

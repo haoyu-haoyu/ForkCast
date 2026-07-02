@@ -1,0 +1,186 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "case_name": "London Congestion Charge 2003",
+  "created_at": "2026-07-02T00:00:00+01:00",
+  "verification_policy": "DRAFT — PENDING HUMAN VERIFICATION",
+  "headline_excluded": true,
+  "facts": [
+    {
+      "id": "CC_A1_start_date_and_aim",
+      "category": "A. Policy baseline",
+      "requested_item": "Introduction date and stated aim",
+      "fact": "Draft: TfL describes the central London congestion charging scheme as introduced on 17 February 2003, with a primary aim of reducing traffic congestion in and around the charging zone.",
+      "value": {
+        "introduced_on": "2003-02-17"
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Second Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/impacts-monitoring-report-2.pdf",
+          "quote": "The central London congestion charging scheme was introduced on 17 February 2003. The primary aim of the scheme is to reduce traffic congestion in and around the charging zone."
+        }
+      ],
+      "notes": "Needs human page-level verification before use as final ground truth."
+    },
+    {
+      "id": "CC_A2_charge_and_hours",
+      "category": "A. Policy baseline",
+      "requested_item": "Initial daily charge and operating hours",
+      "fact": "Draft: TfL describes the initial congestion charge as a £5 daily charge between 0700 and 1830, Monday to Friday, excluding weekends and public holidays.",
+      "value": {
+        "daily_charge_gbp": 5,
+        "hours": "0700-1830",
+        "days": "Monday-Friday"
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Second Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/impacts-monitoring-report-2.pdf",
+          "quote": "The congestion charge is a £5 daily charge for driving or parking a vehicle on public roads within the congestion charging zone between 0700 and 1830, Monday to Friday, excluding weekends and public holidays."
+        }
+      ],
+      "notes": "Draft baseline fact for scaffold only."
+    },
+    {
+      "id": "CC_A3_zone_scope",
+      "category": "A. Policy baseline",
+      "requested_item": "Charging zone scope",
+      "fact": "Draft: TfL describes the central London congestion charging zone as covering 22 square kilometres in the heart of London.",
+      "value": {
+        "area_square_km": 22
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Second Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/impacts-monitoring-report-2.pdf",
+          "quote": "It covers 22 square kilometres in the heart of London, including centres of government, law, business, finance and entertainment."
+        }
+      ],
+      "notes": "Draft baseline fact for scaffold only."
+    },
+    {
+      "id": "CC_D1_congestion_reduction",
+      "category": "D. Policy outcome",
+      "requested_item": "Congestion reduction direction",
+      "fact": "Draft: TfL's third annual monitoring report says reductions to delays inside the charging zone remained around 30 percent compared with 2002 pre-charging conditions.",
+      "value": {
+        "direction": "down",
+        "reported_reduction_percent": 30
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "Taking an average of all available post-charging congestion surveys, reductions to delays inside the charging zone during charging hours remain at around 30 percent compared to pre-charging conditions in 2002."
+        }
+      ],
+      "notes": "Draft outcome fact, not yet manually verified."
+    },
+    {
+      "id": "CC_D2_traffic_entering_reduction",
+      "category": "D. Policy outcome",
+      "requested_item": "Traffic entering zone direction",
+      "fact": "Draft: TfL's third annual monitoring report says 2004 traffic entering the charging zone during charging hours remained 18 percent below 2002 pre-charging levels.",
+      "value": {
+        "direction": "down",
+        "reported_reduction_percent": 18
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "The total volume of traffic entering the charging zone during charging hours in 2004 was identical to 2003, continuing to represent a reduction of 18 percent against pre-charging levels in 2002."
+        }
+      ],
+      "notes": "Draft outcome fact, not yet manually verified."
+    },
+    {
+      "id": "CC_D3_public_transport_adaptation",
+      "category": "D. Policy outcome",
+      "requested_item": "Bus and public transport adaptation",
+      "fact": "Draft: TfL reports bus reliability and journey-time benefits, and says public transport accommodated displaced car users.",
+      "value": {
+        "direction": "improved_or_adapted"
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "Bus services continue to benefit from significant improvements in reliability and journey time, particularly within the zone, but also outside it."
+        },
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "Public transport continues to successfully accommodate displaced car users alongside ongoing improvements to bus services throughout London."
+        }
+      ],
+      "notes": "Draft outcome fact, not yet manually verified."
+    },
+    {
+      "id": "CC_D4_business_impact_neutral",
+      "category": "D. Policy outcome",
+      "requested_item": "Business and economic impact direction",
+      "fact": "Draft: TfL reports a broadly neutral overall business impact, while noting sectoral evidence was inconclusive.",
+      "value": {
+        "direction": "broadly_neutral"
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "Results from an extensive research programme suggest that congestion charging has had a broadly neutral impact on overall business performance in the charging zone."
+        },
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "Sectoral evidence from the business performance research programme is inconclusive."
+        }
+      ],
+      "notes": "Draft outcome fact, not yet manually verified."
+    },
+    {
+      "id": "CC_D5_revenue_bus_services",
+      "category": "D. Policy outcome",
+      "requested_item": "Revenue use",
+      "fact": "Draft: TfL reports over £90 million in provisional net revenues for 2004/5, spent largely on improved bus services within London.",
+      "value": {
+        "reported_net_revenue_gbp_million": 90,
+        "direction": "revenue_for_transport"
+      },
+      "confidence_status": "待核实",
+      "headline_excluded": true,
+      "sources": [
+        {
+          "source_name": "TfL Third Annual Monitoring Report",
+          "source_type": "official TfL PDF",
+          "url": "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf",
+          "quote": "The scheme provisionally generated net revenues of over £90 million in 2004/5, which have been spent largely on improved bus services within London."
+        }
+      ],
+      "notes": "Draft outcome fact, not yet manually verified."
+    }
+  ]
+}

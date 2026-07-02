@@ -44,6 +44,8 @@ def evaluate_backtest(report: dict[str, Any], truth_set: dict[str, Any]) -> dict
 def evaluate_blind_prediction_backtest(blind_prediction: dict[str, Any], truth_set: dict[str, Any]) -> dict[str, Any]:
     prediction = blind_prediction.get("prediction", {})
     signals = _blind_prediction_signals(prediction)
+    if truth_set.get("headline_excluded") is True:
+        return _draft_not_scored_result(truth_set, signals)
     facts = {fact["id"]: fact for fact in truth_set.get("facts", [])}
     rules = [
         _rule("R1", facts, signals, _verdict_for(signals, "R1"), "Blind prediction is checked for outer-London opposition stronger than inner-London support."),
@@ -69,8 +71,38 @@ def evaluate_blind_prediction_backtest(blind_prediction: dict[str, Any], truth_s
     }
 
 
+def _draft_not_scored_result(truth_set: dict[str, Any], signals: dict[str, str]) -> dict[str, Any]:
+    note = "Draft truth set pending human verification; excluded from headline numbers."
+    rules = [
+        {
+            "rule_id": rule_id,
+            "real_outcome": note,
+            "system_signal": "",
+            "verdict": "NOT_SCORED",
+            "note": note,
+        }
+        for rule_id in RULE_FACTS
+    ]
+    return {
+        "case_id": truth_set["case_id"],
+        "backtest_mode": "blind_prediction_draft_not_scored",
+        "prediction_artifact": "blind_prediction.json",
+        "disclaimer": DECISION_SUPPORT_DISCLAIMER,
+        "rubric_path": "backtest_rubric.md",
+        "headline_excluded": True,
+        "verification_policy": truth_set.get("verification_policy", "DRAFT — PENDING HUMAN VERIFICATION"),
+        "rules": rules,
+    }
+
+
 def render_backtest_markdown(result: dict[str, Any]) -> str:
-    title = "Blind Prediction Backtest" if result.get("backtest_mode") == "blind_prediction" else "Backtest"
+    title = (
+        "Draft Blind Prediction Plumbing Check"
+        if result.get("backtest_mode") == "blind_prediction_draft_not_scored"
+        else "Blind Prediction Backtest"
+        if result.get("backtest_mode") == "blind_prediction"
+        else "Backtest"
+    )
     lines = [
         f"# {title}: {result['case_id']}",
         "",

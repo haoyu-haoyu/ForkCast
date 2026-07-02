@@ -13,7 +13,6 @@ class BlindLLMClient(Protocol):
         ...
 
 
-ALLOWED_POLICY_ENTITY_IDS = {"entity_ulez_policy"}
 EXCLUDED_CASE_GRAPH_FIELDS = [
     "evidence",
     "evidence_fact_ids",
@@ -28,59 +27,121 @@ OUTCOME_ENTITY_TYPES = {"political_event", "public_reaction", "policy_outcome", 
 
 class DeterministicBlindLLMClient:
     def complete_json(self, system_prompt: str, user_prompt: str) -> str:
-        return json.dumps(
+        if "london_congestion_charge_2003" in user_prompt:
+            return json.dumps(_deterministic_congestion_charge_prediction(), ensure_ascii=False)
+        return json.dumps(_deterministic_ulez_prediction(), ensure_ascii=False)
+
+
+def _deterministic_ulez_prediction() -> dict[str, Any]:
+    return {
+        "summary": "Blind qualitative prediction based only on policy design and stakeholder incentives.",
+        "group_reactions": [
             {
-                "summary": "Blind qualitative prediction based only on policy design and stakeholder incentives.",
-                "group_reactions": [
-                    {
-                        "group_id": "stakeholder_outer_london_residents",
-                        "direction": "oppose",
-                        "intensity": "high",
-                        "rationale": "vehicle-dependent households outside the existing zone face cost and fairness concerns",
-                    },
-                    {
-                        "group_id": "stakeholder_inner_london_residents",
-                        "direction": "support",
-                        "intensity": "medium",
-                        "rationale": "health and air-quality benefits are more salient",
-                    },
-                    {
-                        "group_id": "stakeholder_van_drivers_tradespeople",
-                        "direction": "oppose",
-                        "intensity": "very_high",
-                        "rationale": "work vehicles and replacement costs create concentrated livelihood pressure",
-                    },
-                    {
-                        "group_id": "stakeholder_low_income_households",
-                        "direction": "oppose",
-                        "intensity": "high",
-                        "rationale": "replacement affordability and distributional burden are central",
-                    },
-                ],
-                "ranked_opposition_groups": [
-                    "stakeholder_van_drivers_tradespeople",
-                    "stakeholder_low_income_households",
-                    "stakeholder_outer_london_residents",
-                ],
-                "political_consequences": [
-                    "political salience and electoral risk are likely because costs are concentrated and visible"
-                ],
-                "time_dynamics": [
-                    "short-term backlash may be strong, while some affected groups gradually adapt behaviour and compliance over time"
-                ],
-                "secondary_reactions": [
-                    "enforcement resistance and camera-sabotage narratives are plausible secondary reactions"
-                ],
-                "benefit_burden_balance": [
-                    "air-quality and public-health benefits are likely",
-                    "fairness and distributional burden are also likely for low-income and vehicle-dependent groups",
-                ],
-                "confidence_notes": [
-                    "Directional qualitative prediction only; no historical percentages or election outcomes used."
-                ],
+                "group_id": "stakeholder_outer_london_residents",
+                "direction": "oppose",
+                "intensity": "high",
+                "rationale": "vehicle-dependent households outside the existing zone face cost and fairness concerns",
             },
-            ensure_ascii=False,
-        )
+            {
+                "group_id": "stakeholder_inner_london_residents",
+                "direction": "support",
+                "intensity": "medium",
+                "rationale": "health and air-quality benefits are more salient",
+            },
+            {
+                "group_id": "stakeholder_van_drivers_tradespeople",
+                "direction": "oppose",
+                "intensity": "very_high",
+                "rationale": "work vehicles and replacement costs create concentrated livelihood pressure",
+            },
+            {
+                "group_id": "stakeholder_low_income_households",
+                "direction": "oppose",
+                "intensity": "high",
+                "rationale": "replacement affordability and distributional burden are central",
+            },
+        ],
+        "ranked_opposition_groups": [
+            "stakeholder_van_drivers_tradespeople",
+            "stakeholder_low_income_households",
+            "stakeholder_outer_london_residents",
+        ],
+        "political_consequences": [
+            "political salience and electoral risk are likely because costs are concentrated and visible"
+        ],
+        "time_dynamics": [
+            "short-term backlash may be strong, while some affected groups gradually adapt behaviour and compliance over time"
+        ],
+        "secondary_reactions": [
+            "enforcement resistance and camera-sabotage narratives are plausible secondary reactions"
+        ],
+        "benefit_burden_balance": [
+            "air-quality and public-health benefits are likely",
+            "fairness and distributional burden are also likely for low-income and vehicle-dependent groups",
+        ],
+        "confidence_notes": [
+            "Directional qualitative prediction only; no historical percentages or election outcomes used."
+        ],
+    }
+
+
+def _deterministic_congestion_charge_prediction() -> dict[str, Any]:
+    return {
+        "summary": "Draft blind qualitative prediction for the central London congestion charge scaffold.",
+        "group_reactions": [
+            {
+                "group_id": "stakeholder_central_london_drivers",
+                "direction": "oppose",
+                "intensity": "high",
+                "rationale": "charged car users face direct daily cost and trip-timing disruption",
+            },
+            {
+                "group_id": "stakeholder_goods_service_operators",
+                "direction": "mixed",
+                "intensity": "medium",
+                "rationale": "operators face charge costs but may value more reliable journey times",
+            },
+            {
+                "group_id": "stakeholder_central_london_businesses",
+                "direction": "mixed",
+                "intensity": "medium",
+                "rationale": "businesses may weigh customer access risks against delivery and mobility reliability",
+            },
+            {
+                "group_id": "stakeholder_bus_public_transport_users",
+                "direction": "support",
+                "intensity": "medium",
+                "rationale": "bus users may benefit if reduced congestion improves service reliability",
+            },
+            {
+                "group_id": "stakeholder_boundary_residents_boroughs",
+                "direction": "mixed",
+                "intensity": "medium",
+                "rationale": "boundary areas may worry about displaced traffic while sharing congestion benefits",
+            },
+        ],
+        "ranked_opposition_groups": [
+            "stakeholder_central_london_drivers",
+            "stakeholder_goods_service_operators",
+            "stakeholder_central_london_businesses",
+        ],
+        "political_consequences": [
+            "political salience is likely because the charge is visible, daily, and geographically concentrated"
+        ],
+        "time_dynamics": [
+            "short-term resistance from charged users could coexist with gradual travel adaptation over time"
+        ],
+        "secondary_reactions": [
+            "boundary displacement concerns and business-access complaints are plausible secondary reactions"
+        ],
+        "benefit_burden_balance": [
+            "congestion and bus-reliability benefits are plausible",
+            "daily charge burden and access concerns are also plausible for charged users and some businesses",
+        ],
+        "confidence_notes": [
+            "Draft mock prediction only; no historical monitoring outcomes were used for scoring."
+        ],
+    }
 
 
 def make_blind_case_context(case_graph: dict[str, Any]) -> dict[str, Any]:
@@ -92,7 +153,7 @@ def make_blind_case_context(case_graph: dict[str, Any]) -> dict[str, Any]:
     policy_entities = [
         _clean_policy_entity(entity)
         for entity in case_graph.get("entities", [])
-        if entity.get("id") in ALLOWED_POLICY_ENTITY_IDS and entity.get("type") not in OUTCOME_ENTITY_TYPES
+        if entity.get("type") == "policy" and entity.get("type") not in OUTCOME_ENTITY_TYPES
     ]
     stakeholders = [_clean_stakeholder(item) for item in case_graph.get("stakeholders", [])]
     constraints = [

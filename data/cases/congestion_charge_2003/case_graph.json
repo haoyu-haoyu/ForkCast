@@ -1,0 +1,443 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "case_name": "London Congestion Charge 2003",
+  "generated_at": "2026-07-02T00:00:00+01:00",
+  "extraction_method": "manual_draft_from_official_tfl_monitoring_sources",
+  "verification_policy": "DRAFT — PENDING HUMAN VERIFICATION",
+  "headline_excluded": true,
+  "source_truth_set": {
+    "path": "data/cases/congestion_charge_2003/truth_set.json",
+    "fact_count": 8
+  },
+  "entities": [
+    {
+      "id": "entity_congestion_charge_policy",
+      "type": "policy",
+      "name": "Central London Congestion Charge 2003",
+      "description": "A £5 daily weekday charge for driving or parking on public roads inside the central London charging zone, introduced to reduce traffic congestion and support transport improvements.",
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_A3_zone_scope"
+      ]
+    },
+    {
+      "id": "entity_congestion_reduction",
+      "type": "policy_outcome",
+      "name": "Congestion reduction",
+      "description": "Draft outcome: TfL reported delay reductions around 30 percent compared with 2002 pre-charging conditions.",
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction"
+      ]
+    },
+    {
+      "id": "entity_traffic_reduction",
+      "type": "policy_outcome",
+      "name": "Traffic entering zone reduction",
+      "description": "Draft outcome: TfL reported traffic entering the zone during charging hours remained 18 percent below 2002 pre-charging levels.",
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ]
+    },
+    {
+      "id": "entity_public_transport_adaptation",
+      "type": "policy_outcome",
+      "name": "Public transport adaptation",
+      "description": "Draft outcome: bus services and public transport absorbed part of the travel adaptation after charging.",
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation"
+      ]
+    },
+    {
+      "id": "entity_business_impact",
+      "type": "policy_outcome",
+      "name": "Business impact",
+      "description": "Draft outcome: TfL reported a broadly neutral overall business impact and inconclusive sector-level evidence.",
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ]
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "stakeholder_transport_for_london_mayor",
+      "name": "Transport for London and Mayor of London",
+      "archetype_group": "policy_advocate",
+      "stance_prior": "support",
+      "interests": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_D5_revenue_bus_services"
+      ]
+    },
+    {
+      "id": "stakeholder_central_london_drivers",
+      "name": "Central London drivers and regular car users",
+      "archetype_group": "charged_road_users",
+      "stance_prior": "oppose",
+      "interests": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "evidence_fact_ids": [
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction",
+        "CC_D2_traffic_entering_reduction"
+      ]
+    },
+    {
+      "id": "stakeholder_goods_service_operators",
+      "name": "Freight, goods and service operators",
+      "archetype_group": "affected_business",
+      "stance_prior": "mixed",
+      "interests": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction"
+      ]
+    },
+    {
+      "id": "stakeholder_central_london_businesses",
+      "name": "Central London businesses, retail and leisure",
+      "archetype_group": "affected_business",
+      "stance_prior": "mixed",
+      "interests": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ]
+    },
+    {
+      "id": "stakeholder_bus_public_transport_users",
+      "name": "Bus and public transport users",
+      "archetype_group": "beneficiary_public",
+      "stance_prior": "support",
+      "interests": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation",
+        "CC_D5_revenue_bus_services"
+      ]
+    },
+    {
+      "id": "stakeholder_boundary_residents_boroughs",
+      "name": "Boundary-area residents and boroughs",
+      "archetype_group": "affected_public",
+      "stance_prior": "mixed",
+      "interests": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ]
+    },
+    {
+      "id": "stakeholder_taxi_coach_users",
+      "name": "Taxi, coach and essential trip users",
+      "archetype_group": "travel_service_users",
+      "stance_prior": "mixed",
+      "interests": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction",
+        "CC_D3_public_transport_adaptation"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "assumption_charge_reduces_car_trips",
+      "statement": "A central-area road charge can reduce discretionary car trips into the zone during charging hours.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ]
+    },
+    {
+      "id": "assumption_reduced_traffic_reduces_delay",
+      "statement": "Reduced vehicle volumes translate into lower congestion delays inside the charging zone.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction"
+      ]
+    },
+    {
+      "id": "assumption_public_transport_can_absorb_shift",
+      "statement": "Bus and public transport services can absorb part of the mode shift from charged car trips.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation"
+      ]
+    },
+    {
+      "id": "assumption_business_effects_are_heterogeneous",
+      "statement": "Business effects vary by sector and may be hard to separate from broader economic conditions.",
+      "status": "待核实",
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "constraint_draft_truth_set",
+      "kind": "evidence_integrity",
+      "statement": "This second case is draft-only and excluded from headline backtest numbers until human verification.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "constraint_decision_support_only",
+      "kind": "human_in_loop",
+      "statement": "Outputs are decision support, not deterministic forecasts.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "constraint_archetype_only",
+      "kind": "privacy",
+      "statement": "All personas are archetypes and must not include real-person PII.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "constraint_no_automatic_chain_action",
+      "kind": "control",
+      "statement": "Agents must not automatically broadcast any chain transaction.",
+      "evidence_fact_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "fact_id": "CC_A1_start_date_and_aim",
+      "category": "A. Policy baseline",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/impacts-monitoring-report-2.pdf"
+      ],
+      "quotes": [
+        "The central London congestion charging scheme was introduced on 17 February 2003. The primary aim of the scheme is to reduce traffic congestion in and around the charging zone."
+      ]
+    },
+    {
+      "fact_id": "CC_A2_charge_and_hours",
+      "category": "A. Policy baseline",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/impacts-monitoring-report-2.pdf"
+      ],
+      "quotes": [
+        "The congestion charge is a £5 daily charge for driving or parking a vehicle on public roads within the congestion charging zone between 0700 and 1830, Monday to Friday, excluding weekends and public holidays."
+      ]
+    },
+    {
+      "fact_id": "CC_A3_zone_scope",
+      "category": "A. Policy baseline",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/impacts-monitoring-report-2.pdf"
+      ],
+      "quotes": [
+        "It covers 22 square kilometres in the heart of London, including centres of government, law, business, finance and entertainment."
+      ]
+    },
+    {
+      "fact_id": "CC_D1_congestion_reduction",
+      "category": "D. Policy outcome",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf"
+      ],
+      "quotes": [
+        "Taking an average of all available post-charging congestion surveys, reductions to delays inside the charging zone during charging hours remain at around 30 percent compared to pre-charging conditions in 2002."
+      ]
+    },
+    {
+      "fact_id": "CC_D2_traffic_entering_reduction",
+      "category": "D. Policy outcome",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf"
+      ],
+      "quotes": [
+        "The total volume of traffic entering the charging zone during charging hours in 2004 was identical to 2003, continuing to represent a reduction of 18 percent against pre-charging levels in 2002."
+      ]
+    },
+    {
+      "fact_id": "CC_D3_public_transport_adaptation",
+      "category": "D. Policy outcome",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf"
+      ],
+      "quotes": [
+        "Bus services continue to benefit from significant improvements in reliability and journey time, particularly within the zone, but also outside it.",
+        "Public transport continues to successfully accommodate displaced car users alongside ongoing improvements to bus services throughout London."
+      ]
+    },
+    {
+      "fact_id": "CC_D4_business_impact_neutral",
+      "category": "D. Policy outcome",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf"
+      ],
+      "quotes": [
+        "Results from an extensive research programme suggest that congestion charging has had a broadly neutral impact on overall business performance in the charging zone.",
+        "Sectoral evidence from the business performance research programme is inconclusive."
+      ]
+    },
+    {
+      "fact_id": "CC_D5_revenue_bus_services",
+      "category": "D. Policy outcome",
+      "confidence_status": "待核实",
+      "source_urls": [
+        "https://content.tfl.gov.uk/central-london-congestion-charging-impacts-monitoring-third-annual-report.pdf"
+      ],
+      "quotes": [
+        "The scheme provisionally generated net revenues of over £90 million in 2004/5, which have been spent largely on improved bus services within London."
+      ]
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "entity_congestion_charge_policy",
+        "kind": "entity",
+        "label": "Central London Congestion Charge 2003"
+      },
+      {
+        "id": "entity_congestion_reduction",
+        "kind": "entity",
+        "label": "Congestion reduction"
+      },
+      {
+        "id": "entity_traffic_reduction",
+        "kind": "entity",
+        "label": "Traffic entering zone reduction"
+      },
+      {
+        "id": "entity_public_transport_adaptation",
+        "kind": "entity",
+        "label": "Public transport adaptation"
+      },
+      {
+        "id": "entity_business_impact",
+        "kind": "entity",
+        "label": "Business impact"
+      },
+      {
+        "id": "stakeholder_central_london_drivers",
+        "kind": "stakeholder",
+        "label": "Central London drivers and regular car users"
+      },
+      {
+        "id": "stakeholder_goods_service_operators",
+        "kind": "stakeholder",
+        "label": "Freight, goods and service operators"
+      },
+      {
+        "id": "stakeholder_central_london_businesses",
+        "kind": "stakeholder",
+        "label": "Central London businesses, retail and leisure"
+      },
+      {
+        "id": "stakeholder_bus_public_transport_users",
+        "kind": "stakeholder",
+        "label": "Bus and public transport users"
+      },
+      {
+        "id": "stakeholder_boundary_residents_boroughs",
+        "kind": "stakeholder",
+        "label": "Boundary-area residents and boroughs"
+      },
+      {
+        "id": "stakeholder_transport_for_london_mayor",
+        "kind": "stakeholder",
+        "label": "Transport for London and Mayor of London"
+      },
+      {
+        "id": "stakeholder_taxi_coach_users",
+        "kind": "stakeholder",
+        "label": "Taxi, coach and essential trip users"
+      }
+    ],
+    "edges": [
+      {
+        "source": "entity_congestion_charge_policy",
+        "target": "entity_congestion_reduction",
+        "type": "intended_effect"
+      },
+      {
+        "source": "entity_congestion_charge_policy",
+        "target": "entity_traffic_reduction",
+        "type": "intended_effect"
+      },
+      {
+        "source": "entity_congestion_charge_policy",
+        "target": "entity_public_transport_adaptation",
+        "type": "linked_transition"
+      },
+      {
+        "source": "entity_congestion_charge_policy",
+        "target": "stakeholder_central_london_drivers",
+        "type": "charges"
+      },
+      {
+        "source": "entity_congestion_charge_policy",
+        "target": "stakeholder_goods_service_operators",
+        "type": "cost_and_reliability_tradeoff"
+      },
+      {
+        "source": "entity_congestion_charge_policy",
+        "target": "stakeholder_bus_public_transport_users",
+        "type": "benefits"
+      },
+      {
+        "source": "entity_business_impact",
+        "target": "stakeholder_central_london_businesses",
+        "type": "monitors_impact"
+      },
+      {
+        "source": "entity_traffic_reduction",
+        "target": "stakeholder_boundary_residents_boroughs",
+        "type": "boundary_displacement_risk"
+      },
+      {
+        "source": "entity_congestion_reduction",
+        "target": "stakeholder_taxi_coach_users",
+        "type": "journey_time_reliability"
+      },
+      {
+        "source": "stakeholder_transport_for_london_mayor",
+        "target": "entity_congestion_charge_policy",
+        "type": "implements"
+      }
+    ]
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "mode": "blind_prediction",
+  "generated_at": "2026-07-02T00:11:22.528550+00:00",
+  "llm": {
+    "provider": "mock",
+    "base_url": null,
+    "model": "deterministic_mock"
+  },
+  "leakage_guard": {
+    "truth_set_loaded_into_prompt": false,
+    "truth_set_file_read_by_prediction_step": false,
+    "excluded_case_graph_fields": [
+      "evidence",
+      "evidence_fact_ids",
+      "evidence_note",
+      "graph",
+      "source_truth_set",
+      "entities except policy definition",
+      "historical assumptions derived from outcomes"
+    ]
+  },
+  "prompt": {
+    "system_prompt": "You are producing a blind policy impact prediction. Do not use historical outcome data, election results, post-implementation metrics, polling results, camera offence counts, compliance rates, air-quality measurements, or source quotes. Use only the provided sanitized policy context and stakeholder incentives. Return one JSON object and no prose. Do not predict exact percentages, vote margins, offence counts, or any specific election result. Political output must be framed as political salience/electoral risk only.",
+    "user_prompt": "sanitized_blind_case_context:\n{\n  \"case_id\": \"london_congestion_charge_2003\",\n  \"case_name\": \"London Congestion Charge 2003\",\n  \"policy_entities\": [\n    {\n      \"id\": \"entity_congestion_charge_policy\",\n      \"type\": \"policy\",\n      \"name\": \"Central London Congestion Charge 2003\",\n      \"description\": \"A £5 daily weekday charge for driving or parking on public roads inside the central London charging zone, introduced to reduce traffic congestion and support transport improvements.\"\n    }\n  ],\n  \"stakeholders\": [\n    {\n      \"id\": \"stakeholder_transport_for_london_mayor\",\n      \"name\": \"Transport for London and Mayor of London\",\n      \"archetype_group\": \"policy_advocate\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"reduce congestion\",\n        \"fund transport improvements\",\n        \"maintain operational reliability\",\n        \"political legitimacy\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_central_london_drivers\",\n      \"name\": \"Central London drivers and regular car users\",\n      \"archetype_group\": \"charged_road_users\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"daily charge cost\",\n        \"route access\",\n        \"travel time reliability\",\n        \"parking and trip timing\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_goods_service_operators\",\n      \"name\": \"Freight, goods and service operators\",\n      \"archetype_group\": \"affected_business\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"charge operating cost\",\n        \"delivery reliability\",\n        \"access to central clients\",\n        \"journey time savings\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_central_london_businesses\",\n      \"name\": \"Central London businesses, retail and leisure\",\n      \"archetype_group\": \"affected_business\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"customer access\",\n        \"sales and footfall\",\n        \"staff commuting\",\n        \"delivery reliability\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_bus_public_transport_users\",\n      \"name\": \"Bus and public transport users\",\n      \"archetype_group\": \"beneficiary_public\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"bus reliability\",\n        \"journey time\",\n        \"transport investment\",\n        \"lower road congestion\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_boundary_residents_boroughs\",\n      \"name\": \"Boundary-area residents and boroughs\",\n      \"archetype_group\": \"affected_public\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"traffic displacement\",\n        \"local access\",\n        \"boundary fairness\",\n        \"neighbourhood congestion\"\n      ]\n    },\n    {\n      \"id\": \"stakeholder_taxi_coach_users\",\n      \"name\": \"Taxi, coach and essential trip users\",\n      \"archetype_group\": \"travel_service_users\",\n      \"visible_prior_stance\": \"unknown\",\n      \"interests\": [\n        \"journey time reliability\",\n        \"fare or service cost\",\n        \"access to central London\",\n        \"street network reliability\"\n      ]\n    }\n  ],\n  \"blind_safe_assumptions\": [],\n  \"constraints\": [\n    {\n      \"id\": \"constraint_draft_truth_set\",\n      \"kind\": \"evidence_integrity\",\n      \"statement\": \"This second case is draft-only and excluded from headline backtest numbers until human verification.\"\n    },\n    {\n      \"id\": \"constraint_decision_support_only\",\n      \"kind\": \"human_in_loop\",\n      \"statement\": \"Outputs are decision support, not deterministic forecasts.\"\n    },\n    {\n      \"id\": \"constraint_archetype_only\",\n      \"kind\": \"privacy\",\n      \"statement\": \"All personas are archetypes and must not include real-person PII.\"\n    },\n    {\n      \"id\": \"constraint_no_automatic_chain_action\",\n      \"kind\": \"control\",\n      \"statement\": \"Agents must not automatically broadcast any chain transaction.\"\n    }\n  ],\n  \"sanitization_summary\": \"historical outcome evidence and post-implementation metrics removed before prediction\"\n}\n\nReturn JSON with keys: summary, group_reactions, ranked_opposition_groups, political_consequences, time_dynamics, secondary_reactions, benefit_burden_balance, confidence_notes. For group_reactions include group_id, direction, intensity, rationale."
+  },
+  "blind_context": {
+    "case_id": "london_congestion_charge_2003",
+    "case_name": "London Congestion Charge 2003",
+    "policy_entities": [
+      {
+        "id": "entity_congestion_charge_policy",
+        "type": "policy",
+        "name": "Central London Congestion Charge 2003",
+        "description": "A £5 daily weekday charge for driving or parking on public roads inside the central London charging zone, introduced to reduce traffic congestion and support transport improvements."
+      }
+    ],
+    "stakeholders": [
+      {
+        "id": "stakeholder_transport_for_london_mayor",
+        "name": "Transport for London and Mayor of London",
+        "archetype_group": "policy_advocate",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "reduce congestion",
+          "fund transport improvements",
+          "maintain operational reliability",
+          "political legitimacy"
+        ]
+      },
+      {
+        "id": "stakeholder_central_london_drivers",
+        "name": "Central London drivers and regular car users",
+        "archetype_group": "charged_road_users",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "daily charge cost",
+          "route access",
+          "travel time reliability",
+          "parking and trip timing"
+        ]
+      },
+      {
+        "id": "stakeholder_goods_service_operators",
+        "name": "Freight, goods and service operators",
+        "archetype_group": "affected_business",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "charge operating cost",
+          "delivery reliability",
+          "access to central clients",
+          "journey time savings"
+        ]
+      },
+      {
+        "id": "stakeholder_central_london_businesses",
+        "name": "Central London businesses, retail and leisure",
+        "archetype_group": "affected_business",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "customer access",
+          "sales and footfall",
+          "staff commuting",
+          "delivery reliability"
+        ]
+      },
+      {
+        "id": "stakeholder_bus_public_transport_users",
+        "name": "Bus and public transport users",
+        "archetype_group": "beneficiary_public",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "bus reliability",
+          "journey time",
+          "transport investment",
+          "lower road congestion"
+        ]
+      },
+      {
+        "id": "stakeholder_boundary_residents_boroughs",
+        "name": "Boundary-area residents and boroughs",
+        "archetype_group": "affected_public",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "traffic displacement",
+          "local access",
+          "boundary fairness",
+          "neighbourhood congestion"
+        ]
+      },
+      {
+        "id": "stakeholder_taxi_coach_users",
+        "name": "Taxi, coach and essential trip users",
+        "archetype_group": "travel_service_users",
+        "visible_prior_stance": "unknown",
+        "interests": [
+          "journey time reliability",
+          "fare or service cost",
+          "access to central London",
+          "street network reliability"
+        ]
+      }
+    ],
+    "blind_safe_assumptions": [],
+    "constraints": [
+      {
+        "id": "constraint_draft_truth_set",
+        "kind": "evidence_integrity",
+        "statement": "This second case is draft-only and excluded from headline backtest numbers until human verification."
+      },
+      {
+        "id": "constraint_decision_support_only",
+        "kind": "human_in_loop",
+        "statement": "Outputs are decision support, not deterministic forecasts."
+      },
+      {
+        "id": "constraint_archetype_only",
+        "kind": "privacy",
+        "statement": "All personas are archetypes and must not include real-person PII."
+      },
+      {
+        "id": "constraint_no_automatic_chain_action",
+        "kind": "control",
+        "statement": "Agents must not automatically broadcast any chain transaction."
+      }
+    ],
+    "sanitization_summary": "historical outcome evidence and post-implementation metrics removed before prediction"
+  },
+  "raw_prediction_text": "{\"summary\": \"Draft blind qualitative prediction for the central London congestion charge scaffold.\", \"group_reactions\": [{\"group_id\": \"stakeholder_central_london_drivers\", \"direction\": \"oppose\", \"intensity\": \"high\", \"rationale\": \"charged car users face direct daily cost and trip-timing disruption\"}, {\"group_id\": \"stakeholder_goods_service_operators\", \"direction\": \"mixed\", \"intensity\": \"medium\", \"rationale\": \"operators face charge costs but may value more reliable journey times\"}, {\"group_id\": \"stakeholder_central_london_businesses\", \"direction\": \"mixed\", \"intensity\": \"medium\", \"rationale\": \"businesses may weigh customer access risks against delivery and mobility reliability\"}, {\"group_id\": \"stakeholder_bus_public_transport_users\", \"direction\": \"support\", \"intensity\": \"medium\", \"rationale\": \"bus users may benefit if reduced congestion improves service reliability\"}, {\"group_id\": \"stakeholder_boundary_residents_boroughs\", \"direction\": \"mixed\", \"intensity\": \"medium\", \"rationale\": \"boundary areas may worry about displaced traffic while sharing congestion benefits\"}], \"ranked_opposition_groups\": [\"stakeholder_central_london_drivers\", \"stakeholder_goods_service_operators\", \"stakeholder_central_london_businesses\"], \"political_consequences\": [\"political salience is likely because the charge is visible, daily, and geographically concentrated\"], \"time_dynamics\": [\"short-term resistance from charged users could coexist with gradual travel adaptation over time\"], \"secondary_reactions\": [\"boundary displacement concerns and business-access complaints are plausible secondary reactions\"], \"benefit_burden_balance\": [\"congestion and bus-reliability benefits are plausible\", \"daily charge burden and access concerns are also plausible for charged users and some businesses\"], \"confidence_notes\": [\"Draft mock prediction only; no historical monitoring outcomes were used for scoring.\"]}",
+  "raw_prediction": {
+    "summary": "Draft blind qualitative prediction for the central London congestion charge scaffold.",
+    "group_reactions": [
+      {
+        "group_id": "stakeholder_central_london_drivers",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "charged car users face direct daily cost and trip-timing disruption"
+      },
+      {
+        "group_id": "stakeholder_goods_service_operators",
+        "direction": "mixed",
+        "intensity": "medium",
+        "rationale": "operators face charge costs but may value more reliable journey times"
+      },
+      {
+        "group_id": "stakeholder_central_london_businesses",
+        "direction": "mixed",
+        "intensity": "medium",
+        "rationale": "businesses may weigh customer access risks against delivery and mobility reliability"
+      },
+      {
+        "group_id": "stakeholder_bus_public_transport_users",
+        "direction": "support",
+        "intensity": "medium",
+        "rationale": "bus users may benefit if reduced congestion improves service reliability"
+      },
+      {
+        "group_id": "stakeholder_boundary_residents_boroughs",
+        "direction": "mixed",
+        "intensity": "medium",
+        "rationale": "boundary areas may worry about displaced traffic while sharing congestion benefits"
+      }
+    ],
+    "ranked_opposition_groups": [
+      "stakeholder_central_london_drivers",
+      "stakeholder_goods_service_operators",
+      "stakeholder_central_london_businesses"
+    ],
+    "political_consequences": [
+      "political salience is likely because the charge is visible, daily, and geographically concentrated"
+    ],
+    "time_dynamics": [
+      "short-term resistance from charged users could coexist with gradual travel adaptation over time"
+    ],
+    "secondary_reactions": [
+      "boundary displacement concerns and business-access complaints are plausible secondary reactions"
+    ],
+    "benefit_burden_balance": [
+      "congestion and bus-reliability benefits are plausible",
+      "daily charge burden and access concerns are also plausible for charged users and some businesses"
+    ],
+    "confidence_notes": [
+      "Draft mock prediction only; no historical monitoring outcomes were used for scoring."
+    ]
+  },
+  "prediction": {
+    "summary": "Draft blind qualitative prediction for the central London congestion charge scaffold.",
+    "group_reactions": [
+      {
+        "group_id": "stakeholder_central_london_drivers",
+        "direction": "oppose",
+        "intensity": "high",
+        "rationale": "charged car users face direct daily cost and trip-timing disruption"
+      },
+      {
+        "group_id": "stakeholder_goods_service_operators",
+        "direction": "mixed",
+        "intensity": "medium",
+        "rationale": "operators face charge costs but may value more reliable journey times"
+      },
+      {
+        "group_id": "stakeholder_central_london_businesses",
+        "direction": "mixed",
+        "intensity": "medium",
+        "rationale": "businesses may weigh customer access risks against delivery and mobility reliability"
+      },
+      {
+        "group_id": "stakeholder_bus_public_transport_users",
+        "direction": "support",
+        "intensity": "medium",
+        "rationale": "bus users may benefit if reduced congestion improves service reliability"
+      },
+      {
+        "group_id": "stakeholder_boundary_residents_boroughs",
+        "direction": "mixed",
+        "intensity": "medium",
+        "rationale": "boundary areas may worry about displaced traffic while sharing congestion benefits"
+      }
+    ],
+    "ranked_opposition_groups": [
+      "stakeholder_central_london_drivers",
+      "stakeholder_goods_service_operators",
+      "stakeholder_central_london_businesses"
+    ],
+    "political_consequences": [
+      "political salience is likely because the charge is visible, daily, and geographically concentrated"
+    ],
+    "time_dynamics": [
+      "short-term resistance from charged users could coexist with gradual travel adaptation over time"
+    ],
+    "secondary_reactions": [
+      "boundary displacement concerns and business-access complaints are plausible secondary reactions"
+    ],
+    "benefit_burden_balance": [
+      "congestion and bus-reliability benefits are plausible",
+      "daily charge burden and access concerns are also plausible for charged users and some businesses"
+    ],
+    "confidence_notes": [
+      "Draft mock prediction only; no historical monitoring outcomes were used for scoring."
+    ]
+  }
+}

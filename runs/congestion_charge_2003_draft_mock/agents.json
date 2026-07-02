@@ -1,0 +1,755 @@
+{
+  "case_id": "london_congestion_charge_2003",
+  "generated_at": "2026-07-02T00:11:22.526550+00:00",
+  "generation_method": "deepseek_openai_compatible_with_coverage_guard",
+  "target_count": 35,
+  "max_count": 200,
+  "safety_constraints": [
+    "archetype personas only",
+    "no real-person PII",
+    "no automatic on-chain actions",
+    "no automatic stakeholder weight changes"
+  ],
+  "agents": [
+    {
+      "id": "agent_001_stakeholder_transport_for_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london_mayor",
+      "stakeholder_name": "Transport for London and Mayor of London",
+      "archetype": "Transport for London and Mayor of London",
+      "persona": "Archetype member of Transport for London and Mayor of London focused on reduce congestion, fund transport improvements, maintain operational reliability.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_002_stakeholder_central_london_drivers",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_drivers",
+      "stakeholder_name": "Central London drivers and regular car users",
+      "archetype": "Central London drivers and regular car users",
+      "persona": "Archetype member of Central London drivers and regular car users focused on daily charge cost, route access, travel time reliability.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "evidence_fact_ids": [
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction",
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_003_stakeholder_goods_service_operators",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_goods_service_operators",
+      "stakeholder_name": "Freight, goods and service operators",
+      "archetype": "Freight, goods and service operators",
+      "persona": "Archetype member of Freight, goods and service operators focused on charge operating cost, delivery reliability, access to central clients.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_004_stakeholder_central_london_businesses",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_businesses",
+      "stakeholder_name": "Central London businesses, retail and leisure",
+      "archetype": "Central London businesses, retail and leisure",
+      "persona": "Archetype member of Central London businesses, retail and leisure focused on customer access, sales and footfall, staff commuting.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_005_stakeholder_bus_public_transport_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_bus_public_transport_users",
+      "stakeholder_name": "Bus and public transport users",
+      "archetype": "Bus and public transport users",
+      "persona": "Archetype member of Bus and public transport users focused on bus reliability, journey time, transport investment.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_006_stakeholder_boundary_residents_boroughs",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_boundary_residents_boroughs",
+      "stakeholder_name": "Boundary-area residents and boroughs",
+      "archetype": "Boundary-area residents and boroughs",
+      "persona": "Archetype member of Boundary-area residents and boroughs focused on traffic displacement, local access, boundary fairness.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_007_stakeholder_taxi_coach_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_taxi_coach_users",
+      "stakeholder_name": "Taxi, coach and essential trip users",
+      "archetype": "Taxi, coach and essential trip users",
+      "persona": "Archetype member of Taxi, coach and essential trip users focused on journey time reliability, fare or service cost, access to central London.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction",
+        "CC_D3_public_transport_adaptation"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_008_stakeholder_transport_for_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london_mayor",
+      "stakeholder_name": "Transport for London and Mayor of London",
+      "archetype": "Transport for London and Mayor of London",
+      "persona": "Archetype member of Transport for London and Mayor of London focused on reduce congestion, fund transport improvements, maintain operational reliability.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_009_stakeholder_central_london_drivers",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_drivers",
+      "stakeholder_name": "Central London drivers and regular car users",
+      "archetype": "Central London drivers and regular car users",
+      "persona": "Archetype member of Central London drivers and regular car users focused on daily charge cost, route access, travel time reliability.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "evidence_fact_ids": [
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction",
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_010_stakeholder_goods_service_operators",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_goods_service_operators",
+      "stakeholder_name": "Freight, goods and service operators",
+      "archetype": "Freight, goods and service operators",
+      "persona": "Archetype member of Freight, goods and service operators focused on charge operating cost, delivery reliability, access to central clients.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_011_stakeholder_central_london_businesses",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_businesses",
+      "stakeholder_name": "Central London businesses, retail and leisure",
+      "archetype": "Central London businesses, retail and leisure",
+      "persona": "Archetype member of Central London businesses, retail and leisure focused on customer access, sales and footfall, staff commuting.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_012_stakeholder_bus_public_transport_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_bus_public_transport_users",
+      "stakeholder_name": "Bus and public transport users",
+      "archetype": "Bus and public transport users",
+      "persona": "Archetype member of Bus and public transport users focused on bus reliability, journey time, transport investment.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_013_stakeholder_boundary_residents_boroughs",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_boundary_residents_boroughs",
+      "stakeholder_name": "Boundary-area residents and boroughs",
+      "archetype": "Boundary-area residents and boroughs",
+      "persona": "Archetype member of Boundary-area residents and boroughs focused on traffic displacement, local access, boundary fairness.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_014_stakeholder_taxi_coach_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_taxi_coach_users",
+      "stakeholder_name": "Taxi, coach and essential trip users",
+      "archetype": "Taxi, coach and essential trip users",
+      "persona": "Archetype member of Taxi, coach and essential trip users focused on journey time reliability, fare or service cost, access to central London.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction",
+        "CC_D3_public_transport_adaptation"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_015_stakeholder_transport_for_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london_mayor",
+      "stakeholder_name": "Transport for London and Mayor of London",
+      "archetype": "Transport for London and Mayor of London",
+      "persona": "Archetype member of Transport for London and Mayor of London focused on reduce congestion, fund transport improvements, maintain operational reliability.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_016_stakeholder_central_london_drivers",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_drivers",
+      "stakeholder_name": "Central London drivers and regular car users",
+      "archetype": "Central London drivers and regular car users",
+      "persona": "Archetype member of Central London drivers and regular car users focused on daily charge cost, route access, travel time reliability.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "evidence_fact_ids": [
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction",
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_017_stakeholder_goods_service_operators",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_goods_service_operators",
+      "stakeholder_name": "Freight, goods and service operators",
+      "archetype": "Freight, goods and service operators",
+      "persona": "Archetype member of Freight, goods and service operators focused on charge operating cost, delivery reliability, access to central clients.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_018_stakeholder_central_london_businesses",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_businesses",
+      "stakeholder_name": "Central London businesses, retail and leisure",
+      "archetype": "Central London businesses, retail and leisure",
+      "persona": "Archetype member of Central London businesses, retail and leisure focused on customer access, sales and footfall, staff commuting.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_019_stakeholder_bus_public_transport_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_bus_public_transport_users",
+      "stakeholder_name": "Bus and public transport users",
+      "archetype": "Bus and public transport users",
+      "persona": "Archetype member of Bus and public transport users focused on bus reliability, journey time, transport investment.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_020_stakeholder_boundary_residents_boroughs",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_boundary_residents_boroughs",
+      "stakeholder_name": "Boundary-area residents and boroughs",
+      "archetype": "Boundary-area residents and boroughs",
+      "persona": "Archetype member of Boundary-area residents and boroughs focused on traffic displacement, local access, boundary fairness.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_021_stakeholder_taxi_coach_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_taxi_coach_users",
+      "stakeholder_name": "Taxi, coach and essential trip users",
+      "archetype": "Taxi, coach and essential trip users",
+      "persona": "Archetype member of Taxi, coach and essential trip users focused on journey time reliability, fare or service cost, access to central London.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction",
+        "CC_D3_public_transport_adaptation"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_022_stakeholder_transport_for_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london_mayor",
+      "stakeholder_name": "Transport for London and Mayor of London",
+      "archetype": "Transport for London and Mayor of London",
+      "persona": "Archetype member of Transport for London and Mayor of London focused on reduce congestion, fund transport improvements, maintain operational reliability.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_023_stakeholder_central_london_drivers",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_drivers",
+      "stakeholder_name": "Central London drivers and regular car users",
+      "archetype": "Central London drivers and regular car users",
+      "persona": "Archetype member of Central London drivers and regular car users focused on daily charge cost, route access, travel time reliability.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "evidence_fact_ids": [
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction",
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_024_stakeholder_goods_service_operators",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_goods_service_operators",
+      "stakeholder_name": "Freight, goods and service operators",
+      "archetype": "Freight, goods and service operators",
+      "persona": "Archetype member of Freight, goods and service operators focused on charge operating cost, delivery reliability, access to central clients.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_025_stakeholder_central_london_businesses",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_businesses",
+      "stakeholder_name": "Central London businesses, retail and leisure",
+      "archetype": "Central London businesses, retail and leisure",
+      "persona": "Archetype member of Central London businesses, retail and leisure focused on customer access, sales and footfall, staff commuting.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_026_stakeholder_bus_public_transport_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_bus_public_transport_users",
+      "stakeholder_name": "Bus and public transport users",
+      "archetype": "Bus and public transport users",
+      "persona": "Archetype member of Bus and public transport users focused on bus reliability, journey time, transport investment.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_027_stakeholder_boundary_residents_boroughs",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_boundary_residents_boroughs",
+      "stakeholder_name": "Boundary-area residents and boroughs",
+      "archetype": "Boundary-area residents and boroughs",
+      "persona": "Archetype member of Boundary-area residents and boroughs focused on traffic displacement, local access, boundary fairness.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_028_stakeholder_taxi_coach_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_taxi_coach_users",
+      "stakeholder_name": "Taxi, coach and essential trip users",
+      "archetype": "Taxi, coach and essential trip users",
+      "persona": "Archetype member of Taxi, coach and essential trip users focused on journey time reliability, fare or service cost, access to central London.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction",
+        "CC_D3_public_transport_adaptation"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_029_stakeholder_transport_for_london_mayor",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_transport_for_london_mayor",
+      "stakeholder_name": "Transport for London and Mayor of London",
+      "archetype": "Transport for London and Mayor of London",
+      "persona": "Archetype member of Transport for London and Mayor of London focused on reduce congestion, fund transport improvements, maintain operational reliability.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "reduce congestion",
+        "fund transport improvements",
+        "maintain operational reliability",
+        "political legitimacy"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_030_stakeholder_central_london_drivers",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_drivers",
+      "stakeholder_name": "Central London drivers and regular car users",
+      "archetype": "Central London drivers and regular car users",
+      "persona": "Archetype member of Central London drivers and regular car users focused on daily charge cost, route access, travel time reliability.",
+      "stance": "oppose",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "daily charge cost",
+        "route access",
+        "travel time reliability",
+        "parking and trip timing"
+      ],
+      "evidence_fact_ids": [
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction",
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_031_stakeholder_goods_service_operators",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_goods_service_operators",
+      "stakeholder_name": "Freight, goods and service operators",
+      "archetype": "Freight, goods and service operators",
+      "persona": "Archetype member of Freight, goods and service operators focused on charge operating cost, delivery reliability, access to central clients.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "charge operating cost",
+        "delivery reliability",
+        "access to central clients",
+        "journey time savings"
+      ],
+      "evidence_fact_ids": [
+        "CC_A1_start_date_and_aim",
+        "CC_A2_charge_and_hours",
+        "CC_D1_congestion_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_032_stakeholder_central_london_businesses",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_central_london_businesses",
+      "stakeholder_name": "Central London businesses, retail and leisure",
+      "archetype": "Central London businesses, retail and leisure",
+      "persona": "Archetype member of Central London businesses, retail and leisure focused on customer access, sales and footfall, staff commuting.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "customer access",
+        "sales and footfall",
+        "staff commuting",
+        "delivery reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D4_business_impact_neutral"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_033_stakeholder_bus_public_transport_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_bus_public_transport_users",
+      "stakeholder_name": "Bus and public transport users",
+      "archetype": "Bus and public transport users",
+      "persona": "Archetype member of Bus and public transport users focused on bus reliability, journey time, transport investment.",
+      "stance": "support",
+      "action_tendency": "defend air-quality and health benefits",
+      "concerns": [
+        "bus reliability",
+        "journey time",
+        "transport investment",
+        "lower road congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D3_public_transport_adaptation",
+        "CC_D5_revenue_bus_services"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_034_stakeholder_boundary_residents_boroughs",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_boundary_residents_boroughs",
+      "stakeholder_name": "Boundary-area residents and boroughs",
+      "archetype": "Boundary-area residents and boroughs",
+      "persona": "Archetype member of Boundary-area residents and boroughs focused on traffic displacement, local access, boundary fairness.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "traffic displacement",
+        "local access",
+        "boundary fairness",
+        "neighbourhood congestion"
+      ],
+      "evidence_fact_ids": [
+        "CC_D2_traffic_entering_reduction"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_035_stakeholder_taxi_coach_users",
+      "persona_type": "archetype",
+      "stakeholder_id": "stakeholder_taxi_coach_users",
+      "stakeholder_name": "Taxi, coach and essential trip users",
+      "archetype": "Taxi, coach and essential trip users",
+      "persona": "Archetype member of Taxi, coach and essential trip users focused on journey time reliability, fare or service cost, access to central London.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "journey time reliability",
+        "fare or service cost",
+        "access to central London",
+        "street network reliability"
+      ],
+      "evidence_fact_ids": [
+        "CC_D1_congestion_reduction",
+        "CC_D3_public_transport_adaptation"
+      ],
+      "adaptation_capacity": "high"
+    }
+  ],
+  "llm": {
+    "provider": "mock",
+    "base_url": null,
+    "model": "deterministic_mock"
+  }
+}
