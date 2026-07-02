@@ -40,9 +40,15 @@ PY
 curl -fsSL "https://api-tn10.kaspa.org/addresses/${ADDR}/balance"
 ```
 
-Expected output: JSON with the public `address` and `balance` in sompi. For the default broadcast amount, use at least `100349800` sompi (`1.00349800` KAS) as a practical minimum.
+Expected output: JSON with the public `address` and `balance` in sompi.
 
-Failure playbook: if the balance is lower, use the official TN-10 faucet first: open `https://faucet-testnet.kaspanet.io`, paste the `kaspatest:` address, request funds, wait 1-3 minutes, then rerun the balance command. If the faucet requires CAPTCHA/login or does not send funds, stop and report.
+Recommended primary path for the current wallet: use the lower-amount broadcast command in step 6 (`--amount-kas 0.2`). The helper converts `0.2` KAS to `20000000` sompi via the Kaspa SDK, so the current `1.0` KAS balance covers amount plus the observed f553-style fee estimate (`349800` sompi). Practical minimum for this path: `20349800` sompi (`0.20349800` KAS).
+
+Dust/minimum-output check: Kaspa dust depends on output value, serialized output size and minimum relay fee. `0.2` KAS is `20000000` sompi, far above the dust threshold for a normal wallet `PaymentOutput` on TN-10, so this fallback is safe from a dust/minimum-output perspective.
+
+Faucet path if you want to keep `--amount-kas 1`: use at least `100349800` sompi (`1.00349800` KAS) as a practical minimum. Open the canonical TN-10 faucet `https://faucet-tn10.kaspanet.io`, paste the `kaspatest:` address, request funds, wait 1-3 minutes, then rerun the balance command. Backup if the faucet is unavailable: Kaspa Discord `#testnet`.
+
+Failure playbook: if balance is below `20349800` sompi, fund the testnet wallet first and stop if the faucet requires CAPTCHA/login or does not send funds. Do not switch to mainnet.
 
 ## 1. Start Servers
 
@@ -135,6 +141,17 @@ Expected output: commitment type is hash-chain based, `human_approval_required_f
 Failure playbook: if the payload is missing `head_hash`, stop. Do not broadcast a malformed anchor.
 
 ## 6. Broadcast With Human Approval
+
+Recommended primary command for the currently funded wallet:
+
+```bash
+uv run --with kaspa python scripts/kaspa_broadcast_anchor.py \
+  --anchor "runs/${RUN_ID}/kaspa_anchor.json" \
+  --human-approved \
+  --amount-kas 0.2
+```
+
+Optional command if the faucet has topped the wallet above `1.00349800` KAS:
 
 ```bash
 uv run --with kaspa python scripts/kaspa_broadcast_anchor.py \
