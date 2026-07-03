@@ -423,7 +423,7 @@ textarea:focus-visible {
 
 .panel-title-row h3,
 .panel h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
 }
 
@@ -554,11 +554,12 @@ textarea:focus-visible {
 
 .checkpoint-summary-card {
   min-height: 246px;
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   border-top: 3px solid var(--line-strong);
+  box-shadow: var(--shadow-lift);
 }
 
 .checkpoint-summary-card.approved {
@@ -1263,6 +1264,52 @@ textarea {
   margin-bottom: 16px;
 }
 
+.runsheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.runsheet h4 {
+  margin: 0 0 12px;
+}
+
+.runsheet .config-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.runsheet-envelope {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  padding: 16px;
+}
+
+.envelope-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.envelope-grid .fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  background: var(--surface);
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.envelope-grid .fact-row span {
+  margin-bottom: 0;
+}
+
+.envelope-grid .fact-row strong {
+  font-size: 14px;
+  text-align: right;
+}
+
 .number-control,
 .toggle-row {
   border: 1px solid var(--line);
@@ -1387,25 +1434,25 @@ textarea {
 .provenance-pill.document-cited {
   border-color: var(--verify-line);
   color: var(--verify);
-  background: var(--verify-tint);
+  background: transparent;
 }
 
 .provenance-pill.inferred-from-document {
   border-color: var(--registry-line);
   color: var(--registry);
-  background: var(--registry-tint);
+  background: transparent;
 }
 
 .provenance-pill.model-prior {
   border-color: var(--signal-line);
   color: var(--signal);
-  background: var(--signal-tint);
+  background: transparent;
 }
 
 .provenance-pill.unclassified_legacy {
   border-color: var(--line-strong);
   color: var(--muted);
-  background: var(--surface-2);
+  background: transparent;
 }
 
 .mitigation-list {
@@ -1522,11 +1569,23 @@ textarea {
 .verdict {
   display: inline-flex;
   justify-content: center;
+  align-items: center;
+  gap: 5px;
   border-radius: 999px;
   padding: 6px 9px;
   font-size: 12px;
   font-weight: 700;
   border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.verdict::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
 }
 
 .verdict.hit,
@@ -2182,7 +2241,8 @@ code {
   .feed-item,
   .audit-row,
   .claims-audit-head,
-  .claims-audit-row {
+  .claims-audit-row,
+  .runsheet {
     grid-template-columns: 1fr;
   }
 

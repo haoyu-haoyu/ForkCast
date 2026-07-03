@@ -960,23 +960,40 @@ function SimulationConfig({
         </div>
         <ActionCluster onApprove={onApprove} onReject={onReject} blocked={blocked} approveLabel="Approve run" />
       </div>
-      <div className="config-grid">
-        <NumberControl label="Agent count" value={agentCount} min={10} max={200} onChange={setAgentCount} />
-        <NumberControl label="Rounds" value={rounds} min={1} max={5} onChange={setRounds} />
-        <NumberControl label="LLM budget cap" value={budget} min={10} max={200} onChange={setBudget} />
-        <label className="toggle-row">
-          <input type="checkbox" checked={seedLocked} onChange={(event) => setSeedLocked(event.target.checked)} />
-          Lock seed
-        </label>
-      </div>
-      <div className="run-actions">
-        <button className="primary" onClick={() => setLiveSample(false)}>
-          <Play size={16} /> Replay cached run
-        </button>
-        <button className="secondary" onClick={() => setLiveSample(!liveSample)}>
-          <RefreshCcw size={16} /> {liveSample ? "Show full replay" : "Run live sample"}
-        </button>
-        <button className="secondary" onClick={() => setAgentCount(Math.min(agentCount, 18))}>Downscale</button>
+      <div className="runsheet">
+        <div className="runsheet-params">
+          <h4>Parameters</h4>
+          <div className="config-grid">
+            <NumberControl label="Agent count" value={agentCount} min={10} max={200} onChange={setAgentCount} />
+            <NumberControl label="Rounds" value={rounds} min={1} max={5} onChange={setRounds} />
+            <NumberControl label="LLM budget cap" value={budget} min={10} max={200} onChange={setBudget} />
+            <label className="toggle-row">
+              <input type="checkbox" checked={seedLocked} onChange={(event) => setSeedLocked(event.target.checked)} />
+              Lock seed
+            </label>
+          </div>
+          <div className="run-actions">
+            <button className="primary" onClick={() => setLiveSample(false)}>
+              <Play size={16} /> Replay cached run
+            </button>
+            <button className="secondary" onClick={() => setLiveSample(!liveSample)}>
+              <RefreshCcw size={16} /> {liveSample ? "Show full replay" : "Run live sample"}
+            </button>
+            <button className="secondary" onClick={() => setAgentCount(Math.min(agentCount, 18))}>Downscale</button>
+          </div>
+        </div>
+        <aside className="runsheet-envelope">
+          <h4>Run envelope</h4>
+          <div className="envelope-grid">
+            <Fact label="Mode" value={liveSample ? "Live sample" : "Replay"} />
+            <Fact label="Simulation window" value="90 days" />
+            <Fact label="Events cached" value={String(simulation.events.length)} />
+            <Fact label="Key signals" value={String(backtest.rules.length)} />
+            <Fact label="Agents × rounds" value={`${agentCount} × ${rounds}`} />
+            <Fact label="Seed" value={seedLocked ? "Locked" : "Unlocked"} />
+          </div>
+          <p className="evidence-note">Replay is cached for the demo; live sample stays small.</p>
+        </aside>
       </div>
     </Panel>
   );
