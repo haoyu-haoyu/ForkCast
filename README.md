@@ -1,5 +1,7 @@
 # ForkCast
 
+**Live demo (offline cached path): <https://haoyu-haoyu.github.io/ForkCast/>**
+
 Review-gated AI policy impact analysis with a hash-chained, Kaspa-anchored audit trail.
 
 ForkCast turns a policy memo into archetype agents, a replayable impact simulation, an answer-isolated blind prediction and a verifiable audit commitment. The core design is not "autonomous policy making"; it is human-reviewed decision support with explicit approval gates before extraction, agent generation, simulation configuration and chain anchoring. The demo case is the 2023 London ULEZ expansion, where the blind prediction step provably never reads outcome data and leakage guards are recorded per run. Kaspa TN-10 anchoring commits to the approved audit manifest or hash-chain head while keeping AI reasoning, source documents and reports off-chain.
