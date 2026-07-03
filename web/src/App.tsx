@@ -1289,25 +1289,27 @@ function AuditSidebar({ control }: { control: ReturnType<typeof createInitialCon
         <ClipboardCheck size={18} />
         <h3>Audit Manifest</h3>
       </div>
-      <div className="audit-sidebar-grid">
-        <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
-        <Fact label="Created" value={formatAuditDate(auditManifest.entries[0]?.timestamp)} />
-        <Fact label="Created by" value="Policy Maker (PM)" />
-        <Fact label="Scenario" value="London ULEZ Expansion" />
-        <Fact label="Policy Option" value="ULEZ Expansion to Outer London" />
-        <Fact label="Data Sources" value="18" />
-        <Fact label="Artifacts" value={String(auditManifest.entries.length)} />
-        <Fact label="Status" value={kaspaAnchor.status === "anchored" ? "Anchored on TN-10" : "Local verification"} />
-      </div>
-      <div className="kaspa-mini">
-        <span>Kaspa Anchoring</span>
-        {kaspaAnchor.explorer_url ? (
-          <a href={kaspaAnchor.explorer_url} target="_blank" rel="noreferrer">
-            {kaspaAnchor.tx_id?.slice(0, 18)}…
-          </a>
-        ) : (
-          <strong>Local package only</strong>
-        )}
+      <div className="receipt">
+        <div className="audit-sidebar-grid">
+          <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
+          <Fact label="Created" value={formatAuditDate(auditManifest.entries[0]?.timestamp)} />
+          <Fact label="Created by" value="Policy Maker (PM)" />
+          <Fact label="Scenario" value="London ULEZ Expansion" />
+          <Fact label="Policy Option" value="ULEZ Expansion to Outer London" />
+          <Fact label="Data Sources" value="18" />
+          <Fact label="Artifacts" value={String(auditManifest.entries.length)} />
+          <Fact label="Status" value={kaspaAnchor.status === "anchored" ? "Anchored on TN-10" : "Local verification"} />
+        </div>
+        <div className="kaspa-mini">
+          <span>Kaspa Anchoring</span>
+          {kaspaAnchor.explorer_url ? (
+            <a href={kaspaAnchor.explorer_url} target="_blank" rel="noreferrer">
+              {kaspaAnchor.tx_id?.slice(0, 18)}…
+            </a>
+          ) : (
+            <strong>Local package only</strong>
+          )}
+        </div>
       </div>
       <div className="limits">
         <h4>Hard limits</h4>
