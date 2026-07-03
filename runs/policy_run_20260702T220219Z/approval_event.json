@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-07-02T22:56:33.414978+00:00",
+  "stage": "case_graph_review",
+  "editor": "human",
+  "actor": "human",
+  "diff": [
+    {
+      "path": "/stakeholders/0/weight",
+      "before": null,
+      "after": 0.8
+    }
+  ],
+  "approved_hash": "471c4cca933be0b386374f73cfd6df5aa1df53a40522551a0fda75787eaa9ea6"
+}

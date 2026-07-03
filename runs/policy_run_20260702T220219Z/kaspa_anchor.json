@@ -1,0 +1,75 @@
+{
+  "case_id": "aps_permitting_scheme_2026",
+  "run_id": "policy_run_20260702T220219Z",
+  "network": "testnet-10",
+  "status": "anchored",
+  "tx_id": "8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8",
+  "explorer_url": "https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8",
+  "explorer_base_url": "https://explorer-tn10.kaspa.org",
+  "manifest_uri": "runs/policy_run_20260702T220219Z/audit_manifest.json",
+  "manifest_hash": "45d8d8c0f53647d565638b32f5e7ef4c2254ba4bb1646c35c2a47b91a7723351",
+  "head_hash": "8b896dca5bf2e9071c1fe0932ec3c91b5d02446d606fe62eb36329e6d8df275e",
+  "payload_hash": "471820003b1ea089ba96c6d826f82b0bf091e6a8d7c133588da111fd0e6054fc",
+  "payload_size_bytes": 897,
+  "payload_practical_limit_bytes": 25000,
+  "payload": {
+    "protocol": "policy-impact-sandbox.kaspa-anchor",
+    "version": 1,
+    "case_id": "aps_permitting_scheme_2026",
+    "run_id": "policy_run_20260702T220219Z",
+    "stage": "hash_chain_head",
+    "commitment_type": "hash_chain_head",
+    "manifest_hash": "sha256:45d8d8c0f53647d565638b32f5e7ef4c2254ba4bb1646c35c2a47b91a7723351",
+    "manifest_uri": "runs/policy_run_20260702T220219Z/audit_manifest.json",
+    "artifact_count": 5,
+    "canonicalization": "json.dumps(sort_keys=True,separators=(',',':'),ensure_ascii=False)",
+    "human_approval_gate": {
+      "checkpoint": "report_chain_review",
+      "required_before_broadcast": true,
+      "automatic_broadcast_allowed": false
+    },
+    "chain_policy": {
+      "off_chain_ai_reasoning": true,
+      "on_chain_payload": "hash_chain_head_commitment",
+      "decision_support_not_forecast": true
+    },
+    "created_at": "2026-07-02T22:58:00.018631+00:00",
+    "head_hash": "sha256:8b896dca5bf2e9071c1fe0932ec3c91b5d02446d606fe62eb36329e6d8df275e",
+    "hash_chain_status": "hash_chained"
+  },
+  "payload_canonical_json": "{\"artifact_count\":5,\"canonicalization\":\"json.dumps(sort_keys=True,separators=(',',':'),ensure_ascii=False)\",\"case_id\":\"aps_permitting_scheme_2026\",\"chain_policy\":{\"decision_support_not_forecast\":true,\"off_chain_ai_reasoning\":true,\"on_chain_payload\":\"hash_chain_head_commitment\"},\"commitment_type\":\"hash_chain_head\",\"created_at\":\"2026-07-02T22:58:00.018631+00:00\",\"hash_chain_status\":\"hash_chained\",\"head_hash\":\"sha256:8b896dca5bf2e9071c1fe0932ec3c91b5d02446d606fe62eb36329e6d8df275e\",\"human_approval_gate\":{\"automatic_broadcast_allowed\":false,\"checkpoint\":\"report_chain_review\",\"required_before_broadcast\":true},\"manifest_hash\":\"sha256:45d8d8c0f53647d565638b32f5e7ef4c2254ba4bb1646c35c2a47b91a7723351\",\"manifest_uri\":\"runs/policy_run_20260702T220219Z/audit_manifest.json\",\"protocol\":\"policy-impact-sandbox.kaspa-anchor\",\"run_id\":\"policy_run_20260702T220219Z\",\"stage\":\"hash_chain_head\",\"version\":1}",
+  "prepared_at": "2026-07-02T22:58:00.018631+00:00",
+  "send_attempt": {
+    "attempted": false,
+    "reason": "No broadcast attempted. A funded Kaspa testnet wallet and explicit checkpoint-4 approval are required."
+  },
+  "human_approval_required_for_chain_anchor": true,
+  "automatic_chain_actions_allowed": false,
+  "sources": [
+    {
+      "title": "Kaspa transaction payload documentation",
+      "url": "https://docs.kaspa.org/integrate/transaction-payload",
+      "note": "Payload field supports application data; practical standard limit is about 25KB."
+    },
+    {
+      "title": "Kaspa Wallet API documentation",
+      "url": "https://docs.kaspa.org/integrate/wallet",
+      "note": "High-level Wallet API accountsSend supports payload on outgoing transactions."
+    },
+    {
+      "title": "Kaspa testnet documentation",
+      "url": "https://wiki.kaspa.org/en/testnets",
+      "note": "TN-10 testnet faucet and explorer endpoints."
+    }
+  ],
+  "verification": {
+    "manifest_hash_matches": true,
+    "head_hash_matches": true,
+    "payload_manifest_hash_matches": true,
+    "payload_head_hash_matches": true,
+    "payload_hash_matches": true,
+    "payload_size_matches": true,
+    "payload_under_practical_limit": true,
+    "automatic_chain_actions_disabled": true
+  }
+}

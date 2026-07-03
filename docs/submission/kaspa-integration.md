@@ -37,12 +37,23 @@ Sources:
 
 The MVP targets `testnet-10` for demo anchoring. The official Kaspa testnet page lists TN-10 as a test network with faucet `https://faucet-tn10.kaspanet.io/` and explorer `https://explorer-tn10.kaspa.org/`.
 
-The generated anchor record includes:
+The generated legacy ULEZ anchor record includes:
 
 - `network`: `testnet-10`
 - `explorer_base_url`: `https://explorer-tn10.kaspa.org`
 - `tx_id`: `f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`
 - `explorer_url`: `https://explorer-tn10.kaspa.org/txs/f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`
+
+The live APS showcase run is anchored through the hash-chain-head path:
+
+- `run_id`: `policy_run_20260702T220219Z`
+- `head_hash`: `8b896dca5bf2e9071c1fe0932ec3c91b5d02446d606fe62eb36329e6d8df275e`
+- `payload_hash`: `471820003b1ea089ba96c6d826f82b0bf091e6a8d7c133588da111fd0e6054fc`
+- `payload_size`: `897 / 25000` bytes
+- canonical `tx_id`: `8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+- `explorer_url`: `https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+
+The same APS commitment was anchored twice due to a CLI output gap; the earliest matching transaction is canonical, and duplicate anchors are harmless redundancy. The duplicate transaction is recorded in `runs/policy_run_20260702T220219Z/duplicate_anchors.json`.
 
 ## Human-in-the-Loop Gate
 
@@ -79,6 +90,17 @@ Current generated values:
 - Explorer: https://explorer-tn10.kaspa.org/txs/f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123
 - Faucet funding transaction: `afe4d886bd3115ab1ce873e9e615360f205dd25fff44bd6ddb4012e13221eda9`
 
+Current APS showcase values:
+
+- Run id: `policy_run_20260702T220219Z`
+- Manifest hash: `45d8d8c0f53647d565638b32f5e7ef4c2254ba4bb1646c35c2a47b91a7723351`
+- Head hash: `8b896dca5bf2e9071c1fe0932ec3c91b5d02446d606fe62eb36329e6d8df275e`
+- Payload hash: `471820003b1ea089ba96c6d826f82b0bf091e6a8d7c133588da111fd0e6054fc`
+- Payload size: `897 / 25000` bytes
+- Canonical testnet transaction: `8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+- Explorer: https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8
+- Duplicate transaction: `c0a9780213565fa9236e9eebb22a50f789a945c0105ef63e8c33c420e7d7987a`
+
 ## How to Verify Locally
 
 1. Recompute canonical SHA-256 of `audit_manifest.json`:
@@ -105,6 +127,15 @@ Automated test coverage:
 
 ```bash
 uv run pytest tests/test_phase4_kaspa_anchor.py -q
+```
+
+Automated chained verification of the APS showcase run:
+
+```bash
+uv run python scripts/verify_run.py \
+  --run-dir runs/policy_run_20260702T220219Z \
+  --txid 8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8 \
+  --network testnet-10
 ```
 
 ## True Transaction Path

@@ -1,0 +1,232 @@
+{
+  "case_id": "aps_permitting_scheme_2026",
+  "generated_at": "2026-07-02T22:57:36.500257+00:00",
+  "disclaimer": "simulation is decision support, not deterministic forecast",
+  "report_mode": "llm_policy_analysis_no_truth_set",
+  "backtest_evidence": null,
+  "method_note": "No historical truth_set was supplied; this report provides impact analysis only, not backtest validation.",
+  "stakeholder_impact_matrix": [
+    {
+      "stakeholder_id": "stk_ccav",
+      "name": "Centre for Connected and Autonomous Vehicles",
+      "impact_level": "high",
+      "opposition_intensity": "low",
+      "qualitative_signal": "Policy architect; strong alignment with scheme objectives, but may face pressure to balance innovation with safety."
+    },
+    {
+      "stakeholder_id": "stk_dvsa",
+      "name": "Driver and Vehicle Standards Agency",
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "qualitative_signal": "Enforcement body; concerns about resource adequacy and clarity of enforcement powers."
+    },
+    {
+      "stakeholder_id": "stk_consenting_authority",
+      "name": "Consenting Authority (Local Licensing / Franchising Body)",
+      "impact_level": "high",
+      "opposition_intensity": "high",
+      "qualitative_signal": "Cautious; loss of local control and automatic consent provision are key friction points."
+    },
+    {
+      "stakeholder_id": "stk_traffic_authority",
+      "name": "Traffic Authority",
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "qualitative_signal": "Traffic management concerns; will demand impact assessments."
+    },
+    {
+      "stakeholder_id": "stk_emergency_services",
+      "name": "Emergency Services",
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "qualitative_signal": "Safety and access protocols needed; cautious stance."
+    },
+    {
+      "stakeholder_id": "stk_aps_operator",
+      "name": "APS Operator (Permit Holder / Applicant)",
+      "impact_level": "high",
+      "opposition_intensity": "low",
+      "qualitative_signal": "Supportive; sees scheme as market gateway, but concerned about compliance costs and multi-authority consent."
+    },
+    {
+      "stakeholder_id": "stk_older_disabled",
+      "name": "Older and Disabled Passengers",
+      "impact_level": "medium",
+      "opposition_intensity": "medium",
+      "qualitative_signal": "Supportive with conditions; insists on mandatory accessibility standards."
+    },
+    {
+      "stakeholder_id": "stk_general_public",
+      "name": "General Public / Passengers",
+      "impact_level": "low",
+      "opposition_intensity": "low",
+      "qualitative_signal": "Tech-enthusiast archetype; positive but limited direct impact until services launch."
+    }
+  ],
+  "risk_timeline": [
+    {
+      "stage": "consultation (2026)",
+      "signal": "Local authority pushback on automatic consent and resource burden",
+      "risk_level": "medium"
+    },
+    {
+      "stage": "legislation drafting (2027)",
+      "signal": "Legal challenges from consenting authorities over loss of control",
+      "risk_level": "medium"
+    },
+    {
+      "stage": "first permit applications (2028)",
+      "signal": "Delays due to multi-authority consent process and 6-week response window",
+      "risk_level": "high"
+    },
+    {
+      "stage": "pilot operations (2029)",
+      "signal": "Safety incidents or emergency service access issues",
+      "risk_level": "high"
+    },
+    {
+      "stage": "full scheme rollout (2030+)",
+      "signal": "Enforcement gaps if DVSA resources insufficient",
+      "risk_level": "medium"
+    }
+  ],
+  "mitigation_options": [
+    {
+      "option": "Extend consenting authority response window or provide resource support",
+      "rationale": "Reduces risk of automatic consent and local opposition."
+    },
+    {
+      "option": "Mandate accessibility standards in permit conditions from day one",
+      "rationale": "Addresses older/disabled passenger concerns and aligns with Public Sector Equality Duty."
+    },
+    {
+      "option": "Establish clear emergency vehicle override protocols before first permit",
+      "rationale": "Mitigates emergency services' safety concerns."
+    },
+    {
+      "option": "Phase fee introduction to avoid early operator burden",
+      "rationale": "Supports startup market entry as per assumption 10."
+    },
+    {
+      "option": "Create a single consent portal for multi-authority coordination",
+      "rationale": "Reduces administrative complexity for operators and authorities."
+    }
+  ],
+  "confidence_notes": [
+    "无历史回测数据，仅提供影响分析。"
+  ],
+  "system_signals": {},
+  "claims_audit_table": [
+    {
+      "id": "claim_001",
+      "claim": "The APS permitting scheme provides a clear legal route for deploying commercial automated passenger services.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_intro_2",
+      "evidence_fact_ids": [
+        "doc_intro_2"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_002",
+      "claim": "Without the APS scheme, automated services may be banned or unregulated.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_intro_3",
+      "evidence_fact_ids": [
+        "doc_intro_3"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_003",
+      "claim": "Consenting authorities have 6 weeks to respond; silence gives automatic consent.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_para_2_2",
+      "evidence_fact_ids": [
+        "doc_para_2_2"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_004",
+      "claim": "Permit holders must publish reports on steps taken for older/disabled passengers.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_para_3_2",
+      "evidence_fact_ids": [
+        "doc_para_3_2"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_005",
+      "claim": "Civil sanctions are not implemented for pilots; variation/suspension/withdrawal is the enforcement means.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_para_1_6, doc_para_5_1",
+      "evidence_fact_ids": [
+        "doc_para_1_6",
+        "doc_para_5_1"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_006",
+      "claim": "No formal court/tribunal appeals system is proposed; internal DVSA review is provided.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_para_6_1",
+      "evidence_fact_ids": [
+        "doc_para_6_1"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_007",
+      "claim": "Fees will not be charged initially; full cost recovery fees will be introduced later.",
+      "provenance_class": "DOCUMENT-CITED",
+      "evidence_pointer": "doc_para_4_6",
+      "evidence_fact_ids": [
+        "doc_para_4_6"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "high"
+    },
+    {
+      "id": "claim_008",
+      "claim": "Local consenting authorities will face resource strain from the 6-week response requirement.",
+      "provenance_class": "INFERRED-FROM-DOCUMENT",
+      "evidence_pointer": "doc_para_2_2, doc_para_2_3",
+      "evidence_fact_ids": [
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "medium"
+    },
+    {
+      "id": "claim_009",
+      "claim": "Emergency services will require clear protocols for interacting with APS vehicles.",
+      "provenance_class": "INFERRED-FROM-DOCUMENT",
+      "evidence_pointer": "doc_para_4_1, doc_para_5_2",
+      "evidence_fact_ids": [
+        "doc_para_4_1",
+        "doc_para_5_2"
+      ],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "medium"
+    },
+    {
+      "id": "claim_010",
+      "claim": "The scheme will face opposition from local authorities due to loss of control.",
+      "provenance_class": "MODEL-PRIOR",
+      "evidence_pointer": "stakeholder stance_prior 'cautious' for consenting_authority",
+      "evidence_fact_ids": [],
+      "source_artifact": "aps_permitting_scheme_2026",
+      "confidence": "low"
+    }
+  ]
+}

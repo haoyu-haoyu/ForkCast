@@ -1,0 +1,14 @@
+{
+  "canonical_tx_id": "8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8",
+  "canonical_explorer_url": "https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8",
+  "duplicate_tx_ids": [
+    {
+      "tx_id": "c0a9780213565fa9236e9eebb22a50f789a945c0105ef63e8c33c420e7d7987a",
+      "explorer_url": "https://explorer-tn10.kaspa.org/txs/c0a9780213565fa9236e9eebb22a50f789a945c0105ef63e8c33c420e7d7987a",
+      "block_time_utc": "2026-07-03T02:20:43.706000+00:00"
+    }
+  ],
+  "note": "The same hash-chain commitment was anchored twice due to a CLI output gap. The earliest matching transaction is canonical; duplicate anchors are harmless redundancy.",
+  "matched_payload_bytes": 897,
+  "canonical_block_time_utc": "2026-07-03T02:20:25.852000+00:00"
+}

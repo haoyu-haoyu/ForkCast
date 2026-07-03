@@ -1,0 +1,2227 @@
+{
+  "agents": {
+    "case_id": "aps_permitting_scheme_2026",
+    "generated_at": "2026-07-02T22:57:20.838271+00:00",
+    "generation_method": "deepseek_openai_compatible_with_coverage_guard",
+    "target_count": 36,
+    "max_count": 200,
+    "safety_constraints": [
+      "archetype personas only",
+      "no real-person PII",
+      "no automatic on-chain actions",
+      "no automatic stakeholder weight changes"
+    ],
+    "agents": [
+      {
+        "id": "agent_ccav_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_ccav",
+        "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+        "archetype": "Policy Architect",
+        "persona": "A senior civil servant focused on designing a robust, future-proof regulatory framework for autonomous passenger services. Believes the APS permitting scheme is essential to unlock innovation while maintaining safety and public trust.",
+        "stance": "supportive",
+        "action_tendency": "Actively promotes the scheme, engages in consultation responses, and seeks to refine permit conditions based on evidence.",
+        "concerns": [
+          "Ensuring the scheme is flexible enough to accommodate rapid technological change",
+          "Balancing innovation with robust safety oversight",
+          "Avoiding unintended barriers to market entry"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_1",
+          "doc_intro_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_dvsa_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_dvsa",
+        "stakeholder_name": "Driver and Vehicle Standards Agency",
+        "archetype": "Enforcement Officer",
+        "persona": "A pragmatic DVSA inspector who will be responsible for monitoring compliance and investigating breaches. Wants clear, enforceable conditions and adequate resources.",
+        "stance": "neutral",
+        "action_tendency": "Seeks clarity on enforcement powers and processes, particularly around suspension and revocation.",
+        "concerns": [
+          "Practical enforceability of conditions",
+          "Resource implications for DVSA",
+          "Coordination with traffic authorities and police"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_1_3",
+          "doc_para_5_2",
+          "doc_para_6_1"
+        ],
+        "adaptation_capacity": "medium"
+      },
+      {
+        "id": "agent_consenting_authority_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_consenting_authority",
+        "stakeholder_name": "Consenting Authority",
+        "archetype": "Cautious Licensing Officer",
+        "persona": "A local authority licensing officer who is wary of losing control over local transport services. Concerned about the automatic consent provision if they fail to respond within 6 weeks.",
+        "stance": "cautious",
+        "action_tendency": "Will scrutinise consent requests carefully and may delay responses to buy time.",
+        "concerns": [
+          "Loss of local control",
+          "Automatic consent if 6-week deadline missed",
+          "Lack of resources to assess applications"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_2_1",
+          "doc_para_2_2",
+          "doc_para_2_3"
+        ],
+        "adaptation_capacity": "low"
+      },
+      {
+        "id": "agent_traffic_authority_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_traffic_authority",
+        "stakeholder_name": "Traffic Authority",
+        "archetype": "Traffic Management Engineer",
+        "persona": "A traffic authority engineer responsible for managing road networks. Concerned about the impact of APS on traffic flow, congestion, and road safety.",
+        "stance": "cautious",
+        "action_tendency": "Will request traffic impact assessments and may object to permits that could disrupt traffic.",
+        "concerns": [
+          "Congestion and traffic flow",
+          "Interaction with existing traffic management systems",
+          "Safety at junctions and pedestrian crossings"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1"
+        ],
+        "adaptation_capacity": "medium"
+      },
+      {
+        "id": "agent_emergency_services_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_emergency_services",
+        "stakeholder_name": "Emergency Services",
+        "archetype": "Fire Service Commander",
+        "persona": "A senior fire officer concerned about how APS vehicles will interact with emergency vehicles and how to access incidents involving autonomous vehicles.",
+        "stance": "cautious",
+        "action_tendency": "Will demand clear protocols for emergency override and vehicle access.",
+        "concerns": [
+          "Emergency vehicle priority",
+          "Ability to stop or move APS vehicles",
+          "Safety of responders near autonomous vehicles"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1",
+          "doc_para_5_2"
+        ],
+        "adaptation_capacity": "low"
+      },
+      {
+        "id": "agent_aps_operator_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_aps_operator",
+        "stakeholder_name": "APS Operator",
+        "archetype": "Startup Founder",
+        "persona": "An entrepreneur leading a small autonomous vehicle startup. Sees the permitting scheme as a gateway to market but worries about the cost and complexity of compliance.",
+        "stance": "supportive",
+        "action_tendency": "Will apply for permits early and advocate for streamlined processes and lower fees.",
+        "concerns": [
+          "Cost of compliance",
+          "Length of permit validity",
+          "Complexity of consent from multiple authorities"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_2",
+          "doc_para_4_2",
+          "doc_para_4_7"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_older_disabled_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_older_disabled",
+        "stakeholder_name": "Older and Disabled Passengers",
+        "archetype": "Accessibility Advocate",
+        "persona": "A representative of a disability rights organisation. Welcomes APS as a potential new transport option but insists on full accessibility from day one.",
+        "stance": "supportive_with_conditions",
+        "action_tendency": "Will lobby for mandatory accessibility standards in permit conditions.",
+        "concerns": [
+          "Vehicle accessibility for wheelchair users",
+          "Audio and visual information",
+          "Assistance for passengers with cognitive impairments"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_3_1",
+          "doc_para_3_2"
+        ],
+        "adaptation_capacity": "medium"
+      },
+      {
+        "id": "agent_general_public_1",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_general_public",
+        "stakeholder_name": "General Public / Passengers",
+        "archetype": "Tech-Enthusiast Commuter",
+        "persona": "A young professional who is excited about autonomous vehicles and eager to try APS. Sees it as a convenient and modern transport option.",
+        "stance": "supportive",
+        "action_tendency": "Will use APS services as soon as available and provide positive feedback.",
+        "concerns": [
+          "Cost",
+          "Availability in my area",
+          "Integration with ride-hailing apps"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_4",
+          "doc_para_4_5",
+          "doc_para_7_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_001_stk_ccav",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_ccav",
+        "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+        "archetype": "Centre for Connected and Autonomous Vehicles",
+        "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_1",
+          "doc_intro_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_002_stk_dvsa",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_dvsa",
+        "stakeholder_name": "Driver and Vehicle Standards Agency",
+        "archetype": "Driver and Vehicle Standards Agency",
+        "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_1_3",
+          "doc_para_6_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_003_stk_consenting_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_consenting_authority",
+        "stakeholder_name": "Consenting Authority",
+        "archetype": "Consenting Authority",
+        "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_2_1",
+          "doc_para_2_2",
+          "doc_para_2_3"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_004_stk_traffic_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_traffic_authority",
+        "stakeholder_name": "Traffic Authority",
+        "archetype": "Traffic Authority",
+        "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_005_stk_emergency_services",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_emergency_services",
+        "stakeholder_name": "Emergency Services",
+        "archetype": "Emergency Services",
+        "persona": "Archetype member of Emergency Services focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1",
+          "doc_para_5_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_006_stk_aps_operator",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_aps_operator",
+        "stakeholder_name": "APS Operator",
+        "archetype": "APS Operator",
+        "persona": "Archetype member of APS Operator focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_2",
+          "doc_para_4_2",
+          "doc_para_5_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_007_stk_older_disabled",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_older_disabled",
+        "stakeholder_name": "Older and Disabled Passengers",
+        "archetype": "Older and Disabled Passengers",
+        "persona": "Archetype member of Older and Disabled Passengers focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_3_1",
+          "doc_para_3_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_008_stk_general_public",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_general_public",
+        "stakeholder_name": "General Public / Passengers",
+        "archetype": "General Public / Passengers",
+        "persona": "Archetype member of General Public / Passengers focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_4",
+          "doc_para_4_5",
+          "doc_para_7_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_009_stk_ccav",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_ccav",
+        "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+        "archetype": "Centre for Connected and Autonomous Vehicles",
+        "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_1",
+          "doc_intro_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_010_stk_dvsa",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_dvsa",
+        "stakeholder_name": "Driver and Vehicle Standards Agency",
+        "archetype": "Driver and Vehicle Standards Agency",
+        "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_1_3",
+          "doc_para_6_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_011_stk_consenting_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_consenting_authority",
+        "stakeholder_name": "Consenting Authority",
+        "archetype": "Consenting Authority",
+        "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_2_1",
+          "doc_para_2_2",
+          "doc_para_2_3"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_012_stk_traffic_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_traffic_authority",
+        "stakeholder_name": "Traffic Authority",
+        "archetype": "Traffic Authority",
+        "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_013_stk_emergency_services",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_emergency_services",
+        "stakeholder_name": "Emergency Services",
+        "archetype": "Emergency Services",
+        "persona": "Archetype member of Emergency Services focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1",
+          "doc_para_5_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_014_stk_aps_operator",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_aps_operator",
+        "stakeholder_name": "APS Operator",
+        "archetype": "APS Operator",
+        "persona": "Archetype member of APS Operator focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_2",
+          "doc_para_4_2",
+          "doc_para_5_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_015_stk_older_disabled",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_older_disabled",
+        "stakeholder_name": "Older and Disabled Passengers",
+        "archetype": "Older and Disabled Passengers",
+        "persona": "Archetype member of Older and Disabled Passengers focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_3_1",
+          "doc_para_3_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_016_stk_general_public",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_general_public",
+        "stakeholder_name": "General Public / Passengers",
+        "archetype": "General Public / Passengers",
+        "persona": "Archetype member of General Public / Passengers focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_4",
+          "doc_para_4_5",
+          "doc_para_7_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_017_stk_ccav",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_ccav",
+        "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+        "archetype": "Centre for Connected and Autonomous Vehicles",
+        "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_1",
+          "doc_intro_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_018_stk_dvsa",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_dvsa",
+        "stakeholder_name": "Driver and Vehicle Standards Agency",
+        "archetype": "Driver and Vehicle Standards Agency",
+        "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_1_3",
+          "doc_para_6_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_019_stk_consenting_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_consenting_authority",
+        "stakeholder_name": "Consenting Authority",
+        "archetype": "Consenting Authority",
+        "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_2_1",
+          "doc_para_2_2",
+          "doc_para_2_3"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_020_stk_traffic_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_traffic_authority",
+        "stakeholder_name": "Traffic Authority",
+        "archetype": "Traffic Authority",
+        "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_021_stk_emergency_services",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_emergency_services",
+        "stakeholder_name": "Emergency Services",
+        "archetype": "Emergency Services",
+        "persona": "Archetype member of Emergency Services focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1",
+          "doc_para_5_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_022_stk_aps_operator",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_aps_operator",
+        "stakeholder_name": "APS Operator",
+        "archetype": "APS Operator",
+        "persona": "Archetype member of APS Operator focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_2",
+          "doc_para_4_2",
+          "doc_para_5_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_023_stk_older_disabled",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_older_disabled",
+        "stakeholder_name": "Older and Disabled Passengers",
+        "archetype": "Older and Disabled Passengers",
+        "persona": "Archetype member of Older and Disabled Passengers focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_3_1",
+          "doc_para_3_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_024_stk_general_public",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_general_public",
+        "stakeholder_name": "General Public / Passengers",
+        "archetype": "General Public / Passengers",
+        "persona": "Archetype member of General Public / Passengers focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_4",
+          "doc_para_4_5",
+          "doc_para_7_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_025_stk_ccav",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_ccav",
+        "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+        "archetype": "Centre for Connected and Autonomous Vehicles",
+        "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_intro_1",
+          "doc_intro_2"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_026_stk_dvsa",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_dvsa",
+        "stakeholder_name": "Driver and Vehicle Standards Agency",
+        "archetype": "Driver and Vehicle Standards Agency",
+        "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_1_3",
+          "doc_para_6_1"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_027_stk_consenting_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_consenting_authority",
+        "stakeholder_name": "Consenting Authority",
+        "archetype": "Consenting Authority",
+        "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_2_1",
+          "doc_para_2_2",
+          "doc_para_2_3"
+        ],
+        "adaptation_capacity": "high"
+      },
+      {
+        "id": "agent_028_stk_traffic_authority",
+        "persona_type": "archetype",
+        "stakeholder_id": "stk_traffic_authority",
+        "stakeholder_name": "Traffic Authority",
+        "archetype": "Traffic Authority",
+        "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+        "stance": "mixed",
+        "action_tendency": "express practical objections and seek concessions",
+        "concerns": [
+          "policy_impact"
+        ],
+        "evidence_fact_ids": [
+          "doc_para_4_1"
+        ],
+        "adaptation_capacity": "high"
+      }
+    ]
+  },
+  "simulation_events": {
+    "case_id": "aps_permitting_scheme_2026",
+    "run_id": "policy_run_20260702T220219Z",
+    "mode": "mock",
+    "generated_at": "2026-07-02T22:57:20.838697+00:00",
+    "events": [
+      {
+        "event_id": "e5c4c52e2b769f41",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_ccav_1",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Policy Architect",
+        "type": "post",
+        "stance": "supportive",
+        "topic": "Ensuring the scheme is flexible enough to accommodate rapid technological change",
+        "content": "Policy Architect discusses Ensuring the scheme is flexible enough to accommodate rapid technological change with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838426+00:00"
+      },
+      {
+        "event_id": "0e953b45e872b7a8",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_dvsa_1",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Enforcement Officer",
+        "type": "post",
+        "stance": "neutral",
+        "topic": "Practical enforceability of conditions",
+        "content": "Enforcement Officer discusses Practical enforceability of conditions with stance neutral.",
+        "created_at": "2026-07-02T22:57:20.838435+00:00"
+      },
+      {
+        "event_id": "ab45aa7fe2366aae",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_consenting_authority_1",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Cautious Licensing Officer",
+        "type": "post",
+        "stance": "cautious",
+        "topic": "Loss of local control",
+        "content": "Cautious Licensing Officer discusses Loss of local control with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838438+00:00"
+      },
+      {
+        "event_id": "4802ccba5c407cb8",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_traffic_authority_1",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Management Engineer",
+        "type": "post",
+        "stance": "cautious",
+        "topic": "Congestion and traffic flow",
+        "content": "Traffic Management Engineer discusses Congestion and traffic flow with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838441+00:00"
+      },
+      {
+        "event_id": "48e8574f3f6b117c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_emergency_services_1",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Fire Service Commander",
+        "type": "post",
+        "stance": "cautious",
+        "topic": "Emergency vehicle priority",
+        "content": "Fire Service Commander discusses Emergency vehicle priority with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838444+00:00"
+      },
+      {
+        "event_id": "f725f354a4069ecd",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_aps_operator_1",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "Startup Founder",
+        "type": "post",
+        "stance": "supportive",
+        "topic": "Cost of compliance",
+        "content": "Startup Founder discusses Cost of compliance with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838447+00:00"
+      },
+      {
+        "event_id": "70cd19348410308b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_older_disabled_1",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Accessibility Advocate",
+        "type": "post",
+        "stance": "supportive_with_conditions",
+        "topic": "Vehicle accessibility for wheelchair users",
+        "content": "Accessibility Advocate discusses Vehicle accessibility for wheelchair users with stance supportive_with_conditions.",
+        "created_at": "2026-07-02T22:57:20.838449+00:00"
+      },
+      {
+        "event_id": "63016ce768c20c41",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_general_public_1",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "Tech-Enthusiast Commuter",
+        "type": "post",
+        "stance": "supportive",
+        "topic": "Cost",
+        "content": "Tech-Enthusiast Commuter discusses Cost with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838457+00:00"
+      },
+      {
+        "event_id": "a8647a3027012b7e",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_001_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838460+00:00"
+      },
+      {
+        "event_id": "fd29955101eb80af",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_002_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838463+00:00"
+      },
+      {
+        "event_id": "6a4cb545003be79f",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_003_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838465+00:00"
+      },
+      {
+        "event_id": "f79ad65c3e4ce975",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_004_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838467+00:00"
+      },
+      {
+        "event_id": "e4cf4904f5815e93",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_005_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838469+00:00"
+      },
+      {
+        "event_id": "7cd68d1221a8b4b2",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_006_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838471+00:00"
+      },
+      {
+        "event_id": "f1ce3f3bb77e1b99",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_007_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838473+00:00"
+      },
+      {
+        "event_id": "2650a5cb5ccd0c20",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_008_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838475+00:00"
+      },
+      {
+        "event_id": "a9de7a7da8ba2a83",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_009_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838477+00:00"
+      },
+      {
+        "event_id": "4002701d29657b2b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_010_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838479+00:00"
+      },
+      {
+        "event_id": "979792cbf6dba7a2",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_011_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838481+00:00"
+      },
+      {
+        "event_id": "870ee94794f5bb79",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_012_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838483+00:00"
+      },
+      {
+        "event_id": "941d5d2054693f53",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_013_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838485+00:00"
+      },
+      {
+        "event_id": "48ff7063a5fc0cf8",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_014_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838486+00:00"
+      },
+      {
+        "event_id": "c7e5cdd8ba49c822",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_015_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838488+00:00"
+      },
+      {
+        "event_id": "a54b159ac9d76187",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_016_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838490+00:00"
+      },
+      {
+        "event_id": "6c1146c9a8b62d52",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_017_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838492+00:00"
+      },
+      {
+        "event_id": "3cd2b53666758b06",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_018_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838494+00:00"
+      },
+      {
+        "event_id": "fa4e0ba412eb0f9c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_019_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838496+00:00"
+      },
+      {
+        "event_id": "f035d6a3de4569e1",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_020_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838498+00:00"
+      },
+      {
+        "event_id": "fd469087014caba1",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_021_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838500+00:00"
+      },
+      {
+        "event_id": "84456852313461b6",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_022_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838502+00:00"
+      },
+      {
+        "event_id": "19015bdb41c5edec",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_023_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838503+00:00"
+      },
+      {
+        "event_id": "0adc7bffb0d8451a",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_024_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838505+00:00"
+      },
+      {
+        "event_id": "f9d53b87ca682e6b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_025_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838507+00:00"
+      },
+      {
+        "event_id": "49083d4e9dd1023d",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_026_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838509+00:00"
+      },
+      {
+        "event_id": "0d95796a743c8563",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_027_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838511+00:00"
+      },
+      {
+        "event_id": "ed8676e88da64694",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 1,
+        "agent_id": "agent_028_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "post",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838513+00:00"
+      },
+      {
+        "event_id": "ce9b5ae6a35a9d3c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_ccav_1",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Policy Architect",
+        "type": "comment",
+        "stance": "supportive",
+        "topic": "Balancing innovation with robust safety oversight",
+        "content": "Policy Architect discusses Balancing innovation with robust safety oversight with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838515+00:00"
+      },
+      {
+        "event_id": "f338a5006f836600",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_dvsa_1",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Enforcement Officer",
+        "type": "comment",
+        "stance": "neutral",
+        "topic": "Resource implications for DVSA",
+        "content": "Enforcement Officer discusses Resource implications for DVSA with stance neutral.",
+        "created_at": "2026-07-02T22:57:20.838517+00:00"
+      },
+      {
+        "event_id": "2f99157e173d5d8d",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_consenting_authority_1",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Cautious Licensing Officer",
+        "type": "comment",
+        "stance": "cautious",
+        "topic": "Automatic consent if 6-week deadline missed",
+        "content": "Cautious Licensing Officer discusses Automatic consent if 6-week deadline missed with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838519+00:00"
+      },
+      {
+        "event_id": "d89984989c0487aa",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_traffic_authority_1",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Management Engineer",
+        "type": "comment",
+        "stance": "cautious",
+        "topic": "Interaction with existing traffic management systems",
+        "content": "Traffic Management Engineer discusses Interaction with existing traffic management systems with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838521+00:00"
+      },
+      {
+        "event_id": "0dd9af64ac83483d",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_emergency_services_1",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Fire Service Commander",
+        "type": "comment",
+        "stance": "cautious",
+        "topic": "Ability to stop or move APS vehicles",
+        "content": "Fire Service Commander discusses Ability to stop or move APS vehicles with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838523+00:00"
+      },
+      {
+        "event_id": "5f040c52214b6afb",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_aps_operator_1",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "Startup Founder",
+        "type": "comment",
+        "stance": "supportive",
+        "topic": "Length of permit validity",
+        "content": "Startup Founder discusses Length of permit validity with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838525+00:00"
+      },
+      {
+        "event_id": "4abac41483e19518",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_older_disabled_1",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Accessibility Advocate",
+        "type": "comment",
+        "stance": "supportive_with_conditions",
+        "topic": "Audio and visual information",
+        "content": "Accessibility Advocate discusses Audio and visual information with stance supportive_with_conditions.",
+        "created_at": "2026-07-02T22:57:20.838527+00:00"
+      },
+      {
+        "event_id": "d39c00a9d76eb086",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_general_public_1",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "Tech-Enthusiast Commuter",
+        "type": "comment",
+        "stance": "supportive",
+        "topic": "Availability in my area",
+        "content": "Tech-Enthusiast Commuter discusses Availability in my area with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838529+00:00"
+      },
+      {
+        "event_id": "193c279e8827726e",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_001_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838530+00:00"
+      },
+      {
+        "event_id": "2c3ac810adf73079",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_002_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838532+00:00"
+      },
+      {
+        "event_id": "0bad27c388da1e8c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_003_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838534+00:00"
+      },
+      {
+        "event_id": "98bef0054cab0d1f",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_004_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838536+00:00"
+      },
+      {
+        "event_id": "1e03b93419465089",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_005_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838538+00:00"
+      },
+      {
+        "event_id": "9bc9370d72a30b1c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_006_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838540+00:00"
+      },
+      {
+        "event_id": "9ba6eed8dfcb6ae2",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_007_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838541+00:00"
+      },
+      {
+        "event_id": "55c56c98b5289e2a",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_008_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838543+00:00"
+      },
+      {
+        "event_id": "d575a5e4f7921a55",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_009_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838545+00:00"
+      },
+      {
+        "event_id": "7b17327a99a3bd7a",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_010_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838547+00:00"
+      },
+      {
+        "event_id": "cdd180365ef156a0",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_011_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838549+00:00"
+      },
+      {
+        "event_id": "d88704ee61b7165b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_012_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838551+00:00"
+      },
+      {
+        "event_id": "1af9ef5a433dbaec",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_013_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838552+00:00"
+      },
+      {
+        "event_id": "535618fa41465044",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_014_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838554+00:00"
+      },
+      {
+        "event_id": "3f2316ea46a27df3",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_015_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838556+00:00"
+      },
+      {
+        "event_id": "865e228432108716",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_016_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838558+00:00"
+      },
+      {
+        "event_id": "55258eb9f2af9b7b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_017_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838560+00:00"
+      },
+      {
+        "event_id": "9b44ec37339b30fc",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_018_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838562+00:00"
+      },
+      {
+        "event_id": "af62d24b7e4a6db5",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_019_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838563+00:00"
+      },
+      {
+        "event_id": "ef3195d50566be90",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_020_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838565+00:00"
+      },
+      {
+        "event_id": "762d097c10df3cf3",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_021_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838567+00:00"
+      },
+      {
+        "event_id": "c4386aec313f6c4c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_022_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838569+00:00"
+      },
+      {
+        "event_id": "5f9a9456a42c4529",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_023_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838571+00:00"
+      },
+      {
+        "event_id": "bece328110f12ac1",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_024_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838573+00:00"
+      },
+      {
+        "event_id": "868aa32c2036d36c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_025_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838576+00:00"
+      },
+      {
+        "event_id": "64da4601ab39f664",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_026_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838577+00:00"
+      },
+      {
+        "event_id": "2285aea534f2ad6b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_027_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838581+00:00"
+      },
+      {
+        "event_id": "1cf1742a477f8f3f",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 2,
+        "agent_id": "agent_028_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838583+00:00"
+      },
+      {
+        "event_id": "22e53cf0470c5019",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_ccav_1",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Policy Architect",
+        "type": "comment",
+        "stance": "supportive",
+        "topic": "Avoiding unintended barriers to market entry",
+        "content": "Policy Architect discusses Avoiding unintended barriers to market entry with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838586+00:00"
+      },
+      {
+        "event_id": "33187374fa1bc5a0",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_dvsa_1",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Enforcement Officer",
+        "type": "comment",
+        "stance": "neutral",
+        "topic": "Coordination with traffic authorities and police",
+        "content": "Enforcement Officer discusses Coordination with traffic authorities and police with stance neutral.",
+        "created_at": "2026-07-02T22:57:20.838588+00:00"
+      },
+      {
+        "event_id": "efa134fb86003a5b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_consenting_authority_1",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Cautious Licensing Officer",
+        "type": "comment",
+        "stance": "cautious",
+        "topic": "Lack of resources to assess applications",
+        "content": "Cautious Licensing Officer discusses Lack of resources to assess applications with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838590+00:00"
+      },
+      {
+        "event_id": "de3f293ff272161b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_traffic_authority_1",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Management Engineer",
+        "type": "comment",
+        "stance": "cautious",
+        "topic": "Safety at junctions and pedestrian crossings",
+        "content": "Traffic Management Engineer discusses Safety at junctions and pedestrian crossings with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838592+00:00"
+      },
+      {
+        "event_id": "0a551ed99d63d510",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_emergency_services_1",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Fire Service Commander",
+        "type": "comment",
+        "stance": "cautious",
+        "topic": "Safety of responders near autonomous vehicles",
+        "content": "Fire Service Commander discusses Safety of responders near autonomous vehicles with stance cautious.",
+        "created_at": "2026-07-02T22:57:20.838595+00:00"
+      },
+      {
+        "event_id": "922f7bb646a6c7f8",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_aps_operator_1",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "Startup Founder",
+        "type": "comment",
+        "stance": "supportive",
+        "topic": "Complexity of consent from multiple authorities",
+        "content": "Startup Founder discusses Complexity of consent from multiple authorities with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838600+00:00"
+      },
+      {
+        "event_id": "dbc16e02fc79e15b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_older_disabled_1",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Accessibility Advocate",
+        "type": "comment",
+        "stance": "supportive_with_conditions",
+        "topic": "Assistance for passengers with cognitive impairments",
+        "content": "Accessibility Advocate discusses Assistance for passengers with cognitive impairments with stance supportive_with_conditions.",
+        "created_at": "2026-07-02T22:57:20.838602+00:00"
+      },
+      {
+        "event_id": "f32b9ea706bacc0c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_general_public_1",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "Tech-Enthusiast Commuter",
+        "type": "comment",
+        "stance": "supportive",
+        "topic": "Integration with ride-hailing apps",
+        "content": "Tech-Enthusiast Commuter discusses Integration with ride-hailing apps with stance supportive.",
+        "created_at": "2026-07-02T22:57:20.838604+00:00"
+      },
+      {
+        "event_id": "2fc5bad27252a3af",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_001_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838606+00:00"
+      },
+      {
+        "event_id": "dcf0d7ff4c10ccb6",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_002_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838612+00:00"
+      },
+      {
+        "event_id": "4c908d443cec5153",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_003_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838614+00:00"
+      },
+      {
+        "event_id": "017d31af0f83755f",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_004_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838617+00:00"
+      },
+      {
+        "event_id": "3faf963e683e2dba",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_005_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838618+00:00"
+      },
+      {
+        "event_id": "8d27e0c7b3d7adcc",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_006_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838620+00:00"
+      },
+      {
+        "event_id": "442b51a311de35bd",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_007_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838622+00:00"
+      },
+      {
+        "event_id": "d3fad4d25dbf6ea0",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_008_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838624+00:00"
+      },
+      {
+        "event_id": "2d40c2405e2ec9da",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_009_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838626+00:00"
+      },
+      {
+        "event_id": "5c0cdd821508747b",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_010_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838628+00:00"
+      },
+      {
+        "event_id": "5dcaa611b1663521",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_011_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838630+00:00"
+      },
+      {
+        "event_id": "b31154ecc5fd9eed",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_012_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838632+00:00"
+      },
+      {
+        "event_id": "db12a0e9eed410ab",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_013_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838634+00:00"
+      },
+      {
+        "event_id": "7adfbcd47e2b4385",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_014_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838641+00:00"
+      },
+      {
+        "event_id": "521659461df6998c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_015_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838644+00:00"
+      },
+      {
+        "event_id": "0e1c04491dca9474",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_016_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838646+00:00"
+      },
+      {
+        "event_id": "ad0442a4cad279e0",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_017_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838648+00:00"
+      },
+      {
+        "event_id": "0d830c69aa65bf08",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_018_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838650+00:00"
+      },
+      {
+        "event_id": "23f4c9c6a7158e4c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_019_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838652+00:00"
+      },
+      {
+        "event_id": "38933402c4335e4f",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_020_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838655+00:00"
+      },
+      {
+        "event_id": "d5b7c4180e094248",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_021_stk_emergency_services",
+        "stakeholder_id": "stk_emergency_services",
+        "agent_archetype": "Emergency Services",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Emergency Services discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838659+00:00"
+      },
+      {
+        "event_id": "d4bcc7001ad114d3",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_022_stk_aps_operator",
+        "stakeholder_id": "stk_aps_operator",
+        "agent_archetype": "APS Operator",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "APS Operator discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838661+00:00"
+      },
+      {
+        "event_id": "d68c7022153dcfa8",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_023_stk_older_disabled",
+        "stakeholder_id": "stk_older_disabled",
+        "agent_archetype": "Older and Disabled Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Older and Disabled Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838663+00:00"
+      },
+      {
+        "event_id": "a222e39154cd62d8",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_024_stk_general_public",
+        "stakeholder_id": "stk_general_public",
+        "agent_archetype": "General Public / Passengers",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "General Public / Passengers discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838664+00:00"
+      },
+      {
+        "event_id": "9570fe1329dc467c",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_025_stk_ccav",
+        "stakeholder_id": "stk_ccav",
+        "agent_archetype": "Centre for Connected and Autonomous Vehicles",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Centre for Connected and Autonomous Vehicles discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838667+00:00"
+      },
+      {
+        "event_id": "6960fe2094ae5a85",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_026_stk_dvsa",
+        "stakeholder_id": "stk_dvsa",
+        "agent_archetype": "Driver and Vehicle Standards Agency",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Driver and Vehicle Standards Agency discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838669+00:00"
+      },
+      {
+        "event_id": "2f7b5cadb4254fbb",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_027_stk_consenting_authority",
+        "stakeholder_id": "stk_consenting_authority",
+        "agent_archetype": "Consenting Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Consenting Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838671+00:00"
+      },
+      {
+        "event_id": "11f038865b1e27a3",
+        "run_id": "policy_run_20260702T220219Z",
+        "case_id": "aps_permitting_scheme_2026",
+        "round": 3,
+        "agent_id": "agent_028_stk_traffic_authority",
+        "stakeholder_id": "stk_traffic_authority",
+        "agent_archetype": "Traffic Authority",
+        "type": "comment",
+        "stance": "mixed",
+        "topic": "policy_impact",
+        "content": "Traffic Authority discusses policy_impact with stance mixed.",
+        "created_at": "2026-07-02T22:57:20.838673+00:00"
+      }
+    ],
+    "signals": {
+      "outer_london_backlash": "absent",
+      "inner_london_support": "absent",
+      "van_tradespeople_pressure": "absent",
+      "low_income_distributional_burden": "absent",
+      "political_salience": "absent",
+      "enforcement_backlash": "absent",
+      "behavioural_adaptation": "absent",
+      "air_quality_benefit": "absent",
+      "distributional_burden": "absent"
+    },
+    "metadata": {
+      "agent_count": 36,
+      "rounds": 3,
+      "disclaimer": "simulation is decision support, not deterministic forecast",
+      "oasis_live": false
+    }
+  }
+}

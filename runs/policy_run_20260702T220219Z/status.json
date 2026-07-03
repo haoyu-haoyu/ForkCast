@@ -1,0 +1,52 @@
+{
+  "run_id": "policy_run_20260702T220219Z",
+  "status": "DONE",
+  "updated_at": "2026-07-03T02:42:23.093171+00:00",
+  "history": [
+    {
+      "status": "RECEIVED",
+      "timestamp": "2026-07-02T22:02:19.800634+00:00"
+    },
+    {
+      "status": "EXTRACTING",
+      "timestamp": "2026-07-02T22:02:19.802798+00:00"
+    },
+    {
+      "status": "AWAITING_REVIEW",
+      "timestamp": "2026-07-02T22:02:44.973907+00:00"
+    },
+    {
+      "status": "AWAITING_REVIEW",
+      "timestamp": "2026-07-02T22:56:33.392845+00:00"
+    },
+    {
+      "status": "SIMULATING",
+      "timestamp": "2026-07-02T22:56:33.432878+00:00"
+    },
+    {
+      "status": "SIMULATING",
+      "timestamp": "2026-07-02T22:56:33.435968+00:00"
+    },
+    {
+      "status": "REPORTING",
+      "timestamp": "2026-07-02T22:57:20.843299+00:00"
+    },
+    {
+      "status": "AWAITING_ANCHOR_APPROVAL",
+      "timestamp": "2026-07-02T22:57:36.509011+00:00"
+    },
+    {
+      "status": "DONE",
+      "timestamp": "2026-07-03T02:42:23.093171+00:00"
+    }
+  ],
+  "anchor": {
+    "status": "anchored",
+    "network": "testnet-10",
+    "tx_id": "8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8",
+    "explorer_url": "https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8",
+    "head_hash": "8b896dca5bf2e9071c1fe0932ec3c91b5d02446d606fe62eb36329e6d8df275e",
+    "manifest_hash": "45d8d8c0f53647d565638b32f5e7ef4c2254ba4bb1646c35c2a47b91a7723351",
+    "payload_hash": "471820003b1ea089ba96c6d826f82b0bf091e6a8d7c133588da111fd0e6054fc"
+  }
+}

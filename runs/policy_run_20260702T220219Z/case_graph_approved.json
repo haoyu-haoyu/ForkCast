@@ -1,0 +1,913 @@
+{
+  "case_id": "aps_permitting_scheme_2026",
+  "case_name": "Automated Passenger Services Permitting Scheme Consultation",
+  "generated_at": "2026-07-02T22:02:44.967137+00:00",
+  "extraction_method": "llm_deepseek_openai_compatible_no_truth_set",
+  "source_truth_set": {
+    "path": "",
+    "fact_count": 0,
+    "available": false
+  },
+  "entities": [
+    {
+      "id": "secretary_of_state_for_transport",
+      "type": "government_body",
+      "name": "Secretary of State for Transport",
+      "description": "The appropriate national authority for granting APS permits for services resembling taxis/PHVs in England and bus/coach services anywhere in Great Britain. May delegate functions to DVSA.",
+      "evidence_fact_ids": [
+        "doc_para_1_1",
+        "doc_para_1_2"
+      ]
+    },
+    {
+      "id": "dvsa",
+      "type": "government_body",
+      "name": "Driver and Vehicle Standards Agency",
+      "description": "The body intended to grant APS permit applications on behalf of the Secretary of State for Transport. Also conducts internal reviews of decisions.",
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_6_1"
+      ]
+    },
+    {
+      "id": "ccav",
+      "type": "government_body",
+      "name": "Centre for Connected and Autonomous Vehicles",
+      "description": "The unit within the Department for Transport that is leading the consultation on the APS permitting scheme.",
+      "evidence_fact_ids": [
+        "doc_intro_1"
+      ]
+    },
+    {
+      "id": "consenting_authority",
+      "type": "local_authority",
+      "name": "Consenting Authority",
+      "description": "Local licensing authority (for taxi/PHV-like services) or franchising body (for bus-like services) whose consent is required before a permit can be issued. Must respond within 6 weeks; silence gives automatic consent.",
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2"
+      ]
+    },
+    {
+      "id": "traffic_authority",
+      "type": "public_body",
+      "name": "Traffic Authority",
+      "description": "Authority defined by the Road Traffic Regulation Act 1984 s.121A that must be consulted before a permit is granted if likely to be substantially affected.",
+      "evidence_fact_ids": [
+        "doc_para_1_4",
+        "doc_para_4_1"
+      ]
+    },
+    {
+      "id": "emergency_services",
+      "type": "public_body",
+      "name": "Emergency Services",
+      "description": "Emergency services likely to be substantially affected by a permit, which must be consulted before grant.",
+      "evidence_fact_ids": [
+        "doc_para_1_4",
+        "doc_para_4_1"
+      ]
+    },
+    {
+      "id": "aps_permit_holder",
+      "type": "operator",
+      "name": "APS Permit Holder",
+      "description": "Organisation granted an APS permit to operate an automated passenger service. Subject to conditions, reporting obligations, and potential variation/suspension/withdrawal.",
+      "evidence_fact_ids": [
+        "doc_para_1_5",
+        "doc_para_5_1"
+      ]
+    },
+    {
+      "id": "aps_applicant",
+      "type": "operator",
+      "name": "APS Applicant",
+      "description": "Organisation applying for an APS permit. Must provide information on service scope, operational competence, safeguarding, insurance, and engagement with stakeholders.",
+      "evidence_fact_ids": [
+        "doc_para_4_2",
+        "doc_para_4_3"
+      ]
+    },
+    {
+      "id": "older_and_disabled_passengers",
+      "type": "passenger_group",
+      "name": "Older and Disabled Passengers",
+      "description": "Passenger group whose needs must be considered in permit decisions and reported on by permit holders. Around 1 in 4 people in the UK report having a disability.",
+      "evidence_fact_ids": [
+        "doc_para_3_1",
+        "doc_para_3_2"
+      ]
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "stk_ccav",
+      "name": "Centre for Connected and Autonomous Vehicles",
+      "archetype_group": "regulator",
+      "stance_prior": "supportive",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_1",
+        "doc_intro_2"
+      ],
+      "weight": 0.8
+    },
+    {
+      "id": "stk_dvsa",
+      "name": "Driver and Vehicle Standards Agency",
+      "archetype_group": "regulator",
+      "stance_prior": "neutral",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_6_1"
+      ]
+    },
+    {
+      "id": "stk_consenting_authority",
+      "name": "Consenting Authority (Local Licensing / Franchising Body)",
+      "archetype_group": "local_government",
+      "stance_prior": "cautious",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ]
+    },
+    {
+      "id": "stk_traffic_authority",
+      "name": "Traffic Authority",
+      "archetype_group": "local_government",
+      "stance_prior": "cautious",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1"
+      ]
+    },
+    {
+      "id": "stk_emergency_services",
+      "name": "Emergency Services",
+      "archetype_group": "public_safety",
+      "stance_prior": "cautious",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1",
+        "doc_para_5_2"
+      ]
+    },
+    {
+      "id": "stk_aps_operator",
+      "name": "APS Operator (Permit Holder / Applicant)",
+      "archetype_group": "industry",
+      "stance_prior": "supportive",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_2",
+        "doc_para_4_2",
+        "doc_para_5_1"
+      ]
+    },
+    {
+      "id": "stk_older_disabled",
+      "name": "Older and Disabled Passengers",
+      "archetype_group": "consumer",
+      "stance_prior": "supportive_with_conditions",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_3_1",
+        "doc_para_3_2"
+      ]
+    },
+    {
+      "id": "stk_general_public",
+      "name": "General Public / Passengers",
+      "archetype_group": "consumer",
+      "stance_prior": "neutral",
+      "interests": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_4",
+        "doc_para_4_5",
+        "doc_para_7_1"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "assump_1",
+      "statement": "The APS permitting scheme will provide a clear legal route for deploying commercial passenger services with no human driver, giving operators certainty to enter the GB market.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_intro_2"
+      ]
+    },
+    {
+      "id": "assump_2",
+      "statement": "Without the APS permitting scheme, automated passenger services 'may either be banned or entirely unregulated' (Law Commissions).",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_intro_3"
+      ]
+    },
+    {
+      "id": "assump_3",
+      "statement": "The APS permitting scheme will sit alongside existing taxi/PHV/PSV licensing routes, not replace them.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_intro_4"
+      ]
+    },
+    {
+      "id": "assump_4",
+      "statement": "Consent from local licensing authorities or franchising bodies is critical for clarity and successful deployment.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_2_1"
+      ]
+    },
+    {
+      "id": "assump_5",
+      "statement": "The Secretary of State must consider whether granting a permit is likely to improve understanding of how APS should be designed for older and disabled passengers.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_3_1"
+      ]
+    },
+    {
+      "id": "assump_6",
+      "statement": "Permit holders must publish reports about their service, particularly steps taken to meet needs of older/disabled passengers and safeguard passengers generally.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_3_2"
+      ]
+    },
+    {
+      "id": "assump_7",
+      "statement": "The application and renewal processes should be flexible rather than fixed by legislation, allowing revision over time.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_4_2"
+      ]
+    },
+    {
+      "id": "assump_8",
+      "statement": "Civil sanctions will not be implemented for pilots; variation/suspension/withdrawal will be the enforcement means initially.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_1_6",
+        "doc_para_5_1"
+      ]
+    },
+    {
+      "id": "assump_9",
+      "statement": "A formal appeals system in court or tribunal is not proposed at this stage; internal DVSA review is provided instead.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_6_1"
+      ]
+    },
+    {
+      "id": "assump_10",
+      "statement": "Fees will not be charged initially; the intention is to introduce fees for full cost recovery after full implementation of the AV Act.",
+      "status": "stated",
+      "evidence_fact_ids": [
+        "doc_para_4_6"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "con_legal_1",
+      "kind": "legal",
+      "statement": "The APS permitting scheme is introduced through the Automated Vehicles (AV) Act 2024 and secondary legislation; the consultation does not seek views on the Act itself.",
+      "evidence_fact_ids": [
+        "doc_intro_2",
+        "doc_para_1_1"
+      ]
+    },
+    {
+      "id": "con_legal_2",
+      "kind": "legal",
+      "statement": "Permits may only be issued with consent of the licensing authority for each place where a taxi/PHV-like service is provided, or franchising authority for bus-like services in franchising areas.",
+      "evidence_fact_ids": [
+        "doc_para_2_1"
+      ]
+    },
+    {
+      "id": "con_legal_3",
+      "kind": "legal",
+      "statement": "The Secretary of State must consult traffic authorities and emergency services likely to be substantially affected before granting a permit.",
+      "evidence_fact_ids": [
+        "doc_para_1_4"
+      ]
+    },
+    {
+      "id": "con_legal_4",
+      "kind": "legal",
+      "statement": "Permits must specify the area, vehicles (or description), and validity period; conditions may limit service or impose obligations.",
+      "evidence_fact_ids": [
+        "doc_para_1_5"
+      ]
+    },
+    {
+      "id": "con_legal_5",
+      "kind": "legal",
+      "statement": "The maximum permit validity period is proposed as 5 years; initial pilot permits expected to be 12-18 months.",
+      "evidence_fact_ids": [
+        "doc_para_4_7"
+      ]
+    },
+    {
+      "id": "con_legal_6",
+      "kind": "legal",
+      "statement": "Permits may be varied, suspended, or withdrawn on grounds including breach of condition, serious/repeated traffic infractions, misrepresentation, material change of circumstances, serious safety concerns, or unroadworthiness.",
+      "evidence_fact_ids": [
+        "doc_para_5_2"
+      ]
+    },
+    {
+      "id": "con_legal_7",
+      "kind": "legal",
+      "statement": "Information shared under permit conditions is protected; unauthorised disclosure is a criminal offence carrying an unlimited fine.",
+      "evidence_fact_ids": [
+        "doc_para_7_1"
+      ]
+    },
+    {
+      "id": "con_legal_8",
+      "kind": "legal",
+      "statement": "The Public Sector Equality Duty applies to the Secretary of State, consenting authorities, and service providers carrying out a role for a public authority.",
+      "evidence_fact_ids": [
+        "doc_para_3_3"
+      ]
+    },
+    {
+      "id": "con_procedural_1",
+      "kind": "procedural",
+      "statement": "Consenting authorities have 6 weeks to respond to a consent request; no response within that period results in automatic consent.",
+      "evidence_fact_ids": [
+        "doc_para_2_2"
+      ]
+    },
+    {
+      "id": "con_procedural_2",
+      "kind": "procedural",
+      "statement": "Renewal applications must be made within a window beginning 6 months before expiry and ending 2 months before expiry; if applied within window, permit continues until decision or 5-year maximum.",
+      "evidence_fact_ids": [
+        "doc_para_4_8"
+      ]
+    },
+    {
+      "id": "con_procedural_3",
+      "kind": "procedural",
+      "statement": "Internal review requests must be made within 28 days of the decision; DVSA must confirm receipt within 14 days and provide an anticipated outcome date.",
+      "evidence_fact_ids": [
+        "doc_para_6_2"
+      ]
+    },
+    {
+      "id": "con_procedural_4",
+      "kind": "procedural",
+      "statement": "In urgent cases, the Secretary of State may suspend or temporarily vary a permit first, then invite representations.",
+      "evidence_fact_ids": [
+        "doc_para_5_3"
+      ]
+    },
+    {
+      "id": "con_scope_1",
+      "kind": "scope",
+      "statement": "The APS permitting scheme does not apply in Northern Ireland.",
+      "evidence_fact_ids": [
+        "doc_para_1_2"
+      ]
+    },
+    {
+      "id": "con_scope_2",
+      "kind": "scope",
+      "statement": "This consultation covers services resembling taxis/PHVs in England and bus/coach services anywhere in Great Britain.",
+      "evidence_fact_ids": [
+        "doc_para_1_2"
+      ]
+    },
+    {
+      "id": "con_scope_3",
+      "kind": "scope",
+      "statement": "The APS permitting scheme is not a bypass to avoid licensing routes for normal taxis, PHVs, or PSVs.",
+      "evidence_fact_ids": [
+        "doc_para_4_2"
+      ]
+    },
+    {
+      "id": "decision_support_only",
+      "kind": "safety",
+      "statement": "Reports must be decision support, not deterministic forecast.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "archetypes_only_no_pii",
+      "kind": "privacy",
+      "statement": "Agents must be archetypes only and must not process real-person PII.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "no_automatic_chain_actions",
+      "kind": "human_in_the_loop",
+      "statement": "Agents must not automatically send blockchain transactions.",
+      "evidence_fact_ids": []
+    },
+    {
+      "id": "no_automatic_weight_changes",
+      "kind": "human_in_the_loop",
+      "statement": "Agents must not automatically change stakeholder weights.",
+      "evidence_fact_ids": []
+    }
+  ],
+  "evidence": [],
+  "graph": {
+    "nodes": [
+      {
+        "id": "assumption:assump_1",
+        "label": "The APS permitting scheme will provide a clear legal route for deploying commercial passenger services with no human driver, giving operators certainty to enter the GB market.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_10",
+        "label": "Fees will not be charged initially; the intention is to introduce fees for full cost recovery after full implementation of the AV Act.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_2",
+        "label": "Without the APS permitting scheme, automated passenger services 'may either be banned or entirely unregulated' (Law Commissions).",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_3",
+        "label": "The APS permitting scheme will sit alongside existing taxi/PHV/PSV licensing routes, not replace them.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_4",
+        "label": "Consent from local licensing authorities or franchising bodies is critical for clarity and successful deployment.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_5",
+        "label": "The Secretary of State must consider whether granting a permit is likely to improve understanding of how APS should be designed for older and disabled passengers.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_6",
+        "label": "Permit holders must publish reports about their service, particularly steps taken to meet needs of older/disabled passengers and safeguard passengers generally.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_7",
+        "label": "The application and renewal processes should be flexible rather than fixed by legislation, allowing revision over time.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_8",
+        "label": "Civil sanctions will not be implemented for pilots; variation/suspension/withdrawal will be the enforcement means initially.",
+        "kind": "assumption"
+      },
+      {
+        "id": "assumption:assump_9",
+        "label": "A formal appeals system in court or tribunal is not proposed at this stage; internal DVSA review is provided instead.",
+        "kind": "assumption"
+      },
+      {
+        "id": "case:aps_permitting_scheme_2026",
+        "label": "aps_permitting_scheme_2026",
+        "kind": "case"
+      },
+      {
+        "id": "constraint:archetypes_only_no_pii",
+        "label": "Agents must be archetypes only and must not process real-person PII.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_1",
+        "label": "The APS permitting scheme is introduced through the Automated Vehicles (AV) Act 2024 and secondary legislation; the consultation does not seek views on the Act itself.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_2",
+        "label": "Permits may only be issued with consent of the licensing authority for each place where a taxi/PHV-like service is provided, or franchising authority for bus-like services in franchising areas.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_3",
+        "label": "The Secretary of State must consult traffic authorities and emergency services likely to be substantially affected before granting a permit.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_4",
+        "label": "Permits must specify the area, vehicles (or description), and validity period; conditions may limit service or impose obligations.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_5",
+        "label": "The maximum permit validity period is proposed as 5 years; initial pilot permits expected to be 12-18 months.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_6",
+        "label": "Permits may be varied, suspended, or withdrawn on grounds including breach of condition, serious/repeated traffic infractions, misrepresentation, material change of circumstances, serious safety concerns, or unroadworthiness.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_7",
+        "label": "Information shared under permit conditions is protected; unauthorised disclosure is a criminal offence carrying an unlimited fine.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_legal_8",
+        "label": "The Public Sector Equality Duty applies to the Secretary of State, consenting authorities, and service providers carrying out a role for a public authority.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_procedural_1",
+        "label": "Consenting authorities have 6 weeks to respond to a consent request; no response within that period results in automatic consent.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_procedural_2",
+        "label": "Renewal applications must be made within a window beginning 6 months before expiry and ending 2 months before expiry; if applied within window, permit continues until decision or 5-year maximum.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_procedural_3",
+        "label": "Internal review requests must be made within 28 days of the decision; DVSA must confirm receipt within 14 days and provide an anticipated outcome date.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_procedural_4",
+        "label": "In urgent cases, the Secretary of State may suspend or temporarily vary a permit first, then invite representations.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_scope_1",
+        "label": "The APS permitting scheme does not apply in Northern Ireland.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_scope_2",
+        "label": "This consultation covers services resembling taxis/PHVs in England and bus/coach services anywhere in Great Britain.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:con_scope_3",
+        "label": "The APS permitting scheme is not a bypass to avoid licensing routes for normal taxis, PHVs, or PSVs.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:decision_support_only",
+        "label": "Reports must be decision support, not deterministic forecast.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:no_automatic_chain_actions",
+        "label": "Agents must not automatically send blockchain transactions.",
+        "kind": "constraint"
+      },
+      {
+        "id": "constraint:no_automatic_weight_changes",
+        "label": "Agents must not automatically change stakeholder weights.",
+        "kind": "constraint"
+      },
+      {
+        "id": "entity:aps_applicant",
+        "label": "APS Applicant",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:aps_permit_holder",
+        "label": "APS Permit Holder",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:ccav",
+        "label": "Centre for Connected and Autonomous Vehicles",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:consenting_authority",
+        "label": "Consenting Authority",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:dvsa",
+        "label": "Driver and Vehicle Standards Agency",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:emergency_services",
+        "label": "Emergency Services",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:older_and_disabled_passengers",
+        "label": "Older and Disabled Passengers",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:secretary_of_state_for_transport",
+        "label": "Secretary of State for Transport",
+        "kind": "entity"
+      },
+      {
+        "id": "entity:traffic_authority",
+        "label": "Traffic Authority",
+        "kind": "entity"
+      },
+      {
+        "id": "stakeholder:stk_aps_operator",
+        "label": "APS Operator (Permit Holder / Applicant)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_ccav",
+        "label": "Centre for Connected and Autonomous Vehicles",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_consenting_authority",
+        "label": "Consenting Authority (Local Licensing / Franchising Body)",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_dvsa",
+        "label": "Driver and Vehicle Standards Agency",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_emergency_services",
+        "label": "Emergency Services",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_general_public",
+        "label": "General Public / Passengers",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_older_disabled",
+        "label": "Older and Disabled Passengers",
+        "kind": "stakeholder"
+      },
+      {
+        "id": "stakeholder:stk_traffic_authority",
+        "label": "Traffic Authority",
+        "kind": "stakeholder"
+      }
+    ],
+    "edges": [
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_1",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_10",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_2",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_3",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_4",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_5",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_6",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_7",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_8",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "assumption:assump_9",
+        "type": "HAS_ASSUMPTION"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:archetypes_only_no_pii",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_1",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_2",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_3",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_4",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_5",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_6",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_7",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_legal_8",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_procedural_1",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_procedural_2",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_procedural_3",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_procedural_4",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_scope_1",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_scope_2",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:con_scope_3",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:decision_support_only",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:no_automatic_chain_actions",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "constraint:no_automatic_weight_changes",
+        "type": "HAS_CONSTRAINT"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:aps_applicant",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:aps_permit_holder",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:ccav",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:consenting_authority",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:dvsa",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:emergency_services",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:older_and_disabled_passengers",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:secretary_of_state_for_transport",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "entity:traffic_authority",
+        "type": "HAS_ENTITY"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_aps_operator",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_ccav",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_consenting_authority",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_dvsa",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_emergency_services",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_general_public",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_older_disabled",
+        "type": "HAS_STAKEHOLDER"
+      },
+      {
+        "source": "case:aps_permitting_scheme_2026",
+        "target": "stakeholder:stk_traffic_authority",
+        "type": "HAS_STAKEHOLDER"
+      }
+    ]
+  }
+}

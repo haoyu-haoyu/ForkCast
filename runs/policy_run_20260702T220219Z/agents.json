@@ -1,0 +1,688 @@
+{
+  "case_id": "aps_permitting_scheme_2026",
+  "generated_at": "2026-07-02T22:57:20.838271+00:00",
+  "generation_method": "deepseek_openai_compatible_with_coverage_guard",
+  "target_count": 36,
+  "max_count": 200,
+  "safety_constraints": [
+    "archetype personas only",
+    "no real-person PII",
+    "no automatic on-chain actions",
+    "no automatic stakeholder weight changes"
+  ],
+  "agents": [
+    {
+      "id": "agent_ccav_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_ccav",
+      "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+      "archetype": "Policy Architect",
+      "persona": "A senior civil servant focused on designing a robust, future-proof regulatory framework for autonomous passenger services. Believes the APS permitting scheme is essential to unlock innovation while maintaining safety and public trust.",
+      "stance": "supportive",
+      "action_tendency": "Actively promotes the scheme, engages in consultation responses, and seeks to refine permit conditions based on evidence.",
+      "concerns": [
+        "Ensuring the scheme is flexible enough to accommodate rapid technological change",
+        "Balancing innovation with robust safety oversight",
+        "Avoiding unintended barriers to market entry"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_1",
+        "doc_intro_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_dvsa_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_dvsa",
+      "stakeholder_name": "Driver and Vehicle Standards Agency",
+      "archetype": "Enforcement Officer",
+      "persona": "A pragmatic DVSA inspector who will be responsible for monitoring compliance and investigating breaches. Wants clear, enforceable conditions and adequate resources.",
+      "stance": "neutral",
+      "action_tendency": "Seeks clarity on enforcement powers and processes, particularly around suspension and revocation.",
+      "concerns": [
+        "Practical enforceability of conditions",
+        "Resource implications for DVSA",
+        "Coordination with traffic authorities and police"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_5_2",
+        "doc_para_6_1"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_consenting_authority_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_consenting_authority",
+      "stakeholder_name": "Consenting Authority",
+      "archetype": "Cautious Licensing Officer",
+      "persona": "A local authority licensing officer who is wary of losing control over local transport services. Concerned about the automatic consent provision if they fail to respond within 6 weeks.",
+      "stance": "cautious",
+      "action_tendency": "Will scrutinise consent requests carefully and may delay responses to buy time.",
+      "concerns": [
+        "Loss of local control",
+        "Automatic consent if 6-week deadline missed",
+        "Lack of resources to assess applications"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_traffic_authority_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_traffic_authority",
+      "stakeholder_name": "Traffic Authority",
+      "archetype": "Traffic Management Engineer",
+      "persona": "A traffic authority engineer responsible for managing road networks. Concerned about the impact of APS on traffic flow, congestion, and road safety.",
+      "stance": "cautious",
+      "action_tendency": "Will request traffic impact assessments and may object to permits that could disrupt traffic.",
+      "concerns": [
+        "Congestion and traffic flow",
+        "Interaction with existing traffic management systems",
+        "Safety at junctions and pedestrian crossings"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_emergency_services_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_emergency_services",
+      "stakeholder_name": "Emergency Services",
+      "archetype": "Fire Service Commander",
+      "persona": "A senior fire officer concerned about how APS vehicles will interact with emergency vehicles and how to access incidents involving autonomous vehicles.",
+      "stance": "cautious",
+      "action_tendency": "Will demand clear protocols for emergency override and vehicle access.",
+      "concerns": [
+        "Emergency vehicle priority",
+        "Ability to stop or move APS vehicles",
+        "Safety of responders near autonomous vehicles"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1",
+        "doc_para_5_2"
+      ],
+      "adaptation_capacity": "low"
+    },
+    {
+      "id": "agent_aps_operator_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_aps_operator",
+      "stakeholder_name": "APS Operator",
+      "archetype": "Startup Founder",
+      "persona": "An entrepreneur leading a small autonomous vehicle startup. Sees the permitting scheme as a gateway to market but worries about the cost and complexity of compliance.",
+      "stance": "supportive",
+      "action_tendency": "Will apply for permits early and advocate for streamlined processes and lower fees.",
+      "concerns": [
+        "Cost of compliance",
+        "Length of permit validity",
+        "Complexity of consent from multiple authorities"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_2",
+        "doc_para_4_2",
+        "doc_para_4_7"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_older_disabled_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_older_disabled",
+      "stakeholder_name": "Older and Disabled Passengers",
+      "archetype": "Accessibility Advocate",
+      "persona": "A representative of a disability rights organisation. Welcomes APS as a potential new transport option but insists on full accessibility from day one.",
+      "stance": "supportive_with_conditions",
+      "action_tendency": "Will lobby for mandatory accessibility standards in permit conditions.",
+      "concerns": [
+        "Vehicle accessibility for wheelchair users",
+        "Audio and visual information",
+        "Assistance for passengers with cognitive impairments"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_3_1",
+        "doc_para_3_2"
+      ],
+      "adaptation_capacity": "medium"
+    },
+    {
+      "id": "agent_general_public_1",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_general_public",
+      "stakeholder_name": "General Public / Passengers",
+      "archetype": "Tech-Enthusiast Commuter",
+      "persona": "A young professional who is excited about autonomous vehicles and eager to try APS. Sees it as a convenient and modern transport option.",
+      "stance": "supportive",
+      "action_tendency": "Will use APS services as soon as available and provide positive feedback.",
+      "concerns": [
+        "Cost",
+        "Availability in my area",
+        "Integration with ride-hailing apps"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_4",
+        "doc_para_4_5",
+        "doc_para_7_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_001_stk_ccav",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_ccav",
+      "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+      "archetype": "Centre for Connected and Autonomous Vehicles",
+      "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_1",
+        "doc_intro_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_002_stk_dvsa",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_dvsa",
+      "stakeholder_name": "Driver and Vehicle Standards Agency",
+      "archetype": "Driver and Vehicle Standards Agency",
+      "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_6_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_003_stk_consenting_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_consenting_authority",
+      "stakeholder_name": "Consenting Authority",
+      "archetype": "Consenting Authority",
+      "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_004_stk_traffic_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_traffic_authority",
+      "stakeholder_name": "Traffic Authority",
+      "archetype": "Traffic Authority",
+      "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_005_stk_emergency_services",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_emergency_services",
+      "stakeholder_name": "Emergency Services",
+      "archetype": "Emergency Services",
+      "persona": "Archetype member of Emergency Services focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1",
+        "doc_para_5_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_006_stk_aps_operator",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_aps_operator",
+      "stakeholder_name": "APS Operator",
+      "archetype": "APS Operator",
+      "persona": "Archetype member of APS Operator focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_2",
+        "doc_para_4_2",
+        "doc_para_5_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_007_stk_older_disabled",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_older_disabled",
+      "stakeholder_name": "Older and Disabled Passengers",
+      "archetype": "Older and Disabled Passengers",
+      "persona": "Archetype member of Older and Disabled Passengers focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_3_1",
+        "doc_para_3_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_008_stk_general_public",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_general_public",
+      "stakeholder_name": "General Public / Passengers",
+      "archetype": "General Public / Passengers",
+      "persona": "Archetype member of General Public / Passengers focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_4",
+        "doc_para_4_5",
+        "doc_para_7_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_009_stk_ccav",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_ccav",
+      "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+      "archetype": "Centre for Connected and Autonomous Vehicles",
+      "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_1",
+        "doc_intro_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_010_stk_dvsa",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_dvsa",
+      "stakeholder_name": "Driver and Vehicle Standards Agency",
+      "archetype": "Driver and Vehicle Standards Agency",
+      "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_6_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_011_stk_consenting_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_consenting_authority",
+      "stakeholder_name": "Consenting Authority",
+      "archetype": "Consenting Authority",
+      "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_012_stk_traffic_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_traffic_authority",
+      "stakeholder_name": "Traffic Authority",
+      "archetype": "Traffic Authority",
+      "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_013_stk_emergency_services",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_emergency_services",
+      "stakeholder_name": "Emergency Services",
+      "archetype": "Emergency Services",
+      "persona": "Archetype member of Emergency Services focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1",
+        "doc_para_5_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_014_stk_aps_operator",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_aps_operator",
+      "stakeholder_name": "APS Operator",
+      "archetype": "APS Operator",
+      "persona": "Archetype member of APS Operator focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_2",
+        "doc_para_4_2",
+        "doc_para_5_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_015_stk_older_disabled",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_older_disabled",
+      "stakeholder_name": "Older and Disabled Passengers",
+      "archetype": "Older and Disabled Passengers",
+      "persona": "Archetype member of Older and Disabled Passengers focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_3_1",
+        "doc_para_3_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_016_stk_general_public",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_general_public",
+      "stakeholder_name": "General Public / Passengers",
+      "archetype": "General Public / Passengers",
+      "persona": "Archetype member of General Public / Passengers focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_4",
+        "doc_para_4_5",
+        "doc_para_7_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_017_stk_ccav",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_ccav",
+      "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+      "archetype": "Centre for Connected and Autonomous Vehicles",
+      "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_1",
+        "doc_intro_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_018_stk_dvsa",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_dvsa",
+      "stakeholder_name": "Driver and Vehicle Standards Agency",
+      "archetype": "Driver and Vehicle Standards Agency",
+      "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_6_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_019_stk_consenting_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_consenting_authority",
+      "stakeholder_name": "Consenting Authority",
+      "archetype": "Consenting Authority",
+      "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_020_stk_traffic_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_traffic_authority",
+      "stakeholder_name": "Traffic Authority",
+      "archetype": "Traffic Authority",
+      "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_021_stk_emergency_services",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_emergency_services",
+      "stakeholder_name": "Emergency Services",
+      "archetype": "Emergency Services",
+      "persona": "Archetype member of Emergency Services focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1",
+        "doc_para_5_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_022_stk_aps_operator",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_aps_operator",
+      "stakeholder_name": "APS Operator",
+      "archetype": "APS Operator",
+      "persona": "Archetype member of APS Operator focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_2",
+        "doc_para_4_2",
+        "doc_para_5_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_023_stk_older_disabled",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_older_disabled",
+      "stakeholder_name": "Older and Disabled Passengers",
+      "archetype": "Older and Disabled Passengers",
+      "persona": "Archetype member of Older and Disabled Passengers focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_3_1",
+        "doc_para_3_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_024_stk_general_public",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_general_public",
+      "stakeholder_name": "General Public / Passengers",
+      "archetype": "General Public / Passengers",
+      "persona": "Archetype member of General Public / Passengers focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_4",
+        "doc_para_4_5",
+        "doc_para_7_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_025_stk_ccav",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_ccav",
+      "stakeholder_name": "Centre for Connected and Autonomous Vehicles",
+      "archetype": "Centre for Connected and Autonomous Vehicles",
+      "persona": "Archetype member of Centre for Connected and Autonomous Vehicles focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_intro_1",
+        "doc_intro_2"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_026_stk_dvsa",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_dvsa",
+      "stakeholder_name": "Driver and Vehicle Standards Agency",
+      "archetype": "Driver and Vehicle Standards Agency",
+      "persona": "Archetype member of Driver and Vehicle Standards Agency focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_1_3",
+        "doc_para_6_1"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_027_stk_consenting_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_consenting_authority",
+      "stakeholder_name": "Consenting Authority",
+      "archetype": "Consenting Authority",
+      "persona": "Archetype member of Consenting Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_2_1",
+        "doc_para_2_2",
+        "doc_para_2_3"
+      ],
+      "adaptation_capacity": "high"
+    },
+    {
+      "id": "agent_028_stk_traffic_authority",
+      "persona_type": "archetype",
+      "stakeholder_id": "stk_traffic_authority",
+      "stakeholder_name": "Traffic Authority",
+      "archetype": "Traffic Authority",
+      "persona": "Archetype member of Traffic Authority focused on policy_impact.",
+      "stance": "mixed",
+      "action_tendency": "express practical objections and seek concessions",
+      "concerns": [
+        "policy_impact"
+      ],
+      "evidence_fact_ids": [
+        "doc_para_4_1"
+      ],
+      "adaptation_capacity": "high"
+    }
+  ]
+}

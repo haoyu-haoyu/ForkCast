@@ -81,17 +81,18 @@ uv run python scripts/verify_run.py \
   --network testnet-10
 ```
 
-Showcase placeholder:
+Showcase APS anchor:
 
-- Run id: `TBD by human broadcast`
-- Tx id: `TBD by human broadcast`
-- Explorer: `https://explorer-tn10.kaspa.org/txs/<showcase-txid>`
-- Chained verify command after Stage 2:
+- Run id: `policy_run_20260702T220219Z`
+- Canonical tx id: `8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+- Explorer: `https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+- Duplicate note: the same commitment was anchored twice due to a CLI output gap; the earliest tx is canonical, and duplicate anchors are harmless redundancy.
+- Chained verify command:
 
 ```bash
 uv run python scripts/verify_run.py \
-  --run-dir runs/<showcase-run-id> \
-  --txid <showcase-txid> \
+  --run-dir runs/policy_run_20260702T220219Z \
+  --txid 8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8 \
   --network testnet-10
 ```
 

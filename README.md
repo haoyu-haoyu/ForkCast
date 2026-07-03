@@ -14,7 +14,7 @@ Current implementation status:
 - OASIS is an optional, non-integrated runtime probe only, not part of the main demo pipeline and not a hard blocker.
 - The demo uses deterministic mock simulation events with the same downstream contract.
 - Project LLM calls use a DeepSeek/OpenAI-compatible client.
-- Kaspa Phase 4 has a real TN-10 transaction: `f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`.
+- Kaspa Phase 4 has real TN-10 transactions for the legacy ULEZ demo (`f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`) and the live APS showcase run (`8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`).
 - Anchor coverage boundary: the f553 transaction covers only the eight artifacts listed in the anchored ULEZ manifest. Later robustness and ablation artifacts are intentionally documented as not covered by that transaction.
 - Fetch.ai and Canton are intentionally out of scope until the Conduct/Kaspa/ULEZ mainline is running.
 
@@ -142,10 +142,17 @@ uv run python scripts/kaspa_anchor_manifest.py \
 
 This writes `runs/ulez_2023_phase2_deepseek/kaspa_anchor.json` and copies it into the dashboard data folder. Legacy ULEZ demo artifacts commit to the canonical audit manifest hash. New live policy runs use the hash-chain head described in `docs/HASH_CHAIN.md`.
 
-The current demo artifact has already been broadcast to Kaspa `testnet-10` after explicit human approval:
+The legacy ULEZ demo artifact has already been broadcast to Kaspa `testnet-10` after explicit human approval:
 
 - Tx id: `f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`
 - Explorer: `https://explorer-tn10.kaspa.org/txs/f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123`
+
+The live APS showcase run uses the hash-chain path and is also anchored on `testnet-10`:
+
+- Run id: `policy_run_20260702T220219Z`
+- Canonical tx id: `8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+- Explorer: `https://explorer-tn10.kaspa.org/txs/8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8`
+- Duplicate note: the same commitment was anchored twice due to a CLI output gap; the earliest tx is canonical, and duplicate anchors are harmless redundancy.
 
 ## Verify The Audit Trail Yourself
 
@@ -158,10 +165,22 @@ uv run python scripts/verify_run.py \
   --network testnet-10
 ```
 
+Verify the live APS showcase hash-chain head against the committed artifacts and public TN-10 explorer:
+
+```bash
+uv run python scripts/verify_run.py \
+  --run-dir runs/policy_run_20260702T220219Z \
+  --txid 8a682481e37f9ca5f006150746e3d3eab003b582621b763f0065885c98c656b8 \
+  --network testnet-10
+```
+
 Future broadcasts must use a local testnet wallet from environment variables and an explicit approval flag:
 
 ```bash
-uv run --with kaspa python scripts/kaspa_broadcast_anchor.py --human-approved --amount-kas 1
+uv run --with kaspa python scripts/kaspa_broadcast_anchor.py \
+  --anchor runs/<run_id>/kaspa_anchor.json \
+  --human-approved \
+  --amount-kas 0.2
 ```
 
 To explicitly run the paid/live OASIS Reddit-like probe, set `OPENAI_API_KEY` and opt in. This is an optional, non-integrated experiment; the submitted MVP uses mock replay for the simulation layer.
