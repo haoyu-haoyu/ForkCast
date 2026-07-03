@@ -32,6 +32,7 @@ import {
 import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactReport, kaspaAnchor, simulation } from "./data";
 import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
 import { diffCaseGraphReview, hasUnsavedReviewDiff } from "./liveReview";
+import { displayEnglish } from "./displayEnglish";
 import { buildClaimsAuditRows, claimsAuditNotice, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
 import type { AgentProfile, BacktestRule, ClaimProvenanceRow, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
@@ -213,8 +214,8 @@ function App() {
             <ShieldCheck size={28} />
           </div>
           <div>
-            <h1>Policy Impact Sandbox</h1>
-            <p>Control beats autonomy</p>
+            <h1>ForkCast</h1>
+            <p>Policy impact sandbox — control beats autonomy</p>
           </div>
         </div>
         <div className="topbar-actions">
@@ -536,7 +537,7 @@ function CaseSelectScreen({
             </p>
           </div>
           <StatusPill tone={runResult ? "safe" : "neutral"}>
-            {runResult ? `${runResult.status} · ${runResult.truth_set_status.message}` : "Live analysis"}
+            {runResult ? `${runResult.status} · ${displayEnglish(runResult.truth_set_status.message)}` : "Live analysis"}
           </StatusPill>
         </div>
         <div className="policy-run-grid">
@@ -707,7 +708,7 @@ function LivePolicyResultPanel({
           <strong>Assumptions</strong>
           {(draft?.assumptions ?? []).slice(0, 4).map((assumption) => (
             <p className={assumption.status === "已确认" ? "" : "low-confidence"} key={assumption.id}>
-              {assumption.status}: {assumption.statement}
+              {displayEnglish(assumption.status)}: {assumption.statement}
             </p>
           ))}
         </div>
@@ -751,7 +752,7 @@ function LivePolicyResultPanel({
           <span>{result.run_id}</span>
           <h4>{result.case_graph_approved?.case_name ?? result.case_graph_ai?.case_name ?? "Live policy run"}</h4>
         </div>
-        <StatusPill tone="warn">{result.truth_set_status.message}</StatusPill>
+        <StatusPill tone="warn">{displayEnglish(result.truth_set_status.message)}</StatusPill>
       </div>
       <div className="result-block">
         <strong>Extracted stakeholders</strong>
@@ -860,7 +861,7 @@ function ExtractionReview({
           <div className="assumption-list">
             {assumptions.slice(0, 5).map((assumption) => (
               <div className="assumption-row" key={assumption.id}>
-                <span>{assumption.status}</span>
+                <span>{displayEnglish(assumption.status)}</span>
                 <p>{stripOutcomeNumbers(assumption.statement)}</p>
               </div>
             ))}
@@ -1117,6 +1118,7 @@ function BlindBacktest() {
           <BacktestRow key={rule.rule_id} rule={rule} />
         ))}
       </div>
+      <p className="evidence-note">Display translation — canonical data lives in the anchored run artifacts.</p>
       <div className="prompt-proof">
         <div>
           <h4>Prompt transparency</h4>
@@ -1382,7 +1384,7 @@ function BacktestRow({ rule }: { rule: BacktestRule }) {
       <strong>{rule.rule_id}</strong>
       <p className="rubric-label">{RUBRIC_LABELS[rule.rule_id] ?? rule.rule_id}</p>
       <p>{rule.system_signal}</p>
-      <p>{truncate(rule.real_outcome, 150)}</p>
+      <p>{truncate(displayEnglish(rule.real_outcome), 220)}</p>
       <span className={`verdict ${rule.verdict.toLowerCase().replace(" ", "-")}`}>{rule.verdict}</span>
     </div>
   );
