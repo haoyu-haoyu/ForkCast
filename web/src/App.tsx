@@ -1077,7 +1077,7 @@ function ForkComparisonView({
           <span className="status-pill safe">{summary.unchanged} unchanged</span>
         </div>
       </div>
-      <p className="evidence-note">Illustrative mock rerun — decision support, not deterministic forecast.</p>
+      <p className="evidence-note">Illustrative rerun — decision support, not deterministic forecast.</p>
       {source === "cached" ? (
         <p className="evidence-note">
           Cached showcase comparison (charge £12.50 vs £15.00) — the live fork API is not reachable in this static demo.
