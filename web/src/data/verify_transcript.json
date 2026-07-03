@@ -1,0 +1,94 @@
+{
+    "overall": "PASS",
+    "mode": "legacy_manifest_hash",
+    "network": "testnet-10",
+    "txid": "f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123",
+    "checks": {
+        "tx_payload_matches_anchor": {
+            "status": "PASS",
+            "note": "Kaspa transaction payload matches local kaspa_anchor.json payload."
+        },
+        "txid_matches_anchor": {
+            "status": "PASS",
+            "note": "Provided txid matches local anchor txid when one is recorded."
+        },
+        "manifest_hash_matches_anchor": {
+            "status": "PASS",
+            "note": "Canonical audit_manifest.json hash matches local anchor package."
+        },
+        "payload_hash_matches_anchor": {
+            "status": "PASS",
+            "note": "Canonical transaction payload hash matches local anchor package."
+        },
+        "manifest_hash_matches_tx_payload": {
+            "status": "PASS",
+            "note": "Canonical audit manifest hash matches on-chain payload commitment."
+        },
+        "legacy_payload_mode": {
+            "status": "PASS",
+            "note": "Legacy payload uses manifest-hash commitment mode."
+        }
+    },
+    "links": [
+        {
+            "id": "case_graph",
+            "stage": "case_graph",
+            "status": "PASS",
+            "expected": "20836c56fd7d15b49272009f086cddc090b82faa9cede84343c481b3ef7b517a",
+            "actual": "20836c56fd7d15b49272009f086cddc090b82faa9cede84343c481b3ef7b517a"
+        },
+        {
+            "id": "simulation_config",
+            "stage": "simulation_config",
+            "status": "PASS",
+            "expected": "3a4a87030f58982c9e363842674cdba2c54891091c21a0643a9266ccb595262f",
+            "actual": "3a4a87030f58982c9e363842674cdba2c54891091c21a0643a9266ccb595262f"
+        },
+        {
+            "id": "agents",
+            "stage": "agents",
+            "status": "PASS",
+            "expected": "345a655035c886c478083e6f9b8368f5fc325645b47486dc84c5fa25c70ab633",
+            "actual": "345a655035c886c478083e6f9b8368f5fc325645b47486dc84c5fa25c70ab633"
+        },
+        {
+            "id": "blind_prediction",
+            "stage": "blind_prediction",
+            "status": "PASS",
+            "expected": "54548566b0bdb0e056b4607689a68990a2304067794828c0347223eb31d8f796",
+            "actual": "54548566b0bdb0e056b4607689a68990a2304067794828c0347223eb31d8f796"
+        },
+        {
+            "id": "simulation_events",
+            "stage": "simulation_events",
+            "status": "PASS",
+            "expected": "0c389c74c2e43e1f53791405bcdf363008bbf079f57128c4bd6291b10a75281c",
+            "actual": "0c389c74c2e43e1f53791405bcdf363008bbf079f57128c4bd6291b10a75281c"
+        },
+        {
+            "id": "impact_report",
+            "stage": "impact_report",
+            "status": "PASS",
+            "expected": "e263a8825f943343cdccc791977393c07d643424b22b5dfda0b050743dcd86c7",
+            "actual": "e263a8825f943343cdccc791977393c07d643424b22b5dfda0b050743dcd86c7"
+        },
+        {
+            "id": "backtest_result",
+            "stage": "backtest_result",
+            "status": "PASS",
+            "expected": "8e99896261ce4cefb6bdea72ccf5086653ed53f87243757079f8984caa4625fc",
+            "actual": "8e99896261ce4cefb6bdea72ccf5086653ed53f87243757079f8984caa4625fc"
+        },
+        {
+            "id": "persona_chat_sample",
+            "stage": "persona_chat_sample",
+            "status": "PASS",
+            "expected": "53f9008d572504622f9e6c8b017e32c6e8c321271d7d74f885dbe5ee701ef929",
+            "actual": "53f9008d572504622f9e6c8b017e32c6e8c321271d7d74f885dbe5ee701ef929"
+        }
+    ],
+    "cache": {
+        "hit": false,
+        "ttl_seconds": 60
+    }
+}

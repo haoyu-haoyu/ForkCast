@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -33,6 +33,19 @@ import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactRepo
 import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
 import { diffCaseGraphReview, hasUnsavedReviewDiff } from "./liveReview";
 import { displayEnglish } from "./displayEnglish";
+import {
+  CACHED_FORK_COMPARISON,
+  CACHED_VERIFY_TRANSCRIPT,
+  STATIC_SHOWCASE,
+  compareForks,
+  createFork,
+  verifyAnchor,
+  type ForkApprovalEvent,
+  type ForkComparison,
+  type ForkCompareRow,
+  type JsonPatchOp,
+  type VerifyResult,
+} from "./forkApi";
 import { buildClaimsAuditRows, claimsAuditNotice, PROVENANCE_LABELS } from "./provenance";
 import { RUBRIC_LABELS } from "./rubric";
 import type { AgentProfile, BacktestRule, ClaimProvenanceRow, LivePolicyRunStatus, LivePolicyRunStatusName, SimulationEvent, Stakeholder } from "./types";
@@ -868,8 +881,265 @@ function ExtractionReview({
           </div>
         </div>
       </div>
+      <ForkStudio />
     </Panel>
   );
+}
+
+const FORK_PARENT_RUN_ID = "ulez_2023_phase2_deepseek";
+const FORK_BASELINE_CHARGE = "£12.50";
+
+function ForkStudio() {
+  const [phase, setPhase] = useState<"idle" | "form" | "confirm" | "running" | "done">("idle");
+  const [variantName, setVariantName] = useState("charge £15.00");
+  const [charge, setCharge] = useState("£15.00");
+  const [progress, setProgress] = useState("");
+  const [comparison, setComparison] = useState<ForkComparison | null>(null);
+  const [approval, setApproval] = useState<ForkApprovalEvent | null>(null);
+  const [source, setSource] = useState<"live" | "cached">("live");
+  const [fallbackNote, setFallbackNote] = useState("");
+
+  const patches: JsonPatchOp[] = [{ op: "add", path: "/scenario_variant", value: { charge } }];
+
+  async function runFork() {
+    setPhase("running");
+    setFallbackNote("");
+    if (STATIC_SHOWCASE) {
+      setComparison(CACHED_FORK_COMPARISON);
+      setApproval(null);
+      setSource("cached");
+      setPhase("done");
+      return;
+    }
+    try {
+      setProgress(`Creating baseline fork (charge ${FORK_BASELINE_CHARGE})…`);
+      const baseline = await createFork(FORK_PARENT_RUN_ID, `charge ${FORK_BASELINE_CHARGE}`, [
+        { op: "add", path: "/scenario_variant", value: { charge: FORK_BASELINE_CHARGE } },
+      ]);
+      setProgress(`Creating variant fork (${variantName})…`);
+      const variant = await createFork(FORK_PARENT_RUN_ID, variantName, patches);
+      setApproval(variant.approval_event ?? null);
+      setProgress("Comparing forks…");
+      const compared = await compareForks(FORK_PARENT_RUN_ID, baseline.fork_id, variant.fork_id);
+      setComparison(compared);
+      setSource("live");
+      setPhase("done");
+    } catch (error) {
+      setComparison(CACHED_FORK_COMPARISON);
+      setApproval(null);
+      setSource("cached");
+      setFallbackNote(error instanceof Error ? error.message : "Fork API unavailable.");
+      setPhase("done");
+    }
+  }
+
+  if (phase === "idle") {
+    return (
+      <div className="fork-studio">
+        <div className="fork-cta-row">
+          <div>
+            <h4>Scenario forks</h4>
+            <p>Branch this reviewed case graph into a named variant and compare the rerun side by side.</p>
+          </div>
+          <button className="primary" onClick={() => setPhase("form")}>
+            <GitCompare size={16} /> Fork this scenario
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="fork-studio open">
+      <div className="fork-cta-row">
+        <div>
+          <h4>Scenario forks</h4>
+          <p>Parent: {FORK_PARENT_RUN_ID} · baseline variant: charge {FORK_BASELINE_CHARGE}</p>
+        </div>
+        <button className="secondary" onClick={() => setPhase("idle")}>
+          <X size={14} /> Close
+        </button>
+      </div>
+
+      {phase === "form" && (
+        <div className="fork-form">
+          <label className="number-control">
+            <span>Variant name</span>
+            <input value={variantName} onChange={(event) => setVariantName(event.target.value)} />
+          </label>
+          <label className="number-control">
+            <span>Daily charge</span>
+            <input value={charge} onChange={(event) => setCharge(event.target.value)} />
+          </label>
+          <div className="run-actions">
+            <button className="primary" onClick={() => setPhase("confirm")} disabled={!variantName.trim() || !charge.trim()}>
+              <ChevronRight size={16} /> Review patch
+            </button>
+          </div>
+        </div>
+      )}
+
+      {phase === "confirm" && (
+        <div className="fork-confirm">
+          <div className="panel-title-row compact">
+            <div>
+              <h4>Fork variant review</h4>
+              <p>This patch is human-authored. Confirming is the approval that authorizes the fork rerun.</p>
+            </div>
+            <StatusPill tone="warn">Human approval required</StatusPill>
+          </div>
+          <div className="result-block diff-block">
+            <strong>Patch to apply</strong>
+            <p className="diff-line">
+              <code>/scenario_variant</code>: <span className="diff-before">null</span> →{" "}
+              <span className="diff-after">{JSON.stringify({ charge })}</span>
+            </p>
+          </div>
+          <pre className="fork-patch-preview">{JSON.stringify(patches, null, 2)}</pre>
+          <div className="run-actions">
+            <button className="primary" onClick={runFork}>
+              <Check size={16} /> Confirm fork and run
+            </button>
+            <button className="secondary" onClick={() => setPhase("form")}>
+              <ArrowLeft size={14} /> Back
+            </button>
+          </div>
+        </div>
+      )}
+
+      {phase === "running" && (
+        <div className="fork-running">
+          <p>{progress}</p>
+          <p className="evidence-note">Fork rerun uses the mock simulation path; the report stage may call the configured LLM.</p>
+        </div>
+      )}
+
+      {phase === "done" && comparison && (
+        <>
+          {approval ? (
+            <div className="result-block diff-block recorded">
+              <strong>Recorded approval diff · {approval.stage}</strong>
+              {approval.diff.slice(0, 4).map((item) => (
+                <p className="diff-line" key={item.path}>
+                  <code>{item.path}</code>: <span className="diff-before">{formatForkValue(item.before)}</span> →{" "}
+                  <span className="diff-after">{formatForkValue(item.after)}</span>
+                </p>
+              ))}
+            </div>
+          ) : null}
+          <ForkComparisonView comparison={comparison} source={source} fallbackNote={fallbackNote} />
+          <div className="run-actions">
+            <button className="secondary" onClick={() => setPhase("form")}>
+              <RefreshCcw size={14} /> Fork another variant
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function ForkComparisonView({
+  comparison,
+  source,
+  fallbackNote,
+}: {
+  comparison: ForkComparison;
+  source: "live" | "cached";
+  fallbackNote: string;
+}) {
+  const dimensions: Array<[string, ForkCompareRow[]]> = [
+    ["Risk timeline", comparison.dimensions.risk_timeline],
+    ["Claims", comparison.dimensions.claims],
+    ["Stakeholder pressure", comparison.dimensions.stakeholder_pressure],
+  ];
+  const { summary } = comparison;
+  return (
+    <div className="fork-compare">
+      <div className="fork-compare-head">
+        <div>
+          <h4>Side-by-side comparison</h4>
+          <p>
+            <strong>A</strong> {comparison.a.name} · <strong>B</strong> {comparison.b.name}
+          </p>
+        </div>
+        <div className="fork-summary">
+          <span className="status-pill warn">{summary.changed} changed</span>
+          <span className="status-pill neutral">{summary.new} new</span>
+          <span className="status-pill neutral">{summary.removed} removed</span>
+          <span className="status-pill safe">{summary.unchanged} unchanged</span>
+        </div>
+      </div>
+      <p className="evidence-note">Illustrative mock rerun — decision support, not deterministic forecast.</p>
+      {source === "cached" ? (
+        <p className="evidence-note">
+          Cached showcase comparison (charge £12.50 vs £15.00) — the live fork API is not reachable in this static demo.
+          {fallbackNote ? ` (${fallbackNote})` : ""}
+        </p>
+      ) : null}
+      {dimensions.map(([title, rows]) =>
+        rows.length ? (
+          <div className="compare-dimension" key={title}>
+            <h4>{title}</h4>
+            {rows.map((row) => (
+              <ForkCompareRowView row={row} key={`${title}-${row.key}`} />
+            ))}
+          </div>
+        ) : null,
+      )}
+    </div>
+  );
+}
+
+function ForkCompareRowView({ row }: { row: ForkCompareRow }) {
+  const changed = new Set(row.changed_fields ?? []);
+  return (
+    <div className={`compare-row ${row.status}`}>
+      <div className="compare-key">
+        <code>{row.key}</code>
+        <em className={`fork-status ${row.status}`}>{row.status}</em>
+      </div>
+      <div className="compare-cells">
+        <ForkCompareCell label="A" data={row.a} changed={changed} />
+        <ForkCompareCell label="B" data={row.b} changed={changed} />
+      </div>
+    </div>
+  );
+}
+
+function ForkCompareCell({
+  label,
+  data,
+  changed,
+}: {
+  label: string;
+  data: Record<string, unknown> | null;
+  changed: Set<string>;
+}) {
+  if (!data) {
+    return (
+      <div className="compare-cell empty">
+        <span>{label}</span>
+        <p>—</p>
+      </div>
+    );
+  }
+  return (
+    <div className="compare-cell">
+      <span>{label}</span>
+      {Object.entries(data).map(([field, value]) => (
+        <p className={changed.has(field) ? "field-changed" : ""} key={field}>
+          <code>{field}</code> {formatForkValue(value)}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function formatForkValue(value: unknown): string {
+  if (value === null || value === undefined) return "null";
+  if (typeof value === "string") return value;
+  return JSON.stringify(value);
 }
 
 function AgentReview({
@@ -1215,6 +1485,7 @@ function AuditReview({
           ) : (
             <p className="evidence-note">Anchor package can be verified locally until a testnet tx id is configured.</p>
           )}
+          <VerifyOnChain />
           <pre className="payload-preview">{kaspaAnchor.payload_canonical_json}</pre>
             <button className="primary" onClick={() => setChainDecision("payload_approved")}>Approve anchored payload review</button>
             <button className="secondary" onClick={() => setChainDecision("refused")}>Refuse on-chain anchor</button>
@@ -1223,6 +1494,102 @@ function AuditReview({
         </div>
       </div>
     </Panel>
+  );
+}
+
+function VerifyOnChain() {
+  const [state, setState] = useState<"idle" | "running" | "done">("idle");
+  const [result, setResult] = useState<VerifyResult | null>(null);
+  const [source, setSource] = useState<"live" | "cached">("live");
+  const [revealed, setRevealed] = useState(0);
+
+  const checkEntries = result ? Object.entries(result.checks) : [];
+  const totalItems = result ? checkEntries.length + result.links.length + 1 : 0;
+
+  useEffect(() => {
+    if (state !== "done" || !result || revealed >= totalItems) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setRevealed(totalItems);
+      return;
+    }
+    const timer = window.setTimeout(() => setRevealed((current) => current + 1), 140);
+    return () => window.clearTimeout(timer);
+  }, [state, result, revealed, totalItems]);
+
+  async function run() {
+    setState("running");
+    setRevealed(0);
+    if (STATIC_SHOWCASE) {
+      setResult(CACHED_VERIFY_TRANSCRIPT);
+      setSource("cached");
+      setState("done");
+      return;
+    }
+    try {
+      const live = await verifyAnchor(FORK_PARENT_RUN_ID);
+      setResult(live);
+      setSource("live");
+    } catch {
+      setResult(CACHED_VERIFY_TRANSCRIPT);
+      setSource("cached");
+    }
+    setState("done");
+  }
+
+  if (state === "idle") {
+    return (
+      <button className="secondary verify-cta" onClick={run}>
+        <ShieldCheck size={16} /> Verify on chain
+      </button>
+    );
+  }
+
+  if (state === "running" || !result) {
+    return <p className="evidence-note verify-running">Recomputing hashes and querying the Kaspa testnet-10 API…</p>;
+  }
+
+  return (
+    <div className="verify-transcript">
+      <div className="verify-meta">
+        <span>{humanizeStatus(result.mode)}</span>
+        <span>{result.network}</span>
+        <code>{result.txid.slice(0, 18)}…</code>
+      </div>
+      {source === "cached" ? (
+        <p className="evidence-note">
+          Cached verification transcript, recorded against the live TN-10 API — the verify endpoint is not reachable in
+          this static demo. Reproduce locally: scripts/verify_run.py
+        </p>
+      ) : null}
+      {checkEntries.map(([name, check], index) =>
+        index < revealed ? (
+          <div className={`verify-row ${check.status.toLowerCase()}`} key={name}>
+            <em>{check.status}</em>
+            <div>
+              <strong>{humanizeStatus(name)}</strong>
+              <p>{check.note}</p>
+            </div>
+          </div>
+        ) : null,
+      )}
+      {result.links.map((link, index) =>
+        checkEntries.length + index < revealed ? (
+          <div className={`verify-row link ${link.status.toLowerCase()}`} key={link.id}>
+            <em>{link.status}</em>
+            <div>
+              <strong>
+                {link.id} · {humanizeStatus(link.stage)}
+              </strong>
+            </div>
+          </div>
+        ) : null,
+      )}
+      {revealed >= totalItems ? (
+        <div className={`verify-overall ${result.overall === "PASS" ? "pass" : "fail"}`}>
+          Overall: {result.overall}
+        </div>
+      ) : null}
+    </div>
   );
 }
 

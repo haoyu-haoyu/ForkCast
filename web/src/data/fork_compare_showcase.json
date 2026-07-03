@@ -1,0 +1,592 @@
+{
+    "parent_run_id": "ulez_2023_phase2_deepseek",
+    "a": {
+        "fork_id": "fork_20260703T225148Z_charge_12_50",
+        "name": "charge \u00a312.50"
+    },
+    "b": {
+        "fork_id": "fork_20260703T225300Z_charge_15_00",
+        "name": "charge \u00a315.00"
+    },
+    "dimensions": {
+        "risk_timeline": [
+            {
+                "key": "immediate (0-6 months)",
+                "status": "changed",
+                "changed_fields": [
+                    "signal"
+                ],
+                "a": {
+                    "stage": "immediate (0-6 months)",
+                    "signal": "Enforcement backlash: 416 ULEZ-related offences including camera vandalism; radical subgroup active.",
+                    "risk_level": "high"
+                },
+                "b": {
+                    "stage": "immediate (0-6 months)",
+                    "signal": "Enforcement backlash: 416 ULEZ-related offences including camera vandalism",
+                    "risk_level": "high"
+                }
+            },
+            {
+                "key": "long-term (2+ years)",
+                "status": "changed",
+                "changed_fields": [
+                    "signal"
+                ],
+                "a": {
+                    "stage": "long-term (2+ years)",
+                    "signal": "If compliance stabilizes and air quality improves, political risk may decline; but distributional burden on low-income groups may persist.",
+                    "risk_level": "medium"
+                },
+                "b": {
+                    "stage": "long-term (2+ years)",
+                    "signal": "Risk of sustained radical opposition if distributional burden is not addressed; potential for policy reversal under political pressure",
+                    "risk_level": "medium"
+                }
+            },
+            {
+                "key": "medium-term (1-2 years)",
+                "status": "changed",
+                "changed_fields": [
+                    "signal"
+                ],
+                "a": {
+                    "stage": "medium-term (1-2 years)",
+                    "signal": "Compliance and air quality improvements may reduce opposition intensity if benefits are visible.",
+                    "risk_level": "medium"
+                },
+                "b": {
+                    "stage": "medium-term (1-2 years)",
+                    "signal": "Compliance and air quality improvements may reduce opposition intensity if benefits are visible",
+                    "risk_level": "medium"
+                }
+            },
+            {
+                "key": "short-term (6-12 months)",
+                "status": "changed",
+                "changed_fields": [
+                    "signal"
+                ],
+                "a": {
+                    "stage": "short-term (6-12 months)",
+                    "signal": "Political salience: by-election loss signals electoral risk; opposition parties may intensify criticism.",
+                    "risk_level": "high"
+                },
+                "b": {
+                    "stage": "short-term (6-12 months)",
+                    "signal": "Political salience: Uxbridge by-election loss attributed to ULEZ; opposition parties weaponise issue",
+                    "risk_level": "high"
+                }
+            }
+        ],
+        "claims": [
+            {
+                "key": "claim_001",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "confidence",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_001",
+                    "claim": "ULEZ expansion was a key factor in Labour's narrow loss in the Uxbridge by-election.",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "B2_ulez_as_key_by_election_issue",
+                    "evidence_fact_ids": [
+                        "B2_ulez_as_key_by_election_issue"
+                    ],
+                    "source_artifact": "https://www.instituteforgovernment.org.uk/comment/uxbridge-crossroads-net-zero",
+                    "confidence": "medium"
+                },
+                "b": {
+                    "id": "claim_001",
+                    "claim": "ULEZ expansion caused a 53% reduction in non-compliant vehicles after 6 months",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "D2_non_compliant_vehicle_count_change",
+                    "evidence_fact_ids": [
+                        "D2_non_compliant_vehicle_count_change"
+                    ],
+                    "source_artifact": "London-wide ULEZ six-month report",
+                    "confidence": "high"
+                }
+            },
+            {
+                "key": "claim_002",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_002",
+                    "claim": "London-wide compliance rate rose from 91.6% to 96.2% after 6 months.",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "D1_six_month_compliance_rate_change",
+                    "evidence_fact_ids": [
+                        "D1_six_month_compliance_rate_change"
+                    ],
+                    "source_artifact": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+                    "confidence": "high"
+                },
+                "b": {
+                    "id": "claim_002",
+                    "claim": "Outer London NOx emissions from cars and vans were 13% and 7% lower respectively vs no-ULEZ scenario",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "D3_air_quality_and_emissions_changes",
+                    "evidence_fact_ids": [
+                        "D3_air_quality_and_emissions_changes"
+                    ],
+                    "source_artifact": "London-wide ULEZ six-month report",
+                    "confidence": "high"
+                }
+            },
+            {
+                "key": "claim_003",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_003",
+                    "claim": "Outer London NOx emissions from cars and vans were 13% and 7% lower respectively vs no-ULEZ scenario.",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "D3_air_quality_and_emissions_changes",
+                    "evidence_fact_ids": [
+                        "D3_air_quality_and_emissions_changes"
+                    ],
+                    "source_artifact": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+                    "confidence": "high"
+                },
+                "b": {
+                    "id": "claim_003",
+                    "claim": "ULEZ expansion was a key factor in Labour's narrow loss in the Uxbridge by-election",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "B2_ulez_as_key_by_election_issue",
+                    "evidence_fact_ids": [
+                        "B2_ulez_as_key_by_election_issue"
+                    ],
+                    "source_artifact": "Institute for Government / YouGov",
+                    "confidence": "high"
+                }
+            },
+            {
+                "key": "claim_004",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_004",
+                    "claim": "416 ULEZ-related offences were recorded between August and October 2023.",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "C2_camera_vandalism_and_enforcement_resistance",
+                    "evidence_fact_ids": [
+                        "C2_camera_vandalism_and_enforcement_resistance"
+                    ],
+                    "source_artifact": "https://www.met.police.uk/foi-ai/metropolitan-police/disclosure-2023/november-2023/crimes-ulez-cameras-august-october2023/",
+                    "confidence": "high"
+                },
+                "b": {
+                    "id": "claim_004",
+                    "claim": "416 ULEZ-related offences were recorded between August and October 2023",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "C2_camera_vandalism_and_enforcement_resistance",
+                    "evidence_fact_ids": [
+                        "C2_camera_vandalism_and_enforcement_resistance"
+                    ],
+                    "source_artifact": "Metropolitan Police disclosure",
+                    "confidence": "high"
+                }
+            },
+            {
+                "key": "claim_005",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_005",
+                    "claim": "Public opinion is split: 47% support, 42% oppose London-wide expansion.",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "C1_public_opinion_distribution",
+                    "evidence_fact_ids": [
+                        "C1_public_opinion_distribution"
+                    ],
+                    "source_artifact": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+                    "confidence": "high"
+                },
+                "b": {
+                    "id": "claim_005",
+                    "claim": "Public opinion is split: 47% support, 42% oppose London-wide",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "C1_public_opinion_distribution",
+                    "evidence_fact_ids": [
+                        "C1_public_opinion_distribution"
+                    ],
+                    "source_artifact": "YouGov",
+                    "confidence": "high"
+                }
+            },
+            {
+                "key": "claim_006",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "confidence",
+                    "provenance_class",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_006",
+                    "claim": "Van drivers face a disproportionate compliance burden (88.9% vs 97.1% for cars).",
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": "D1_six_month_compliance_rate_change",
+                    "evidence_fact_ids": [
+                        "D1_six_month_compliance_rate_change"
+                    ],
+                    "source_artifact": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/environment-and-climate-change-publications/london-wide-ulez-six-month-report",
+                    "confidence": "medium"
+                },
+                "b": {
+                    "id": "claim_006",
+                    "claim": "Van drivers face a lower compliance rate (88.9%) than cars (97.1%) after 6 months",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "D1_six_month_compliance_rate_change",
+                    "evidence_fact_ids": [
+                        "D1_six_month_compliance_rate_change"
+                    ],
+                    "source_artifact": "London-wide ULEZ six-month report",
+                    "confidence": "high"
+                }
+            },
+            {
+                "key": "claim_007",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_007",
+                    "claim": "Low-income households face a distributional burden from the daily charge.",
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": "C1_public_opinion_distribution, A2_daily_charge",
+                    "evidence_fact_ids": [
+                        "C1_public_opinion_distribution",
+                        "A2_daily_charge"
+                    ],
+                    "source_artifact": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion, https://tfl.gov.uk/modes/driving/ultra-low-emission-zone",
+                    "confidence": "medium"
+                },
+                "b": {
+                    "id": "claim_007",
+                    "claim": "Camera vandalism will escalate if opposition remains high",
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": "assumption_vandalism_escalation",
+                    "evidence_fact_ids": [
+                        "C2_camera_vandalism_and_enforcement_resistance",
+                        "C3_public_view_on_camera_vandalism"
+                    ],
+                    "source_artifact": "Metropolitan Police disclosure / YouGov",
+                    "confidence": "medium"
+                }
+            },
+            {
+                "key": "claim_008",
+                "status": "changed",
+                "changed_fields": [
+                    "claim",
+                    "confidence",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "provenance_class",
+                    "source_artifact"
+                ],
+                "a": {
+                    "id": "claim_008",
+                    "claim": "Camera vandalism is opposed by a majority of Londoners (51% to 32%).",
+                    "provenance_class": "DOCUMENT-CITED",
+                    "evidence_pointer": "C3_public_view_on_camera_vandalism",
+                    "evidence_fact_ids": [
+                        "C3_public_view_on_camera_vandalism"
+                    ],
+                    "source_artifact": "https://yougov.com/en-gb/articles/46024-londoners-split-ulez-expansion",
+                    "confidence": "high"
+                },
+                "b": {
+                    "id": "claim_008",
+                    "claim": "The compliance rate increase from 91.6% to 96.2% will continue or stabilize",
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": "assumption_compliance_trend_continues",
+                    "evidence_fact_ids": [
+                        "D1_six_month_compliance_rate_change"
+                    ],
+                    "source_artifact": "London-wide ULEZ six-month report",
+                    "confidence": "medium"
+                }
+            },
+            {
+                "key": "claim_009",
+                "status": "new",
+                "changed_fields": [
+                    "claim",
+                    "confidence",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "id",
+                    "provenance_class",
+                    "source_artifact"
+                ],
+                "a": null,
+                "b": {
+                    "id": "claim_009",
+                    "claim": "Low-income households face a disproportionate burden from the daily charge",
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": "stakeholder_low_income_households evidence_note",
+                    "evidence_fact_ids": [
+                        "A2_daily_charge",
+                        "C1_public_opinion_distribution",
+                        "D3_air_quality_and_emissions_changes"
+                    ],
+                    "source_artifact": "Case graph augmentation notes",
+                    "confidence": "medium"
+                }
+            },
+            {
+                "key": "claim_010",
+                "status": "new",
+                "changed_fields": [
+                    "claim",
+                    "confidence",
+                    "evidence_fact_ids",
+                    "evidence_pointer",
+                    "id",
+                    "provenance_class",
+                    "source_artifact"
+                ],
+                "a": null,
+                "b": {
+                    "id": "claim_010",
+                    "claim": "The air quality improvement observed in the first 6 months will be sustained",
+                    "provenance_class": "INFERRED-FROM-DOCUMENT",
+                    "evidence_pointer": "assumption_air_quality_improvement_sustained",
+                    "evidence_fact_ids": [
+                        "D3_air_quality_and_emissions_changes"
+                    ],
+                    "source_artifact": "London-wide ULEZ six-month report",
+                    "confidence": "medium"
+                }
+            }
+        ],
+        "stakeholder_pressure": [
+            {
+                "key": "stakeholder_conservative_party",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_conservative_party",
+                    "name": "Conservative Party (local and national)",
+                    "impact_level": "medium",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Electoral gain from by-election win; uses ULEZ as wedge issue to mobilize opposition."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_conservative_party",
+                    "name": "Conservative Party (local and national)",
+                    "impact_level": "medium",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Electoral gains from Uxbridge by-election; uses ULEZ as wedge issue."
+                }
+            },
+            {
+                "key": "stakeholder_inner_london_residents",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_inner_london_residents",
+                    "name": "Inner London residents",
+                    "impact_level": "medium",
+                    "opposition_intensity": "low",
+                    "qualitative_signal": "Benefit from improved air quality and reduced traffic; majority support the policy."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_inner_london_residents",
+                    "name": "Inner London residents",
+                    "impact_level": "medium",
+                    "opposition_intensity": "low",
+                    "qualitative_signal": "Supportive due to air quality and health benefits; low personal cost."
+                }
+            },
+            {
+                "key": "stakeholder_labour_party",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_labour_party",
+                    "name": "Labour Party (local and national)",
+                    "impact_level": "high",
+                    "opposition_intensity": "medium",
+                    "qualitative_signal": "Internal tension between environmental goals and electoral risk; by-election loss attributed to ULEZ."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_labour_party",
+                    "name": "Labour Party (local and national)",
+                    "impact_level": "high",
+                    "opposition_intensity": "medium",
+                    "qualitative_signal": "Internal tension between environmental goals and electoral risk; by-election loss signals vulnerability."
+                }
+            },
+            {
+                "key": "stakeholder_london_mayor",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_london_mayor",
+                    "name": "Mayor of London (Sadiq Khan)",
+                    "impact_level": "high",
+                    "opposition_intensity": "medium",
+                    "qualitative_signal": "Policy success on air quality and compliance is offset by political backlash from by-election loss and enforcement resistance."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_london_mayor",
+                    "name": "Mayor of London (Sadiq Khan)",
+                    "impact_level": "high",
+                    "opposition_intensity": "medium",
+                    "qualitative_signal": "Policy success on air quality is visible, but political capital is eroded by by-election loss and sustained opposition."
+                }
+            },
+            {
+                "key": "stakeholder_low_income_households",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_low_income_households",
+                    "name": "Low-income households dependent on private vehicles",
+                    "impact_level": "high",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Affordability of vehicle replacement is a key concern; distributional burden is present despite air-quality benefits."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_low_income_households",
+                    "name": "Low-income households dependent on private vehicles",
+                    "impact_level": "high",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Affordability and fairness concerns; limited ability to upgrade vehicles; distributional burden is acute."
+                }
+            },
+            {
+                "key": "stakeholder_outer_london_residents",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_outer_london_residents",
+                    "name": "Outer London residents",
+                    "impact_level": "high",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Direct financial burden from daily charge or vehicle replacement; strong opposition reflected in opinion polls and by-election outcome."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_outer_london_residents",
+                    "name": "Outer London residents",
+                    "impact_level": "high",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Direct financial burden and limited transport alternatives drive strong opposition and protest potential."
+                }
+            },
+            {
+                "key": "stakeholder_transport_for_london",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_transport_for_london",
+                    "name": "Transport for London (TfL)",
+                    "impact_level": "medium",
+                    "opposition_intensity": "low",
+                    "qualitative_signal": "Operational success in compliance and enforcement; faces increased costs from camera vandalism."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_transport_for_london",
+                    "name": "Transport for London (TfL)",
+                    "impact_level": "medium",
+                    "opposition_intensity": "low",
+                    "qualitative_signal": "Operational focus on compliance and enforcement; vandalism disrupts but does not derail implementation."
+                }
+            },
+            {
+                "key": "stakeholder_ulez_opponents_radical",
+                "status": "changed",
+                "changed_fields": [
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_ulez_opponents_radical",
+                    "name": "ULEZ opponents (radical subgroup)",
+                    "impact_level": "medium",
+                    "opposition_intensity": "very high",
+                    "qualitative_signal": "Engaged in direct action including camera vandalism; minority view but high visibility and enforcement cost."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_ulez_opponents_radical",
+                    "name": "ULEZ opponents (radical subgroup)",
+                    "impact_level": "medium",
+                    "opposition_intensity": "very high",
+                    "qualitative_signal": "Engaged in enforcement sabotage; risk of escalation if opposition remains high."
+                }
+            },
+            {
+                "key": "stakeholder_van_drivers_tradespeople",
+                "status": "changed",
+                "changed_fields": [
+                    "opposition_intensity",
+                    "qualitative_signal"
+                ],
+                "a": {
+                    "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+                    "name": "Van drivers, tradespeople and small businesses",
+                    "impact_level": "high",
+                    "opposition_intensity": "high",
+                    "qualitative_signal": "Disproportionate burden due to lower van compliance rate (88.9% vs 97.1% for cars); daily charge cuts into margins."
+                },
+                "b": {
+                    "stakeholder_id": "stakeholder_van_drivers_tradespeople",
+                    "name": "Van drivers, tradespeople and small businesses",
+                    "impact_level": "high",
+                    "opposition_intensity": "very high",
+                    "qualitative_signal": "High daily charge and low compliance rate for vans create severe cost pressure; strong opposition."
+                }
+            }
+        ]
+    },
+    "summary": {
+        "changed": 21,
+        "unchanged": 0,
+        "new": 2,
+        "removed": 0
+    }
+}
