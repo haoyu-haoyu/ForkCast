@@ -596,7 +596,7 @@ function CheckpointSummaryCard({
   onOpen: () => void;
 }) {
   return (
-    <div className="checkpoint-summary-card">
+    <div className={`checkpoint-summary-card ${status}`}>
       <div className="card-title-row">
         <span className="step-number">{number}</span>
         <strong>{title}</strong>
@@ -711,18 +711,20 @@ function LivePolicyResultPanel({
             </p>
           ))}
         </div>
-        <div className="result-block">
+        <div className="result-block diff-block">
           <strong>Visible diff</strong>
           {visibleDiff.length ? (
             visibleDiff.slice(0, 5).map((item) => (
-              <p key={item.path}>
-                <code>{item.path}</code>: {String(item.before)} → {String(item.after)}
+              <p className="diff-line" key={item.path}>
+                <code>{item.path}</code>: <span className="diff-before">{String(item.before)}</span> →{" "}
+                <span className="diff-after">{String(item.after)}</span>
               </p>
             ))
           ) : result.review_diff.length ? (
             result.review_diff.slice(0, 5).map((item) => (
-              <p key={item.path}>
-                <code>{item.path}</code>: {String(item.before)} → {String(item.after)}
+              <p className="diff-line" key={item.path}>
+                <code>{item.path}</code>: <span className="diff-before">{String(item.before)}</span> →{" "}
+                <span className="diff-after">{String(item.after)}</span>
               </p>
             ))
           ) : (
@@ -789,11 +791,12 @@ function LivePolicyResultPanel({
         </div>
       ) : null}
       {approvalDiff.length ? (
-        <div className="result-block">
+        <div className="result-block diff-block recorded">
           <strong>Human approval diff</strong>
           {approvalDiff.slice(0, 4).map((item) => (
-            <p key={item.path}>
-              <code>{item.path}</code>: {String(item.before)} → {String(item.after)}
+            <p className="diff-line" key={item.path}>
+              <code>{item.path}</code>: <span className="diff-before">{String(item.before)}</span> →{" "}
+              <span className="diff-after">{String(item.after)}</span>
             </p>
           ))}
         </div>
