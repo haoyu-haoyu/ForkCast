@@ -1,0 +1,368 @@
+{
+  "inventory": [
+    {
+      "step": "Before",
+      "headings": [
+        "Before",
+        "Legacy impact assessment"
+      ],
+      "buttons": [],
+      "inputs": [],
+      "pills": [],
+      "metrics": [
+        "Typical cycle",
+        "Traceability",
+        "Human control"
+      ],
+      "notes": [],
+      "links": []
+    },
+    {
+      "step": "ULEZ selected",
+      "headings": [
+        "Checkpoint Control Panel",
+        "Social Feed Simulation Preview",
+        "Blind Rubric Coverage",
+        "Impact Summary",
+        "Run a new policy document",
+        "Result will appear here"
+      ],
+      "buttons": [
+        "Open checkpoint",
+        "Open checkpoint",
+        "Open checkpoint",
+        "Open checkpoint",
+        "View full stream",
+        "View detailed rubric report",
+        "Run real analysis"
+      ],
+      "inputs": [
+        "input[file]",
+        "textarea[textarea] Paste a policy memo, consultation note or short policy description..."
+      ],
+      "pills": [
+        "In progress",
+        "approved",
+        "pending",
+        "pending",
+        "pending",
+        "PARTIAL",
+        "HIT",
+        "HIT",
+        "HIT",
+        "HIT",
+        "BALANCED HIT",
+        "Live analysis",
+        "idle"
+      ],
+      "metrics": [
+        "Data sources",
+        "Stakeholders",
+        "Coverage",
+        "Issues",
+        "Agent recommendation",
+        "Archetypes",
+        "Policy alignment",
+        "Risks flagged",
+        "Simulation window",
+        "Events cached",
+        "Key signals",
+        "Mode",
+        "Claims reviewed",
+        "Rubric mode",
+        "Kaspa anchor",
+        "Disclaimers",
+        "Rubric covered",
+        "Partial",
+        "Mechanism",
+        "Prediction isolation",
+        "Prompt scan",
+        "Kaspa anchoring",
+        "Report mode",
+        "Human grading"
+      ],
+      "notes": [],
+      "links": []
+    },
+    {
+      "step": "Approve extraction",
+      "headings": [
+        "Approve extraction",
+        "Checkpoint 1: extraction review",
+        "Stakeholders",
+        "Assumptions sheet"
+      ],
+      "buttons": [
+        "Approve",
+        "Adjust",
+        "Reject",
+        "Add"
+      ],
+      "inputs": [
+        "input[text] Add missing stakeholder"
+      ],
+      "pills": [],
+      "metrics": [],
+      "notes": [],
+      "links": []
+    },
+    {
+      "step": "Approve agents",
+      "headings": [
+        "Approve agents",
+        "Checkpoint 2: archetype agent review",
+        "Persona controls"
+      ],
+      "buttons": [
+        "Approve",
+        "Adjust",
+        "Reject",
+        "policy_advocatesupport · high adaptation",
+        "car-dependent commuteroppose · low adaptation",
+        "health-conscious cyclistsupport · high adaptation",
+        "activist opponentoppose · low adaptation",
+        "local councilloroppose · high adaptation",
+        "local MP in marginal seatsupport · medium adaptation",
+        "implementation managersupport · high adaptation",
+        "self-employed plumberoppose · low adaptation",
+        "low-wage worker with long commuteoppose · very low adaptation",
+        "Mayor of Londonsupport · high adaptation"
+      ],
+      "inputs": [
+        "input[range] stakeholder_london_mayor count",
+        "input[range] stakeholder_outer_london_residents count",
+        "input[range] stakeholder_inner_london_residents count",
+        "input[range] stakeholder_ulez_opponents_radical count",
+        "input[range] stakeholder_conservative_party count",
+        "input[range] stakeholder_labour_party count",
+        "input[range] stakeholder_transport_for_london count",
+        "input[range] stakeholder_van_drivers_tradespeople count",
+        "input[range] stakeholder_low_income_households count"
+      ],
+      "pills": [],
+      "metrics": [],
+      "notes": [],
+      "links": []
+    },
+    {
+      "step": "Run controls",
+      "headings": [
+        "Run controls",
+        "Checkpoint 3: simulation config"
+      ],
+      "buttons": [
+        "Approve run",
+        "Adjust",
+        "Reject",
+        "Replay cached run",
+        "Run live sample",
+        "Downscale"
+      ],
+      "inputs": [
+        "input[number]",
+        "input[number]",
+        "input[number]",
+        "input[checkbox]"
+      ],
+      "pills": [],
+      "metrics": [],
+      "notes": [],
+      "links": []
+    },
+    {
+      "step": "Simulation replay",
+      "headings": [
+        "Simulation replay",
+        "Simulation replay"
+      ],
+      "buttons": [],
+      "inputs": [],
+      "pills": [
+        "simulation is decision support, not deterministic forecast"
+      ],
+      "metrics": [],
+      "notes": [],
+      "links": []
+    },
+    {
+      "step": "Impact report",
+      "headings": [
+        "Impact report",
+        "Impact report",
+        "Risk timeline",
+        "Claim review",
+        "Mitigation options",
+        "Claims audit table"
+      ],
+      "buttons": [
+        "Delete",
+        "Downgrade wording",
+        "Delete",
+        "Downgrade wording",
+        "Delete",
+        "Downgrade wording",
+        "Delete",
+        "Downgrade wording",
+        "Delete",
+        "Downgrade wording",
+        "Delete",
+        "Downgrade wording"
+      ],
+      "inputs": [],
+      "pills": [
+        "Evidence: blind_prediction.json",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)",
+        "Unclassified (legacy report)"
+      ],
+      "metrics": [],
+      "notes": [
+        "Any dashboard score or monetary framing in this view is illustrative / demo estimate only. Automated R1-R6 verdicts are ",
+        "This report predates provenance classification and is anchored; claims are shown unclassified."
+      ],
+      "links": []
+    },
+    {
+      "step": "Blind rubric",
+      "headings": [
+        "Blind rubric",
+        "Blind prediction rubric coverage",
+        "Prompt transparency"
+      ],
+      "buttons": [],
+      "inputs": [],
+      "pills": [
+        "No outcome tokens in prompt",
+        "PARTIAL",
+        "HIT",
+        "HIT",
+        "HIT",
+        "HIT",
+        "BALANCED HIT"
+      ],
+      "metrics": [],
+      "notes": [
+        "Automated keyword-rubric verdicts — signal coverage, not semantic verification. See negative controls & human adjudicati",
+        "Source: runs/ulez_2023_phase2_deepseek/backtest_result.json · rubric: backtest_rubric.md",
+        "Display translation — canonical data lives in the anchored run artifacts."
+      ],
+      "links": []
+    },
+    {
+      "step": "Audit + Kaspa",
+      "headings": [
+        "Audit + Kaspa",
+        "Checkpoint 4: report and Kaspa review",
+        "Kaspa payload anchoring"
+      ],
+      "buttons": [
+        "Approve report",
+        "Adjust",
+        "Reject",
+        "Approve anchored payload review",
+        "Refuse on-chain anchor"
+      ],
+      "inputs": [],
+      "pills": [
+        "pending"
+      ],
+      "metrics": [
+        "Created",
+        "Run ID",
+        "Data freshness",
+        "Network",
+        "Payload bytes",
+        "Explorer"
+      ],
+      "notes": [],
+      "links": [
+        "Open Kaspa explorer -> https://explorer-tn10.kaspa.org/txs/f553f7bfd73b1ed81bd1fd71dbd43631b49c392e20699e82ba2cbc5b263b5123"
+      ]
+    },
+    {
+      "step": "Close",
+      "headings": [
+        "Close",
+        "Weeks to hours, with the human still in control."
+      ],
+      "buttons": [],
+      "inputs": [],
+      "pills": [],
+      "metrics": [
+        "Demo run",
+        "Prediction",
+        "Autonomy"
+      ],
+      "notes": [],
+      "links": []
+    }
+  ],
+  "chrome": {
+    "topbar": [
+      "ForkCast",
+      "Policy impact sandbox — control beats autonomy",
+      "● Demo Mode",
+      "01:14 / 01:30",
+      "London ULEZ Expansion",
+      "Policy Maker",
+      "Rollback"
+    ],
+    "sidebar_headings": [
+      "Persona chat",
+      "Audit Manifest",
+      "Hard limits",
+      "Checkpoint history"
+    ],
+    "sidebar_facts": [
+      "Run ID",
+      "Created",
+      "Created by",
+      "Scenario",
+      "Policy Option",
+      "Data Sources",
+      "Artifacts",
+      "Status"
+    ],
+    "hard_limits": [
+      "No automatic chain action",
+      "No automatic weight changes",
+      "No real-person PII",
+      "Archetypes only",
+      "Decision support only"
+    ],
+    "kaspa_mini": [
+      "Kaspa Anchoring",
+      "f553f7bfd73b1ed81b…"
+    ],
+    "persona_chat": "18 persona options; Archetype only · no real-person PII",
+    "status_dock": [
+      "Run ID",
+      "ulez_2023_phase2_deepseek",
+      "Scenario",
+      "London ULEZ Expansion",
+      "Policy Option",
+      "ULEZ Expansion to Outer London",
+      "Simulation Window",
+      "90 Days",
+      "Population",
+      "8.9M",
+      "Data Freshness",
+      "Cached 2026-07-01",
+      "Model Version",
+      "v0.3.0",
+      "System Status",
+      "Operational"
+    ]
+  }
+}
