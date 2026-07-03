@@ -45,8 +45,8 @@
   --verify: #157a55;
   --verify-tint: #e6f3ec;
   --verify-line: #9ed3ba;
-  --signal: #a96f0e;
-  --signal-tint: #faf2df;
+  --signal: #96660b;
+  --signal-tint: #fdf3dc;
   --signal-line: #e6cd93;
   --alarm: #b3261e;
   --alarm-tint: #fceeec;
@@ -173,7 +173,7 @@ textarea:focus-visible {
 
 .topbar h1 {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.12;
 }
@@ -1109,7 +1109,7 @@ textarea:focus-visible {
 
 .diff-after {
   color: var(--verify);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .chain-link-list {
@@ -1306,6 +1306,10 @@ textarea {
 
 .runsheet h4 {
   margin: 0 0 12px;
+}
+
+.runsheet-params {
+  min-width: 0;
 }
 
 .runsheet .config-grid {
@@ -1708,12 +1712,16 @@ code {
   font-variant-numeric: tabular-nums;
 }
 
+.chain-box-wrap {
+  filter: drop-shadow(0 8px 18px rgba(24, 36, 32, 0.2));
+  min-width: 0;
+}
+
 .chain-box {
   border: 0;
   border-radius: 0;
   padding: 24px 20px 28px;
   background: #fff;
-  filter: drop-shadow(0 8px 18px rgba(24, 36, 32, 0.16));
   -webkit-mask:
     linear-gradient(#000 0 0) 0 8px / 100% calc(100% - 16px) no-repeat,
     radial-gradient(circle at 8px 0, transparent 0 4px, #000 4.5px) 0 0 / 16px 8px repeat-x,
@@ -2006,10 +2014,14 @@ code {
   background: var(--paper);
 }
 
+.receipt-wrap {
+  filter: drop-shadow(0 6px 14px rgba(24, 36, 32, 0.16));
+  min-width: 0;
+}
+
 .receipt {
   background: #fff;
   padding: 16px 14px 20px;
-  filter: drop-shadow(0 6px 14px rgba(24, 36, 32, 0.16));
   -webkit-mask:
     linear-gradient(#000 0 0) 0 7px / 100% calc(100% - 14px) no-repeat,
     radial-gradient(circle at 7px 0, transparent 0 3.5px, #000 4px) 0 0 / 14px 7px repeat-x,

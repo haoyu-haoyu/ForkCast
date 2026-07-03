@@ -1184,8 +1184,9 @@ function AuditReview({
             </div>
           ))}
         </div>
-        <div className="chain-box">
-          <ShieldCheck size={24} />
+        <div className="chain-box-wrap">
+          <div className="chain-box">
+            <ShieldCheck size={24} />
           <h4>Kaspa payload anchoring</h4>
           <p>
             Status: {humanizeStatus(kaspaAnchor.status)}. User approval remains required before any future transaction broadcast.
@@ -1215,9 +1216,10 @@ function AuditReview({
             <p className="evidence-note">Anchor package can be verified locally until a testnet tx id is configured.</p>
           )}
           <pre className="payload-preview">{kaspaAnchor.payload_canonical_json}</pre>
-          <button className="primary" onClick={() => setChainDecision("payload_approved")}>Approve anchored payload review</button>
-          <button className="secondary" onClick={() => setChainDecision("refused")}>Refuse on-chain anchor</button>
-          <StatusPill tone={chainDecision === "refused" ? "warn" : "neutral"}>{chainDecision}</StatusPill>
+            <button className="primary" onClick={() => setChainDecision("payload_approved")}>Approve anchored payload review</button>
+            <button className="secondary" onClick={() => setChainDecision("refused")}>Refuse on-chain anchor</button>
+            <StatusPill tone={chainDecision === "refused" ? "warn" : "neutral"}>{chainDecision}</StatusPill>
+          </div>
         </div>
       </div>
     </Panel>
@@ -1289,8 +1291,9 @@ function AuditSidebar({ control }: { control: ReturnType<typeof createInitialCon
         <ClipboardCheck size={18} />
         <h3>Audit Manifest</h3>
       </div>
-      <div className="receipt">
-        <div className="audit-sidebar-grid">
+      <div className="receipt-wrap">
+        <div className="receipt">
+          <div className="audit-sidebar-grid">
           <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
           <Fact label="Created" value={formatAuditDate(auditManifest.entries[0]?.timestamp)} />
           <Fact label="Created by" value="Policy Maker (PM)" />
@@ -1300,15 +1303,16 @@ function AuditSidebar({ control }: { control: ReturnType<typeof createInitialCon
           <Fact label="Artifacts" value={String(auditManifest.entries.length)} />
           <Fact label="Status" value={kaspaAnchor.status === "anchored" ? "Anchored on TN-10" : "Local verification"} />
         </div>
-        <div className="kaspa-mini">
-          <span>Kaspa Anchoring</span>
-          {kaspaAnchor.explorer_url ? (
-            <a href={kaspaAnchor.explorer_url} target="_blank" rel="noreferrer">
-              {kaspaAnchor.tx_id?.slice(0, 18)}…
-            </a>
-          ) : (
-            <strong>Local package only</strong>
-          )}
+          <div className="kaspa-mini">
+            <span>Kaspa Anchoring</span>
+            {kaspaAnchor.explorer_url ? (
+              <a href={kaspaAnchor.explorer_url} target="_blank" rel="noreferrer">
+                {kaspaAnchor.tx_id?.slice(0, 18)}…
+              </a>
+            ) : (
+              <strong>Local package only</strong>
+            )}
+          </div>
         </div>
       </div>
       <div className="limits">

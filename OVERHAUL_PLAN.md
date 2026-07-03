@@ -24,7 +24,7 @@ audited on them. The aesthetic follows from that world:
 | `ink` | `#182420` | Text, wordmark, filled controls (deep green-black, not pure black) |
 | `paper` | `#F2F4F0` | Page ground (cool gray-green; surfaces are #FFFFFF white cards on it) |
 | `verify` | `#157A55` | APPROVED · HIT · BALANCED HIT · anchored · safe (registry green) |
-| `signal` | `#A96F0E` | PENDING · PARTIAL · warnings · human-review-required (ledger amber) |
+| `signal` | `#96660B` | PENDING · PARTIAL · warnings · human-review-required (ledger amber; retained from the pre-overhaul palette after the first-draft #A96F0E failed WCAG AA in review) |
 | `alarm` | `#B3261E` | MISS · REJECTED · danger · errors (stamp red) |
 | `registry` | `#2D5B9E` | Links, references, evidence pointers, neutral info (archive blue) |
 
