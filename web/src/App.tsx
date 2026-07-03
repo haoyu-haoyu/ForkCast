@@ -900,6 +900,9 @@ function ForkStudio() {
   const [fallbackNote, setFallbackNote] = useState("");
 
   const patches: JsonPatchOp[] = [{ op: "add", path: "/scenario_variant", value: { charge } }];
+  const baselinePatches: JsonPatchOp[] = [
+    { op: "add", path: "/scenario_variant", value: { charge: FORK_BASELINE_CHARGE } },
+  ];
 
   async function runFork() {
     setPhase("running");
@@ -913,9 +916,7 @@ function ForkStudio() {
     }
     try {
       setProgress(`Creating baseline fork (charge ${FORK_BASELINE_CHARGE})…`);
-      const baseline = await createFork(FORK_PARENT_RUN_ID, `charge ${FORK_BASELINE_CHARGE}`, [
-        { op: "add", path: "/scenario_variant", value: { charge: FORK_BASELINE_CHARGE } },
-      ]);
+      const baseline = await createFork(FORK_PARENT_RUN_ID, `charge ${FORK_BASELINE_CHARGE}`, baselinePatches);
       setProgress(`Creating variant fork (${variantName})…`);
       const variant = await createFork(FORK_PARENT_RUN_ID, variantName, patches);
       setApproval(variant.approval_event ?? null);
@@ -984,18 +985,24 @@ function ForkStudio() {
           <div className="panel-title-row compact">
             <div>
               <h4>Fork variant review</h4>
-              <p>This patch is human-authored. Confirming is the approval that authorizes the fork rerun.</p>
+              <p>These patches are human-authored. Confirming is the approval that authorizes both fork reruns.</p>
             </div>
             <StatusPill tone="warn">Human approval required</StatusPill>
           </div>
           <div className="result-block diff-block">
-            <strong>Patch to apply</strong>
+            <strong>Patches to apply</strong>
             <p className="diff-line">
-              <code>/scenario_variant</code>: <span className="diff-before">null</span> →{" "}
+              <code>baseline · /scenario_variant</code>: <span className="diff-before">null</span> →{" "}
+              <span className="diff-after">{JSON.stringify({ charge: FORK_BASELINE_CHARGE })}</span>
+            </p>
+            <p className="diff-line">
+              <code>variant · /scenario_variant</code>: <span className="diff-before">null</span> →{" "}
               <span className="diff-after">{JSON.stringify({ charge })}</span>
             </p>
           </div>
-          <pre className="fork-patch-preview">{JSON.stringify(patches, null, 2)}</pre>
+          <pre className="fork-patch-preview">
+            {JSON.stringify({ baseline_fork_patches: baselinePatches, variant_fork_patches: patches }, null, 2)}
+          </pre>
           <div className="run-actions">
             <button className="primary" onClick={runFork}>
               <Check size={16} /> Confirm fork and run
@@ -1501,6 +1508,7 @@ function VerifyOnChain() {
   const [state, setState] = useState<"idle" | "running" | "done">("idle");
   const [result, setResult] = useState<VerifyResult | null>(null);
   const [source, setSource] = useState<"live" | "cached">("live");
+  const [fallbackNote, setFallbackNote] = useState("");
   const [revealed, setRevealed] = useState(0);
 
   const checkEntries = result ? Object.entries(result.checks) : [];
@@ -1519,6 +1527,7 @@ function VerifyOnChain() {
   async function run() {
     setState("running");
     setRevealed(0);
+    setFallbackNote("");
     if (STATIC_SHOWCASE) {
       setResult(CACHED_VERIFY_TRANSCRIPT);
       setSource("cached");
@@ -1529,9 +1538,10 @@ function VerifyOnChain() {
       const live = await verifyAnchor(FORK_PARENT_RUN_ID);
       setResult(live);
       setSource("live");
-    } catch {
+    } catch (error) {
       setResult(CACHED_VERIFY_TRANSCRIPT);
       setSource("cached");
+      setFallbackNote(error instanceof Error ? error.message : "Verify API unreachable.");
     }
     setState("done");
   }
@@ -1557,8 +1567,11 @@ function VerifyOnChain() {
       </div>
       {source === "cached" ? (
         <p className="evidence-note">
-          Cached verification transcript, recorded against the live TN-10 API — the verify endpoint is not reachable in
-          this static demo. Reproduce locally: scripts/verify_run.py
+          Cached verification transcript, recorded against the live TN-10 API
+          {fallbackNote
+            ? ` — the live verify call failed (${fallbackNote}).`
+            : " — the verify endpoint is not bundled in this static demo."}{" "}
+          Reproduce locally: scripts/verify_run.py
         </p>
       ) : null}
       {checkEntries.map(([name, check], index) =>
