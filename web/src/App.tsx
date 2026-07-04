@@ -33,6 +33,7 @@ import { agents, auditManifest, backtest, blindPrediction, caseGraph, impactRepo
 import { approvePolicyRun, getPolicyRun, patchPolicyRunCaseGraph, startPolicyRun } from "./livePolicy";
 import { diffCaseGraphReview, hasUnsavedReviewDiff } from "./liveReview";
 import { displayEnglish } from "./displayEnglish";
+import { SAMPLE_MEMOS } from "./data/sample_memos";
 import {
   CACHED_FORK_COMPARISON,
   CACHED_VERIFY_TRANSCRIPT,
@@ -89,6 +90,7 @@ function App() {
   const [policyRunError, setPolicyRunError] = useState("");
   const [policyRunResult, setPolicyRunResult] = useState<LivePolicyRunStatus | null>(null);
   const [reviewDraft, setReviewDraft] = useState<LivePolicyRunStatus["case_graph_ai"] | null>(null);
+  const [reviewedClaims, setReviewedClaims] = useState<Set<string>>(new Set());
   const [claimVisibility, setClaimVisibility] = useState<Record<string, boolean>>(
     Object.fromEntries(backtest.rules.map((rule) => [rule.rule_id, true])),
   );
@@ -97,6 +99,7 @@ function App() {
   const activeAgent = agents.find((agent) => agent.id === selectedAgentId) ?? agents[0];
   const feedEvents = liveSample ? simulation.events.slice(0, 12) : simulation.events.slice(0, 26);
   const groupCounts = useMemo(() => countBy(agents, "stakeholder_id"), []);
+  const approvedCheckpoints = checkpointSteps.filter((key) => control.checkpoints[key].status === "approved").length;
 
   function approve(key: CheckpointKey) {
     const next = approveCheckpoint(control, key);
@@ -233,7 +236,14 @@ function App() {
         </div>
         <div className="topbar-actions">
           <StatusPill tone="neutral">● Demo Mode</StatusPill>
+          <button
+            className="status-pill safe pill-link"
+            onClick={() => document.querySelector(".receipt")?.scrollIntoView({ behavior: "smooth", block: "center" })}
+          >
+            Anchored · TN-10
+          </button>
           <TopbarTile icon={<Clock size={18} />} label="Demo time remaining" value="01:14 / 01:30" />
+          <TopbarTile label="Checkpoints" value={`${approvedCheckpoints} / ${checkpointSteps.length} approved`} />
           <TopbarTile label="Scenario" value="London ULEZ Expansion" trailing={<ChevronDown size={14} />} />
           <TopbarTile label="Persona" value="Policy Maker" trailing={<ChevronDown size={14} />} />
           <div className="avatar-chip">PM<span /></div>
@@ -255,7 +265,9 @@ function App() {
           {demoSteps.map((step) => (
             <button
               key={step.key}
-              className={`timeline-step ${activeStep === step.key ? "active" : ""}`}
+              className={`timeline-step ${activeStep === step.key ? "active" : ""} ${
+                step.checkpoint && control.checkpoints[step.checkpoint].status === "approved" ? "completed" : ""
+              }`}
               onClick={() => setActiveStep(step.key)}
             >
               <span>{step.time}</span>
@@ -325,7 +337,14 @@ function App() {
             />
           )}
           {activeStep === "simulation_replay" && <SimulationReplay events={feedEvents} liveSample={liveSample} />}
-          {activeStep === "impact_report" && <ImpactReport claimVisibility={claimVisibility} setClaimVisibility={setClaimVisibility} />}
+          {activeStep === "impact_report" && (
+            <ImpactReport
+              claimVisibility={claimVisibility}
+              setClaimVisibility={setClaimVisibility}
+              reviewedClaims={reviewedClaims}
+              onReviewClaim={(id) => setReviewedClaims((current) => new Set(current).add(id))}
+            />
+          )}
           {activeStep === "blind_backtest" && <BlindBacktest />}
           {activeStep === "audit" && (
             <AuditReview
@@ -431,6 +450,32 @@ function CaseSelectScreen({
           <StatusPill tone="safe">In progress</StatusPill>
         </div>
       </div>
+      <div className="stat-band" aria-label="Run scale">
+        <div>
+          <strong>{agents.length}</strong>
+          <span>archetype agents</span>
+        </div>
+        <div>
+          <strong>{simulation.events.length}</strong>
+          <span>cached events</span>
+        </div>
+        <div>
+          <strong>{backtest.rules.length}</strong>
+          <span>rubric checks</span>
+        </div>
+        <div>
+          <strong>2</strong>
+          <span>verified TN-10 anchors</span>
+        </div>
+        <div>
+          <strong>90</strong>
+          <span>day window</span>
+        </div>
+        <div>
+          <strong>4</strong>
+          <span>human gates</span>
+        </div>
+      </div>
       <ProofRail />
       <div className="checkpoint-card-grid">
         <CheckpointSummaryCard
@@ -528,9 +573,9 @@ function CaseSelectScreen({
               ["Kaspa anchoring", kaspaAnchor.tx_id ? "Testnet tx live" : "Local package"],
               ["Chain verifier", `Overall ${CACHED_VERIFY_TRANSCRIPT.overall}`],
               ["Report mode", "Decision support"],
-              ["Human grading", "Pending"],
+              ["Human grading", HUMAN_GRADING_PENDING_NOTE],
             ].map(([label, value]) => (
-              <div key={label} title={label === "Human grading" ? HUMAN_GRADING_PENDING_NOTE : undefined}>
+              <div key={label}>
                 <span>{label}</span>
                 <strong>{value}</strong>
               </div>
@@ -568,6 +613,18 @@ function CaseSelectScreen({
                 />
               </label>
               <span>{policyFileName || "Paste policy text below if no file is selected."}</span>
+            </div>
+            <div className="sample-chips">
+              <span>Try a sample:</span>
+              {SAMPLE_MEMOS.map((memo) => (
+                <button
+                  key={memo.label}
+                  className="sample-chip"
+                  onClick={() => setPolicyText(memo.text)}
+                >
+                  {memo.label}
+                </button>
+              ))}
             </div>
             <textarea
               className="policy-input"
@@ -1155,8 +1212,8 @@ function ForkComparisonView({
         rows.length ? (
           <div className="compare-dimension" key={title}>
             <h4>{title}</h4>
-            {rows.map((row) => (
-              <ForkCompareRowView row={row} key={`${title}-${row.key}`} />
+            {rows.map((row, index) => (
+              <ForkCompareRowView row={row} index={index} key={`${title}-${row.key}`} />
             ))}
           </div>
         ) : null,
@@ -1165,10 +1222,10 @@ function ForkComparisonView({
   );
 }
 
-function ForkCompareRowView({ row }: { row: ForkCompareRow }) {
+function ForkCompareRowView({ row, index = 0 }: { row: ForkCompareRow; index?: number }) {
   const changed = new Set(row.changed_fields ?? []);
   return (
-    <div className={`compare-row ${row.status}`}>
+    <div className={`compare-row ${row.status}`} style={{ animationDelay: `${Math.min(index, 12) * 40}ms` }}>
       <div className="compare-key">
         <code>{row.key}</code>
         <em className={`fork-status ${row.status}`}>{row.status}</em>
@@ -1203,7 +1260,7 @@ function ForkCompareCell({
       <span>{label}</span>
       {Object.entries(data).map(([field, value]) => (
         <p className={changed.has(field) ? "field-changed" : ""} key={field}>
-          <code>{field}</code> {formatForkValue(value)}
+          <span className="field-name">{humanizeFieldName(field)}</span> {formatForkValue(value)}
         </p>
       ))}
     </div>
@@ -1213,7 +1270,26 @@ function ForkCompareCell({
 function formatForkValue(value: unknown): string {
   if (value === null || value === undefined) return "null";
   if (typeof value === "string") return value;
+  if (Array.isArray(value)) {
+    return value.map((item) => (typeof item === "string" ? item : JSON.stringify(item))).join(" · ");
+  }
   return JSON.stringify(value);
+}
+
+function humanizeFieldName(field: string): string {
+  const label = field.replace(/_/g, " ");
+  return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
+function downloadAnchorPackage() {
+  const payload = { kaspa_anchor: kaspaAnchor, audit_manifest: auditManifest };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "forkcast-anchor-ulez_2023.json";
+  anchor.click();
+  URL.revokeObjectURL(url);
 }
 
 function AgentReview({
@@ -1371,12 +1447,18 @@ function SimulationReplay({ events, liveSample }: { events: SimulationEvent[]; l
 function ImpactReport({
   claimVisibility,
   setClaimVisibility,
+  reviewedClaims,
+  onReviewClaim,
 }: {
   claimVisibility: Record<string, boolean>;
   setClaimVisibility: (value: Record<string, boolean>) => void;
+  reviewedClaims: Set<string>;
+  onReviewClaim: (id: string) => void;
 }) {
   const claimsAuditRows = buildClaimsAuditRows(impactReport, backtest);
   const provenanceNotice = claimsAuditNotice(claimsAuditRows);
+  const visibleClaims = claimsAuditRows.slice(0, 6);
+  const reviewedCount = visibleClaims.filter((row) => reviewedClaims.has(row.id)).length;
   return (
     <Panel>
       <div className="panel-title-row">
@@ -1402,19 +1484,29 @@ function ImpactReport({
           ))}
         </div>
         <div>
-          <h4>Claim review</h4>
-          {claimsAuditRows.slice(0, 6).map((row) => (
+          <h4 className="review-progress-heading">
+            Claim review
+            <em className="review-count">
+              {reviewedCount} of {visibleClaims.length} reviewed
+            </em>
+          </h4>
+          {visibleClaims.map((row) => (
             <div className={`claim-row ${claimVisibility[row.id] === false ? "muted" : ""}`} key={row.id}>
               <span>{row.id.replace("backtest_", "")}</span>
               <p>{row.claim}</p>
               <ProvenancePill provenance={row.provenance_class} />
               <button
                 className="secondary small"
-                onClick={() => setClaimVisibility({ ...claimVisibility, [row.id]: claimVisibility[row.id] === false })}
+                onClick={() => {
+                  setClaimVisibility({ ...claimVisibility, [row.id]: claimVisibility[row.id] === false });
+                  onReviewClaim(row.id);
+                }}
               >
                 {claimVisibility[row.id] === false ? "Restore" : "Delete"}
               </button>
-              <button className="secondary small">Downgrade wording</button>
+              <button className="secondary small" onClick={() => onReviewClaim(row.id)}>
+                Downgrade wording
+              </button>
             </div>
           ))}
         </div>
@@ -1560,6 +1652,9 @@ function AuditReview({
             <p className="evidence-note">Anchor package can be verified locally until a testnet tx id is configured.</p>
           )}
           <VerifyOnChain />
+          <button className="secondary download-anchor" onClick={downloadAnchorPackage}>
+            Download anchor package (JSON)
+          </button>
           <pre className="payload-preview">{kaspaAnchor.payload_canonical_json}</pre>
             <button className="primary" onClick={() => setChainDecision("payload_approved")}>Approve anchored payload review</button>
             <button className="secondary" onClick={() => setChainDecision("refused")}>Refuse on-chain anchor</button>
