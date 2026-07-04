@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -555,6 +555,15 @@ function CaseSelectScreen({
               </div>
             ))}
           </div>
+          <div className="dot-track" aria-label="Rubric coverage by rule">
+            {backtest.rules.map((rule) => (
+              <span
+                key={rule.rule_id}
+                className={`coverage-dot ${rule.verdict.toLowerCase().includes("hit") ? "hit" : "partial"}`}
+                title={`${rule.rule_id}: ${rule.verdict}`}
+              />
+            ))}
+          </div>
           <div className="hit-strip">
             <Metric label="Rubric covered" value="5 / 6" tone="safe" />
             <Metric label="Partial" value="R1" tone="warn" />
@@ -976,7 +985,7 @@ function ExtractionReview({
           <h4>Stakeholders</h4>
           <div className="list-table">
             {stakeholders.map((stakeholder) => (
-              <div className="table-row" key={stakeholder.id}>
+              <div className="table-row" id={`sh-row-${stakeholder.id}`} key={stakeholder.id}>
                 <div>
                   <strong>{sanitizeName(stakeholder.name)}</strong>
                   <span>{stakeholder.archetype_group} · prior {stakeholder.stance_prior}</span>
@@ -1004,8 +1013,157 @@ function ExtractionReview({
           </div>
         </div>
       </div>
+      <StakeholderMap
+        stakeholders={stakeholders}
+        onSelect={(id) =>
+          document.getElementById(`sh-row-${id}`)?.scrollIntoView({ behavior: "smooth", block: "center" })
+        }
+      />
       <ForkStudio />
     </Panel>
+  );
+}
+
+function StakeholderMap({
+  stakeholders,
+  onSelect,
+}: {
+  stakeholders: Stakeholder[];
+  onSelect: (id: string) => void;
+}) {
+  const width = 920;
+  const height = 330;
+  const cx = width / 2;
+  const cy = height / 2 + 8;
+  const positioned = useMemo(() => {
+    const sectors: Record<"support" | "oppose" | "other", Stakeholder[]> = { support: [], oppose: [], other: [] };
+    for (const stakeholder of stakeholders) {
+      const stance =
+        stakeholder.stance_prior === "support" || stakeholder.stance_prior === "oppose"
+          ? stakeholder.stance_prior
+          : "other";
+      sectors[stance].push(stakeholder);
+    }
+    const place = (items: Stakeholder[], startDeg: number, endDeg: number, stance: string) =>
+      items.map((stakeholder, index) => {
+        const t = items.length === 1 ? 0.5 : index / (items.length - 1);
+        const angle = ((startDeg + (endDeg - startDeg) * t) * Math.PI) / 180;
+        return {
+          stakeholder,
+          stance,
+          x: cx + 118 * Math.cos(angle) * 2.6,
+          y: cy + 108 * Math.sin(angle),
+        };
+      });
+    return [
+      ...place(sectors.support, -52, 52, "support"),
+      ...place(sectors.oppose, 128, 232, "oppose"),
+      ...place(sectors.other, -100, -80, "other"),
+    ];
+  }, [stakeholders, cx, cy]);
+
+  return (
+    <div className="constellation-block">
+      <h4>
+        Stakeholder constellation
+        <em className="constellation-legend">
+          <i className="support" /> support · <i className="oppose" /> oppose · <i className="other" /> unknown
+        </em>
+      </h4>
+      <p className="evidence-note">
+        Radial view of the reviewed extraction — support right, oppose left. Click a node to jump to its row.
+      </p>
+      <svg viewBox={`0 0 ${width} ${height}`} className="constellation" role="img" aria-label="Stakeholder map">
+        {positioned.map(({ stakeholder, x, y, stance }) => (
+          <line key={`edge-${stakeholder.id}`} x1={cx} y1={cy} x2={x} y2={y} className={`map-edge ${stance}`} />
+        ))}
+        <g className="map-center">
+          <circle cx={cx} cy={cy} r={30} />
+          <text x={cx} y={cy - 2} textAnchor="middle">
+            ULEZ
+          </text>
+          <text x={cx} y={cy + 12} textAnchor="middle">
+            Expansion
+          </text>
+        </g>
+        {positioned.map(({ stakeholder, x, y, stance }) => (
+          <g
+            key={stakeholder.id}
+            className={`map-node ${stance}`}
+            onClick={() => onSelect(stakeholder.id)}
+            role="button"
+            tabIndex={0}
+          >
+            <title>{`${sanitizeName(stakeholder.name)} · ${stakeholder.archetype_group} · prior ${stakeholder.stance_prior}`}</title>
+            <circle cx={x} cy={y} r={17} />
+            <text x={x} y={y + 32} textAnchor="middle">
+              {truncate(sanitizeName(stakeholder.name), 22)}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+function ChainSpine({ lit }: { lit: number }) {
+  const nodes = [
+    ...auditManifest.entries.map((entry) => ({ id: entry.stage, label: entry.stage.replace(/_/g, " ") })),
+    { id: "__manifest", label: "manifest hash" },
+    { id: "__anchor", label: "TN-10 anchor" },
+  ];
+  return (
+    <div className="chain-spine" aria-label="Audit hash chain">
+      {nodes.map((node, index) => (
+        <Fragment key={node.id}>
+          {index > 0 ? <span className={`spine-link ${lit > index ? "lit" : ""}`} /> : null}
+          <div className={`spine-node ${lit > index ? "lit" : ""} ${index >= nodes.length - 2 ? "terminal" : ""}`}>
+            <span className="spine-dot" />
+            <span className="spine-label">{node.label}</span>
+          </div>
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+
+function EnumMeter({ value }: { value: unknown }) {
+  const levels: Record<string, number> = { low: 1, medium: 2, high: 3 };
+  if (typeof value !== "string" || !(value in levels)) return null;
+  const level = levels[value];
+  return (
+    <span className={`enum-meter level-${level}`} aria-hidden="true">
+      <i />
+      <i />
+      <i />
+    </span>
+  );
+}
+
+const ENUM_METER_FIELDS = new Set(["impact_level", "opposition_intensity", "risk_level"]);
+
+function SeverityBars({ items }: { items: Array<{ risk_level: string }> }) {
+  const levels: Array<["high" | "medium" | "low", string]> = [
+    ["high", "alarm"],
+    ["medium", "signal"],
+    ["low", "registry"],
+  ];
+  const total = items.length || 1;
+  return (
+    <div className="severity-bars" aria-label="Risk levels">
+      {levels.map(([level, tone]) => {
+        const count = items.filter((item) => item.risk_level === level).length;
+        return (
+          <div key={level}>
+            <span>{level}</span>
+            <div className="sev-track">
+              <div className={`sev-fill ${tone}`} style={{ width: `${(count / total) * 100}%` }} />
+            </div>
+            <strong>{count}</strong>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -1261,6 +1419,7 @@ function ForkCompareCell({
       {Object.entries(data).map(([field, value]) => (
         <p className={changed.has(field) ? "field-changed" : ""} key={field}>
           <span className="field-name">{humanizeFieldName(field)}</span> {formatForkValue(value)}
+          {ENUM_METER_FIELDS.has(field) ? <EnumMeter value={value} /> : null}
         </p>
       ))}
     </div>
@@ -1475,6 +1634,7 @@ function ImpactReport({
       <div className="report-grid">
         <div>
           <h4>Risk timeline</h4>
+          <SeverityBars items={impactReport.risk_timeline} />
           {impactReport.risk_timeline.map((risk) => (
             <div className="risk-row" key={risk.stage}>
               <span>{risk.stage}</span>
@@ -1596,6 +1756,7 @@ function AuditReview({
   onApprove: () => void;
   onReject: () => void;
 }) {
+  const [spineLit, setSpineLit] = useState(0);
   return (
     <Panel>
       <div className="panel-title-row">
@@ -1605,6 +1766,7 @@ function AuditReview({
         </div>
         <ActionCluster onApprove={onApprove} onReject={onReject} blocked={blocked} approveLabel="Approve report" />
       </div>
+      <ChainSpine lit={spineLit} />
       <div className="audit-layout">
         <div className="audit-list">
           <div className="audit-meta">
@@ -1651,7 +1813,7 @@ function AuditReview({
           ) : (
             <p className="evidence-note">Anchor package can be verified locally until a testnet tx id is configured.</p>
           )}
-          <VerifyOnChain />
+          <VerifyOnChain onSpineProgress={setSpineLit} />
           <button className="secondary download-anchor" onClick={downloadAnchorPackage}>
             Download anchor package (JSON)
           </button>
@@ -1666,7 +1828,7 @@ function AuditReview({
   );
 }
 
-function VerifyOnChain() {
+function VerifyOnChain({ onSpineProgress }: { onSpineProgress?: (lit: number) => void }) {
   const [state, setState] = useState<"idle" | "running" | "done">("idle");
   const [result, setResult] = useState<VerifyResult | null>(null);
   const [source, setSource] = useState<"live" | "cached">("live");
@@ -1675,6 +1837,13 @@ function VerifyOnChain() {
 
   const checkEntries = result ? Object.entries(result.checks) : [];
   const totalItems = result ? checkEntries.length + result.links.length + 1 : 0;
+  const linksRevealed = result ? Math.max(0, Math.min(revealed - checkEntries.length, result.links.length)) : 0;
+  const spineProgress =
+    state === "done" && result ? linksRevealed + (revealed >= totalItems ? 2 : 0) : 0;
+
+  useEffect(() => {
+    onSpineProgress?.(spineProgress);
+  }, [spineProgress, onSpineProgress]);
 
   useEffect(() => {
     if (state !== "done" || !result || revealed >= totalItems) return;
