@@ -242,7 +242,7 @@ function App() {
             className="status-pill safe pill-link"
             onClick={() => document.querySelector(".receipt")?.scrollIntoView({ behavior: "smooth", block: "center" })}
           >
-            Anchored · TN-10
+            {kaspaAnchor.status === "anchored" ? "Anchored · TN-10" : "Local package"}
           </button>
           <TopbarTile icon={<Clock size={18} />} label="Demo time remaining" value="01:14 / 01:30" />
           <TopbarTile label="Checkpoints" value={`${approvedCheckpoints} / ${checkpointSteps.length} approved`} />
@@ -477,8 +477,8 @@ function CaseSelectScreen({
           <span>verified TN-10 anchors</span>
         </div>
         <div>
-          <strong>90</strong>
-          <span>day window</span>
+          <strong>{simulation.metadata.rounds}</strong>
+          <span>simulation rounds</span>
         </div>
         <div>
           <strong>4</strong>
@@ -1067,7 +1067,7 @@ function StakeholderMap({
     return [
       ...place(sectors.support, -52, 52, "support"),
       ...place(sectors.oppose, 128, 232, "oppose"),
-      ...place(sectors.other, -100, -80, "other"),
+      ...place(sectors.other, -118, -62, "other"),
     ];
   }, [stakeholders, cx, cy]);
 
@@ -1100,6 +1100,12 @@ function StakeholderMap({
             key={stakeholder.id}
             className={`map-node ${stance}`}
             onClick={() => onSelect(stakeholder.id)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onSelect(stakeholder.id);
+              }
+            }}
             role="button"
             tabIndex={0}
           >
@@ -1138,8 +1144,8 @@ function ChainSpine({ lit }: { lit: number }) {
 
 function EnumMeter({ value }: { value: unknown }) {
   const levels: Record<string, number> = { low: 1, medium: 2, high: 3 };
-  if (typeof value !== "string" || !(value in levels)) return null;
-  const level = levels[value];
+  const level = typeof value === "string" ? levels[value] : undefined;
+  if (!level) return null;
   return (
     <span className={`enum-meter level-${level}`} aria-hidden="true">
       <i />
@@ -1848,7 +1854,11 @@ function VerifyOnChain({ onSpineProgress }: { onSpineProgress?: (lit: number) =>
   const totalItems = result ? checkEntries.length + result.links.length + 1 : 0;
   const linksRevealed = result ? Math.max(0, Math.min(revealed - checkEntries.length, result.links.length)) : 0;
   const spineProgress =
-    state === "done" && result ? linksRevealed + (revealed >= totalItems ? 2 : 0) : 0;
+    state === "done" && result
+      ? revealed >= totalItems
+        ? auditManifest.entries.length + 2
+        : linksRevealed
+      : 0;
 
   useEffect(() => {
     onSpineProgress?.(spineProgress);
