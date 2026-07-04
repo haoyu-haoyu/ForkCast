@@ -396,7 +396,7 @@ function BeforeScreen({ goToStep }: { goToStep: (step: DemoStep) => void }) {
   return (
     <Panel>
       <div className="overture">
-        <h2>Policy takes weeks to assess. Approvals take seconds to fake.</h2>
+        <h2>Policy takes weeks to assess. Approval theater takes seconds to fake.</h2>
         <p>ForkCast fixes both — review-gated impact analysis with a cryptographic receipt.</p>
         <button className="primary" onClick={() => goToStep("select_case")}>
           Enter the control room <ChevronRight size={16} />
@@ -531,7 +531,7 @@ function CaseSelectScreen({
           title="Impact Report"
           status="pending"
           metrics={[
-            ["Claims reviewed", String(backtest.rules.length)],
+            ["Reviewable claims", String(backtest.rules.length)],
             ["Rubric mode", "Blind"],
             ["Kaspa anchor", kaspaAnchor.status === "anchored" ? "Live tx" : "Local"],
             ["Disclaimers", "On"],
@@ -594,9 +594,9 @@ function CaseSelectScreen({
               ["Kaspa anchoring", kaspaAnchor.tx_id ? "Testnet tx live" : "Local package"],
               ["Chain verifier", `Overall ${CACHED_VERIFY_TRANSCRIPT.overall}`],
               ["Report mode", "Decision support"],
-              ["Human grading", HUMAN_GRADING_PENDING_NOTE],
+              ["Human grading", "Pending"],
             ].map(([label, value]) => (
-              <div key={label}>
+              <div key={label} title={label === "Human grading" ? HUMAN_GRADING_PENDING_NOTE : undefined}>
                 <span>{label}</span>
                 <strong>{value}</strong>
               </div>
@@ -1665,7 +1665,7 @@ function ImpactReport({
           <h4 className="review-progress-heading">
             Claim review
             <em className="review-count">
-              {reviewedCount} of {visibleClaims.length} reviewed
+              {visibleClaims.length} reviewable claims
             </em>
           </h4>
           {visibleClaims.map((row) => (
@@ -1796,7 +1796,7 @@ function AuditReview({
             <div className="audit-row" key={entry.stage}>
               <span>{entry.stage}</span>
               <code>{entry.hash.slice(0, 18)}…</code>
-              <em>{entry.approval}</em>
+              <em>{formatAuditCommitment(entry.approval)}</em>
             </div>
           ))}
         </div>
@@ -2248,6 +2248,11 @@ function formatAuditDate(value?: string) {
 
 function humanizeStatus(value: string) {
   return value.replace(/_/g, " ");
+}
+
+function formatAuditCommitment(value: string) {
+  if (value === "not_on_chain") return "hash committed";
+  return humanizeStatus(value);
 }
 
 async function pollPolicyRun(
