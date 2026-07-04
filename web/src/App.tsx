@@ -228,7 +228,7 @@ function App() {
           </div>
           <div>
             <h1>ForkCast</h1>
-            <p>Policy impact sandbox — control beats autonomy</p>
+            <p>Review-gated impact analysis · scenario forks · Kaspa audit proof</p>
           </div>
         </div>
         <div className="topbar-actions">
@@ -423,14 +423,15 @@ function CaseSelectScreen({
     <Panel className="cockpit-panel">
       <div className="control-title">
         <div>
-          <h3>Checkpoint Control Panel</h3>
-          <p>Human-in-the-loop at every critical step</p>
+          <h3>ForkCast Control Cockpit</h3>
+          <p>Review-gated policy impact analysis with verifiable audit proof.</p>
         </div>
         <div className="overall-status">
           <span>Overall status</span>
           <StatusPill tone="safe">In progress</StatusPill>
         </div>
       </div>
+      <ProofRail />
       <div className="checkpoint-card-grid">
         <CheckpointSummaryCard
           number="1"
@@ -518,16 +519,18 @@ function CaseSelectScreen({
             View detailed rubric report <ChevronRight size={16} />
           </button>
         </CockpitCard>
+        <ForkSnapshotCard goToStep={goToStep} />
         <CockpitCard title="Impact Summary" subtitle="Illustrative / demo estimates only">
           <div className="impact-summary-list">
             {[
               ["Prediction isolation", "No outcome data"],
               ["Prompt scan", "No outcome tokens"],
               ["Kaspa anchoring", kaspaAnchor.tx_id ? "Testnet tx live" : "Local package"],
+              ["Chain verifier", `Overall ${CACHED_VERIFY_TRANSCRIPT.overall}`],
               ["Report mode", "Decision support"],
-              ["Human grading", "Pending - see docs/evaluation/ulez_human_adjudication.md"],
+              ["Human grading", "Pending"],
             ].map(([label, value]) => (
-              <div key={label}>
+              <div key={label} title={label === "Human grading" ? HUMAN_GRADING_PENDING_NOTE : undefined}>
                 <span>{label}</span>
                 <strong>{value}</strong>
               </div>
@@ -640,6 +643,69 @@ function CockpitCard({ title, subtitle, children }: { title: string; subtitle: s
       </div>
       {children}
     </section>
+  );
+}
+
+function ProofRail() {
+  return (
+    <section className="proof-rail" aria-label="ForkCast proof points">
+      <div>
+        <span>Answer-isolated</span>
+        <strong>Blind prediction</strong>
+        <p>No truth_set or outcome tokens enter the prediction prompt.</p>
+      </div>
+      <div>
+        <span>Review gated</span>
+        <strong>Human checkpoints</strong>
+        <p>Extraction, agents, run config and report/chain actions are explicit approvals.</p>
+      </div>
+      <div>
+        <span>What-if ready</span>
+        <strong>Scenario forks</strong>
+        <p>Compare £12.50 versus £15.00 from the same reviewed baseline.</p>
+      </div>
+      <div>
+        <span>Cryptographic receipt</span>
+        <strong>Kaspa TN-10 proof</strong>
+        <p>Anchored tx and local verifier both reach Overall: PASS.</p>
+      </div>
+    </section>
+  );
+}
+
+function ForkSnapshotCard({ goToStep }: { goToStep: (step: DemoStep) => void }) {
+  const comparison = CACHED_FORK_COMPARISON;
+  const changedRisks = comparison.dimensions.risk_timeline.filter((row) => row.status === "changed").slice(0, 2);
+  return (
+    <CockpitCard title="Scenario Forks" subtitle="Cached showcase comparison">
+      <div className="fork-snapshot-head">
+        <div>
+          <span>Baseline</span>
+          <strong>{comparison.a.name}</strong>
+        </div>
+        <GitCompare size={22} />
+        <div>
+          <span>Variant</span>
+          <strong>{comparison.b.name}</strong>
+        </div>
+      </div>
+      <div className="fork-snapshot-summary">
+        <Metric label="Changed" value={String(comparison.summary.changed)} tone="warn" />
+        <Metric label="Unchanged" value={String(comparison.summary.unchanged)} tone="safe" />
+      </div>
+      <div className="fork-snapshot-list">
+        {changedRisks.map((row) => (
+          <div key={row.key}>
+            <span>{row.key}</span>
+            <p>{truncate(String(row.b?.signal ?? row.a?.signal ?? "Changed conclusion"), 118)}</p>
+          </div>
+        ))}
+      </div>
+      <p className="evidence-note">Illustrative rerun, not forecast accuracy. The fork engine keeps lineage explicit.</p>
+      <button className="link-button" onClick={() => goToStep("extraction_review")}>
+        Open fork workflow <ChevronRight size={16} />
+      </button>
+    </CockpitCard>
   );
 }
 
@@ -888,6 +954,7 @@ function ExtractionReview({
 
 const FORK_PARENT_RUN_ID = "ulez_2023_phase2_deepseek";
 const FORK_BASELINE_CHARGE = "£12.50";
+const HUMAN_GRADING_PENDING_NOTE = "Pending - see docs/evaluation/ulez_human_adjudication.md";
 
 function ForkStudio() {
   const [phase, setPhase] = useState<"idle" | "form" | "confirm" | "running" | "done">("idle");

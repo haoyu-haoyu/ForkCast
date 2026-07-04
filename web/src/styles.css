@@ -168,13 +168,13 @@ textarea:focus-visible {
 .large-copy {
   font-family: var(--display);
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .topbar h1 {
   font-size: 22px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1.12;
 }
 
@@ -552,14 +552,14 @@ textarea:focus-visible {
   justify-content: space-between;
   gap: 16px;
   align-items: start;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .control-title h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .overall-status {
@@ -568,6 +568,53 @@ textarea:focus-visible {
   gap: 10px;
   color: var(--muted);
   font-size: 13px;
+}
+
+.proof-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--line);
+  box-shadow: var(--shadow);
+}
+
+.proof-rail div {
+  min-height: 112px;
+  padding: 16px 16px 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 245, 0.94)),
+    var(--surface);
+}
+
+.proof-rail span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--verify);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.proof-rail strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.proof-rail p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 
 .checkpoint-card-grid {
@@ -681,6 +728,13 @@ textarea:focus-visible {
   justify-content: space-between;
   gap: 12px;
   align-items: baseline;
+  min-width: 0;
+}
+
+.impact-summary-list div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(84px, 1.05fr);
+  align-items: start;
 }
 
 .card-metrics span,
@@ -695,6 +749,9 @@ textarea:focus-visible {
   font-weight: 600;
   text-align: right;
   font-variant-numeric: tabular-nums;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
 }
 
 .checkpoint-summary-card .primary {
@@ -703,13 +760,13 @@ textarea:focus-visible {
 
 .cockpit-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.95fr) minmax(360px, 1.5fr) minmax(280px, 0.95fr);
+  grid-template-columns: minmax(240px, 0.9fr) minmax(340px, 1.35fr) minmax(280px, 1fr) minmax(260px, 0.9fr);
   gap: 14px;
   align-items: stretch;
 }
 
 .cockpit-card {
-  min-height: 405px;
+  min-height: 394px;
   padding: 16px;
 }
 
@@ -853,6 +910,95 @@ textarea:focus-visible {
 
 .hit-strip .metric strong {
   font-size: 18px;
+}
+
+.fork-snapshot-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+
+.fork-snapshot-head svg {
+  color: var(--verify);
+  justify-self: center;
+}
+
+.fork-snapshot-head div:last-child {
+  text-align: right;
+}
+
+.fork-snapshot-head div {
+  min-width: 0;
+}
+
+.fork-snapshot-head span {
+  display: block;
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fork-snapshot-head strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1.15;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.fork-snapshot-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.fork-snapshot-summary .metric {
+  margin: 0;
+  padding: 10px;
+}
+
+.fork-snapshot-summary .metric strong {
+  font-size: 19px;
+}
+
+.fork-snapshot-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.fork-snapshot-list div {
+  border-left: 3px solid var(--signal);
+  border-radius: var(--r-sm);
+  background: #fffcf3;
+  padding: 9px 10px;
+}
+
+.fork-snapshot-list span {
+  display: block;
+  color: var(--signal);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fork-snapshot-list p {
+  margin: 4px 0 0;
+  color: var(--ink) !important;
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 
 .impact-summary-list {
@@ -2540,7 +2686,8 @@ code {
 
 @media (max-width: 1620px) {
   .checkpoint-card-grid,
-  .cockpit-grid {
+  .cockpit-grid,
+  .proof-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2576,6 +2723,7 @@ code {
 
   .checkpoint-card-grid,
   .cockpit-grid,
+  .proof-rail,
   .status-dock {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2609,9 +2757,10 @@ code {
   .workspace,
   .before-grid,
   .case-layout,
-  .checkpoint-card-grid,
-  .cockpit-grid,
-  .policy-run-grid,
+    .checkpoint-card-grid,
+    .cockpit-grid,
+    .proof-rail,
+    .policy-run-grid,
   .two-column,
   .report-grid,
   .audit-layout,
