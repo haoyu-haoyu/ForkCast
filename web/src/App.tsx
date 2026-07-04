@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   Check,
   ChevronRight,
-  ChevronDown,
   ClipboardCheck,
   Clock,
   Database,
@@ -244,11 +243,15 @@ function App() {
           >
             {kaspaAnchor.status === "anchored" ? "Anchored · TN-10" : "Local package"}
           </button>
-          <TopbarTile icon={<Clock size={18} />} label="Demo time remaining" value="01:14 / 01:30" />
+          <TopbarTile
+            icon={<Clock size={18} />}
+            label="Demo script"
+            value={`${demoSteps.find((step) => step.key === activeStep)?.time ?? "0-8s"} · step ${Math.max(1, demoSteps.findIndex((step) => step.key === activeStep) + 1)}/${demoSteps.length}`}
+          />
           <TopbarTile label="Checkpoints" value={`${approvedCheckpoints} / ${checkpointSteps.length} approved`} />
-          <TopbarTile label="Scenario" value="London ULEZ Expansion" trailing={<ChevronDown size={14} />} />
-          <TopbarTile label="Persona" value="Policy Maker" trailing={<ChevronDown size={14} />} />
-          <div className="avatar-chip">PM<span /></div>
+          <TopbarTile label="Scenario" value="London ULEZ Expansion" />
+          <TopbarTile label="Persona" value="Policy Maker" />
+          <div className="avatar-chip">PM</div>
           <button className="secondary" onClick={rollback}>
             <ArrowLeft size={16} /> Rollback
           </button>
@@ -516,7 +519,7 @@ function CaseSelectScreen({
           title="Simulation Replay"
           status="pending"
           metrics={[
-            ["Simulation window", "90 days"],
+            ["Rounds", String(simulation.metadata.rounds)],
             ["Events cached", String(simulation.events.length)],
             ["Key signals", String(backtest.rules.length)],
             ["Mode", "Replay"],
@@ -1580,7 +1583,7 @@ function SimulationConfig({
           <h4>Run envelope</h4>
           <div className="envelope-grid">
             <Fact label="Mode" value={liveSample ? "Live sample" : "Replay"} />
-            <Fact label="Simulation window" value="90 days" />
+            <Fact label="LLM budget cap" value={String(budget)} />
             <Fact label="Events cached" value={String(simulation.events.length)} />
             <Fact label="Key signals" value={String(backtest.rules.length)} />
             <Fact label="Agents × rounds" value={`${agentCount} × ${rounds}`} />
@@ -2294,10 +2297,10 @@ function StatusDock() {
       <Fact label="Run ID" value="ulez_2023_phase2_deepseek" />
       <Fact label="Scenario" value="London ULEZ Expansion" />
       <Fact label="Policy Option" value="ULEZ Expansion to Outer London" />
-      <Fact label="Simulation Window" value="90 Days" />
-      <Fact label="Population" value="8.9M" />
+      <Fact label="Simulation Rounds" value={String(simulation.metadata.rounds)} />
+      <Fact label="Archetype Agents" value={String(agents.length)} />
       <Fact label="Data Freshness" value="Cached 2026-07-01" />
-      <Fact label="Model Version" value="v0.3.0" />
+      <Fact label="Anchor Network" value={kaspaAnchor.network} />
       <Fact label="System Status" value="Operational" />
     </footer>
   );
