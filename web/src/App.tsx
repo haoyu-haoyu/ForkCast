@@ -73,7 +73,9 @@ const checkpointSteps: CheckpointKey[] = [
 
 function App() {
   const [control, setControl] = useState(createInitialControlState);
-  const [activeStep, setActiveStep] = useState<DemoStep>("select_case");
+  const [activeStep, setActiveStep] = useState<DemoStep>(() =>
+    window.location.hash === "#overture" ? "before" : "select_case",
+  );
   const [stakeholders, setStakeholders] = useState(caseGraph.stakeholders);
   const [newStakeholder, setNewStakeholder] = useState("");
   const [disabledAgents, setDisabledAgents] = useState<Set<string>>(new Set());
@@ -279,7 +281,7 @@ function App() {
 
         <section className="main-stage">
           {activeStep !== "select_case" ? <DemoHeader activeStep={activeStep} /> : null}
-          {activeStep === "before" && <BeforeScreen />}
+          {activeStep === "before" && <BeforeScreen goToStep={setActiveStep} />}
           {activeStep === "select_case" && (
             <CaseSelectScreen
               goToStep={setActiveStep}
@@ -387,9 +389,16 @@ function DemoHeader({ activeStep }: { activeStep: DemoStep }) {
   );
 }
 
-function BeforeScreen() {
+function BeforeScreen({ goToStep }: { goToStep: (step: DemoStep) => void }) {
   return (
     <Panel>
+      <div className="overture">
+        <h2>Policy takes weeks to assess. Approvals take seconds to fake.</h2>
+        <p>ForkCast fixes both — review-gated impact analysis with a cryptographic receipt.</p>
+        <button className="primary" onClick={() => goToStep("select_case")}>
+          Enter the control room <ChevronRight size={16} />
+        </button>
+      </div>
       <div className="before-grid">
         <div>
           <h3>Legacy impact assessment</h3>
@@ -1948,6 +1957,9 @@ function ClosingScreen() {
           <Metric label="Prediction" value="Blind" tone="safe" />
           <Metric label="Autonomy" value="Gated" tone="safe" />
         </div>
+        <p className="closing-txs">
+          Verified on Kaspa testnet-10 · tx {kaspaAnchor.tx_id?.slice(0, 8)}… (manifest hash) · tx 8a682481… (hash-chain head)
+        </p>
       </div>
     </Panel>
   );

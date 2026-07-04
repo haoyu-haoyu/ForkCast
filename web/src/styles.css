@@ -420,7 +420,7 @@ textarea:focus-visible {
 }
 
 .demo-header h2 {
-  font-size: 23px;
+  font-size: 26px;
   font-weight: 700;
   margin-top: 2px;
 }
@@ -456,7 +456,7 @@ textarea:focus-visible {
 
 .panel-title-row h3,
 .panel h3 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -2001,9 +2001,10 @@ code {
 }
 
 .closing h3 {
-  font-size: 42px;
-  line-height: 1.15;
-  max-width: 760px;
+  font-size: 54px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  max-width: 860px;
 }
 
 .closing p {
@@ -2388,6 +2389,59 @@ code {
   font-weight: 600;
   line-height: 1.25;
   font-variant-numeric: tabular-nums;
+}
+
+.overture {
+  padding: 26px 8px 30px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+
+.overture h2 {
+  font-family: var(--display);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 900px;
+}
+
+.overture p {
+  margin: 14px 0 18px !important;
+  font-size: 17px;
+  max-width: 640px;
+}
+
+.closing-txs {
+  margin-top: 18px !important;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--verify) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-row,
+.claims-audit-row,
+.backtest-row {
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.compare-row:hover {
+  box-shadow: var(--shadow);
+}
+
+.claims-audit-row:hover,
+.backtest-row:hover {
+  background: var(--surface-2);
+}
+
+.receipt-wrap {
+  transition: transform 0.2s ease;
+}
+
+.receipt-wrap:hover {
+  transform: rotate(0.3deg);
 }
 
 .constellation-block {
@@ -3275,7 +3329,8 @@ code {
   }
 
   .large-copy,
-  .closing h3 {
+  .closing h3,
+  .overture h2 {
     font-size: 26px;
   }
 
